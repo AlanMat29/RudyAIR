@@ -1,4 +1,4 @@
-package modelClient;
+package model.client;
 
 public class Premium extends Client{
 	
