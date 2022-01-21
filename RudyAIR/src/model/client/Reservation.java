@@ -1,4 +1,4 @@
-package modelClient;
+package model.client;
 
 import model.Aeroport;
 import model.Vols;
