@@ -1,0 +1,318 @@
+<style>
+
+.format-logo{
+  max-width: 70px;
+  height:auto;
+  margin-left: 10px;
+  margin-bottom: 15px;
+}
+
+
+.header-box{
+  height: 10%;
+  background-color: #fddbb6;
+}
+
+
+
+
+.div-body{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+
+}
+
+
+.div-table-format{
+  /* Définit les dimension du div*/
+  margin-top: 5%;
+  margin-bottom: 1.5%;
+  height:70%;
+  max-height: 650px;
+  width: 90%;
+  overflow: auto;
+}
+
+/* Center horizontaly & verticaly text in table */
+.div-table-format > table > tbody > tr > td,
+                    thead > tr > th{
+     vertical-align: middle;
+     text-align: center;
+}
+
+.thead-sticky{
+  position:sticky;
+  top: 0 ;
+}
+
+
+.div-add-fly-button{
+  margin-left: 5%;
+
+}
+
+
+
+
+
+
+</style>
+
+<!--
+TODO Fixer le problème des bordure qui cache le tableau lorsque la page est réduite
+TODO: Ajouter barre de recherche + menu déroulant colonne recherche (ref, date,...)
+TODO: Ajout la possibilité de filtrer le tableau selon les colonnes
+TODO: Ajout une colonne durée
+TODO: Condition affichage bouton détail (si 0 escale pas de bouton)
+ -->
+
+<html lang="en" dir="ltr">
+  <head>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+    <title>RudyAir</title>
+    <link rel="icon" href="asset/img/logo-white-bg.png">
+    <meta charset="utf-8">
+  </head>
+
+  <body>
+    <header>
+      <div class="header-box d-flex justify-content-center align-items-center">
+        <h1>RudyAir</h1>
+        <img class="format-logo" src="asset/img/logo.svg" alt="Vecteezy.com">
+      </div>
+    </header>
+
+    <div class="">
+
+
+      <div class="d-flex justify-content-center ">
+        <div class="div-table-format">
+          <table class="table table-striped table-bordered">
+            <thead class="thead-sticky bg-light">
+              <tr>
+                <th></th>
+                <th scope="col" colspan=3>Départ</th>
+                <th scope="col" colspan=3>Arrivée</th>
+                <th colspan=3></th>
+              </tr>
+              <tr>
+                <th scope="col" class="text-center align-middle">Référence du vol</th>
+                <th scope="col" class="text-center align-middle">Aéroport</th>
+                <th scope="col" class="text-center align-middle">Ville</th>
+                <th scope="col" class="text-center align-middle">Heure</th>
+                <th scope="col" class="text-center align-middle">Ville</th>
+                <th scope="col" class="text-center align-middle">Aéroport</th>
+                <th scope="col" class="text-center align-middle">Heure</th>
+                <th scope="col" class="text-center align-middle">Nombre d'escale</th>
+                <th scope="col" colspan=2 class="text-center align-middle">Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>RA1527</td>
+                <td>Paris</td>
+                <td>Paris-Orly</td>
+                <td>6h40</td>
+
+                <td>Tokyo</td>
+                <td>Tokyo-Haneda</td>
+                <td>23h35</td>
+                <td>
+                  <span>3 <button type="button" class="btn btn-link">Details</button></span>
+                </td>
+                <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA1279</td>
+                <td>Londre</td>
+                <td>Heathrow</td>
+
+                <td>8h12</td>
+                <td>Berlin</td>
+                <td>Berlin-Brandenburg</td>
+                <td>9h53</td>
+                <td>
+                  <span>0 <button type="button" class="btn btn-link">Details</button></span>
+                </td>
+                <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA3254</td>
+                <td>Rome</td>
+                <td>Rome-Fiumicino</td>
+                <td>14h20</td>
+
+                <td>Moscou</td>
+                <td>Moscou-Cheremetievo</td>
+                <td>19h50</td>
+                <td>
+                  <span>0 <button type="button" class="btn btn-link">Details</button></span>
+                </td>
+                <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+
+
+              <!-- Duplicat  -->
+              <tr>
+                <td>RA1527</td>
+                <td>Paris</td>
+                <td>Paris-Orly</td>
+                <td>6h40</td>
+
+                <td>Tokyo</td>
+                <td>Tokyo-Haneda</td>
+                <td>23h35</td>
+                <td>
+                  <span>3 <button type="button" class="btn btn-link">Details</button></span>
+                </td>
+                <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA1279</td>
+                <td>Londre</td>
+                <td>Heathrow</td>
+
+                <td>8h12</td>
+                <td>Berlin</td>
+                <td>Berlin-Brandenburg</td>
+                <td>9h53</td>
+                <td>
+                  <span>0 <button type="button" class="btn btn-link">Details</button></span>
+                </td>
+                <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA3254</td>
+                <td>Rome</td>
+                <td>Rome-Fiumicino</td>
+                <td>14h20</td>
+
+                <td>Moscou</td>
+                <td>Moscou-Cheremetievo</td>
+                <td>19h50</td>
+                <td>
+                  <span>0 <button type="button" class="btn btn-link">Details</button></span>
+                </td>
+                <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA1527</td>
+                <td>Paris</td>
+                <td>Paris-Orly</td>
+                <td>6h40</td>
+
+                <td>Tokyo</td>
+                <td>Tokyo-Haneda</td>
+                <td>23h35</td>
+                <td>
+                  <span>3 <button type="button" class="btn btn-link">Details</button></span>
+                </td>
+                <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA1279</td>
+                <td>Londre</td>
+                <td>Heathrow</td>
+
+                <td>8h12</td>
+                <td>Berlin</td>
+                <td>Berlin-Brandenburg</td>
+                <td>9h53</td>
+                <td>
+                  <span>0 <button type="button" class="btn btn-link">Details</button></span>
+                </td>
+                <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA3254</td>
+                <td>Rome</td>
+                <td>Rome-Fiumicino</td>
+                <td>14h20</td>
+
+                <td>Moscou</td>
+                <td>Moscou-Cheremetievo</td>
+                <td>19h50</td>
+                <td>
+                  <span>0 <button type="button" class="btn btn-link">Details</button></span>
+                </td>
+                <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA1527</td>
+                <td>Paris</td>
+                <td>Paris-Orly</td>
+                <td>6h40</td>
+
+                <td>Tokyo</td>
+                <td>Tokyo-Haneda</td>
+                <td>23h35</td>
+                <td>
+                  <span>3 <button type="button" class="btn btn-link">Details</button></span>
+                </td>
+                <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA1279</td>
+                <td>Londre</td>
+                <td>Heathrow</td>
+
+                <td>8h12</td>
+                <td>Berlin</td>
+                <td>Berlin-Brandenburg</td>
+                <td>9h53</td>
+                <td>
+                  <span>0 <button type="button" class="btn btn-link">Details</button></span>
+                </td>
+                <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA3254</td>
+                <td>Rome</td>
+                <td>Rome-Fiumicino</td>
+                <td>14h20</td>
+
+                <td>Moscou</td>
+                <td>Moscou-Cheremetievo</td>
+                <td>19h50</td>
+                <td>
+                  <span>0 <button type="button" class="btn btn-link">Details</button></span>
+                </td>
+                <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <button type="button" class="div-add-fly-button btn btn-primary">Ajouter un vol</button>
+      </div>
+  </div>
+
+
+
+
+
+  </body>
+
+
+</html>
