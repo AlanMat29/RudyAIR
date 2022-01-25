@@ -1,17 +1,17 @@
 package model.client;
 
-import model.Aeroport;
-import model.Vols;
+import model.voyage.Aeroport;
+import model.voyage.Vol;
 
 public class Reservation {
 
-	Vols vols;
+	Vol vols;
 	Aeroport aeroport;
 	Integer animaux;
 	int bagage;
 	boolean statut;
 	
-	public Reservation(Vols vols, Aeroport aeroport, Integer animaux, int bagage, boolean statut) {
+	public Reservation(Vol vols, Aeroport aeroport, Integer animaux, int bagage, boolean statut) {
 		this.vols = vols;
 		this.aeroport = aeroport;
 		this.animaux = animaux;
@@ -19,11 +19,11 @@ public class Reservation {
 		this.statut = statut;
 	}
 
-	public Vols getVols() {
+	public Vol getVols() {
 		return vols;
 	}
 
-	public void setVols(Vols vols) {
+	public void setVols(Vol vols) {
 		this.vols = vols;
 	}
 
