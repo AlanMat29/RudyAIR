@@ -7,7 +7,7 @@
   margin-left: 10px;
   margin-bottom: 15px;
 }
-
+#incription {display: flex;justify-content: center;  background-color:#f6cfa4; padding: 10px;}
 
 .header-box{
   height: 10%;
@@ -45,16 +45,10 @@ body {
   </head>
 
   <body>
-    <header>
-      <div class="header-box d-flex justify-content-center align-items-center">
-        <h1>RudyAir</h1>
-        <img class="format-logo" src="asset/img/logo.svg" alt="Vecteezy.com">
-      </div>
-    </header>
-
+    <div class="hiddendiv">
             <div class="d-flex justify-content-center align-items-center h-75">
-          <div class="header-box col-5" style="height:50%">
-            <span class="input-group mb-3">Inscription</span>
+              <div class="header-box col-5" style="height:50%">
+                <span class="input-group mb-3" id="incription">Inscription</span>
 
             <div class="input-group mb-3">
               <input type="text" class="form-control" placeholder="Nom d'utilisateur">
@@ -69,7 +63,14 @@ body {
             </div>
 
             <div class="input-group mb-3">
-            <button class="Button Button--primary Button--block" type="submit" title="Inscription"><span class="Button-label">Inscription</span></button>
+            <button class="Button Button--primary Button--block" type="submit" title="Inscription"><span class="Button-label" >Inscription</span></button>
             </div>
-            <div class="Modal-footer"><p class="SignUpModal-logIn">Vous avez déjà un compte ? <a class="col" href="WIP.html">Connexion</a></p>
+
+            <div class="Modal-footer">
+            <p class="SignUpModal-logIn">Vous avez déjà un compte ?<a class="col" href="WIP.html">Connexion</a></p>
             </div>
+              </div>
+          </div>
+      </div>
+
+</body>
