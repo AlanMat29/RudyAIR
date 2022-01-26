@@ -1,5 +1,9 @@
 <style>
 
+body{
+  height:120%;
+}
+
 .format-logo{
   max-width: 70px;
   height:auto;
@@ -13,24 +17,18 @@
   background-color: #fddbb6;
 }
 
-
-
-
 .div-body{
   display: flex;
   align-items: center;
   flex-direction: column;
-
-
 }
-
 
 .div-table-format{
   /* Définit les dimension du div*/
   margin-top: 5%;
   margin-bottom: 1.5%;
   height:70%;
-  max-height: 650px;
+  max-height: 675px;
   width: 90%;
   overflow: auto;
 }
@@ -53,7 +51,11 @@
 
 }
 
-
+.table {
+  /* Fixer le problème des bordure qui cache le tableau lorsque la page est réduite */
+  border-collapse: separate;
+  border-spacing: 0;
+}
 
 
 
@@ -61,10 +63,8 @@
 </style>
 
 <!--
-TODO Fixer le problème des bordure qui cache le tableau lorsque la page est réduite
 TODO: Ajouter barre de recherche + menu déroulant colonne recherche (ref, date,...)
 TODO: Ajout la possibilité de filtrer le tableau selon les colonnes
-TODO: Ajout une colonne durée
 TODO: Condition affichage bouton détail (si 0 escale pas de bouton)
  -->
 
@@ -99,16 +99,17 @@ TODO: Condition affichage bouton détail (si 0 escale pas de bouton)
                 <th></th>
                 <th scope="col" colspan=3>Départ</th>
                 <th scope="col" colspan=3>Arrivée</th>
-                <th colspan=3></th>
+                <th colspan=4></th>
               </tr>
               <tr>
                 <th scope="col" class="text-center align-middle">Référence du vol</th>
-                <th scope="col" class="text-center align-middle">Aéroport</th>
-                <th scope="col" class="text-center align-middle">Ville</th>
-                <th scope="col" class="text-center align-middle">Heure</th>
                 <th scope="col" class="text-center align-middle">Ville</th>
                 <th scope="col" class="text-center align-middle">Aéroport</th>
                 <th scope="col" class="text-center align-middle">Heure</th>
+                <th scope="col" class="text-center align-middle">Ville</th>
+                <th scope="col" class="text-center align-middle">Aéroport</th>
+                <th scope="col" class="text-center align-middle">Heure</th>
+                <th scope="col" class="text-center align-middle">Durée</th>
                 <th scope="col" class="text-center align-middle">Nombre d'escale</th>
                 <th scope="col" colspan=2 class="text-center align-middle">Options</th>
               </tr>
@@ -126,6 +127,7 @@ TODO: Condition affichage bouton détail (si 0 escale pas de bouton)
                 <td>
                   <span>3 <button type="button" class="btn btn-link">Details</button></span>
                 </td>
+                <td>16h55</td>
                 <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
                 <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
               </tr>
@@ -139,8 +141,12 @@ TODO: Condition affichage bouton détail (si 0 escale pas de bouton)
                 <td>Berlin-Brandenburg</td>
                 <td>9h53</td>
                 <td>
-                  <span>0 <button type="button" class="btn btn-link">Details</button></span>
+                  <span>
+                    0
+                    <!-- <button type="button" class="btn btn-link">Details</button> -->
+                  </span>
                 </td>
+                <td>16h55</td>
                 <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
                 <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
               </tr>
@@ -154,8 +160,9 @@ TODO: Condition affichage bouton détail (si 0 escale pas de bouton)
                 <td>Moscou-Cheremetievo</td>
                 <td>19h50</td>
                 <td>
-                  <span>0 <button type="button" class="btn btn-link">Details</button></span>
+                  <span>1 <button type="button" class="btn btn-link">Details</button></span>
                 </td>
+                <td>5h30</td>
                 <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
                 <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
               </tr>
@@ -174,6 +181,7 @@ TODO: Condition affichage bouton détail (si 0 escale pas de bouton)
                 <td>
                   <span>3 <button type="button" class="btn btn-link">Details</button></span>
                 </td>
+                <td>16h55</td>
                 <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
                 <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
               </tr>
@@ -187,8 +195,12 @@ TODO: Condition affichage bouton détail (si 0 escale pas de bouton)
                 <td>Berlin-Brandenburg</td>
                 <td>9h53</td>
                 <td>
-                  <span>0 <button type="button" class="btn btn-link">Details</button></span>
+                  <span>
+                    0
+                    <!-- <button type="button" class="btn btn-link">Details</button> -->
+                  </span>
                 </td>
+                <td>16h55</td>
                 <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
                 <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
               </tr>
@@ -202,8 +214,9 @@ TODO: Condition affichage bouton détail (si 0 escale pas de bouton)
                 <td>Moscou-Cheremetievo</td>
                 <td>19h50</td>
                 <td>
-                  <span>0 <button type="button" class="btn btn-link">Details</button></span>
+                  <span>1 <button type="button" class="btn btn-link">Details</button></span>
                 </td>
+                <td>5h30</td>
                 <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
                 <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
               </tr>
@@ -219,6 +232,7 @@ TODO: Condition affichage bouton détail (si 0 escale pas de bouton)
                 <td>
                   <span>3 <button type="button" class="btn btn-link">Details</button></span>
                 </td>
+                <td>16h55</td>
                 <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
                 <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
               </tr>
@@ -232,8 +246,12 @@ TODO: Condition affichage bouton détail (si 0 escale pas de bouton)
                 <td>Berlin-Brandenburg</td>
                 <td>9h53</td>
                 <td>
-                  <span>0 <button type="button" class="btn btn-link">Details</button></span>
+                  <span>
+                    0
+                    <!-- <button type="button" class="btn btn-link">Details</button> -->
+                  </span>
                 </td>
+                <td>16h55</td>
                 <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
                 <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
               </tr>
@@ -247,8 +265,9 @@ TODO: Condition affichage bouton détail (si 0 escale pas de bouton)
                 <td>Moscou-Cheremetievo</td>
                 <td>19h50</td>
                 <td>
-                  <span>0 <button type="button" class="btn btn-link">Details</button></span>
+                  <span>1 <button type="button" class="btn btn-link">Details</button></span>
                 </td>
+                <td>5h30</td>
                 <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
                 <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
               </tr>
@@ -264,6 +283,7 @@ TODO: Condition affichage bouton détail (si 0 escale pas de bouton)
                 <td>
                   <span>3 <button type="button" class="btn btn-link">Details</button></span>
                 </td>
+                <td>16h55</td>
                 <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
                 <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
               </tr>
@@ -277,8 +297,12 @@ TODO: Condition affichage bouton détail (si 0 escale pas de bouton)
                 <td>Berlin-Brandenburg</td>
                 <td>9h53</td>
                 <td>
-                  <span>0 <button type="button" class="btn btn-link">Details</button></span>
+                  <span>
+                    0
+                    <!-- <button type="button" class="btn btn-link">Details</button> -->
+                  </span>
                 </td>
+                <td>16h55</td>
                 <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
                 <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
               </tr>
@@ -292,8 +316,60 @@ TODO: Condition affichage bouton détail (si 0 escale pas de bouton)
                 <td>Moscou-Cheremetievo</td>
                 <td>19h50</td>
                 <td>
-                  <span>0 <button type="button" class="btn btn-link">Details</button></span>
+                  <span>1 <button type="button" class="btn btn-link">Details</button></span>
                 </td>
+                <td>5h30</td>
+                <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA1527</td>
+                <td>Paris</td>
+                <td>Paris-Orly</td>
+                <td>6h40</td>
+
+                <td>Tokyo</td>
+                <td>Tokyo-Haneda</td>
+                <td>23h35</td>
+                <td>
+                  <span>3 <button type="button" class="btn btn-link">Details</button></span>
+                </td>
+                <td>16h55</td>
+                <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA1279</td>
+                <td>Londre</td>
+                <td>Heathrow</td>
+
+                <td>8h12</td>
+                <td>Berlin</td>
+                <td>Berlin-Brandenburg</td>
+                <td>9h53</td>
+                <td>
+                  <span>
+                    0
+                    <!-- <button type="button" class="btn btn-link">Details</button> -->
+                  </span>
+                </td>
+                <td>16h55</td>
+                <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA3254</td>
+                <td>Rome</td>
+                <td>Rome-Fiumicino</td>
+                <td>14h20</td>
+
+                <td>Moscou</td>
+                <td>Moscou-Cheremetievo</td>
+                <td>19h50</td>
+                <td>
+                  <span>1 <button type="button" class="btn btn-link">Details</button></span>
+                </td>
+                <td>5h30</td>
                 <td> <button type="button" class="btn btn-primary">Modifier</button> </td>
                 <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
               </tr>
