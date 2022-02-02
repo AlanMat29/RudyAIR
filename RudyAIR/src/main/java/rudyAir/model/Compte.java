@@ -1,4 +1,4 @@
-package model;
+package rudyAir.model;
 
 public class Compte {
 
