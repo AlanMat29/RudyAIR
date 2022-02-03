@@ -1,0 +1,152 @@
+Convention de nommage
+
+ ================================================   HTML   ================================================
+source: https://www.thoughtco.com/naming-html-files-3466503
+-Fichier:
+
+	1) Le 1er caratère est une lettre
+	2) Ne pas utiliser de caratères spéciaux
+	3) Ne pas utilisr d'espace
+	4) Utiliser seulement des lettres miusules (pas de majuscule) => Reason: risk of case-sensitive file system not recognizing our file
+	5) Taille max du nom = 32 characters (including the ".html")
+
+==> Good example: myfiletoload.html
+
+
+
+ ================================================   CSS   ================================================
+
+Commun method -> BEM = Block(bloc), Element(element), Modifier(modificateur). 
+source: https://guidecss.davidl.fr/convention.html
+
+-Class (.)
+	1) Kebbab case
+==> Good example: .red-box {border: 1px;}
+
+
+
+
+ ================================================   Images & vidéos   ================================================
+source: https://www.sitepoint.com/community/t/image-naming-conventions/38314
+-png, jpg, svg, gif, mp4, etc:
+
+	1) Utiliser des tirets (-) pour les espaces
+	2) Utiliser seulement des lettres miusules (pas de majuscule) => Reason: risk of case-sensitive file system not recognizing our file
+
+==> Good example: my-picture-to-load.png
+
+
+
+
+
+
+ ================================================   Java   ================================================
+source: http://loribel.com/java/normes/nommage.html#package
+-Packages
+	1) Tout en minuscule.
+	2) Utiliser seulement [a-z], [0-9] et le point '.'
+	3) Ne pas utiliser de tiret '-', d'underscore '_', d'espace, ou d'autres caractères ($, *, accents, ...).
+    ==> Good example: model.monpackage
+
+-Classes & Enum & Interfaces
+	1) UpperCamelCase
+	2) Mélange de minuscule, majuscule avec la première lettre de chaque mot en majuscule
+	3) Donner des noms simples et descriptifs
+	4) Eviter les acronymes : hormis ceux commum (XML, URL, HTML, ...)
+	5) N'utiliser que les lettres [a-z] et [A-Z] et [0-9]
+	6) Ne pas utiliser de tiret '-', d'underscore '_', ou d'autres caractères ($, *, accents, ...).
+    ==> Good example: class MyClassName; / interface StringConvertor;
+
+-Méthodes & fonctions
+	1) lowerCamelCase
+	2) 1ère lettre en majuscule
+	3) Doit commencer par un verbe pour expliquer l'action réalisée (ex: get, draw, sort...)
+    ==> Good example: getMaxLength()
+
+-Variables
+    > Général (Int, String)
+	1) lowerCamelCase
+	2) 1ère lettre en minuscule
+	3) Mélange de minuscule, majuscule avec la première lettre de chaque mot en majuscule
+	4) Donner des noms simples et descriptifs
+	5) Ne pas commencer les noms avec '$' ou '_' bien que ce soit possible.
+	6) Variable d'une seule lettre (pour un usage local)
+		int : i, j, k, m, et n
+		char : c, d, et e
+		boolean : b
+	5) N'utiliser que les lettres [a-z] et [A-Z] et [0-9]
+	6) Ne pas utiliser de tiret '-', d'underscore '_', ou d'autres caractères ($, *, accents, ...)
+    ==> Good example: Integer myNumber = 1200;
+    > Boolean
+	*) Similaire à "variable générale" si dessus
+	1) Mettre un préfix "is", "are", "has"
+    ==> Good example: Boolean isVisible = true;
+
+-Constants
+	1) ALL CAPS SNAKE_CASE
+	2) Tout en majuscule 
+	3) Séparer les mots par underscore '_'
+	4) Donner des noms simples et descriptifs
+	5) N'utiliser que les lettres [A-Z], [0-9] et '_' 
+	6) Ne pas utiliser de tiret '-' ou d'autres caractères ($, *, accents, ...)
+    ==> Good example: static final int MIN_WIDTH = 4;
+
+-Fichiers Jars
+	1) Tout en minuscule
+	2) Séparer les mots par un tiret '-'
+	3) Utiliser seulement les lettres [a-z], [0-9] et '-' 
+	4) Ne pas utiliser d'underscore '_' ou d'autres caractères ($, accents, ...).
+    ==> Good example: gb-fwk-1.0.jar
+
+ ================================================   JavaScript   ================================================
+source: https://isnca.org/fr/conventions-de-nommage-javascript/
+
+-Variables
+    > Général (Int, String)
+	1) lowerCamelCase
+	2) 1ère lettre en minuscule
+	3) Mélange de minuscule, majuscule avec la première lettre de chaque mot en majuscule
+	4) Donner des noms simples et descriptifs
+	5) Ne pas commencer les noms avec '$' ou '_' bien que ce soit possible.
+	6) Variable d'une seule lettre (pour un usage local)
+		int : i, j, k, m, et n
+		char : c, d, et e
+		boolean : b
+	5) N'utiliser que les lettres [a-z] et [A-Z] et [0-9]
+	6) Ne pas utiliser de tiret '-', d'underscore '_', ou d'autres caractères ($, *, accents, ...)
+    ==> Good example: Integer myNumber = 1200;
+    > Boolean
+	*) Similaire à "variable générale" si dessus
+	1) Mettre un préfix "is", "are", "has"
+    ==> Good example: Boolean isVisible = true;
+
+-Fonctions
+	1) UpperCamelCase
+	2) Doit commencer par un verbe pour expliquer l'action réalisée (ex: get, draw, sort...)
+    ==> Good example: function getMaxLength()
+
+- Classes
+	1) UpperCamelCase
+	2) Mélange de minuscule, majuscule avec la première lettre de chaque mot en majuscule
+	3) Donner des noms simples et descriptifs
+	4) Eviter les acronymes : hormis ceux commum (XML, URL, HTML, ...)
+	5) N'utiliser que les lettres [a-z] et [A-Z] et [0-9]
+	6) Ne pas utiliser de tiret '-', d'underscore '_', ou d'autres caractères ($, *, accents, ...).
+    ==> Good example: class MyClassName;
+
+-Constants
+	1) ALL CAPS SNAKE_CASE
+	2) Tout en majuscule 
+	3) Séparer les mots par underscore '_'
+	4) Donner des noms simples et descriptifs
+	5) N'utiliser que les lettres [A-Z], [0-9] et '_' 
+	6) Ne pas utiliser de tiret '-' ou d'autres caractères ($, *, accents, ...)
+    ==> Good example: static final int MIN_WIDTH = 4;
+
+
+
+
+
+
+
+
