@@ -53,15 +53,7 @@ public abstract class Compte {
     /**
      * @return
      */
-    public void reserverTrajet() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public void En quoi différent de reserverTrajet? acheterBillet() {
+    public void acheterBillet() {
         // TODO implement here
         return null;
     }

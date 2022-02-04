@@ -37,4 +37,9 @@ public class Vol extends VolGenerique {
      */
     public Reservation 1..*;
 
+    /**
+     * 
+     */
+    public VolGenerique 1;
+
 }
