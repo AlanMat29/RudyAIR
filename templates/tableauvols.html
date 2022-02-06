@@ -1,122 +1,23 @@
+
 <script>
 
 window.onclick = function(event) {
-    if (event.target == detailsBox) {
-        detailsBox.style.display = "none";
+    let idsPopup = [newFly, detailsBox];
+    let e = event.target;
+    if (idsPopup.includes(e)) {
+      document.getElementById(idsPopup.find(elem => elem == e).id).style.display = "none";
     }
 }
-
-window.onclick = function(event) {
-    if (event.target == detailsBox) {
-        detailsBox.style.display = "none";
-    }
-}
-
 
 function goHomePage(){
-  window.location.href='asset/img/WIP.jpg';
+  window.location.href='accueil.html';
 }
-
-
 </script>
 
 
-
 <style>
-
-/* Lateral menu start */
-#menu__toggle {
-  opacity: 0;
-  position: absolute;
-  width: 30px;
-  height: 30px;
-}
-#menu__toggle:checked + .menu__btn > span {
-  transform: rotate(45deg);
-}
-#menu__toggle:checked + .menu__btn > span::before {
-  top: 0;
-  transform: rotate(0deg);
-}
-#menu__toggle:checked + .menu__btn > span::after {
-  top: 0;
-  transform: rotate(90deg);
-}
-#menu__toggle:checked ~ .menu__box {
-  left: 0 !important;
-}
-.menu__btn {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  z-index: 2;
-}
-.menu__btn > span,
-.menu__btn > span::before,
-.menu__btn > span::after {
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 2.7px;
-  background-color: #000000;
-  transition-duration: .25s;
-}
-.menu__btn > span::before {
-  content: '';
-  top: -8px;
-}
-.menu__btn > span::after {
-  content: '';
-  top: 8px;
-}
-.menu__box {
-  display: block;
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 300px;
-  height: 100%;
-  margin: 0;
-  padding: 80px 0;
-  list-style: none;
-  background-color: #FFFFFF;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
-  transition-duration: .25s;
-  z-index:1;
-}
-.menu__item {
-  display: block;
-  padding: 12px 24px;
-  color: #1e2025;
-  font-family: 'Roboto', sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  text-decoration: none;
-  transition-duration: .25s;
-}
-.menu__item:hover {
-  color: #1e2025;
-  background-color: #f5f4f4;
-  text-decoration: none;
-}
-/* Lateral menu end */
-
-
 body{
   height:120%;
-}
-
-#rudyair-logo{
-  margin: auto;
-  cursor: pointer;
-}
-.format-logo{
-  max-width: 70px;
-  height:auto;
-  margin-left: 10px;
-  margin-bottom: 15px;
-  cursor: pointer;
 }
 .timeline-circle{
   height:80px;
@@ -171,14 +72,14 @@ body{
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-
 }
 /* Modal Content/Box */
-.modal-content {
+.details-modal-content {
   display: block;
   margin-top: 15%;
   margin-left: auto;
   margin-right: auto;
+  width:auto;
   background-color: #fefefe;
   border: 1px solid #888;
   height: auto;
@@ -204,34 +105,53 @@ body{
   margin-top: 2%;
   margin-bottom: 2%;
 }
-.marge-top-bottom2{
+.marge2{
   margin-top: 2%;
   margin-bottom: 2%;
-}
-#lateral-list-menu{
-  margin-left:1.5%;
-}
-#menu-icon{
-  height:50px;
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
+/* Popup add new fly */
+.new-fly-modal-content {
+  display: block;
+  margin-top: 15%;
+  margin-left: auto;
+  margin-right: auto;
+  width:auto;
+  background-color: #fefefe;
+  border: 1px solid #888;
+  height: auto;
+  max-width: 50%;
+}
+.popup-title1{
+  font-size: 1.5rem;
+  margin-bottom: 3%;
+}
+.popup-title2{
+  border-radius: 0.375rem;
+  background-color: #f2f2f2;
+}
+#button-sub-new-fly{
+  margin-right: 2.5%;
+}
 </style>
-
-
 
 
 
 <!--
 TODO: Ajouter barre de recherche + menu déroulant colonne recherche (ref, date,...)
 TODO: Ajout la possibilité de filtrer le tableau selon les colonnes
-TODO: Condition affichage bouton détail (si 0 escale pas de bouton)
  -->
 
-<html lang="en" dir="ltr">
+<html>
   <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <!-- Import external css files -->
+    <link rel="stylesheet" href="css\burger-menu.css">
+    <link rel="stylesheet" href="css\header.css">
 
     <title>RudyAir</title>
     <link rel="icon" href="asset/img/logo-white-bg.png">
@@ -239,7 +159,7 @@ TODO: Condition affichage bouton détail (si 0 escale pas de bouton)
   </head>
 
   <body>
-    <header class="header-box">
+    <header>
       <!-- Latteral burger menu -->
       <div id="lateral-list-menu">
         <div>
@@ -248,8 +168,8 @@ TODO: Condition affichage bouton détail (si 0 escale pas de bouton)
             <span></span>
           </label>
           <ul class="menu__box">
-            <li><a class="menu__item" href="#">Accueil</a></li>
-            <li><a class="menu__item" href="tab_vols.html">Liste des vols</a></li>
+            <li><a class="menu__item" href="accueil.html">Accueil</a></li>
+            <li><a class="menu__item" href="tableauvols.html">Liste des vols</a></li>
             <li><a class="menu__item" href="#">Liste des avions</a></li>
             <li><a class="menu__item" href="#">Liste des utilisateurs</a></li>
           </ul>
@@ -350,14 +270,65 @@ TODO: Condition affichage bouton détail (si 0 escale pas de bouton)
       </div>
     </div>
     <div>
-      <button type="button" class="div-add-fly-button btn btn-primary">Ajouter un vol</button>
+      <button type="button" class="div-add-fly-button btn btn-primary" onclick="newFly.style.display='block'" >Ajouter un vol</button>
     </div>
+
+
+    <!--
+    ============================
+    ========    Popup   ========
+    ============================
+    -->
+    <!-- Add Fly Modal box popup-->
+    <div id="newFly" class="modal-box">
+      <div id="detailsContent" class="new-fly-modal-content">
+        <div class="marge2">
+          <div class="row">
+            <h4 class="col popup-title1">Fiche du nouveau vol</h4>
+          </div>
+          <div class="row">
+            <p class="col">Réference du vol :&emsp;<input type="text"placeholder="Réference du vol" maxlength="10"></p>
+          </div>
+          <div class="row">
+            <h5 class="col popup-title2">Départ</h5>
+          </div>
+          <div class="row">
+            <div>
+              <p class="col">Ville:&emsp;<input type="text"placeholder="Ville de départ" ></p>
+            </div>
+            <div>
+              <p class="col">Aéroport:&emsp;<input type="text"placeholder="Aéroport de départ"></p>
+            </div>
+            <div>
+              <p class="col">Date & Heure:&emsp;<input type="datetime-local"></p>
+            </div>
+          </div>
+          <div class="row">
+            <h5 class="col popup-title2">Arrivée</h5>
+          </div>
+          <div class="row">
+            <div>
+              <p class="col">Ville:&emsp;<input type="text"placeholder="Ville de départ" ></p>
+            </div>
+            <div>
+              <p class="col">Aéroport:&emsp;<input type="text"placeholder="Aéroport de départ"></p>
+            </div>
+            <div>
+              <p class="col">Date & Heure:&emsp;<input type="datetime-local"></p>
+            </div>
+          </div>
+          <div class="row justify-content-end">
+            <button id="button-sub-new-fly" type="button" class="btn btn-primary">Ajouter</button>
+          </div>
+        </div>
+    </div>
+  </div>
 
   <!-- Details Modal box popup-->
   <div id="detailsBox" class="modal-box">
-    <div id="detailsContent" class="modal-content">
+    <div id="detailsContent" class="details-modal-content">
       <div class="d-flex inside-modal-box">
-        <span class="marge-top-bottom2">REF: RA75563 &emsp;&emsp; Départ mercredi 26 janvier 2022</span>
+        <span class="marge2">REF: RA75563 &emsp;&emsp; Départ mercredi 26 janvier 2022</span>
       </div>
       <!-- First Escale -->
       <div>
@@ -395,7 +366,6 @@ TODO: Condition affichage bouton détail (si 0 escale pas de bouton)
           </div>
         </div>
       </div>
-
       <!-- Second Escale -->
       <div>
         <div class="d-flex inside-modal-box">
@@ -434,7 +404,7 @@ TODO: Condition affichage bouton détail (si 0 escale pas de bouton)
       </div>
       <!-- Sum up Travel -->
       <div class="d-flex inside-modal-box">
-        <span class="marge-top-bottom2">Arrivée : lun. 31 janv. 2022 &emsp;|&emsp;Durée du voyage : 22 h</span>
+        <span class="marge2">Arrivée : lun. 31 janv. 2022 &emsp;|&emsp;Durée du voyage : 22 h</span>
       </div>
     </div>
   </div>
