@@ -29,9 +29,11 @@ public class Avion {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "statutAvion", length=10)
 	private StatutAvion statutAvion;
-	@Column(name = "refno")
-	@OneToOne(mappedBy= "vol")
+	@Column(name = "refVol")
+	@OneToOne(mappedBy= "vol_avion")
 	private Vol vol;
+	
+
 
 
 	public Avion() {
