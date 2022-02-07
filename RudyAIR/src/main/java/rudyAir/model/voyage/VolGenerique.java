@@ -32,10 +32,8 @@ public class VolGenerique {
 	private String numVolGen;
 	@Embedded
 	private Horaire horaire;
-	@Column(name = "aeroDept")
-	private Aeroport aeroportDepart;
-	@Column(name = "aeroArr")
-	private Aeroport aeroportArrivee;
+	@Embedded
+	private Aeroport aeroport;
 	@Column(name = "volGen_vol")
 	@OneToOne(mappedBy = "volGen")
 	private Vol vol;
@@ -44,13 +42,12 @@ public class VolGenerique {
 
 	}
 
-	public VolGenerique(Integer id, double prix, String numVolGen, Horaire horaire, Aeroport aeroportDepart,
+	public VolGenerique(Integer id, double prix, String numVolGen, Horaire horaire, Aeroport aeroport,
 			Aeroport aeroportArrivee, Avion avion) {
 		this.prix = prix;
 		this.numVolGen = numVolGen;
 		this.horaire = horaire;
-		this.aeroportDepart = aeroportDepart;
-		this.aeroportArrivee = aeroportArrivee;
+		this.aeroport = aeroport;
 	}
 
 	public Long getId() {
@@ -85,25 +82,17 @@ public class VolGenerique {
 		this.horaire = horaire;
 	}
 
-	public Aeroport getAeroportDepart() {
-		return this.aeroportDepart;
+	public Aeroport getAeroport() {
+		return aeroport;
 	}
 
-	public void setAeroportDepart(Aeroport aeroportDepart) {
-		this.aeroportDepart = aeroportDepart;
-	}
-
-	public Aeroport getAeroportArrivee() {
-		return this.aeroportArrivee;
-	}
-
-	public void setAeroportArrivee(Aeroport aeroportArrivee) {
-		this.aeroportArrivee = aeroportArrivee;
+	public void setAeroport(Aeroport aeroport) {
+		this.aeroport = aeroport;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(aeroport, horaire, id, numVolGen, prix, vol);
 	}
 
 	@Override
@@ -115,11 +104,14 @@ public class VolGenerique {
 		if (getClass() != obj.getClass())
 			return false;
 		VolGenerique other = (VolGenerique) obj;
-		return Objects.equals(aeroportArrivee, other.aeroportArrivee)
-				&& Objects.equals(aeroportDepart, other.aeroportDepart) && Objects.equals(horaire, other.horaire)
+		return Objects.equals(aeroport, other.aeroport) && Objects.equals(horaire, other.horaire)
 				&& Objects.equals(id, other.id) && Objects.equals(numVolGen, other.numVolGen)
 				&& Double.doubleToLongBits(prix) == Double.doubleToLongBits(other.prix)
 				&& Objects.equals(vol, other.vol);
 	}
+
+	
+
+	
 
 }
