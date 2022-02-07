@@ -1,64 +1,120 @@
 package rudyAir.model.client;
 
+import java.util.Objects;
+
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Transient;
+
 import rudyAir.model.voyage.Aeroport;
 import rudyAir.model.voyage.Vol;
 
+
+@Entity
+@SequenceGenerator(name = "seqReservation", sequenceName = "seq_resa", initialValue = 100, allocationSize = 1)
 public class Reservation {
-   Vol vols;
-   Aeroport aeroport;
-   Integer animaux;
-   int bagage;
-   boolean statut;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqReservation")
+	private Long id;
+	@ManyToOne
+	private Client client;
+	@Embedded
+	@Transient
+	private Vol vols;
+	@Embedded
+	@Transient
+	private Aeroport aeroport;
+	@Embedded
+	@Transient
+	private Integer animaux;
+	@Embedded
+	@Transient
+	private Siege siege;
+	private int bagage;
+	private boolean statut;
 
-   public Reservation(Vol vols, Aeroport aeroport, Integer animaux, int bagage, boolean statut) {
-      this.vols = vols;
-      this.aeroport = aeroport;
-      this.animaux = animaux;
-      this.bagage = bagage;
-      this.statut = statut;
-   }
 
-   public Vol getVols() {
-      return this.vols;
-   }
+	public Reservation() {
 
-   public void setVols(Vol vols) {
-      this.vols = vols;
-   }
+	}
 
-   public Aeroport getAeroport() {
-      return this.aeroport;
-   }
+	public Reservation(Vol vols, Aeroport aeroport, Integer animaux, int bagage, boolean statut) {
+		this.vols = vols;
+		this.aeroport = aeroport;
+		this.animaux = animaux;
+		this.bagage = bagage;
+		this.statut = statut;
+	}
 
-   public void setAeroport(Aeroport aeroport) {
-      this.aeroport = aeroport;
-   }
+	public Vol getVols() {
+		return this.vols;
+	}
 
-   public Integer getAnimaux() {
-      return this.animaux;
-   }
+	public void setVols(Vol vols) {
+		this.vols = vols;
+	}
 
-   public void setAnimaux(Integer animaux) {
-      this.animaux = animaux;
-   }
+	public Aeroport getAeroport() {
+		return this.aeroport;
+	}
 
-   public int getBagage() {
-      return this.bagage;
-   }
+	public void setAeroport(Aeroport aeroport) {
+		this.aeroport = aeroport;
+	}
 
-   public void setBagage(int bagage) {
-      this.bagage = bagage;
-   }
+	public Integer getAnimaux() {
+		return this.animaux;
+	}
 
-   public boolean isStatut() {
-      return this.statut;
-   }
+	public void setAnimaux(Integer animaux) {
+		this.animaux = animaux;
+	}
 
-   public void setStatut(boolean statut) {
-      this.statut = statut;
-   }
+	public int getBagage() {
+		return this.bagage;
+	}
 
-   public String toString() {
-      return "Reservation [vols=" + this.vols + ", aeroport=" + this.aeroport + ", animaux=" + this.animaux + ", bagage=" + this.bagage + ", statut=" + this.statut + "]";
-   }
+	public void setBagage(int bagage) {
+		this.bagage = bagage;
+	}
+
+	public boolean isStatut() {
+		return this.statut;
+	}
+
+	public void setStatut(boolean statut) {
+		this.statut = statut;
+	}
+	
+	@Override
+	public String toString() {
+		return "Reservation [vols=" + this.vols + ", aeroport=" + this.aeroport + ", animaux=" + this.animaux + ", bagage=" + this.bagage + ", statut=" + this.statut + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Reservation other = (Reservation) obj;
+		return Objects.equals(id, other.id);
+	}
+	
+	
 }
