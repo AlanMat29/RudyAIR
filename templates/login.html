@@ -1,133 +1,190 @@
 
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
-#header{display: flex;
-    align-items: center;
-    height: 10%;
-    border: solid black 1px;
-    background-color: #fddbb6;
-    justify-content: space-between;}
-
-
-.reservation{margin-right:10;}
-
-.format-logo{
- max-width: 90px;
- height:auto;
- margin-left: 2px;
- margin-bottom: auto;
+body {font-family: Arial, Helvetica, sans-serif;}
+#account{
+    display: flex;
+    justify-content: flex-end;
+    font-size-adjust: 0.5;
+}/* Full-width input fields */
+#connect{}
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
-
-
-body {
- background:url("asset/img/background-login.jpg");
- min-height : 100%;
- min-width : 100%;
- background-size:100% 100%;
- background-repeat:no-repeat;
- overflow-y: hidden;
- overflow-x: hidden;
+/* Set a style for all buttons */
+button {
+background-color: #87c5eb;
+    border-radius: 0.25rem;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #87c5eb;
+    border-color: #c5e9ff;
 }
 
+button:hover {
+  opacity: 0.8;
+}
 
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+.header-wrapper{
+  display: inline-block;
+    top: 0;
+    width: 100%;
+    z-index: 400;
+    background-color: white;
+    min-height: 61px;}
+#login-title{margin: 10px;}
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  display: inline-block;
+    padding: 16px;
+  background-color:white;
+}
+
+span.mdp {
+  float: right;
+  padding-top: 16px;
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+  }
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5px auto; /* 15% from the top and centered */
+  border: 1px solid #888;
+  width: 456px; /* Could be more or less, depending on screen size */
+  height: 456px;
+}
+.mid-container{  width: 100%;
+
+background-color:white;}
+.text-mid{font-size-adjust: 0.5; }
+.close {
+  /* Position it in the top right corner outside of the modal */
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
 
 </style>
+</head>
+<body>
 
+<!-- Button to open the modal login form -->
+<button class="btn btn-primary" onclick="document.getElementById('id01').style.display='block'" ><b>Connexion</b></button>
+<!-- The Modal -->
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'"
+class="close" title="Close Modal">&times;</span>
 
-<html lang="en" dir="ltr">
- <head>
+  <form class="modal-content animate" action="/login.html">
+      <div class="header-wrapper">
+        <h2 id="login-title">Connectez-vous sur RudyAIR</h2>
+      </div>
+        <div class="imgcontainer">
+          <img class="Avatar" style=" width:50%; height:50%;" src="C:\Users\rudya\Documents\SOPRA STERIA\Formation\Git School\RudyAIR\templates\asset\img\jordan.jpg" alt="Avatar">
+        </div>
+          <div class="container">
 
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+            <label for="mail"><b>Adresse mail</b></label>
+            <input type="text" placeholder="Entrez votre adresse mail" name="mail" required>
 
-   <title >RudyAir</title>
-   <link rel="icon" href="asset/img/logo-white-bg.png">
-   <meta charset="utf-8">
- </head>
+            <label for="mdp"><b>Mot de passe</b></label>
+            <input type="password" placeholder="entrez votre mot de passe" name="mdp" required>
+          </div>
+            <div class="mid-container">
+              <label >
+                <input type="checkbox"  name="remember"> Rester connecté
+                <span class="mdp"><a href="#">Mot de passe oublié ?</a></span>
+              </label>
+                <button type="submit" >Connexion</button>
+            </div>
 
- <body>
-   <header id="header">
-     <div class="rudyairlogo" style="display: inline-flex">
-       <h1>RudyAir</h1><img class="format-logo" src="asset/img/logo.svg" alt="Vecteezy.com" style="align-items: baseline";>
-     </div>
-       <div class="reservation">
-        <h6>Réservation : </h6>
-        <input type="radio" name="aller simple">Aller simple
-       <input type="radio" name="aller-retour">Aller-retour
-       <input placeholder="Appliquer le code promo" required type="text">
-  <tr><td>
-    <select name="aeroportdepart">
-      <option>Toulouse<option>Barbados<option>Hong Kong<option>Western Sahara<option>Niger<option>Cote d'Ivoire<option>Kazakhstan<option>Mauritania<option>India<option>Zimbabwe<option>Seychelles<option>Albania<option>Poland<option>Morocco<option>French Polynesia<option>Croatia<option>Monaco</option></select>
-    <select><option>Toulouse<option>Barbados<option>Hong Kong<option>Western Sahara<option>Niger<option>Cote d'Ivoire<option>Kazakhstan<option>Mauritania<option>India<option>Zimbabwe<option>Seychelles<option>Albania<option>Poland<option>Morocco<option>French Polynesia<option>Croatia<option>Monaco</option></select>
-  </td></tr>
-       <tr><td><input type="date" value="2022-01-25"></td></tr>
-       <button type="button" class="btn btn-primary">Rechercher</button>
-       </div>
-   </header>
+         <div class="container" style="background-color:#c5e9ff">
 
-   <div class="login-box d-flex justify-content-center align-items-center h-75">
-     <div class="header-box rounded col-3" style="height:50%;  background-color: #fddbb6;" >
-       <span class="input-group mb-2">Connectez-vous</span>
+              <span id="account">Vous n'avez pas encore de compte ?  Créez votre compte <a href="#">Créer votre compte</a></span>
+          </div>
+ </form>
+ </div>
 
-       <div class="input-group mb-3">
-         <input type="text" class="form-control" placeholder="adresse mail">
-       </div>
+ <script>
+// Get the modal
+var modal = document.getElementById('id01');
 
-       <div class="input-group mb-3">
-         <input type="text" class="form-control" placeholder="mot de passe">
-       </div>
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 
-
-       <div class="input-group mb-3">
-         <div class="input-group-prepend">
-           <div class="input-group">
-               <label for="remember" class="form-control" aria-label="Text input with checkbox">
-                 Remember me
-                 <input id="remember" name="remember" type="checkbox" aria-label="Checkbox for following text input">
-               </label>
-           </div>
-         </div>
-       </div>
-
-       <div  class="input-group mb-3">
-         <button type="button" class="btn btn-light">Connexion</button>
-       </div>
-
-       <div>
-         <div class="input-group mb-3">
-           <a class="col" href="WIP.html">Mot de passe oublié</a>
-         </div>
-         <div class="input-group mb-3">
-           <a class="col" href="accountCreation.html">Créer votre compte</a>
-         </div>
-       </div>
-     </div>
-   </div>
-
-
-
-   <footer class="text-center text-white" style="background-color: #f1f1f1;">
-     <div class="">
-       <a class="ban" href="WIP.html">Service client</a>
-       <div class="">
-         <a class="ban" href="WIP.html">Suivez-nous</a>
-         <i class="fab fa-facebook-f"></i>
-         <i class="fab fa-twitter"></i>
-         <i class="fab fa-instagram"></i>
-         <i class="fab fa-linkedin-in"></i>
-       </div>
-
-
-
-
-     </div>
-
-   </footer>
-
-
- </body>
-
-
+</body>
 </html>

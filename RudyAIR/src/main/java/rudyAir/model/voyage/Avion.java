@@ -18,21 +18,19 @@ import javax.persistence.Table;
 @SequenceGenerator(name = "seqAvion", sequenceName = "seq_avion", initialValue = 100, allocationSize = 1)
 
 public class Avion {
-
-
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqEmploye")
-	@Column(name = "refno")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAvion")
+	@Column(name = "avion_id")
 	private Long id;
-	@Column(name = "refname", length= 10, nullable=false)
+	@Column(length= 10, nullable=false)
 	private String ref;
 	@Enumerated(EnumType.STRING)
-	@Column(name = "statutAvion", length=10)
+	@Column(length=10)
 	private StatutAvion statutAvion;
-	@Column(name = "refno")
-	@OneToOne(mappedBy= "vol")
+	@Column(name = "avion_vol")
+	@OneToOne(mappedBy= "avion")
 	private Vol vol;
-
+	
 
 	public Avion() {
 
