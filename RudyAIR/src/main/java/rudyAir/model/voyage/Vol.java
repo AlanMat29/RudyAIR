@@ -1,113 +1,139 @@
 package rudyAir.model.voyage;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import rudyAir.model.client.Reservation;
+
+
+
+@Entity
+@Table(name="vol")
+@SequenceGenerator(name = "seqVol", sequenceName = "seq_vol", initialValue = 100, allocationSize = 1)
 public class Vol {
-   private Integer id;
-   private double prix;
-   private String lieux;
-   private statutVol statutVol;
-   private String numeroVol;
-   private Horaire horaire;
-   private List<Escale> escales;
-   private Aeroport aeroportDepart;
-   private Aeroport aeroportArrivee;
-   private Avion avion;
 
-   public Vol(Integer id, double prix, String lieux, statutVol statutVol, String numeroVol, Horaire horaire, List<Escale> escales, Aeroport aeroportDepart, Aeroport aeroportArrivee, Avion avion) {
-      this.id = id;
-      this.prix = prix;
-      this.lieux = lieux;
-      this.statutVol = statutVol;
-      this.numeroVol = numeroVol;
-      this.horaire = horaire;
-      this.escales = escales;
-      this.aeroportDepart = aeroportDepart;
-      this.aeroportArrivee = aeroportArrivee;
-      this.avion = avion;
-   }
+	@Id
+	@Column(name = "vol_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqVol")
+	private Long id;
+	@Column(name = "date_arrivee")
+	private LocalDate dateArrivee;
+	@Column(name = "date_depart")
+	private LocalDate dateDepart;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "vol_statut")
+	private StatutVol statutVol;
+	@Column(name = "vol_numero")
+	private int numeroVol;
+	@OneToOne(mappedBy = "vol")
+	private VolGenerique volGenerique;
+	@OneToOne
+	@JoinColumn(name="avion_id")
+	private Avion avion;
+	
+	@OneToMany(mappedBy="vol")
+	private List<Reservation> reservations;
 
-   public Integer getId() {
-      return this.id;
-   }
+	
+	public Vol() {}
+			
+	public Vol(Long id, LocalDate dateArrivee, LocalDate dateDepart, StatutVol statutVol, int numeroVol, VolGenerique volGenerique, Horaire horaire, Avion avion) {
+		this.id = id;
+		this.dateArrivee = dateArrivee;
+		this.dateDepart = dateDepart;
+		this.statutVol = statutVol;
+		this.numeroVol = numeroVol;
+		this.volGenerique = volGenerique;
+		this.avion = avion;
+	}
 
-   public void setId(Integer id) {
-      this.id = id;
-   }
+	public Long getId() {
+		return id;
+	}
 
-   public double getPrix() {
-      return this.prix;
-   }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-   public void setPrix(double prix) {
-      this.prix = prix;
-   }
+	public LocalDate getDateArrivee() {
+		return dateArrivee;
+	}
 
-   public String getLieux() {
-      return this.lieux;
-   }
+	public void setDateArrivee(LocalDate dateArrivee) {
+		this.dateArrivee = dateArrivee;
+	}
 
-   public void setLieux(String lieux) {
-      this.lieux = lieux;
-   }
+	public LocalDate getDateDepart() {
+		return dateDepart;
+	}
 
-   public statutVol getStatutVol() {
-      return this.statutVol;
-   }
+	public void setDateDepart(LocalDate dateDepart) {
+		this.dateDepart = dateDepart;
+	}
 
-   public void setStatutVol(statutVol statutVol) {
-      this.statutVol = statutVol;
-   }
+	public StatutVol getStatutVol() {
+		return statutVol;
+	}
 
-   public String getNumeroVol() {
-      return this.numeroVol;
-   }
+	public void setStatutVol(StatutVol statutVol) {
+		this.statutVol = statutVol;
+	}
 
-   public void setNumeroVol(String numeroVol) {
-      this.numeroVol = numeroVol;
-   }
+	public int getNumeroVol() {
+		return numeroVol;
+	}
 
-   public Horaire getHoraire() {
-      return this.horaire;
-   }
+	public void setNumeroVol(int numeroVol) {
+		this.numeroVol = numeroVol;
+	}
 
-   public void setHoraire(Horaire horaire) {
-      this.horaire = horaire;
-   }
+	public VolGenerique getVolGenerique() {
+		return volGenerique;
+	}
 
-   public List<Escale> getEscales() {
-      return this.escales;
-   }
+	public void setVolGenerique(VolGenerique volGenerique) {
+		this.volGenerique = volGenerique;
+	}
 
-   public void setEscales(List<Escale> escales) {
-      this.escales = escales;
-   }
+	public Avion getAvion() {
+		return avion;
+	}
 
-   public Aeroport getAeroportDepart() {
-      return this.aeroportDepart;
-   }
+	public void setAvion(Avion avion) {
+		this.avion = avion;
+	}
 
-   public void setAeroportDepart(Aeroport aeroportDepart) {
-      this.aeroportDepart = aeroportDepart;
-   }
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
 
-   public Aeroport getAeroportArrivee() {
-      return this.aeroportArrivee;
-   }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Vol other = (Vol) obj;
+		return Objects.equals(id, other.id);
+	}
 
-   public void setAeroportArrivee(Aeroport aeroportArrivee) {
-      this.aeroportArrivee = aeroportArrivee;
-   }
 
-   public Avion getAvion() {
-      return this.avion;
-   }
-
-   public void setAvion(Avion avion) {
-      this.avion = avion;
-   }
-
-   public String toString() {
-      return "Vol [id=" + this.id + ", prix=" + this.prix + ", lieux=" + this.lieux + ", statutVol=" + this.statutVol + ", numeroVol=" + this.numeroVol + ", horaire=" + this.horaire + ", escales=" + this.escales + ", aeroportDepart=" + this.aeroportDepart + ", aeroportArrivee=" + this.aeroportArrivee + ", avion=" + this.avion + "]";
-   }
 }
+

@@ -1,30 +1,27 @@
 package rudyAir.model.voyage;
 
-import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "volGenerique")
+@Table(name = "vol_generique")
 @SequenceGenerator(name = "seqVolGen", sequenceName = "seq_volGen", initialValue = 100, allocationSize = 1)
 public class VolGenerique {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqVolGen")
-	@Column(name = "volGen_no")
+	@Column(name = "volGen_id")
 	private Long id;
 	@Column(name = "volGen_prix")
 	private double prix;
@@ -32,26 +29,32 @@ public class VolGenerique {
 	private String numVolGen;
 	@Embedded
 	private Horaire horaire;
-	@Embedded
-	private Aeroport aeroport;
-	@Column(name = "volGen_vol")
-	@OneToOne(mappedBy = "volGen")
+	@ManyToOne
+	private Aeroport aeroportDepart;
+	@ManyToOne
+	private Aeroport aeroportArrivee;
+	@OneToOne
+	@JoinColumn(name="vol_id") // vol_id = Nom de la colonne dans notre table
 	private Vol vol;
 
 	public VolGenerique() {
 
 	}
 
-	public VolGenerique(Integer id, double prix, String numVolGen, Horaire horaire, Aeroport aeroport,
-			Aeroport aeroportArrivee, Avion avion) {
+	public VolGenerique(Long id, double prix, String numVolGen, Horaire horaire, Aeroport aeroportDepart,
+			Aeroport aeroportArrivee, Vol vol) {
+		super();
+		this.id = id;
 		this.prix = prix;
 		this.numVolGen = numVolGen;
 		this.horaire = horaire;
-		this.aeroport = aeroport;
+		this.aeroportDepart = aeroportDepart;
+		this.aeroportArrivee = aeroportArrivee;
+		this.vol = vol;
 	}
 
 	public Long getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(Long id) {
@@ -59,40 +62,56 @@ public class VolGenerique {
 	}
 
 	public double getPrix() {
-		return this.prix;
+		return prix;
 	}
 
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
 
-	public String getnumVolGen() {
-		return this.numVolGen;
+	public String getNumVolGen() {
+		return numVolGen;
 	}
 
-	public void setnumVolGen(String numVolGen) {
+	public void setNumVolGen(String numVolGen) {
 		this.numVolGen = numVolGen;
 	}
 
 	public Horaire getHoraire() {
-		return this.horaire;
+		return horaire;
 	}
 
 	public void setHoraire(Horaire horaire) {
 		this.horaire = horaire;
 	}
 
-	public Aeroport getAeroport() {
-		return aeroport;
+	public Aeroport getAeroportDepart() {
+		return aeroportDepart;
 	}
 
-	public void setAeroport(Aeroport aeroport) {
-		this.aeroport = aeroport;
+	public void setAeroportDepart(Aeroport aeroportDepart) {
+		this.aeroportDepart = aeroportDepart;
+	}
+
+	public Aeroport getAeroportArrivee() {
+		return aeroportArrivee;
+	}
+
+	public void setAeroportArrivee(Aeroport aeroportArrivee) {
+		this.aeroportArrivee = aeroportArrivee;
+	}
+
+	public Vol getVol() {
+		return vol;
+	}
+
+	public void setVol(Vol vol) {
+		this.vol = vol;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(aeroport, horaire, id, numVolGen, prix, vol);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -104,14 +123,8 @@ public class VolGenerique {
 		if (getClass() != obj.getClass())
 			return false;
 		VolGenerique other = (VolGenerique) obj;
-		return Objects.equals(aeroport, other.aeroport) && Objects.equals(horaire, other.horaire)
-				&& Objects.equals(id, other.id) && Objects.equals(numVolGen, other.numVolGen)
-				&& Double.doubleToLongBits(prix) == Double.doubleToLongBits(other.prix)
-				&& Objects.equals(vol, other.vol);
+		return Objects.equals(id, other.id);
 	}
-
-
-
 
 
 }

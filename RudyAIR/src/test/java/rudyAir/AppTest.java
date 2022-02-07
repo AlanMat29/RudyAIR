@@ -1,15 +1,20 @@
 package rudyAir;
 
-import rudyAir.util.Context;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import rudyAir.config.AppConfig;
+
+@ContextConfiguration(classes = {AppConfig.class })
+@ExtendWith(SpringExtension.class) //On charge Spring Context
 public class AppTest {
-	public static void main(String[] args) {
 
-		Context.getEntityManagerFactory();
-
-		Context.destroy();
-		
-		System.out.println("Hello");
+	@Test
+	void test2() {
 		
 	}
+	
+
 }

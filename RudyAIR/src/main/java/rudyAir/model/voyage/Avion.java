@@ -12,31 +12,27 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="avion")
-@SequenceGenerator(name = "seqAvion", sequenceName = "seq_avion", initialValue = 100, allocationSize = 1)
+@SequenceGenerator(name="seqAvion", sequenceName="seq_avion", initialValue=100, allocationSize=1)
 
 public class Avion {
-
-
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqEmploye")
-	@Column(name = "refno")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAvion")
+	@Column(name = "avion_id")
 	private Long id;
-	@Column(name = "refname", length= 10, nullable=false)
+	@Column(length= 10, nullable=false)
 	private String ref;
 	@Enumerated(EnumType.STRING)
-	@Column(name = "statutAvion", length=10)
+	@Column(length=10)
 	private StatutAvion statutAvion;
-	@Column(name = "refno")
-	@OneToOne(mappedBy= "vol")
+	@OneToOne(mappedBy="avion")
 	private Vol vol;
+	
 
-
-	public Avion() {
-
-	}
+	public Avion() {}
 
 	public Avion(String ref, StatutAvion statutAvion, Vol vol) {
 		this.ref = ref;
