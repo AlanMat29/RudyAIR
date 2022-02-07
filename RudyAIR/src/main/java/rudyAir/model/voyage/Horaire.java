@@ -1,20 +1,27 @@
 package rudyAir.model.voyage;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Horaire {
    private LocalDate dateDepart;
    private LocalDate dateArrivee;
    private LocalDate heureDepart;
    private LocalDate heureArrivee;
-   private LocalDate duree;
+ 
 
+   public Horaire() {
+	   
+   }
+   
    public Horaire(LocalDate dateDepart, LocalDate dateArrivee, LocalDate heureDepart, LocalDate heureArrivee, LocalDate duree) {
       this.dateDepart = dateDepart;
       this.dateArrivee = dateArrivee;
       this.heureDepart = heureDepart;
       this.heureArrivee = heureArrivee;
-      this.duree = duree;
    }
 
    public LocalDate getDateDepart() {
@@ -49,15 +56,24 @@ public class Horaire {
       this.heureArrivee = heureArrivee;
    }
 
-   public LocalDate getDuree() {
-      return this.duree;
-   }
+@Override
+public int hashCode() {
+	return Objects.hash(dateArrivee, dateDepart, heureArrivee, heureDepart);
+}
 
-   public void setDuree(LocalDate duree) {
-      this.duree = duree;
-   }
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	Horaire other = (Horaire) obj;
+	return Objects.equals(dateArrivee, other.dateArrivee) && Objects.equals(dateDepart, other.dateDepart)
+			&& Objects.equals(heureArrivee, other.heureArrivee) && Objects.equals(heureDepart, other.heureDepart);
+}
 
-   public String toString() {
-      return "Horaire [dateDepart=" + this.dateDepart + ", dateArrivee=" + this.dateArrivee + ", heureDepart=" + this.heureDepart + ", heureArrivee=" + this.heureArrivee + ", duree=" + this.duree + "]";
-   }
+   		
+
 }
