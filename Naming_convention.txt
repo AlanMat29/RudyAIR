@@ -23,6 +23,10 @@ source: https://guidecss.davidl.fr/convention.html
 	1) Kebbab case
 ==> Good example: .red-box {border: 1px;}
 
+-ID(.)
+	1) lowerCamelCase
+==> Good example: .monId {border: 1px;}
+
 
 
 
