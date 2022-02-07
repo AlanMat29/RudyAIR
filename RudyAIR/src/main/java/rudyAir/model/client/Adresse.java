@@ -1,51 +1,58 @@
 package rudyAir.model.client;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Adresse {
-   int numero;
-   String voie;
-   String cp;
-   String ville;
+	private int numero;
+	private String voie;
+	private String cp;
+	private String ville;
 
-   public Adresse(int numero, String voie, String cp, String ville) {
-      this.numero = numero;
-      this.voie = voie;
-      this.cp = cp;
-      this.ville = ville;
-   }
+	public Adresse() {
 
-   public int getNumero() {
-      return this.numero;
-   }
+	}
 
-   public void setNumero(int numero) {
-      this.numero = numero;
-   }
+	public Adresse(int numero, String voie, String cp, String ville) {
+		this.numero = numero;
+		this.voie = voie;
+		this.cp = cp;
+		this.ville = ville;
+	}
 
-   public String getVoie() {
-      return this.voie;
-   }
+	public int getNumero() {
+		return this.numero;
+	}
 
-   public void setVoie(String voie) {
-      this.voie = voie;
-   }
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
 
-   public String getCp() {
-      return this.cp;
-   }
+	public String getVoie() {
+		return this.voie;
+	}
 
-   public void setCp(String cp) {
-      this.cp = cp;
-   }
+	public void setVoie(String voie) {
+		this.voie = voie;
+	}
 
-   public String getVille() {
-      return this.ville;
-   }
+	public String getCp() {
+		return this.cp;
+	}
 
-   public void setVille(String ville) {
-      this.ville = ville;
-   }
+	public void setCp(String cp) {
+		this.cp = cp;
+	}
 
-   public String toString() {
-      return "Adresse [numero=" + this.numero + ", voie=" + this.voie + ", cp=" + this.cp + ", ville=" + this.ville + "]";
-   }
+	public String getVille() {
+		return this.ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+
+	public String toString() {
+		return "Adresse [numero=" + this.numero + ", voie=" + this.voie + ", cp=" + this.cp + ", ville=" + this.ville + "]";
+	}
 }

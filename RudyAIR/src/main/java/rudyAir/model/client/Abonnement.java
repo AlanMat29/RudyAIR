@@ -1,9 +1,7 @@
 package rudyAir.model.client;
 
 public enum Abonnement {
-   sansAbonnement(0.0D),
-   Standard(105.0D),
-   Premium(210.9D);
+   sansAbonnement(0), Standard(105),Premium(210.9);
 
    private double prix;
 
