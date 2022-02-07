@@ -12,10 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="avion")
-@SequenceGenerator(name = "seqAvion", sequenceName = "seq_avion", initialValue = 100, allocationSize = 1)
+@SequenceGenerator(name="seqAvion", sequenceName="seq_avion", initialValue=100, allocationSize=1)
 
 public class Avion {
 	@Id
@@ -27,14 +28,11 @@ public class Avion {
 	@Enumerated(EnumType.STRING)
 	@Column(length=10)
 	private StatutAvion statutAvion;
-	@Column(name = "avion_vol")
-	@OneToOne(mappedBy= "avion")
+	@OneToOne(mappedBy="avion")
 	private Vol vol;
 	
 
-	public Avion() {
-
-	}
+	public Avion() {}
 
 	public Avion(String ref, StatutAvion statutAvion, Vol vol) {
 		this.ref = ref;
