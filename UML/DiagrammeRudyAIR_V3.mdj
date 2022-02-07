@@ -414,8 +414,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -144,
-									"top": -288,
+									"left": -176,
+									"top": -232,
 									"width": 10,
 									"height": 10
 								},
@@ -430,8 +430,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -144,
-									"top": -288,
+									"left": -176,
+									"top": -232,
 									"width": 10,
 									"height": 10
 								}
@@ -1810,24 +1810,7 @@
 											"top": 915,
 											"width": 246,
 											"height": 13,
-											"text": "départ",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLEnumerationLiteralView",
-											"_id": "AAAAAAF+uzOCkDmU6YI=",
-											"_parent": {
-												"$ref": "AAAAAAF+uzLkmTliYlc="
-											},
-											"model": {
-												"$ref": "AAAAAAF+uzOCiTmRYK8="
-											},
-											"font": "Arial;13;0",
-											"left": 581,
-											"top": 930,
-											"width": 246,
-											"height": 13,
-											"text": "arrivé",
+											"text": "à l'heure",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1841,7 +1824,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 581,
-											"top": 945,
+											"top": 930,
 											"width": 246,
 											"height": 13,
 											"text": "annulé",
@@ -1858,7 +1841,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 581,
-											"top": 960,
+											"top": 945,
 											"width": 246,
 											"height": 13,
 											"text": "retardé",
@@ -1869,7 +1852,7 @@
 									"left": 576,
 									"top": 910,
 									"width": 256,
-									"height": 68
+									"height": 53
 								}
 							],
 							"font": "Arial;13;0",
@@ -7601,7 +7584,7 @@
 											"top": 571,
 											"width": 191,
 											"height": 13,
-											"text": "-numeroVol: String",
+											"text": "-numeroVol: int",
 											"horizontalAlignment": 0
 										}
 									],
@@ -9751,15 +9734,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF+uzLkmTlWaSM="
 							},
-							"name": "départ"
-						},
-						{
-							"_type": "UMLEnumerationLiteral",
-							"_id": "AAAAAAF+uzOCiTmRYK8=",
-							"_parent": {
-								"$ref": "AAAAAAF+uzLkmTlWaSM="
-							},
-							"name": "arrivé"
+							"name": "à l'heure"
 						},
 						{
 							"_type": "UMLEnumerationLiteral",
@@ -10897,7 +10872,7 @@
 							},
 							"name": "numeroVol",
 							"visibility": "private",
-							"type": "String"
+							"type": "int"
 						}
 					]
 				}
