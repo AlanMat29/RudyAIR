@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Table(name = "vol_generique")
 @SequenceGenerator(name = "seqVolGen", sequenceName = "seq_volGen", initialValue = 100, allocationSize = 1)
 public class VolGenerique {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqVolGen")
 	@Column(name = "volGen_id")
@@ -126,6 +126,5 @@ public class VolGenerique {
 		return Objects.equals(id, other.id);
 	}
 
-	
 
 }
