@@ -2,42 +2,58 @@ package rudyAir.model.client;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Passager {
-   String nom;
-   String prenom;
-   LocalDate dateDeNaissance;
 
-   public Passager(String nom, String prenom, LocalDate dateDeNaissance) {
-      this.nom = nom;
-      this.prenom = prenom;
-      this.dateDeNaissance = dateDeNaissance;
-   }
+	@Column(name = "nomPassager", length = 100)
+	private String nom;
+	@Column(name = "prenomPassager", length = 100)
+	private String prenom;
+	@Column(name = "dateDeNaissance_Passager", length = 10)
+	private LocalDate dateNaissance;
 
-   public String getNom() {
-      return this.nom;
-   }
+	
+	public Passager() {
 
-   public void setNom(String nom) {
-      this.nom = nom;
-   }
+	}
 
-   public String getPrenom() {
-      return this.prenom;
-   }
+	public Passager(String nom, String prenom, LocalDate dateDeNaissance) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+	}
 
-   public void setPrenom(String prenom) {
-      this.prenom = prenom;
-   }
+	public String getNom() {
+		return this.nom;
+	}
 
-   public LocalDate getDateDeNaissance() {
-      return this.dateDeNaissance;
-   }
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
 
-   public void setDateDeNaissance(LocalDate dateDeNaissance) {
-      this.dateDeNaissance = dateDeNaissance;
-   }
+	public String getPrenom() {
+		return this.prenom;
+	}
 
-   public String toString() {
-      return "Passager [nom=" + this.nom + ", prenom=" + this.prenom + ", dateDeNaissance=" + this.dateDeNaissance + "]";
-   }
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public LocalDate getDateNaissance() {
+		return this.dateNaissance;
+	}
+
+	public void setDateNaissance(LocalDate dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+
+	@Override
+	public String toString() {
+		return "Passager [nom=" + this.nom + ", prenom=" + this.prenom + ", dateNaissance=" + this.dateNaissance + "]";
+	}
 }
