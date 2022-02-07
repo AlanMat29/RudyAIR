@@ -1,4 +1,6 @@
 package rudyAir.model.admin;
 
-public class Admin {
+import rudyAir.model.Compte;
+
+public class Admin extends Compte{
 }

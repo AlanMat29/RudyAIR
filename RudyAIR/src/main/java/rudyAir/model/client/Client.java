@@ -11,11 +11,11 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
+
+import rudyAir.model.Compte;
 
 @Entity
-@SequenceGenerator(name = "seqClient", sequenceName = "seq_client", initialValue = 100, allocationSize = 1)
-public class Client {
+public class Client extends Compte{
 
 	@Embedded
 	@AttributeOverrides({ @AttributeOverride(name = "numero", column = @Column(name = "cnumber", length = 50)),
@@ -26,51 +26,56 @@ public class Client {
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name="Abonnement")
 	private Abonnement abonnement;
-	@OneToMany(mappedBy = "Client")
-	private List<Reservation> resa = new ArrayList();
-	
+	@OneToMany(mappedBy = "client")
+	private List<Reservation> reservations = new ArrayList();
+
 
 	public Client() {
-		
+
 	}
 
-	public Client(Adresse adresse, Abonnement abonnement, List<Reservation> resa) {
+
+	public Client(Adresse adresse, Abonnement abonnement, List<Reservation> reservations) {
+		super();
 		this.adresse = adresse;
 		this.abonnement = abonnement;
-		this.resa = resa;
+		this.reservations = reservations;
 	}
 
+
 	public Adresse getAdresse() {
-		return this.adresse;
+		return adresse;
 	}
+
 
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
 
+
 	public Abonnement getAbonnement() {
-		return this.abonnement;
+		return abonnement;
 	}
+
 
 	public void setAbonnement(Abonnement abonnement) {
 		this.abonnement = abonnement;
 	}
 
-	public List<Reservation> getResa() {
-		return this.resa;
+
+	public List<Reservation> getReservations() {
+		return reservations;
 	}
 
-	public void setResa(List<Reservation> resa) {
-		this.resa = resa;
+
+	public void setReservations(List<Reservation> reservations) {
+		this.reservations = reservations;
 	}
 
-	@Override
-	public String toString() {
-		return "Client [adresse=" + adresse + ", abonnement=" + abonnement + ", resa=" + resa + "]";
-	}
-	
-	
-	
+
+
+
+
 }
 
 

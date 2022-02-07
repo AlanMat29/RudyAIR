@@ -2,30 +2,20 @@ package rudyAir.model.client;
 
 import java.time.LocalDate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.Embeddable;
 
-@Entity
+@Embeddable
 public class Passager {
 
-	@Column(name = "nomPassager", length = 100)
 	private String nom;
-	@Column(name = "prenomPassager", length = 100)
 	private String prenom;
-	@Column(name = "dateDeNaissance_Passager", length = 10)
-	private LocalDate dateNaissance;
-
+	private LocalDate dateDeNaissance;
 	
-	public Passager() {
-
-	}
 
 	public Passager(String nom, String prenom, LocalDate dateDeNaissance) {
 		this.nom = nom;
 		this.prenom = prenom;
-		this.dateNaissance = dateNaissance;
+		this.dateDeNaissance = dateDeNaissance;
 	}
 
 	public String getNom() {
@@ -44,16 +34,15 @@ public class Passager {
 		this.prenom = prenom;
 	}
 
-	public LocalDate getDateNaissance() {
-		return this.dateNaissance;
+	public LocalDate getDateDeNaissance() {
+		return this.dateDeNaissance;
 	}
 
-	public void setDateNaissance(LocalDate dateNaissance) {
-		this.dateNaissance = dateNaissance;
+	public void setDateDeNaissance(LocalDate dateDeNaissance) {
+		this.dateDeNaissance = dateDeNaissance;
 	}
 
-	@Override
 	public String toString() {
-		return "Passager [nom=" + this.nom + ", prenom=" + this.prenom + ", dateNaissance=" + this.dateNaissance + "]";
+		return "Passager [nom=" + this.nom + ", prenom=" + this.prenom + ", dateDeNaissance=" + this.dateDeNaissance + "]";
 	}
 }

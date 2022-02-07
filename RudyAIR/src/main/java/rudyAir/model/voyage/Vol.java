@@ -1,6 +1,7 @@
 package rudyAir.model.voyage;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -10,9 +11,13 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import rudyAir.model.client.Reservation;
 
 
 
@@ -20,7 +25,7 @@ import javax.persistence.Table;
 @Table(name="vol")
 @SequenceGenerator(name = "seqVol", sequenceName = "seq_vol", initialValue = 100, allocationSize = 1)
 public class Vol {
-	
+
 	@Id
 	@Column(name = "vol_id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqVol")
@@ -34,96 +39,101 @@ public class Vol {
 	private StatutVol statutVol;
 	@Column(name = "vol_numero")
 	private int numeroVol;
-	@Column(name = "vol_volgenerique")
 	@OneToOne(mappedBy = "vol")
 	private VolGenerique volGenerique;
-	@OneToOne(mappedBy = "vol")
-    private Avion avion;
+	@OneToOne
+	@JoinColumn(name="avion_id")
+	private Avion avion;
+	
+	@OneToMany(mappedBy="vol")
+	private List<Reservation> reservations;
 
-   public Vol(Long id, LocalDate dateArrivee, LocalDate dateDepart, StatutVol statutVol, int numeroVol, VolGenerique volGenerique, Horaire horaire, Avion avion) {
-      this.id = id;
-      this.dateArrivee = dateArrivee;
-      this.dateDepart = dateDepart;
-      this.statutVol = statutVol;
-      this.numeroVol = numeroVol;
-      this.volGenerique = volGenerique;
-      this.avion = avion;
-   }
+	
+	public Vol() {}
+			
+	public Vol(Long id, LocalDate dateArrivee, LocalDate dateDepart, StatutVol statutVol, int numeroVol, VolGenerique volGenerique, Horaire horaire, Avion avion) {
+		this.id = id;
+		this.dateArrivee = dateArrivee;
+		this.dateDepart = dateDepart;
+		this.statutVol = statutVol;
+		this.numeroVol = numeroVol;
+		this.volGenerique = volGenerique;
+		this.avion = avion;
+	}
 
-public Long getId() {
-	return id;
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public LocalDate getDateArrivee() {
+		return dateArrivee;
+	}
+
+	public void setDateArrivee(LocalDate dateArrivee) {
+		this.dateArrivee = dateArrivee;
+	}
+
+	public LocalDate getDateDepart() {
+		return dateDepart;
+	}
+
+	public void setDateDepart(LocalDate dateDepart) {
+		this.dateDepart = dateDepart;
+	}
+
+	public StatutVol getStatutVol() {
+		return statutVol;
+	}
+
+	public void setStatutVol(StatutVol statutVol) {
+		this.statutVol = statutVol;
+	}
+
+	public int getNumeroVol() {
+		return numeroVol;
+	}
+
+	public void setNumeroVol(int numeroVol) {
+		this.numeroVol = numeroVol;
+	}
+
+	public VolGenerique getVolGenerique() {
+		return volGenerique;
+	}
+
+	public void setVolGenerique(VolGenerique volGenerique) {
+		this.volGenerique = volGenerique;
+	}
+
+	public Avion getAvion() {
+		return avion;
+	}
+
+	public void setAvion(Avion avion) {
+		this.avion = avion;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Vol other = (Vol) obj;
+		return Objects.equals(id, other.id);
+	}
+
+
 }
 
-public void setId(Long id) {
-	this.id = id;
-}
-
-public LocalDate getDateArrivee() {
-	return dateArrivee;
-}
-
-public void setDateArrivee(LocalDate dateArrivee) {
-	this.dateArrivee = dateArrivee;
-}
-
-public LocalDate getDateDepart() {
-	return dateDepart;
-}
-
-public void setDateDepart(LocalDate dateDepart) {
-	this.dateDepart = dateDepart;
-}
-
-public StatutVol getStatutVol() {
-	return statutVol;
-}
-
-public void setStatutVol(StatutVol statutVol) {
-	this.statutVol = statutVol;
-}
-
-public int getNumeroVol() {
-	return numeroVol;
-}
-
-public void setNumeroVol(int numeroVol) {
-	this.numeroVol = numeroVol;
-}
-
-public VolGenerique getVolGenerique() {
-	return volGenerique;
-}
-
-public void setVolGenerique(VolGenerique volGenerique) {
-	this.volGenerique = volGenerique;
-}
-
-public Avion getAvion() {
-	return avion;
-}
-
-public void setAvion(Avion avion) {
-	this.avion = avion;
-}
-
-@Override
-public int hashCode() {
-	return Objects.hash(id);
-}
-
-@Override
-public boolean equals(Object obj) {
-	if (this == obj)
-		return true;
-	if (obj == null)
-		return false;
-	if (getClass() != obj.getClass())
-		return false;
-	Vol other = (Vol) obj;
-	return Objects.equals(id, other.id);
-}
-
-
-}
-
-  
