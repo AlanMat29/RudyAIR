@@ -6,7 +6,7 @@ public class Vol {
    private Integer id;
    private double prix;
    private String lieux;
-   private statutVol statutVol;
+   private StatutVol statutVol;
    private String numeroVol;
    private Horaire horaire;
    private List<Escale> escales;
@@ -14,7 +14,7 @@ public class Vol {
    private Aeroport aeroportArrivee;
    private Avion avion;
 
-   public Vol(Integer id, double prix, String lieux, statutVol statutVol, String numeroVol, Horaire horaire, List<Escale> escales, Aeroport aeroportDepart, Aeroport aeroportArrivee, Avion avion) {
+   public Vol(Integer id, double prix, String lieux, StatutVol statutVol, String numeroVol, Horaire horaire, List<Escale> escales, Aeroport aeroportDepart, Aeroport aeroportArrivee, Avion avion) {
       this.id = id;
       this.prix = prix;
       this.lieux = lieux;
@@ -51,11 +51,11 @@ public class Vol {
       this.lieux = lieux;
    }
 
-   public statutVol getStatutVol() {
+   public StatutVol getStatutVol() {
       return this.statutVol;
    }
 
-   public void setStatutVol(statutVol statutVol) {
+   public void setStatutVol(StatutVol statutVol) {
       this.statutVol = statutVol;
    }
 

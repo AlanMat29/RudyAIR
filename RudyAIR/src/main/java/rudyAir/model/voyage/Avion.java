@@ -1,41 +1,92 @@
 package rudyAir.model.voyage;
 
+import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="avion")
+@SequenceGenerator(name = "seqAvion", sequenceName = "seq_avion", initialValue = 100, allocationSize = 1)
+
 public class Avion {
-   private String ref;
-   private statutAvion statutAvion;
-   private Vol vol;
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAvion")
+	@Column(name = "avion_id")
+	private Long id;
+	@Column(length= 10, nullable=false)
+	private String ref;
+	@Enumerated(EnumType.STRING)
+	@Column(length=10)
+	private StatutAvion statutAvion;
+	@Column(name = "avion_vol")
+	@OneToOne(mappedBy= "avion")
+	private Vol vol;
+	
 
-   public Avion(String ref, statutAvion statutAvion, Vol vol) {
-      this.ref = ref;
-      this.statutAvion = statutAvion;
-      this.vol = vol;
-   }
+	public Avion() {
 
-   public String getRef() {
-      return this.ref;
-   }
+	}
 
-   public void setRef(String ref) {
-      this.ref = ref;
-   }
+	public Avion(String ref, StatutAvion statutAvion, Vol vol) {
+		this.ref = ref;
+		this.statutAvion = statutAvion;
+		this.vol = vol;
+	}
 
-   public statutAvion getStatutAvion() {
-      return this.statutAvion;
-   }
+	public String getRef() {
+		return this.ref;
+	}	
 
-   public void setStatutAvion(statutAvion statutAvion) {
-      this.statutAvion = statutAvion;
-   }
+	public void setRef(String ref) {
+		this.ref = ref;
+	}
 
-   public Vol getVol() {
-      return this.vol;
-   }
+	public StatutAvion getStatutAvion() {
+		return this.statutAvion;
+	}
 
-   public void setVol(Vol vol) {
-      this.vol = vol;
-   }
+	public void setStatutAvion(StatutAvion statutAvion) {
+		this.statutAvion = statutAvion;
+	}
 
-   public String toString() {
-      return "Avion [ref=" + this.ref + ", statutAvion=" + this.statutAvion + ", vol=" + this.vol + "]";
-   }
+	public Vol getVol() {
+		return this.vol;
+	}
+
+	public void setVol(Vol vol) {
+		this.vol = vol;
+	}
+
+	public String toString() {
+		return "Avion [ref=" + this.ref + ", statutAvion=" + this.statutAvion + ", vol=" + this.vol + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Avion other = (Avion) obj;
+		return Objects.equals(id, other.id) && Objects.equals(ref, other.ref) && statutAvion == other.statutAvion
+				&& Objects.equals(vol, other.vol);
+	}
+	
+	
 }
