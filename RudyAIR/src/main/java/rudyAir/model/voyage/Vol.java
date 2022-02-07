@@ -2,26 +2,37 @@ package rudyAir.model.voyage;
 
 import java.util.List;
 
-public class Vol {
-   private Integer id;
-   private double prix;
-   private String lieux;
-   private StatutVol statutVol;
-   private String numeroVol;
-   private Horaire horaire;
-   private List<Escale> escales;
-   private Aeroport aeroportDepart;
-   private Aeroport aeroportArrivee;
-   private Avion avion;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
-   public Vol(Integer id, double prix, String lieux, StatutVol statutVol, String numeroVol, Horaire horaire, List<Escale> escales, Aeroport aeroportDepart, Aeroport aeroportArrivee, Avion avion) {
+
+
+@Entity
+@Table(name="vol")
+@SequenceGenerator(name = "seqVol", sequenceName = "seq_vol", initialValue = 100, allocationSize = 1)
+public class Vol {
+	
+	@Id
+	@Column(name = "vol_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqVol")
+	private Integer id;
+	private LocalDate dateArrivee;
+	private LocalDate dateDepart;
+	private Aeroport aeroport;
+	private VolGenerique volGenerique;
+	private Horaire horaire;
+    private Avion avion;
+
+   public Vol(Integer id, LocalDate dateArrivee, LocalDate dateDepart, LocalDate dateDepart, Aeroport aeroport, VolGenerique volGenerique, Horaire horaire, Avion avion) {
       this.id = id;
-      this.prix = prix;
-      this.lieux = lieux;
+      this.dateArrivee = dateArrivee;
+      this.dateDepart = dateDepart;
       this.statutVol = statutVol;
       this.numeroVol = numeroVol;
       this.horaire = horaire;
-      this.escales = escales;
       this.aeroportDepart = aeroportDepart;
       this.aeroportArrivee = aeroportArrivee;
       this.avion = avion;
