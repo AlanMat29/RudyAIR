@@ -11,13 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Transient;
 
 import rudyAir.model.voyage.Aeroport;
 import rudyAir.model.voyage.Vol;
 
 
 @Entity
-@SequenceGenerator(name = "seqReservation", sequenceName = "seq_resa")
+@SequenceGenerator(name = "seqReservation", sequenceName = "seq_resa", initialValue = 100, allocationSize = 1)
 public class Reservation {
 	
 	@Id
@@ -26,12 +27,16 @@ public class Reservation {
 	@ManyToOne
 	private Client client;
 	@Embedded
+	@Transient
 	private Vol vols;
 	@Embedded
+	@Transient
 	private Aeroport aeroport;
 	@Embedded
+	@Transient
 	private Integer animaux;
 	@Embedded
+	@Transient
 	private Siege siege;
 	private int bagage;
 	private boolean statut;

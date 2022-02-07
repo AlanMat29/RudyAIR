@@ -14,14 +14,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-@SequenceGenerator(name = "seqClient", sequenceName = "seq_client")
+@SequenceGenerator(name = "seqClient", sequenceName = "seq_client", initialValue = 100, allocationSize = 1)
 public class Client {
 
 	@Embedded
 	@AttributeOverrides({ @AttributeOverride(name = "numero", column = @Column(name = "cnumber", length = 50)),
 		@AttributeOverride(name = "rue", column = @Column(name = "cstreet", length = 200)),
 		@AttributeOverride(name = "codePostal", column = @Column(name = "czipcode", length = 5)),
-		@AttributeOverride(name = "ville", column = @Column(name = "ccity", length = 100)) })
+		@AttributeOverride(name = "ville", column = @Column(name ="ccity", length = 100)) })
 	private Adresse adresse;
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name="Abonnement")
