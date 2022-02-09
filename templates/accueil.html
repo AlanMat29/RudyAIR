@@ -6,10 +6,12 @@
 ul{list-style-type :none;}
 
 
-a:link {color:black;text-decoration:none;}
-a:visited {color:black;text-decoration:none;}
+a:link {color:white;text-decoration:none;}
+a:visited {color:white;text-decoration:none;}
 
-a.main-menu-items:hover {font-size:150%;}
+a.main-menu-items {color:blue;}
+a.main-menu-items:hover {font-size:110%; background-color: red;}
+
 
 .padding-top-10{
   padding-top:10px;
@@ -135,6 +137,13 @@ footer{
 
 }
 
+a.item-tittle{
+  font-size-adjust: 20px;
+  font-weight: bolder;
+  color: grey;
+}
+
+
 #footerLink{
   display: flex;
   background-color:#34495E;
@@ -210,11 +219,11 @@ footer{
       <a class="main-menu-items" href="">INFORMATIONS</a>
     </div>
 
-    <div id="login"><a href="">
-      <span> <img class="login-img" src="asset/img/user-avatar.png" alt="login" ></span>
+    <div id="login">
       <div class="">
         <a href="#"></a>Se Connecter</a>
       </div>
+      <span> <img class="login-img" src="asset/img/user-avatar.png" alt="login" ></span>
     </div>
 
 
@@ -261,45 +270,44 @@ footer{
 
   <footer>
     <div id="footerLink" class="padding10">
-      <div id="footerAbout" class="footerItem"><a href="file:///C:/Users/ajc/DevAjc/WEB/CSS/TP5/PlacementBaliserudyAndHarry.html">A propos de nous</a>
-        <p></p>
+      <div id="footerAbout"><a class="item-tittle" href="file:///C:/Users/ajc/DevAjc/WEB/CSS/TP5/PlacementBaliserudyAndHarry.html">A propos de nous</a>
         <table>
-          <tr><td><a href="">Item 1</a></td></tr>
-          <tr><td><a href="">Item 2</a></td></tr>
-          <tr><td><a href="">Item 3</a></td></tr>
-          <tr><td><a href="">Item 4</a></td></tr>
+          <tr><td><a class="item" href="">Item 1</a></td></tr>
+          <tr><td><a class="item" href="">Item 2</a></td></tr>
+          <tr><td><a class="item" href="">Item 3</a></td></tr>
+          <tr><td><a class="item" href="">Item 4</a></td></tr>
         </table>
       </div>
-      <div id="footerSAV" class="footerItem"><a href="">Service client</a>
-        <ul>
-          <li><a href="">Item 1</a></li>
-          <li><a href="">Item 2</a></li>
-          <li><a href="">Item 3</a></li>
-          <li><a href="">Item 4</a></li>
-        </ul>
+      <div id="footerSAV"><a class="item-tittle" href="">Service client</a>
+        <table>
+          <tr><td><a class="item" href="">Item 1</a></td></tr>
+          <tr><td><a class="item" href="">Item 2</a></td></tr>
+          <tr><td><a class="item" href="">Item 3</a></td></tr>
+          <tr><td><a class="item" href="">Item 4</a></td></tr>
+        </table>
       </div>
-      <div id="footerPlanifier" class="footerItem"><a href="">Planifier votre voyage</a>
-        <ul>
-          <li><a href="">Item 1</a></li>
-          <li><a href="">Item 2</a></li>
-          <li><a href="">Item 3</a></li>
-          <li><a href="">Item 4</a></li>
-        </ul>
+      <div id="footerPlanifier"><a class="item-tittle"  href="">Planifier votre voyage</a>
+        <table>
+          <tr><td><a class="item" href="">Item 1</a></td></tr>
+          <tr><td><a class="item" href="">Item 2</a></td></tr>
+          <tr><td><a class="item" href="">Item 3</a></td></tr>
+          <tr><td><a class="item" href="">Item 4</a></td></tr>
+        </table>
       </div>
-      <div id="footerTrip" class="footerItem"><a href="">Nos déstinations</a>
-        <ul>
-          <li><a href="">Item 1</a></li>
-          <li><a href="">Item 2</a></li>
-          <li><a href="">Item 3</a></li>
-          <li><a href="">Item 4</a></li>
-        </ul>
+      <div id="footerTrip"><a class="item-tittle" href="">Nos déstinations</a>
+        <table>
+          <tr><td><a class="item" href="">Item 1</a></td></tr>
+          <tr><td><a class="item" href="">Item 2</a></td></tr>
+          <tr><td><a class="item" href="">Item 3</a></td></tr>
+          <tr><td><a class="item" href="">Item 4</a></td></tr>
+        </table>
       </div>
 
       <div id="footerExterneLink">
         <div class="rudyairNetword" class="footerItem"> Suivez-nous sur les réseaux :<br>
-          <span id="rudyairfacebook"><img src="" alt=""><a href="#">face</a></span>
-          <span id="rudyairInsta"><img src="" alt=""><a href="#">insta</a></span>
-          <span id="rudyairTwitter"><img src="" alt=""><a href="#">tweet</a></span>
+          <span id="rudyairfacebook"><img src="" alt="rudy-fb"><a href="asset/img/icon/fb-gold.png"></a></span>
+          <span id="rudyairInsta"><img src="" alt="rudy-insta"><a href="asset/img/icon/insta.svg"></a></span>
+          <span id="rudyairTwitter"><img src="" alt="rudy-tweet"><a href="asset/img/icon/twitter.svg"></a></span>
         </div>
         <br><br>
         <div class="rudyairApp" class="footerItem">Télécharger notre Application<br>
