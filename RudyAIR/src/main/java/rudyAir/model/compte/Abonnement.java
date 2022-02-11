@@ -1,4 +1,4 @@
-package rudyAir.model.client;
+package rudyAir.model.compte;
 
 public enum Abonnement {
    sansAbonnement(0), Standard(105),Premium(210.9);

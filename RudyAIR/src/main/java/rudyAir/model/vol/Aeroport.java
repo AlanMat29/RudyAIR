@@ -1,43 +1,44 @@
 
-package rudyAir.model.voyage;
+package rudyAir.model.vol;
 
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Version;
 
 @Entity
 @SequenceGenerator(name="seqAeroport", sequenceName="seq_aeroport", initialValue = 100, allocationSize = 1)
 public class Aeroport {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAeroport")
-	@Column(name = "aeroport_id")
 	private Long Id;
 	private String nom;
-	private int nbAvion;
 	@ManyToOne
+	@JoinColumn(name="aeroport_ville_id", foreignKey=@ForeignKey(name="aeroport_ville_id_fk"))
 	private Ville ville;
 	@OneToMany(mappedBy = "aeroportDepart")
 	private List<VolGenerique> volsGeneriquesDeparts;
-
 	@OneToMany(mappedBy = "aeroportArrivee")
 	private List<VolGenerique> volsGeneriquesArrivees;
-	
+	@Version
+	private int version;
+
 	public Aeroport() {}
 
-	public Aeroport(Long id, String nom, int nbAvion, Ville ville, List<VolGenerique> volsGeneriquesDeparts,
+	public Aeroport(Long id, String nom, Ville ville, List<VolGenerique> volsGeneriquesDeparts,
 			List<VolGenerique> volsGeneriquesArrivees) {
 		super();
 		Id = id;
 		this.nom = nom;
-		this.nbAvion = nbAvion;
 		this.ville = ville;
 		this.volsGeneriquesDeparts = volsGeneriquesDeparts;
 		this.volsGeneriquesArrivees = volsGeneriquesArrivees;
@@ -57,14 +58,6 @@ public class Aeroport {
 
 	public void setNom(String nom) {
 		this.nom = nom;
-	}
-
-	public int getNbAvion() {
-		return nbAvion;
-	}
-
-	public void setNbAvion(int nbAvion) {
-		this.nbAvion = nbAvion;
 	}
 
 	public Ville getVille() {
@@ -91,6 +84,14 @@ public class Aeroport {
 		this.volsGeneriquesArrivees = volsGeneriquesArrivees;
 	}
 
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(Id);
@@ -108,5 +109,4 @@ public class Aeroport {
 		return Objects.equals(Id, other.Id);
 	}
 
-	
 }

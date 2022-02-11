@@ -1,4 +1,4 @@
-package rudyAir.model.voyage;
+package rudyAir.model.vol;
 
 import java.util.Objects;
 
@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.Version;
 
 @Entity
 @Table(name="avion")
@@ -21,7 +21,6 @@ import javax.persistence.Transient;
 public class Avion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAvion")
-	@Column(name = "avion_id")
 	private Long id;
 	@Column(length= 10, nullable=false)
 	private String ref;
@@ -30,15 +29,20 @@ public class Avion {
 	private StatutAvion statutAvion;
 	@OneToOne(mappedBy="avion")
 	private Vol vol;
-	
+	@Version
+	private int version;
 
 	public Avion() {}
 
-	public Avion(String ref, StatutAvion statutAvion, Vol vol) {
+
+	public Avion(Long id, String ref, StatutAvion statutAvion, Vol vol) {
+		super();
+		this.id = id;
 		this.ref = ref;
 		this.statutAvion = statutAvion;
 		this.vol = vol;
 	}
+
 
 	public String getRef() {
 		return this.ref;
@@ -68,6 +72,22 @@ public class Avion {
 		return "Avion [ref=" + this.ref + ", statutAvion=" + this.statutAvion + ", vol=" + this.vol + "]";
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -82,9 +102,7 @@ public class Avion {
 		if (getClass() != obj.getClass())
 			return false;
 		Avion other = (Avion) obj;
-		return Objects.equals(id, other.id) && Objects.equals(ref, other.ref) && statutAvion == other.statutAvion
-				&& Objects.equals(vol, other.vol);
+		return Objects.equals(id, other.id);
 	}
-	
 	
 }

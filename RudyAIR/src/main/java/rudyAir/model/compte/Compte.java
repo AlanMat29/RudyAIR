@@ -1,4 +1,4 @@
-package rudyAir.model;
+package rudyAir.model.compte;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Version;
 
 @Entity
 @SequenceGenerator(name = "seqCompte", sequenceName = "seq_compte")
@@ -21,6 +22,8 @@ public class Compte {
 	private LocalDate dateNaissance;
 	private String email;
 	private String password;
+	@Version
+	private int version;
 	
 	public Compte() {
 
@@ -118,11 +121,14 @@ public class Compte {
 		this.password = password;
 	}
 
-	@Override
-	public String toString() {
-		return "Compte [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" + dateNaissance
-				+ ", email=" + email + ", password=" + password + "]";
+	public int getVersion() {
+		return version;
 	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
 
 	@Override
 	public int hashCode() {

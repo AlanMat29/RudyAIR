@@ -19,7 +19,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan(basePackages={"rudyAir.dao","rudyAir.services" })
+@ComponentScan(basePackages={"rudyAir.services"})
 @EnableTransactionManagement
 @PropertySource("classpath:infos.properties")
 @EnableJpaRepositories(basePackages = {"rudyAir.repositories"})
@@ -49,7 +49,7 @@ public class AppConfig {
 		Properties jpaProperties = new Properties();
 		jpaProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
 		jpaProperties.setProperty("hibernate.hbm2ddl.auto", "create");
-		jpaProperties.setProperty("hibernate.show_sql", "true");
+		jpaProperties.setProperty("hibernate.show_sql", "false");
 		jpaProperties.setProperty("hibernate.format_sql", "true");
 		emf.setJpaProperties(jpaProperties);
 		return emf;
