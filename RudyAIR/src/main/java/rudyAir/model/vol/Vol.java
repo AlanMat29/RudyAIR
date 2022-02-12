@@ -40,7 +40,7 @@ public class Vol {
 	@Column(name = "vol_statut")
 	private StatutVol statutVol;
 	@Column(name = "vol_numero")
-	private int numeroVol;
+	private String numeroVol;
 	@OneToOne(mappedBy = "vol")
 	private VolGenerique volGenerique;
 	@OneToOne
@@ -54,7 +54,7 @@ public class Vol {
 	
 	public Vol() {}
 			
-	public Vol(Long id, LocalDate dateArrivee, LocalDate dateDepart, StatutVol statutVol, int numeroVol, VolGenerique volGenerique, Horaire horaire, Avion avion) {
+	public Vol(Long id, LocalDate dateArrivee, LocalDate dateDepart, StatutVol statutVol, String numeroVol, VolGenerique volGenerique, Horaire horaire, Avion avion) {
 		this.id = id;
 		this.dateArrivee = dateArrivee;
 		this.dateDepart = dateDepart;
@@ -96,11 +96,11 @@ public class Vol {
 		this.statutVol = statutVol;
 	}
 
-	public int getNumeroVol() {
+	public String getNumeroVol() {
 		return numeroVol;
 	}
 
-	public void setNumeroVol(int numeroVol) {
+	public void setNumeroVol(String numeroVol) {
 		this.numeroVol = numeroVol;
 	}
 
