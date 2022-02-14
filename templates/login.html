@@ -1,83 +1,88 @@
 
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
 
-body {font-family: Arial, Helvetica, sans-serif;}
-#account{
+  body {font-family: Arial, Helvetica, sans-serif;}
+  #account{
     display: flex;
     justify-content: flex-end;
     font-size-adjust: 0.5;
-}/* Full-width input fields */
-#connect{}
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
+  }
+  /* Full-width input fields */
+  #connect{
 
-/* Set a style for all buttons */
-button {
-background-color: #87c5eb;
+  }
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  /* Set a style for all buttons */
+  button {
+    background-color: #87c5eb;
     border-radius: 0.25rem;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100px;
-}
-.btn-primary {
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+  }
+  .btn-primary {
     color: #fff;
     background-color: #87c5eb;
     border-color: #c5e9ff;
-}
+  }
 
-button:hover {
-  opacity: 0.8;
-}
+  button:hover {
+    opacity: 0.8;
+  }
 
-/* Extra styles for the cancel button */
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
-.header-wrapper{
-  display: inline-block;
+  /* Extra styles for the cancel button */
+  .cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+  }
+  .header-wrapper{
+    display: inline-block;
     top: 0;
     width: 100%;
     z-index: 400;
     background-color: white;
-    min-height: 61px;}
-#login-title{margin: 10px;}
-/* Center the image and position the close button */
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-  position: relative;
-}
+    min-height: 61px;
+  }
 
-img.avatar {
-  width: 40%;
-  border-radius: 50%;
-}
+  #login-title{margin: 10px;}
+  /* Center the image and position the close button */
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+  }
 
-.container {
-  display: inline-block;
+  img.avatar {
+    width: 40%;
+    border-radius: 50%;
+  }
+
+  .container {
+    display: inline-block;
     padding: 16px;
-  background-color:white;
-}
+    background-color:white;
+  }
 
-span.mdp {
-  float: right;
-  padding-top: 16px;
-}
-.modal {
+  span.mdp {
+    float: right;
+    padding-top: 16px;
+  }
+  .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -91,100 +96,101 @@ span.mdp {
     padding-top: 60px;
   }
 
-.modal-content {
-  background-color: #fefefe;
-  margin: 5px auto; /* 15% from the top and centered */
-  border: 1px solid #888;
-  width: 456px; /* Could be more or less, depending on screen size */
-  height: 456px;
-}
-.mid-container{  width: 100%;
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5px auto; /* 15% from the top and centered */
+    border: 1px solid #888;
+    width: 456px; /* Could be more or less, depending on screen size */
+    height: 456px;
+  }
+  .mid-container{
+    width: 100%;
+    background-color:white;
+  }
 
-background-color:white;}
-.text-mid{font-size-adjust: 0.5; }
-.close {
-  /* Position it in the top right corner outside of the modal */
-  position: absolute;
-  right: 25px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  font-weight: bold;
-}
+  .text-mid{font-size-adjust: 0.5; }
+  .close {
+    /* Position it in the top right corner outside of the modal */
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+  }
 
-.close:hover,
-.close:focus {
-  color: red;
-  cursor: pointer;
-}
+  .close:hover,
+  .close:focus {
+    color: red;
+    cursor: pointer;
+  }
 
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
+  .animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+  }
 
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)}
-  to {-webkit-transform: scale(1)}
-}
+  @-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+  }
 
-@keyframes animatezoom {
-  from {transform: scale(0)}
-  to {transform: scale(1)}
-}
+  @keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+  }
 
-</style>
+  </style>
 </head>
 <body>
 
-<!-- Button to open the modal login form -->
-<button class="btn btn-primary" onclick="document.getElementById('id01').style.display='block'" ><b>Connexion</b></button>
-<!-- The Modal -->
-<div id="id01" class="modal">
-  <span onclick="document.getElementById('id01').style.display='none'"
-class="close" title="Close Modal">&times;</span>
+  <!-- Button to open the modal login form -->
+  <button class="btn btn-primary" onclick="document.getElementById('id01').style.display='block'" ><b>Connexion</b></button>
+  <!-- The Modal -->
+  <div id="id01" class="modal">
+    <span onclick="document.getElementById('id01').style.display='none'"class="close" title="Close Modal">&times;</span>
 
-  <form class="modal-content animate" action="/login.html">
+    <form class="modal-content animate" action="/login.html">
       <div class="header-wrapper">
         <h2 id="login-title">Connectez-vous sur RudyAIR</h2>
       </div>
-        <div class="imgcontainer">
-          <img class="Avatar" style=" width:50%; height:50%;" src="C:\Users\rudya\Documents\SOPRA STERIA\Formation\Git School\RudyAIR\templates\asset\img\jordan.jpg" alt="Avatar">
-        </div>
-          <div class="container">
+      <div class="imgcontainer">
+        <img class="Avatar" style=" width:50%; height:50%;" src="C:\Users\rudya\Documents\SOPRA STERIA\Formation\Git School\RudyAIR\templates\asset\img\jordan.jpg" alt="Avatar">
+      </div>
+      <div class="container">
 
-            <label for="mail"><b>Adresse mail</b></label>
-            <input type="text" placeholder="Entrez votre adresse mail" name="mail" required>
+        <label for="mail"><b>Adresse mail</b></label>
+        <input type="text" placeholder="Entrez votre adresse mail" name="mail" required>
 
-            <label for="mdp"><b>Mot de passe</b></label>
-            <input type="password" placeholder="entrez votre mot de passe" name="mdp" required>
-          </div>
-            <div class="mid-container">
-              <label >
-                <input type="checkbox"  name="remember"> Rester connecté
-                <span class="mdp"><a href="#">Mot de passe oublié ?</a></span>
-              </label>
-                <button type="submit" >Connexion</button>
-            </div>
+        <label for="mdp"><b>Mot de passe</b></label>
+        <input type="password" placeholder="entrez votre mot de passe" name="mdp" required>
+      </div>
+      <div class="mid-container">
+        <label >
+          <input type="checkbox"  name="remember"> Rester connecté
+          <span class="mdp"><a href="#">Mot de passe oublié ?</a></span>
+        </label>
+        <button type="submit" >Connexion</button>
+      </div>
 
-         <div class="container" style="background-color:#c5e9ff">
+      <div class="container" style="background-color:#c5e9ff">
 
-              <span id="account">Vous n'avez pas encore de compte ?  Créez votre compte <a href="#">Créer votre compte</a></span>
-          </div>
- </form>
- </div>
+        <span id="account">Vous n'avez pas encore de compte ?  Créez votre compte <a href="#">Créer votre compte</a></span>
+      </div>
+    </form>
+  </div>
 
- <script>
-// Get the modal
-var modal = document.getElementById('id01');
+  <script>
+  // Get the modal
+  var modal = document.getElementById('id01');
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
   }
-}
-</script>
-
+  </script>
+  
 </body>
 </html>

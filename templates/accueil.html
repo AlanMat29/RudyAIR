@@ -3,21 +3,9 @@
 
 <style>
 
-ul{list-style-type :none;}
-
-
-a:link {color:black;text-decoration:none;}
-a:visited {color:black;text-decoration:none;}
-
-a.main-menu-items {color:blue;}
-a.main-menu-items:hover {font-size:110%; background-color: red;}
-
-a.menu__item {color:blue;}
-
-
-.padding10{
-  padding-top:10px;
-}
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
 
 body {
   margin: auto;
@@ -26,19 +14,38 @@ body {
   font-family: 'Open Sans',Helvetica,sans-serif;
   max-width: 3840px;
   max-height: 2160px;
+  background-color: #f2f2f2;
   /* overflow-y: hidden;
   overflow-x: hidden;  */
 }
+
+ul{list-style-type :none;}
+
+a:link {color:black;text-decoration:none;}
+a:visited {color:black;text-decoration:none;}
+
+.padding10{
+  padding-top:10px;
+}
+
+.icon{
+  min-height:42px;
+  height: 42px;
+}
+
+/*--------------------------------------------------------------
+# BODY
+--------------------------------------------------------------*/
 
 header{
   display: flex;
   background-color: #fff;
   font-family: Arial;
-  box-shadow: 0 4px 6px 0 rgb(0 0 0 / 20%);
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
   width: 100% ;
-  position:fixed;
+  min
+  position:fixed !important;
   justify-content: space-between;
-
 }
 
 
@@ -68,18 +75,30 @@ header{
   height: 45px;
 }
 
+.titre{
+  font-weight: 600;
+  padding: 5px;
+}
 
 .main-menu{
   display: flex;
   background-color: Iris;
-  font-size: 18px;
+  font-size: 16px;
   color:blue;
-  width:700px;
+  width:45%;
   align-items: flex-end;
-  justify-content: space-around;
-  padding-bottom: 2px;
+  justify-content: space-between;
 }
 
+/*--------------------------------------------------------------
+# MENU BURGER
+--------------------------------------------------------------*/
+a.main-menu-items {
+  color:blue; padding: 6px 6px;
+  border-radius: 12px;
+}
+a.main-menu-items:hover {font-size:110%; color: yellow; background-color: blue;}
+a.menu__item {color:blue;}
 
 #login{
   display: flex;
@@ -89,38 +108,146 @@ header{
   justify-content: center;
 }
 
-.icon{
-  min-height:42px;
-  height: 42px;
-}
 
-
+/*--------------------------------------------------------------
+# CORPS PRINCIPALE
+--------------------------------------------------------------*/
 #main{
   display: flex;
   min-height:200%;
-  padding-top: 6em;
+  padding-top: 1em;
   justify-content: center;
   flex-wrap: wrap;
 
 }
 
-#imageWelcoming{
-  display: inline-flex;
-  height:65%;width:100%;
-  justify-content: center;
 
+/*--------------------------------------------------------------
+# CAROUSSEL
+--------------------------------------------------------------*/
+* {box-sizing: border-box}
+.mySlides {display: none}
+img.trip {width: 100%;height:70%;vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 2900px;
+  width: 100%;
+  position: relative;
 }
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 35%;
+  width: auto;
+  padding: 18px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5em;
+  transition: 0.6s ease;
+  border-radius: 0 23px 23px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 23px 0 0 23px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: blue;
+}
+
+/* Caption text */
+.text {
+  color: #fff;
+  font-size: 20px;
+  padding: 2px 12px;
+  position: relative;
+  bottom: 78px;
+  text-align: center;
+  background-color: none;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 6px;
+  width: 25px;
+  position: relative;
+  margin: 2px 2px;
+  bottom: 70px;
+  background-color: #f2f2f2;
+  border-radius: 20%;
+  display: inline-block;
+  border: 1px solid white;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: blue;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+
+
+/*--------------------------------------------------------------
+# RECHERCHE VOL
+--------------------------------------------------------------*/
+
+
+
+
+
+
+/*--------------------------------------------------------------
+# PARTENAIRE
+--------------------------------------------------------------*/
 
 #parternaire{
   display: inline-block;
   width: 80%;
 }
 
-img.col{
-  max-height:500px;max-width:500px;
-  min-height:50px;min-width:50px;
-  width:400px;height:400px;
+img.publicite{
+  height: 200px;width: 330px;
 }
+
 #containerPart{
   display:flex;
   justify-content: space-between;
@@ -131,9 +258,11 @@ img.col{
   width: 80%;
 }
 
+/*--------------------------------------------------------------
+# FOOTER
+--------------------------------------------------------------*/
 footer{
   display: flex;
-  width: 100%;
   color: white;
   background-color:darkgrey;
   height:16em;
@@ -160,7 +289,7 @@ a.item-tittle{
 #footerLink{
   display: flex;
   background-color:#34495E;
-  height:80%;
+  height:90%;
   width:90%;
   font:italic 1em/2;
   justify-content:space-around;
@@ -176,7 +305,7 @@ a.item-tittle{
 
 #footerCopyright{
   display: flex;
-  background-color:lightgrey;
+  background-color:#f2f2f2;
   height:2em;
   width:100%;
   justify-content: center;
@@ -193,10 +322,12 @@ a.item-tittle{
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script> -->
 
-  <link rel="stylesheet" type="text/css" href="css/burger-menu.css">
+  <meta charset="utf-8">
+
   <title >RudyAir-The Wings of Freedom</title>
   <link rel="icon" href="asset/img/logo/icon_title2.png">
-  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="css/burger-menu.css">
+
 </head>
 
 <body>
@@ -238,51 +369,85 @@ a.item-tittle{
   </header>
 
 
-  <div id="main" class="padding10">
+  <main id="main" class="">
 
-    <div id="imageWelcoming" class="carrousel">
-      <img class="welcoming-img" alt="Image html" width="90%" style="" src="asset/img/wallpaper/background-login.jpg" />
+    <!-- ---------------------DEBUT CAROUSSEL-------------------- -->
+
+    <div class="slideshow-container">
+
+      <div class="mySlides fade">
+        <div class="numbertext">1 / 3</div>
+        <img class="trip" src="asset/img/trip/toulouse-france.jpg">
+        <div class="text">Toulouse <br>- La ville rose -</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">2 / 3</div>
+        <img class="trip" src="asset/img/trip/nosy-be.jpg">
+        <div class="text">Nosy-be <br>- Madagascar island -</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">3 / 3</div>
+        <img class="trip" src="asset/img/trip/kyoto-japan.jpg">
+        <div class="text">Kyoto <br>- Terre de sakura -</div>
+      </div>
+
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+      <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+
     </div>
+    <br>
 
+
+
+    <!-- ---------------------FIN CAROUSSEL-------------------- -->
+
+    <p></p>
     <div id="searchVol" class="padding10" style="border: solid black 1px" width="50%">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </div>
-
+    <p></p>
     <div id="parternaire" class="padding10">
-      <div>Les essentiels du voyage</div>
+      <div class="titre">Les essentiels du voyage</div>
       <div id="containerPart">
-      <div class="col">
-        <img alt="Image html" src="asset/img/Chauffeur.png">
-        <br><div class="">
-          Chauffeur
+        <div class="col">
+          <img alt="Chauffeur" class="publicite" src="asset/img/Chauffeur.png">
+          <br><div class="">
+            Chauffeur
+          </div>
+        </div>
+        <div class="col">
+          <img alt="boooking.com" class="publicite" src="asset/img/booking.png">
+          <br><div class="">
+            Booking.com
+          </div>
+        </div>
+        <div class="col">
+          <img alt="locationVoiture" class="publicite" src="asset/img/Location.png">
+          <br><div class="">
+            Location de voiture
+          </div>
         </div>
       </div>
-      <div class="col">
-        <img alt="Image html" src="asset/img/booking.png">
-        <br><div class="">
-          Booking.com
-        </div>
-      </div>
-      <div class="col">
-        <img alt="Image html"  src="asset/img/Location.png">
-        <br><div class="">
-          Location de voiture
-        </div>
-      </div>
+      <p></p>
     </div>
-    </div>
-
     <div id="vaincrePeur" class="padding10">
-      <div>Vaincre sa peur du vol</div>
-      <img alt="peurAvion" width="100%" height="65%" style="min-height:35%;min-width:20%;" src="asset/img/vaincrePeur.png" />
+      <div class="titre">Vaincre sa peur du vol</div>
+      <img alt="peurAvion" height="150px" width="100%" style="max-height:520px;max-width:1820px;" src="asset/img/vaincrePeur.png" />
     </div>
-
-  </div>
-
+  </main>
+  <p></p>
 
   <footer>
     <div id="footerLink" class="padding10">
-      <div id="footerAbout"><a class="item-tittle" href="file:///C:/Users/ajc/DevAjc/WEB/CSS/TP5/PlacementBaliserudyAndHarry.html">A propos de nous</a>
+      <div id="footerAbout"><a class="item-tittle" href="">A propos de nous</a>
         <table>
           <tr><td><a class="item" href="">Item 1</a></td></tr>
           <tr><td><a class="item" href="">Item 2</a></td></tr>
@@ -329,11 +494,42 @@ a.item-tittle{
     </div>
 
     <div id="footerCopyright">
-      <a href="http://copyright.be" target="_blank"> &copy Copyright 2022 - <strong>RudyAIR</strong> </a>
+      <a href="http://copyright.be" target="_blank"> &copy Copyright - 2022 - <strong>RudyAIR</strong> </a>
     </div>
 
   </footer>
 
 
 </body>
+<!------------------------------------------------------------
+# CAROUSSEL
+-------------------------------------------------------------->
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (var i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+</script>
+
+
+
 </html>
