@@ -1,4 +1,4 @@
-package rudyAir.model;
+package rudyAir.model.vol;
 
 import java.util.Objects;
 

@@ -9,7 +9,7 @@ import rudyAir.config.AppConfig;
 
 @ContextConfiguration(classes = {AppConfig.class })
 @ExtendWith(SpringExtension.class) //On charge Spring Context
-public class AppTest {
+public class CompteTest {
 
 	@Test
 	void test2() {

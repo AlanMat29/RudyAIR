@@ -1,4 +1,4 @@
-package rudyAir.model.client;
+package rudyAir.model.compte;
 
 import javax.persistence.Embeddable;
 
@@ -9,9 +9,7 @@ public class Adresse {
 	private String cp;
 	private String ville;
 
-	public Adresse() {
-
-	}
+	public Adresse() {}
 
 	public Adresse(int numero, String voie, String cp, String ville) {
 		this.numero = numero;

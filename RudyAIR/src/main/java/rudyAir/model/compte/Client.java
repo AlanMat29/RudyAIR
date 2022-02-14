@@ -1,10 +1,8 @@
-package rudyAir.model.client;
+package rudyAir.model.compte;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -12,27 +10,19 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
 
-import rudyAir.model.Compte;
-
 @Entity
 public class Client extends Compte{
 
 	@Embedded
-	@AttributeOverrides({ @AttributeOverride(name = "numero", column = @Column(name = "cnumber", length = 50)),
-		@AttributeOverride(name = "rue", column = @Column(name = "cstreet", length = 200)),
-		@AttributeOverride(name = "codePostal", column = @Column(name = "czipcode", length = 5)),
-		@AttributeOverride(name = "ville", column = @Column(name ="ccity", length = 100)) })
 	private Adresse adresse;
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name="Abonnement")
 	private Abonnement abonnement;
 	@OneToMany(mappedBy = "client")
-	private List<Reservation> reservations = new ArrayList();
+	private List<Reservation> reservations = new ArrayList<Reservation>();
 
 
-	public Client() {
-
-	}
+	public Client() {}
 
 
 	public Client(Adresse adresse, Abonnement abonnement, List<Reservation> reservations) {
@@ -71,10 +61,6 @@ public class Client extends Compte{
 	public void setReservations(List<Reservation> reservations) {
 		this.reservations = reservations;
 	}
-
-
-
-
 
 }
 

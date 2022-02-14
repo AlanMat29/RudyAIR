@@ -1,10 +1,13 @@
-package rudyAir.model.voyage;
+package rudyAir.model.vol;
 
 import java.util.Objects;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 @Entity
 @Table(name = "vol_generique")
@@ -25,18 +29,25 @@ public class VolGenerique {
 	private Long id;
 	@Column(name = "volGen_prix")
 	private double prix;
-	@Column(name = "volGen_name")
+	@Column(name = "volGen_num")
 	private String numVolGen;
 	@Embedded
+	@AttributeOverrides({ 
+		@AttributeOverride(name="heureDepart", column=@Column(name="volGen_heuredepart")),
+		@AttributeOverride(name="heureArrivee", column=@Column(name="volGen_heurearrivee"))})
 	private Horaire horaire;
 	@ManyToOne
+	@JoinColumn(name="volGen_aeroportDepart_id", foreignKey=@ForeignKey(name="volGen_aeroportDepart_id_fk"), nullable=false)
 	private Aeroport aeroportDepart;
 	@ManyToOne
+	@JoinColumn(name="volGen_aeroportArrivee_id", foreignKey=@ForeignKey(name="volGen_aeroportArrivee_id_fk"), nullable=false)
 	private Aeroport aeroportArrivee;
 	@OneToOne
-	@JoinColumn(name="vol_id") // vol_id = Nom de la colonne dans notre table
+	@JoinColumn(name="volGen_vol_id", foreignKey=@ForeignKey(name="volGen_vol_id_fk"))
 	private Vol vol;
-
+	@Version
+	private int version;
+	
 	public VolGenerique() {
 
 	}
@@ -108,12 +119,21 @@ public class VolGenerique {
 	public void setVol(Vol vol) {
 		this.vol = vol;
 	}
+	
+	public int getVersion() {
+		return version;
+	}
 
+	public void setVersion(int version) {
+		this.version = version;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
 
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -125,6 +145,5 @@ public class VolGenerique {
 		VolGenerique other = (VolGenerique) obj;
 		return Objects.equals(id, other.id);
 	}
-
 
 }

@@ -1,4 +1,4 @@
-package rudyAir.model;
+package rudyAir.model.vol;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -8,19 +8,19 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import rudyAir.model.client.Reservation;
-import rudyAir.model.voyage.Avion;
+import rudyAir.model.compte.Reservation;
 
+@SuppressWarnings("serial")
 @Embeddable
 public class SiegeKey implements Serializable{
-	
+
 	@ManyToOne
-	@JoinColumn(name="siege_reservation_id", foreignKey=@ForeignKey(name="siege_reservation_id_fk"))
+	@JoinColumn(name="siege_resa_id", foreignKey=@ForeignKey(name="siege_resa_id_fk"))
 	private Reservation reservation;
 	@ManyToOne
-	@JoinColumn(name="siege_aviont_id", foreignKey=@ForeignKey(name="siege_avion_id_fk"))
+	@JoinColumn(name="siege_avion_id", foreignKey=@ForeignKey(name="siege_avion_id_fk"))
 	private Avion avion;
-	
+
 	public SiegeKey() {}
 
 	public SiegeKey(Reservation reservation, Avion avion) {
@@ -61,5 +61,5 @@ public class SiegeKey implements Serializable{
 		SiegeKey other = (SiegeKey) obj;
 		return Objects.equals(avion, other.avion) && Objects.equals(reservation, other.reservation);
 	}
-	
+
 }
