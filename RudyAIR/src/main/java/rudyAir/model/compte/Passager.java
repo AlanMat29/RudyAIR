@@ -29,11 +29,12 @@ public class Passager {
 	private int version;
 	
 
-	public Passager() {}
+	public Passager() {
+		
+	}
 	
 
 	public Passager(Long id, String nom, String prenom, LocalDate dateDeNaissance, Reservation reservation) {
-		super();
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
