@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import rudyAir.model.compte.Client;
-import rudyAir.repositories.ClientRepository;
+import rudyAir.repositories.IClientRepository;
 
 @Service
 public class ClientService {
 	
 	@Autowired
-	private ClientRepository clientRepo;
+	private IClientRepository clientRepo;
 	
 	public List<Client> getAll(){
 		return clientRepo.findAll();

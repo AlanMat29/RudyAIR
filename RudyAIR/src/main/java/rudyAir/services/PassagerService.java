@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 
 import rudyAir.exceptions.PassagerException;
 import rudyAir.model.compte.Passager;
-import rudyAir.repositories.PassagerRepository;
+import rudyAir.repositories.IPassagerRepository;
 
 @Service
 public class PassagerService {
 
 	@Autowired
-	private PassagerRepository passagerRepo;
+	private IPassagerRepository passagerRepo;
 	
 	public List<Passager> getAll(){
 		return passagerRepo.findAll();

@@ -14,7 +14,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import formationJpa.model.Views;
+import rudyAir.model.Views;
 
 @Entity
 @SequenceGenerator(name = "seqCompte", sequenceName = "seq_compte")

@@ -9,15 +9,15 @@ import rudyAir.exceptions.PassagerException;
 import rudyAir.exceptions.ReservationException;
 import rudyAir.model.compte.Passager;
 import rudyAir.model.compte.Reservation;
-import rudyAir.repositories.PassagerRepository;
-import rudyAir.repositories.ReservationRepository;
+import rudyAir.repositories.IPassagerRepository;
+import rudyAir.repositories.IReservationRepository;
 
 
 @Service
 public class ReservationService {
 
 	@Autowired
-	private ReservationRepository resaRepo;
+	private IReservationRepository resaRepo;
 	
 	public List<Reservation> getAll(){
 		return resaRepo.findAll();

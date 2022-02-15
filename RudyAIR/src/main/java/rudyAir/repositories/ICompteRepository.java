@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import rudyAir.model.compte.Compte;
 
-public interface CompteRepository extends JpaRepository<Compte, Long>{
+public interface ICompteRepository extends JpaRepository<Compte, Long>{
 
 	Optional<Compte> findById(@Param("id") Long id);
 	

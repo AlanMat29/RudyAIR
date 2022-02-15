@@ -1,4 +1,4 @@
-package rudyAir.restcontroller;
+package rudyAir.model;
 
 public class Views {
 

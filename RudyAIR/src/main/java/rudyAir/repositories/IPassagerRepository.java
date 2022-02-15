@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import rudyAir.model.compte.Compte;
 import rudyAir.model.compte.Passager;
 
-public interface PassagerRepository extends JpaRepository<Passager, Long>{
+public interface IPassagerRepository extends JpaRepository<Passager, Long>{
 
 	Optional<Passager> findById(@Param("id") Long id);
 	

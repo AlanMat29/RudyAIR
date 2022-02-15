@@ -6,18 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import rudyAir.exceptions.CompteException;
-import rudyAir.model.compte.Client;
 import rudyAir.model.compte.Compte;
-import rudyAir.repositories.ClientRepository;
-import rudyAir.repositories.CompteRepository;
+import rudyAir.repositories.IClientRepository;
+import rudyAir.repositories.ICompteRepository;
 
 @Service
 public class CompteService {
 
 	@Autowired
-	private CompteRepository compteRepo;
+	private ICompteRepository compteRepo;
 	@Autowired
-	private ClientRepository clientrepo;
+	private IClientRepository clientrepo;
 	
 	public List<Compte> getAll(){
 		return compteRepo.findAll();
