@@ -44,20 +44,22 @@
     opacity: 0.8;
   }
 
-  /* Extra styles for the cancel button */
-  .cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
-  }
-  .header-wrapper{
-    display: inline-block;
+/* Extra styles for the cancel button */
+}
+.header-wrapper{
+  display: inline-block;
     top: 0;
     width: 100%;
     z-index: 400;
     background-color: white;
-    min-height: 61px;
-  }
+    min-height: 61px;}
+#login-title{margin: 20px;}
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
 
   #login-title{margin: 10px;}
   /* Center the image and position the close button */
@@ -67,22 +69,11 @@
     position: relative;
   }
 
-  img.avatar {
-    width: 40%;
-    border-radius: 50%;
-  }
-
-  .container {
-    display: inline-block;
-    padding: 16px;
-    background-color:white;
-  }
-
-  span.mdp {
-    float: right;
-    padding-top: 16px;
-  }
-  .modal {
+span.mdp {
+  float: right;
+  padding-top: 16px;
+}
+.modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -95,40 +86,44 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     padding-top: 60px;
   }
+.modal-header{
+      display: flex;
+      align-items: flex-start;
+    }
+.modal-title{
+padding-left:1rem;
+}
 
-  .modal-content {
-    background-color: #fefefe;
-    margin: 5px auto; /* 15% from the top and centered */
-    border: 1px solid #888;
-    width: 456px; /* Could be more or less, depending on screen size */
-    height: 456px;
-  }
-  .mid-container{
-    width: 100%;
-    background-color:white;
-  }
+.modal-content {
+  background-color: #fefefe;
+  margin: 5px auto; /* 15% from the top and centered */
+  border: 1px solid #888;
+  width: 500px; /* Could be more or less, depending on screen size */
+}
+.modal-animate{
+width: 500px
+}
+.form-group{
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.modal-footer{
+  margin-bottom: -1rem;
+  height: 50px;
+}
+.text-mid{font-size-adjust: 0.5; }
 
-  .text-mid{font-size-adjust: 0.5; }
-  .close {
-    /* Position it in the top right corner outside of the modal */
-    position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
-  }
+span.compte {
+  float: right;
 
-  .close:hover,
-  .close:focus {
-    color: red;
-    cursor: pointer;
-  }
+}
 
-  .animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
-  }
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+  background-color: #fff;
+}
 
   @-webkit-keyframes animatezoom {
     from {-webkit-transform: scale(0)}
@@ -144,41 +139,52 @@
 </head>
 <body>
 
-  <!-- Button to open the modal login form -->
-  <button class="btn btn-primary" onclick="document.getElementById('id01').style.display='block'" ><b>Connexion</b></button>
-  <!-- The Modal -->
-  <div id="id01" class="modal">
-    <span onclick="document.getElementById('id01').style.display='none'"class="close" title="Close Modal">&times;</span>
-
-    <form class="modal-content animate" action="/login.html">
-      <div class="header-wrapper">
-        <h2 id="login-title">Connectez-vous sur RudyAIR</h2>
+<!-- Button to open the modal login form -->
+<button class="btn btn-primary" onclick="document.getElementById('id01').style.display='block'" ><b style="display: flex;
+    justify-content: center;">Connexion</b></button>
+<!-- The Modal -->
+<div id="id01" class="modal" role="menu">
+      <div class="modal-content" role="menu">
+      <div class="modal-animate" action="/login.html">
+        <div class="modal-header">
+          <h2 class="modal-title">
+            <font style="vertical-align: inherit;">
+            <font style="vertical-align: inherit; ">Connectez-vous sur RudyAIR</font>
+            </font>
+          </h2>
+        </div>
+        <div class="modal-body">
+          <div class="imgcontainer">
+            <img class="Avatar" style=" width:50%;" src="C:\Users\rudya\Documents\SOPRA STERIA\Formation\Git School\RudyAIR\templates\asset\img\jordan.jpg" alt="Avatar">
+          </div>
+          <div class="form-group">
+            <label for="mail"><b>Adresse mail</b></label>
+            <input type="text" placeholder="Entrez votre adresse mail" name="mail" required>
+            <label for="mdp"><b>Mot de passe</b></label>
+            <input type="password" placeholder="entrez votre mot de passe" name="mdp" required>
+          </div>
+          <div class="form-group">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal"><b style="display: flex;
+                  justify-content: center;">Connexion</b></button>
+            <label >
+            <input type="checkbox"  name="remember"> Rester connecté
+            <span class="mdp"><a href="#">Mot de passe oublié ?</a></span>
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer">
+         <div class="form-group" style="background-color:#c5e9ff; height: 100%; display: flex; align-items: center; justify-content: space-around;">
+           <span><font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">Vous n'avez pas encore de compte ?</font>
+              </font>
+            </span>
+            <span class="compte"><a href="#" style="vertical-align: inherit;">Créer votre compte</a></span>
+          </div>
+        </div>
       </div>
-      <div class="imgcontainer">
-        <img class="Avatar" style=" width:50%; height:50%;" src="C:\Users\rudya\Documents\SOPRA STERIA\Formation\Git School\RudyAIR\templates\asset\img\jordan.jpg" alt="Avatar">
-      </div>
-      <div class="container">
-
-        <label for="mail"><b>Adresse mail</b></label>
-        <input type="text" placeholder="Entrez votre adresse mail" name="mail" required>
-
-        <label for="mdp"><b>Mot de passe</b></label>
-        <input type="password" placeholder="entrez votre mot de passe" name="mdp" required>
-      </div>
-      <div class="mid-container">
-        <label >
-          <input type="checkbox"  name="remember"> Rester connecté
-          <span class="mdp"><a href="#">Mot de passe oublié ?</a></span>
-        </label>
-        <button type="submit" >Connexion</button>
-      </div>
-
-      <div class="container" style="background-color:#c5e9ff">
-
-        <span id="account">Vous n'avez pas encore de compte ?  Créez votre compte <a href="#">Créer votre compte</a></span>
-      </div>
-    </form>
+    </div>
   </div>
+</div>
 
   <script>
   // Get the modal
