@@ -1,45 +1,48 @@
 
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
 
-body {font-family: Arial, Helvetica, sans-serif;}
-#account{
+  body {font-family: Arial, Helvetica, sans-serif;}
+  #account{
     display: flex;
     justify-content: flex-end;
     font-size-adjust: 0.5;
-}/* Full-width input fields */
-#connect{}
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
+  }
+  /* Full-width input fields */
+  #connect{
 
-/* Set a style for all buttons */
-button {
-background-color: #87c5eb;
+  }
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  /* Set a style for all buttons */
+  button {
+    background-color: #87c5eb;
     border-radius: 0.25rem;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100px;
-}
-.btn-primary {
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+  }
+  .btn-primary {
     color: #fff;
     background-color: #87c5eb;
     border-color: #c5e9ff;
-}
+  }
 
-button:hover {
-  opacity: 0.8;
-}
+  button:hover {
+    opacity: 0.8;
+  }
 
 /* Extra styles for the cancel button */
 }
@@ -58,10 +61,13 @@ button:hover {
   position: relative;
 }
 
-img.avatar {
-  width: 40%;
-  border-radius: 50%;
-}
+  #login-title{margin: 10px;}
+  /* Center the image and position the close button */
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+  }
 
 span.mdp {
   float: right;
@@ -119,17 +125,17 @@ span.compte {
   background-color: #fff;
 }
 
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)}
-  to {-webkit-transform: scale(1)}
-}
+  @-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+  }
 
-@keyframes animatezoom {
-  from {transform: scale(0)}
-  to {transform: scale(1)}
-}
+  @keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+  }
 
-</style>
+  </style>
 </head>
 <body>
 
@@ -180,17 +186,17 @@ span.compte {
   </div>
 </div>
 
- <script>
-// Get the modal
-var modal = document.getElementById('id01');
+  <script>
+  // Get the modal
+  var modal = document.getElementById('id01');
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
   }
-}
-</script>
-
+  </script>
+  
 </body>
 </html>

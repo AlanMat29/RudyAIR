@@ -32,7 +32,9 @@ public class Aeroport {
 	@Version
 	private int version;
 
-	public Aeroport() {}
+	public Aeroport() {
+		
+	}
 
 	public Aeroport(Long id, String nom, Ville ville, List<VolGenerique> volsGeneriquesDeparts,
 			List<VolGenerique> volsGeneriquesArrivees) {
