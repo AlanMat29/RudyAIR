@@ -21,7 +21,6 @@ public class AeroportService {
 	}
 
 	
-	
 	public List<Aeroport> getAll() {
 		return aeroportRepo.findAll();
 	}
@@ -31,6 +30,9 @@ public class AeroportService {
 	}
 	
 	public Aeroport save(Aeroport aeroport) {
+		if(aeroport==null) {
+			throw new AeroportException();
+		}
 		// Create new
 		if (aeroport.getId() == null) {
 			checkData(aeroport);
@@ -42,7 +44,6 @@ public class AeroportService {
 			aeroportEnBase.setNom(aeroport.getNom());
 			aeroportEnBase.setVille(aeroport.getVille());
 			aeroportEnBase.setVolsGeneriquesDeparts(aeroport.getVolsGeneriquesArrivees());
-			aeroportEnBase.setVersion(aeroport.getVersion());
 			return aeroportRepo.save(aeroportEnBase);
 		}
 	}

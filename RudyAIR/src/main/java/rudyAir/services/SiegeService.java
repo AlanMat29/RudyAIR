@@ -35,6 +35,9 @@ public class SiegeService {
 	}
 	
 	public Siege save(Siege siege) {
+		if(siege==null) {
+			throw new SiegeException();
+		}
 		// Create new
 		if (siege.getId() == null) {
 			checkData(siege);

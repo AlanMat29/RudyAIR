@@ -21,7 +21,6 @@ public class VilleService {
 	}
 
 	
-	
 	public List<Ville> getAll() {
 		return villeRepo.findAll();
 	}
@@ -31,18 +30,18 @@ public class VilleService {
 	}
 	
 	public Ville save(Ville ville) {
-		// Create new
+		if(ville==null) {
+			throw new VilleException();
+		}
 		if (ville.getId() == null) {
 			checkData(ville);
 			return villeRepo.save(ville);
 		}
-		// Update existing
 		else {
 			Ville villeEnBase = getById(ville.getId());
 			villeEnBase.setNom(ville.getNom());
 			villeEnBase.setCp(ville.getCp());
 			villeEnBase.setAeroports(ville.getAeroports());
-			villeEnBase.setVersion(ville.getVersion());
 			return villeRepo.save(villeEnBase);
 		}
 	}

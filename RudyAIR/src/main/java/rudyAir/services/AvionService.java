@@ -23,7 +23,6 @@ public class AvionService {
 	}
 
 	
-	
 	public List<Avion> getAll() {
 		return avionRepo.findAll();
 	}
@@ -33,6 +32,9 @@ public class AvionService {
 	}
 	
 	public Avion save(Avion avion) {
+		if(avion==null) {
+			throw new AvionException();
+		}
 		if (avion.getId() == null) {
 			checkData(avion);
 			return avionRepo.save(avion);

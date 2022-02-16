@@ -7,4 +7,5 @@ import rudyAir.model.compte.Client;
 public interface IClientRepository extends JpaRepository<Client, Long> {
 
 	
+	
 }
