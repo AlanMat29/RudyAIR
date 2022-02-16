@@ -24,16 +24,16 @@ public class ClientService {
 	private IAeroportRepository aeroportRepo;
 	
 
-	public List<Vol> getVolByAeroportDepart(String nomAeroport){
-		if (nomAeroport == null || nomAeroport.isEmpty()) {
-			throw new AeroportException();
-		}
-		
-		if (!aeroportRepo.findByNom(nomAeroport).isPresent()) {
-			throw new AeroportException();
-		}
-		
-		return volRepo.findVolByAeroportNom(nomAeroport);
-	}
+//	public List<Vol> getVolByAeroportDepart(String nomAeroport){
+//		if (nomAeroport == null || nomAeroport.isEmpty()) {
+//			throw new AeroportException();
+//		}
+//		
+//		if (!aeroportRepo.findByNom(nomAeroport).isPresent()) {
+//			throw new AeroportException();
+//		}
+//		
+//		return volRepo.findVolByAeroportNom(nomAeroport);
+//	}
 
 }

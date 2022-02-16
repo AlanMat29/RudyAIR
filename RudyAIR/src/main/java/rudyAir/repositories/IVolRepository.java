@@ -11,8 +11,8 @@ import rudyAir.model.vol.Vol;
 
 public interface IVolRepository extends JpaRepository<Vol, Long> {
 	
-	@Query("select v from Vol v left join fetch v.volGenerique vg on v.id=vg.vol left join vg.aeroport on v.id=vg.vol where vg.aeroportDepart=:nom")
-	@Modifying
-	List<Vol> findVolByAeroportNom(@Param("nom") String nom);
+//	@Query("select v from Vol v left join fetch v.volGenerique vg on v.id=vg.vol left join vg.aeroport on v.id=vg.vol where vg.aeroportDepart=:nom")
+//	@Modifying
+//	List<Vol> findVolByAeroportNom(@Param("nom") String nom);
 
 }
