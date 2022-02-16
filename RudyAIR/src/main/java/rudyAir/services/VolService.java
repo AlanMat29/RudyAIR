@@ -35,12 +35,13 @@ public class VolService {
 	}
 	
 	public Vol save(Vol vol) {
-		// Create new
+		if(vol==null) {
+			throw new VolException();
+		}
 		if (vol.getId() == null) {
 			checkData(vol);
 			return volRepo.save(vol);
 		}
-		// Update existing
 		else {
 			Vol volEnBase = getById(vol.getId());
 			volEnBase.setDateArrivee(vol.getDateArrivee());
