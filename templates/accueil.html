@@ -3,6 +3,12 @@
 
 <style>
 
+
+:root{
+  --color-blue:#6890BC;
+  --color-gold:#D4AF37;
+  --color-footer:#3d6183;
+}
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -43,8 +49,9 @@ header{
   font-family: Arial;
   box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
   width: 100% ;
-  min
-  position:fixed !important;
+  height: 50px;
+  position: relative;
+  position: fixed !important;
   justify-content: space-between;
 }
 
@@ -59,24 +66,33 @@ header{
 }
 
 #logo{
-  margin-top: -45px;
+  margin-top: -30px;
   padding-left: 15px;
   height: 45px;
 }
 
 .logo-img{
-  filter: contrast(1.5);
+  filter: contrast(1);
   height:75px;
 }
 
+.logo-img:hover{
+  filter: contrast(1.6);
+}
+
 .menu-burger{
-  margin-top: 20px;
+  margin-top: 35px;
   padding-left: 10px;
   height: 45px;
 }
 
+
+/*--------------------------------------------------------------
+# MENU PRINCIPALE
+--------------------------------------------------------------*/
+
 .titre{
-  font-weight: 600;
+  font-weight: 700;
   padding: 5px;
 }
 
@@ -84,22 +100,23 @@ header{
   display: flex;
   background-color: Iris;
   font-size: 16px;
+  padding: 3px;
   color:blue;
   width:45%;
   align-items: flex-end;
   justify-content: space-between;
 }
 
-/*--------------------------------------------------------------
-# MENU BURGER
---------------------------------------------------------------*/
 a.main-menu-items {
-  color:blue; padding: 6px 6px;
+  color: var(--color-blue);
+  padding: 6px 6px;
   border-radius: 12px;
 }
-a.main-menu-items:hover {font-size:110%; color: yellow; background-color: blue;}
-a.menu__item {color:blue;}
+a.main-menu-items:hover {font-size:110%; color: white; background-color: var(--color-blue);}
 
+/*--------------------------------------------------------------
+# login
+--------------------------------------------------------------*/
 #login{
   display: flex;
   font:18px bold Arial, sans-serif;
@@ -118,7 +135,6 @@ a.menu__item {color:blue;}
   padding-top: 1em;
   justify-content: center;
   flex-wrap: wrap;
-
 }
 
 
@@ -133,6 +149,7 @@ img.trip {width: 100%;height:70%;vertical-align: middle;}
 .slideshow-container {
   max-width: 2900px;
   width: 100%;
+  top: 75px;
   position: relative;
 }
 
@@ -142,36 +159,37 @@ img.trip {width: 100%;height:70%;vertical-align: middle;}
   position: absolute;
   top: 35%;
   width: auto;
-  padding: 18px;
+  padding: 12px;
   margin-top: -22px;
   color: white;
   font-weight: bold;
   font-size: 1.5em;
   transition: 0.6s ease;
-  border-radius: 0 23px 23px 0;
+  border-radius: 0 6px 6px 0;
   user-select: none;
 }
 
 /* Position the "next button" to the right */
 .next {
   right: 0;
-  border-radius: 23px 0 0 23px;
+  border-radius: 6px 0 0 6px;
 }
 
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
-  background-color: blue;
+  background-color: var(--color-blue);
 }
 
 /* Caption text */
 .text {
   color: #fff;
   font-size: 20px;
-  padding: 2px 12px;
   position: relative;
-  bottom: 78px;
+  background-color: black;
+  background-size: 10px;
+  bottom: 75px;
+  z-index: 2;
   text-align: center;
-  background-color: none;
 }
 
 /* Number text (1/3 etc) */
@@ -199,7 +217,7 @@ img.trip {width: 100%;height:70%;vertical-align: middle;}
 }
 
 .active, .dot:hover {
-  background-color: blue;
+  background-color: var(--color-blue);
 }
 
 /* Fading animation */
@@ -264,7 +282,7 @@ img.publicite{
 footer{
   display: flex;
   color: white;
-  background-color:darkgrey;
+  background-color: var(--color-footer);
   height:16em;
   flex-wrap: wrap;
   justify-content: center;
@@ -279,16 +297,16 @@ a.item{
 a.item-tittle{
   font-size: 1.1em;
   font-weight: bolder;
-  color: lightgrey;
+  color: #D4AF37;
 }
 
 .external-title{
-  color: lightgrey;
+  color: white;
 }
 
 #footerLink{
   display: flex;
-  background-color:#34495E;
+  background-color: #3d6183;
   height:90%;
   width:90%;
   font:italic 1em/2;
@@ -300,7 +318,6 @@ a.item-tittle{
   display: flex;
   width:20%;
   flex-wrap: wrap;
-
 }
 
 #footerCopyright{
@@ -333,7 +350,7 @@ a.item-tittle{
 <body>
   <header>
     <div id="content-left">
-      <div id="logo"> <a href="accueil.html"><img class="logo-img" src="asset/img/logo/logo_rudyair.png" alt=""></a></div>
+      <div id="logo"> <a href="accueil.html"><img class="logo-img" src="asset/img/icon/logo-icon.png" alt=""></a></div>
       <div class="menu-burger">
         <input id="menu__toggle" type="checkbox" />
         <label class="menu__btn" for="menu__toggle">
@@ -471,7 +488,7 @@ a.item-tittle{
           <tr><td><a class="item" href="">Item 4</a></td></tr>
         </table>
       </div>
-      <div id="footerTrip"><a class="item-tittle" href="">Nos déstinations</a>
+      <div id="footerTrip"><a class="item-tittle" href="">Top destinations</a>
         <table>
           <tr><td><a class="item" href="">Item 1</a></td></tr>
           <tr><td><a class="item" href="">Item 2</a></td></tr>
@@ -481,7 +498,7 @@ a.item-tittle{
       </div>
 
       <div id="footerExterneLink" class="">
-        <div class="rudyairNetword external-title" >Suivez-nous sur nos resauux:<br>
+        <div class="rudyairNetword external-title" >Suivez-nous sur nos réseaux:<br>
           <span id="rudyairFacebook"><img class="icon" src="asset/img/icon/fb-gold.png" alt="rudy-fb"><a href=""></a></span>
           <span id="rudyairInsta"><img class="icon" src="asset/img/icon/insta-gold.png" alt="rudy-insta"><a href=""></a></span>
           <span id="rudyairTwitter"><img class="icon" src="asset/img/icon/tweet-gold.png" alt="rudy-tweet"><a href=""></a></span>
@@ -494,7 +511,7 @@ a.item-tittle{
     </div>
 
     <div id="footerCopyright">
-      <a href="http://copyright.be" target="_blank"> &copy Copyright - 2022 - <strong>RudyAIR</strong> </a>
+      <a href="http://copyright.be" target="_blank"> &copy Copyright - 2022 - <span>RudyAIR</span> </a>
     </div>
 
   </footer>
