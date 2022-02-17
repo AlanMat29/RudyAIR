@@ -14,20 +14,32 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Version;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @SequenceGenerator(name="seqAeroport", sequenceName="seq_aeroport", initialValue = 100, allocationSize = 1)
 public class Aeroport {
+	@JsonView(Views.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAeroport")
 	private Long Id;
+	@Length(min = 1, max = 50)
+	@NotEmpty
+	@JsonView(Views.Common.class)
 	private String nom;
 	@ManyToOne
-	@JoinColumn(name="aeroport_ville_id", foreignKey=@ForeignKey(name="aeroport_ville_id_fk"))
+	@JoinColumn(name="ville_id", foreignKey=@ForeignKey(name="aeroport_ville_id_fk"))
+	@JsonView(Views.AeroportWithVille.class)
 	private Ville ville;
 	@OneToMany(mappedBy = "aeroportDepart")
+	@JsonView(Views.AeroportWithVolsGeneneriquesDeparts.class)
 	private List<VolGenerique> volsGeneriquesDeparts;
 	@OneToMany(mappedBy = "aeroportArrivee")
+	@JsonView(Views.AeroportWithVolsGeneneriquesArrivees.class)
 	private List<VolGenerique> volsGeneriquesArrivees;
 	@Version
 	private int version;

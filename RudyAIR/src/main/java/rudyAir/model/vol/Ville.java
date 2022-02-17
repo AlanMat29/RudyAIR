@@ -10,18 +10,29 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Version;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 
 @Entity
 @SequenceGenerator(name="seqVille", sequenceName="seq_ville", initialValue = 100, allocationSize = 1)
 public class Ville {
-	
+	@JsonView(Views.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqVille")
 	private Long Id;
+	@Length(min = 1, max = 50)
+	@NotEmpty
+	@JsonView(Views.Common.class)
 	private String nom;
+	@NotEmpty
+	@JsonView(Views.Common.class)
 	private String cp;
 	@OneToMany(mappedBy = "ville")
+	@JsonView(Views.VilleWithAeroports.class)
 	private List<Aeroport> aeroports;
 	@Version
 	private int version;
