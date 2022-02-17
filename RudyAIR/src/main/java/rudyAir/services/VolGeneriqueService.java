@@ -32,6 +32,9 @@ public class VolGeneriqueService {
 	}
 
 	public VolGenerique save(VolGenerique volGenerique) {
+		if(volGenerique==null) {
+			throw new VolGeneriqueException();
+		}
 		if (volGenerique.getId() == null) {
 			check(volGenerique);
 			return volGeneriqueRepo.save(volGenerique);

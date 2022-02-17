@@ -10,16 +10,28 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Version;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
+import rudyAir.model.Views;
+
 @Entity
 @SequenceGenerator(name = "seqCompte", sequenceName = "seq_compte")
 public class Compte {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCompte")
+	@JsonView(Views.Common.class)
 	private Long id;
+	@JsonView(Views.Common.class)
 	private String nom;
+	@JsonView(Views.Common.class)
 	private String prenom;
+	@JsonView(Views.Common.class)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateNaissance;
+	@JsonView(Views.Common.class)
 	private String email;
 	private String password;
 	@Version
