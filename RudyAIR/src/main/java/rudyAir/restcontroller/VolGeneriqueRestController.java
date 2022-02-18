@@ -28,7 +28,7 @@ import rudyAir.services.CompteService;
 import rudyAir.services.VolGeneriqueService;
 
 @RestController
-@RequestMapping("/api/compte")
+@RequestMapping("/api/volgen")
 public class VolGeneriqueRestController {
 	
 	@Autowired
