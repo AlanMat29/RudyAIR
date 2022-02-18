@@ -16,6 +16,8 @@ import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import rudyAir.model.Views;
+
 
 @Entity
 @SequenceGenerator(name="seqVille", sequenceName="seq_ville", initialValue = 100, allocationSize = 1)

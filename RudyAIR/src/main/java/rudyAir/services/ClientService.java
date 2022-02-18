@@ -1,12 +1,8 @@
 package rudyAir.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import rudyAir.exceptions.AeroportException;
-import rudyAir.model.vol.Vol;
 import rudyAir.repositories.IAeroportRepository;
 import rudyAir.repositories.IClientRepository;
 import rudyAir.repositories.IVolRepository;

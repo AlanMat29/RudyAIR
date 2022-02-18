@@ -20,6 +20,8 @@ import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import rudyAir.model.Views;
+
 @Entity
 @SequenceGenerator(name="seqAeroport", sequenceName="seq_aeroport", initialValue = 100, allocationSize = 1)
 public class Aeroport {
