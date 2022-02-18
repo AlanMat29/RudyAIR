@@ -13,7 +13,7 @@ import rudyAir.repositories.ICompteRepository;
 public class CustomUserDetailsService implements UserDetailsService {
 	@Autowired
 	private ICompteRepository compteRepo;
-	
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		return new CustomUserDetails(compteRepo.findByEmail(username).orElseThrow(() -> {

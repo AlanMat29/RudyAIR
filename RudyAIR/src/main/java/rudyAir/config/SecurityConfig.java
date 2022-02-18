@@ -22,13 +22,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// @formatter:off
-//		http.antMatcher("/**")
-//			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//			.and()
-//			.csrf().disable()
-//			.httpBasic();
-		
-		
 		http.antMatcher("/**")
 			.authorizeHttpRequests()
 				.antMatchers("/", "/public/**").permitAll()

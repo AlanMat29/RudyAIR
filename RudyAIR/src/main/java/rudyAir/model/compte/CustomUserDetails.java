@@ -21,7 +21,7 @@ public class CustomUserDetails implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> role = null;
 		if (compte instanceof Client) {
-			role = Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+			role = Arrays.asList(new SimpleGrantedAuthority("ROLE_CLIENT"));
 		} else {
 			role = Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
 		}
