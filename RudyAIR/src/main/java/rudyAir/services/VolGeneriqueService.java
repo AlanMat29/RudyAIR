@@ -55,4 +55,25 @@ public class VolGeneriqueService {
 			throw new VolGeneriqueException();
 		}
 	}
+
+	public boolean exist(Long id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public void deleteById(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public VolGenerique getByIdWithHoraires(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public VolGenerique getByIdWithVols(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

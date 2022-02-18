@@ -5,11 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import formation.sopra.springBoot.model.Aeroport ;
 import rudyAir.exceptions.AeroportException;
 import rudyAir.model.vol.Aeroport;
 import rudyAir.repositories.IAeroportRepository;
-import rudyAir.restcontroller.ResponseStatus;
 
 @Service
 public class AeroportService {

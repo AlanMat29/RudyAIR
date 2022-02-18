@@ -20,6 +20,16 @@ public class Views {
 	public static class VilleWithAeroports extends Common {
 
 	}
+	public static class VolGeneneriqueDepartWithAeroports extends Common {
 
+	}
+	public static class VolGeneneriqueArriveeWithAeroports extends Common {
 
+	}
+	public static class VolGeneneriqueWithHoraire extends Common {
+
+	}
+	public static class VolGeneneriqueWithVol extends Common {
+
+	}
 }
