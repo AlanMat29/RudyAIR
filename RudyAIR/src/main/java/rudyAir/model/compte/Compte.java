@@ -57,32 +57,6 @@ public class Compte {
 		this.password = password;
 	}
 	
-	
-	//Méthodes
-	public static void rechercherTrajet() {
-		
-	}
-	
-	public static void reserverTrajet() {
-		
-	}
-	
-	public static void acheterBillet() {
-		
-	}
-	
-	public static void modifierBillet() {
-		
-	}
-	
-	public static void annulerBillet() {
-		
-	}
-	
-	public static void consulterVol() {
-		
-	}
-	
 
 	//Getters-Setters
 	public Long getId() {
