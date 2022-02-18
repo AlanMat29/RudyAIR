@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import rudyAir.exceptions.PassagerException;
-import rudyAir.exceptions.VilleException;
 import rudyAir.model.compte.Passager;
 import rudyAir.repositories.IPassagerRepository;
 
@@ -21,7 +20,7 @@ public class PassagerService {
 		if (passager.getNom() == null || passager.getNom().isEmpty() ||
 				passager.getPrenom() == null || passager.getPrenom().isEmpty() ||
 				passager.getDateDeNaissance() == null) {
-			throw new VilleException("Donnees incorrectes");
+			throw new PassagerException("Donnees incorrectes");
 		}
 	}
 	
@@ -38,9 +37,9 @@ public class PassagerService {
 		if(passager==null) {
 			throw new PassagerException();
 		}
+		checkData(passager);
 		// Create new
 		if (passager.getId() == null) {
-			checkData(passager);
 			return passagerRepo.save(passager);
 		}
 		// Update existing
@@ -49,6 +48,7 @@ public class PassagerService {
 			passagerEnBase.setNom(passager.getNom());
 			passagerEnBase.setPrenom(passager.getPrenom());
 			passagerEnBase.setDateDeNaissance(passager.getDateDeNaissance());
+			passagerEnBase.setReservation(passager.getReservation());
 			return passagerRepo.save(passagerEnBase);
 		}
 	}
@@ -58,7 +58,7 @@ public class PassagerService {
 		passagerRepo.delete(passager);
 	}
 	
-	public void delete(Long id) {
+	public void deleteById(Long id) {
 		delete(getById(id));
 	}
 }
