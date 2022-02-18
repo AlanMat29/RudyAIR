@@ -22,9 +22,7 @@ public class Client extends Compte{
 	private List<Reservation> reservations = new ArrayList<Reservation>();
 
 
-	public Client() {
-		
-	}
+	public Client() {}
 
 
 	public Client(Adresse adresse, Abonnement abonnement, List<Reservation> reservations) {

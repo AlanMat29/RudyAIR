@@ -40,9 +40,7 @@ public class Ville {
 	private int version;
 
 
-	public Ville() {
-		
-	}
+	public Ville() {}
 	
 
 	public Ville(Long id, String nom, String cp, List<Aeroport> aeroports) {

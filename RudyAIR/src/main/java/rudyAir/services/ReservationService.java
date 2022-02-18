@@ -10,7 +10,6 @@ import rudyAir.exceptions.VilleException;
 import rudyAir.model.compte.Reservation;
 import rudyAir.repositories.IReservationRepository;
 
-
 @Service
 public class ReservationService {
 
@@ -18,14 +17,13 @@ public class ReservationService {
 	private IReservationRepository reservationRepo;
 
 	private void checkData(Reservation reservation) {
-		if (reservation.getVol() == null || reservation.getPassager() == null ||
-				reservation.getAnimaux() < 0 || reservation.getAnimaux() == null ||
-				reservation.getBagage() < 0) {
+		if (reservation.getVol() == null || reservation.getPassager() == null || reservation.getAnimaux() < 0
+				|| reservation.getAnimaux() == null || reservation.getBagage() < 0) {
 			throw new VilleException("Donnees incorrectes");
 		}
 	}
 
-	public List<Reservation> getAll(){
+	public List<Reservation> getAll() {
 		return reservationRepo.findAll();
 	}
 
@@ -34,16 +32,14 @@ public class ReservationService {
 	}
 
 	public Reservation save(Reservation reservation) {
-		if(reservation==null) {
+		if (reservation == null) {
 			throw new ReservationException();
 		}
-		// Create new
+		checkData(reservation);
 		if (reservation.getId() == null) {
-			checkData(reservation);
+
 			return reservationRepo.save(reservation);
-		}
-		// Update existing
-		else {
+		} else {
 			Reservation reservationEnBase = getById(reservation.getId());
 			reservationEnBase.setVol(reservation.getVol());
 			reservationEnBase.setPassager(reservation.getPassager());
@@ -59,7 +55,7 @@ public class ReservationService {
 		reservationRepo.delete(reservation);
 	}
 
-	public void delete(Long id) {
+	public void deleteById(Long id) {
 		delete(getById(id));
 	}
 }
