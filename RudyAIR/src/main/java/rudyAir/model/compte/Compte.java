@@ -3,12 +3,19 @@ package rudyAir.model.compte;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Version;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -17,7 +24,10 @@ import com.fasterxml.jackson.annotation.JsonView;
 import rudyAir.model.Views;
 
 @Entity
+@Table(name="compte")
 @SequenceGenerator(name = "seqCompte", sequenceName = "seq_compte")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="compte",discriminatorType = DiscriminatorType.STRING, length=15)
 public class Compte {
 
 	@Id
@@ -25,13 +35,19 @@ public class Compte {
 	@JsonView(Views.Common.class)
 	private Long id;
 	@JsonView(Views.Common.class)
+	@NotEmpty
+	@Column(length = 50, nullable = false)
 	private String nom;
 	@JsonView(Views.Common.class)
+	@NotEmpty
+	@Column(length = 50, nullable = false)
 	private String prenom;
 	@JsonView(Views.Common.class)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateNaissance;
 	@JsonView(Views.Common.class)
+	@NotEmpty
+	@Column(length = 50, nullable = false, unique = true)
 	private String email;
 	private String password;
 	@Version

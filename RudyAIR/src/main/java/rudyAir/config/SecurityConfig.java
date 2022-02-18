@@ -22,11 +22,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// @formatter:off
+//		http.antMatcher("/**")
+//			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//			.and()
+//			.csrf().disable()
+//			.httpBasic();
+		
+		
 		http.antMatcher("/**")
-			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-			.and()
-			.csrf().disable()
-			.httpBasic();
+			.authorizeHttpRequests()
+				.antMatchers("/", "/public/**").permitAll()
+				.antMatchers("/admin/**").hasRole("ADMIN")
+				.antMatchers("/user/**").hasAnyRole("USER")
+				.and().formLogin();
 		// @formatter:on
 	}
 
