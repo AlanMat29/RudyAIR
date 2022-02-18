@@ -1,10 +1,10 @@
 package rudyAir.model.compte;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-public class Admin extends Compte{
-	
-	public Admin() {}
-	
+@DiscriminatorValue("admin")
+public class Admin extends Compte {
+
 }

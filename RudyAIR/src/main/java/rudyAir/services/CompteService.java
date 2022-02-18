@@ -17,7 +17,7 @@ public class CompteService {
 
 	private void checkData(Compte c) {
 		if(c==null || c.getId()==null) {
-			throw new CompteException("donnï¿½es inconnus");
+			throw new CompteException("données inconnus");
 		}
 	}
 	
@@ -30,7 +30,7 @@ public class CompteService {
 		return compteRepo.findById(id).orElseThrow(CompteException::new);
 	}
 	
-	public Compte save(Compte c) {
+	public Compte createOrUpdate(Compte c) {
 		if(c==null) {
 			throw new CompteException();
 		}
@@ -55,9 +55,5 @@ public class CompteService {
 	
 	public void deleteById(Long id) {
 		delete(getById(id));
-	}
-	
-	public boolean exist(Long id) {
-		return compteRepo.existsById(id);
 	}
 }
