@@ -8,9 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Commit;
 
-import rudyAirtSecurite.model.Administrateur;
-import rudyAirtSecurite.model.Utilisateur;
-import rudyAirtSecurite.repository.CompteRepository;
+import rudyAir.model.compte.Admin;
+import rudyAir.model.compte.Client;
+import rudyAir.repositories.ICompteRepository;
 
 @SpringBootTest
 public class InitUserTest {
@@ -18,18 +18,18 @@ public class InitUserTest {
 	@Autowired
 	PasswordEncoder passwordEncoder;
 	@Autowired
-	CompteRepository compteRepo;
+	ICompteRepository compteRepo;
 
 	@Test
 	@Transactional
 	@Commit
 	public void initUser() {
-		Utilisateur u = new Utilisateur();
+		Client u = new Client();
 		u.setEmail("u@u.fr");
 		u.setPassword(passwordEncoder.encode("user"));
 		compteRepo.save(u);
 
-		Administrateur a = new Administrateur();
+		Admin a = new Admin();
 		a.setEmail("a@a.fr");
 		a.setPassword(passwordEncoder.encode("admin"));
 		compteRepo.save(a);

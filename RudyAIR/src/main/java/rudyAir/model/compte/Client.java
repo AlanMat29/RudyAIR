@@ -12,13 +12,12 @@ import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
 
 @Entity
-@DiscriminatorValue("users")
+@DiscriminatorValue("client")
 public class Client extends Compte {
 
 	@Embedded
 	private Adresse adresse;
 	@Enumerated(EnumType.ORDINAL)
-	@Column(name = "Abonnement")
 	private Abonnement abonnement;
 	@OneToMany(mappedBy = "client")
 	private List<Reservation> reservations = new ArrayList<Reservation>();

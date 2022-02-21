@@ -19,7 +19,9 @@ public class Horaire {
 	}
  
 
+
 	public Horaire(LocalTime heureDepart, LocalTime heureArrivee) {
+		super();
 		this.heureDepart = heureDepart;
 		this.heureArrivee = heureArrivee;
 	}
