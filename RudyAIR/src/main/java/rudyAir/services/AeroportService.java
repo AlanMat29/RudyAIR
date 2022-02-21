@@ -29,6 +29,10 @@ public class AeroportService {
 		return aeroportRepo.findById(id).orElseThrow(AeroportException::new);
 	}
 	
+	public Aeroport getbyNom(String Nom) {
+		return aeroportRepo.findByNom(Nom).orElseThrow(AeroportException::new);
+	}
+	
 	public Aeroport save(Aeroport aeroport) {
 		if(aeroport==null) {
 			throw new AeroportException();

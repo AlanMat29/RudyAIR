@@ -19,12 +19,12 @@ import rudyAir.model.compte.Reservation;
 import rudyAir.model.vol.Aeroport;
 import rudyAir.model.vol.Avion;
 import rudyAir.model.vol.Horaire;
-import rudyAir.model.vol.Siege;
 import rudyAir.model.vol.StatutAvion;
 import rudyAir.model.vol.StatutVol;
 import rudyAir.model.vol.Ville;
 import rudyAir.model.vol.Vol;
 import rudyAir.model.vol.VolGenerique;
+import rudyAir.repositories.IAeroportRepository;
 import rudyAir.repositories.ICompteRepository;
 import rudyAir.repositories.IVilleRepository;
 import rudyAir.services.AeroportService;
@@ -46,7 +46,10 @@ public class BDDTest {
 	
 	@Autowired
 	IVilleRepository villeRepo;
-
+	
+	@Autowired
+	IAeroportRepository aeroRepo;
+	
 	@Autowired
 	private VolService volService;
 
