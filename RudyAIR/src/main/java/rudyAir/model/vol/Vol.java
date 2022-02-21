@@ -32,16 +32,17 @@ public class Vol {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqVol")
 	@Column(name = "vol_id")
 	private Long id;
-	@Column(name = "vol_date_arrivee")
-	private LocalDate dateArrivee;
 	@Column(name = "vol_date_depart")
 	private LocalDate dateDepart;
+	@Column(name = "vol_date_arrivee")
+	private LocalDate dateArrivee;
 	@Enumerated(EnumType.STRING)
 	@Column(name = "vol_statut")
 	private StatutVol statutVol;
 	@Column(name = "vol_numero")
 	private String numeroVol;
-	@OneToOne(mappedBy = "vol")
+	@OneToOne
+	@JoinColumn(name="vol_volGen_id", foreignKey=@ForeignKey(name="vol_volGen_id_fk"))
 	private VolGenerique volGenerique;
 	@OneToOne
 	@JoinColumn(name="vol_avion_id", foreignKey=@ForeignKey(name="vol_avion_id_fk"))
