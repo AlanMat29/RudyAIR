@@ -4,13 +4,20 @@ import java.time.LocalTime;
 
 import javax.persistence.Embeddable;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Embeddable
 public class Horaire {
+	@DateTimeFormat(pattern = "HH:mm")
 	private LocalTime heureDepart;
+	@DateTimeFormat(pattern = "HH:mm")
 	private LocalTime heureArrivee;
 
 
-	public Horaire() {}
+	public Horaire() {
+		
+	}
+ 
 
 
 	public Horaire(LocalTime heureDepart, LocalTime heureArrivee) {

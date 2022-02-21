@@ -3,6 +3,7 @@ package rudyAir.model.vol;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,6 +33,7 @@ public class Ville {
 	private String nom;
 	@NotEmpty
 	@JsonView(Views.Common.class)
+	@Column(unique = true)
 	private String cp;
 	@OneToMany(mappedBy = "ville")
 	@JsonView(Views.VilleWithAeroports.class)
@@ -42,6 +44,24 @@ public class Ville {
 
 	public Ville() {}
 	
+	
+
+	public Ville(String nom, String cp) {
+		super();
+		this.nom = nom;
+		this.cp = cp;
+	}
+
+	
+
+	public Ville(Long id, String nom, String cp) {
+		super();
+		Id = id;
+		this.nom = nom;
+		this.cp = cp;
+	}
+
+
 
 	public Ville(Long id, String nom, String cp, List<Aeroport> aeroports) {
 		super();

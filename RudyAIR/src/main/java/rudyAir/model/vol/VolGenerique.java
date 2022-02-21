@@ -42,8 +42,7 @@ public class VolGenerique {
 	@ManyToOne
 	@JoinColumn(name="volGen_aeroportArrivee_id", foreignKey=@ForeignKey(name="volGen_aeroportArrivee_id_fk"), nullable=false)
 	private Aeroport aeroportArrivee;
-	@OneToOne
-	@JoinColumn(name="volGen_vol_id", foreignKey=@ForeignKey(name="volGen_vol_id_fk"))
+	@OneToOne(mappedBy = "volGenerique")
 	private Vol vol;
 	@Version
 	private int version;
