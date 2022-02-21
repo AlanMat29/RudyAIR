@@ -1,41 +1,46 @@
 package rudyAir.model.vol;
 
-import java.time.LocalDate;
+import java.time.LocalTime;
 
 import javax.persistence.Embeddable;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Embeddable
 public class Horaire {
-	private LocalDate heureDepart;
-	private LocalDate heureArrivee;
+	@DateTimeFormat(pattern = "HH:mm")
+	private LocalTime heureDepart;
+	@DateTimeFormat(pattern = "HH:mm")
+	private LocalTime heureArrivee;
 
 
-	public Horaire() {}
+	public Horaire() {
+		
+	}
+ 
 
-
-	public Horaire(LocalDate heureDepart, LocalDate heureArrivee) {
-		super();
+	public Horaire(LocalTime heureDepart, LocalTime heureArrivee) {
 		this.heureDepart = heureDepart;
 		this.heureArrivee = heureArrivee;
 	}
 
 
-	public LocalDate getHeureDepart() {
+	public LocalTime getHeureDepart() {
 		return heureDepart;
 	}
 
 
-	public void setHeureDepart(LocalDate heureDepart) {
+	public void setHeureDepart(LocalTime heureDepart) {
 		this.heureDepart = heureDepart;
 	}
 
 
-	public LocalDate getHeureArrivee() {
+	public LocalTime getHeureArrivee() {
 		return heureArrivee;
 	}
 
 
-	public void setHeureArrivee(LocalDate heureArrivee) {
+	public void setHeureArrivee(LocalTime heureArrivee) {
 		this.heureArrivee = heureArrivee;
 	}
 
