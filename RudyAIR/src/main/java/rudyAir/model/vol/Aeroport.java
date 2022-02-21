@@ -25,19 +25,19 @@ import com.fasterxml.jackson.annotation.JsonView;
 import rudyAir.model.Views;
 
 @Entity
-@SequenceGenerator(name="seqAeroport", sequenceName="seq_aeroport", initialValue = 100, allocationSize = 1)
+@SequenceGenerator(name = "seqAeroport", sequenceName = "seq_aeroport", initialValue = 100, allocationSize = 1)
 public class Aeroport {
 	@JsonView(Views.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAeroport")
-	private Long Id;
+	private Long id;
 	@Length(min = 1, max = 50)
 	@NotEmpty
 	@JsonView(Views.Common.class)
 	@Column(unique = true)
 	private String nom;
 	@ManyToOne
-	@JoinColumn(name="ville_id", foreignKey=@ForeignKey(name="aeroport_ville_id_fk"))
+	@JoinColumn(name = "ville_id", foreignKey = @ForeignKey(name = "aeroport_ville_id_fk"))
 	@JsonView(Views.AeroportWithVille.class)
 	private Ville ville;
 	@OneToMany(mappedBy = "aeroportDepart")
@@ -50,25 +50,31 @@ public class Aeroport {
 	private int version;
 
 	public Aeroport() {
-		
+
 	}
 
 	public Aeroport(Long id, String nom, Ville ville, List<VolGenerique> volsGeneriquesDeparts,
 			List<VolGenerique> volsGeneriquesArrivees) {
 		super();
-		Id = id;
+		this.id = id;
 		this.nom = nom;
 		this.ville = ville;
 		this.volsGeneriquesDeparts = volsGeneriquesDeparts;
 		this.volsGeneriquesArrivees = volsGeneriquesArrivees;
 	}
 
+	public Aeroport(String nom, Ville ville) {
+		super();
+		this.nom = nom;
+		this.ville = ville;
+	}
+
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getNom() {
@@ -113,7 +119,7 @@ public class Aeroport {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(Id);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -125,7 +131,7 @@ public class Aeroport {
 		if (getClass() != obj.getClass())
 			return false;
 		Aeroport other = (Aeroport) obj;
-		return Objects.equals(Id, other.Id);
+		return Objects.equals(id, other.id);
 	}
 
 

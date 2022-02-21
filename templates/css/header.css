@@ -1,7 +1,9 @@
 /* header start*/
 header{
-  height: 10%;
-  background-color: #fddbb6;
+  height: 8%;
+  background-color: #ffffff;
+  font-family: Arial;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
   display: flex;
   align-items: center;
 }
@@ -12,11 +14,7 @@ header{
   margin: auto;
   cursor: pointer;
 }
-.format-logo{
-  max-width: 70px;
-  height:auto;
-  margin-left: 10px;
-  margin-bottom: 15px;
-  cursor: pointer;
+.logo-img{
+  height:75px;
 }
 /* logo end*/

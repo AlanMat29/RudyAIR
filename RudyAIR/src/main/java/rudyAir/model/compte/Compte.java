@@ -59,15 +59,16 @@ public class Compte {
 
 	}
 
-	public Compte(Long id, String nom, String prenom, LocalDate dateNaissance) {
+	public Compte(Long id, String nom, String prenom, LocalDate dateNaissance, String email, String password) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateNaissance = dateNaissance;
+		this.email = email;
+		this.password = password;
 	}
 
-	public Compte(Long id, String nom, String prenom, LocalDate dateNaissance, String email, String password) {
-		this.id = id;
+	public Compte(String nom, String prenom, LocalDate dateNaissance, String email, String password) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateNaissance = dateNaissance;

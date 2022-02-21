@@ -2907,47 +2907,13 @@
 											"height": 13,
 											"text": "-modifierVol(): void",
 											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAF+uzv9JjsBLuM=",
-											"_parent": {
-												"$ref": "AAAAAAF+uzuc6jq5Je0="
-											},
-											"model": {
-												"$ref": "AAAAAAF+uzv9HDr+tRc="
-											},
-											"font": "Arial;13;0",
-											"left": 1581,
-											"top": 882,
-											"width": 294,
-											"height": 13,
-											"text": "-acheterAvion(): void",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAF+uzwADTsHp30=",
-											"_parent": {
-												"$ref": "AAAAAAF+uzuc6jq5Je0="
-											},
-											"model": {
-												"$ref": "AAAAAAF+uzwABTsEjQY="
-											},
-											"font": "Arial;13;0",
-											"left": 1581,
-											"top": 897,
-											"width": 294,
-											"height": 13,
-											"text": "-changerAeroport(): void",
-											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1576,
 									"top": 787,
 									"width": 304,
-									"height": 128
+									"height": 98
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -10213,46 +10179,6 @@
 									"_id": "AAAAAAF+uzzY5TsRwAk=",
 									"_parent": {
 										"$ref": "AAAAAAF+uzvwETr4VGQ="
-									},
-									"type": "void",
-									"direction": "return"
-								}
-							]
-						},
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAF+uzv9HDr+tRc=",
-							"_parent": {
-								"$ref": "AAAAAAF+uzuc6Dqw9ew="
-							},
-							"name": "acheterAvion",
-							"visibility": "private",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAF+uzzC5zsOHHM=",
-									"_parent": {
-										"$ref": "AAAAAAF+uzv9HDr+tRc="
-									},
-									"type": "void",
-									"direction": "return"
-								}
-							]
-						},
-						{
-							"_type": "UMLOperation",
-							"_id": "AAAAAAF+uzwABTsEjQY=",
-							"_parent": {
-								"$ref": "AAAAAAF+uzuc6Dqw9ew="
-							},
-							"name": "changerAeroport",
-							"visibility": "private",
-							"parameters": [
-								{
-									"_type": "UMLParameter",
-									"_id": "AAAAAAF+uzymwTsLEQY=",
-									"_parent": {
-										"$ref": "AAAAAAF+uzwABTsEjQY="
 									},
 									"type": "void",
 									"direction": "return"
