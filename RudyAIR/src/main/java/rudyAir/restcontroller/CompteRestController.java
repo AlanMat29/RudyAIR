@@ -55,7 +55,7 @@ public class CompteRestController {
 	@PutMapping("/{id}")
 	@JsonView(Views.Common.class)
 	public Compte update(@Valid @RequestBody Compte compte, BindingResult br, @PathVariable Long id) {
-		if (br.hasErrors() || !compteService.exist(id)) {
+		if (br.hasErrors()) {
 			throw new CompteException();
 		}
 		return compteService.save(compte);
