@@ -62,6 +62,12 @@ public class Passager {
 		this.dateDeNaissance = dateDeNaissance;
 		this.reservation = reservation;
 	}
+	
+	public Passager(String nom, String prenom, LocalDate dateDeNaissance) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateDeNaissance = dateDeNaissance;
+	}
 
 	public String getNom() {
 		return this.nom;

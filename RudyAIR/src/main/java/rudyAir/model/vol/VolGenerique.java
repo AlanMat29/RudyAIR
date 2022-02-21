@@ -32,21 +32,20 @@ public class VolGenerique {
 	@Column(name = "volGen_num")
 	private String numVolGen;
 	@Embedded
-	@AttributeOverrides({ 
-		@AttributeOverride(name="heureDepart", column=@Column(name="volGen_heuredepart")),
-		@AttributeOverride(name="heureArrivee", column=@Column(name="volGen_heurearrivee"))})
+	@AttributeOverrides({ @AttributeOverride(name = "heureDepart", column = @Column(name = "volGen_heuredepart")),
+			@AttributeOverride(name = "heureArrivee", column = @Column(name = "volGen_heurearrivee")) })
 	private Horaire horaire;
 	@ManyToOne
-	@JoinColumn(name="volGen_aeroportDepart_id", foreignKey=@ForeignKey(name="volGen_aeroportDepart_id_fk"), nullable=false)
+	@JoinColumn(name = "volGen_aeroportDepart_id", foreignKey = @ForeignKey(name = "volGen_aeroportDepart_id_fk"), nullable = false)
 	private Aeroport aeroportDepart;
 	@ManyToOne
-	@JoinColumn(name="volGen_aeroportArrivee_id", foreignKey=@ForeignKey(name="volGen_aeroportArrivee_id_fk"), nullable=false)
+	@JoinColumn(name = "volGen_aeroportArrivee_id", foreignKey = @ForeignKey(name = "volGen_aeroportArrivee_id_fk"), nullable = false)
 	private Aeroport aeroportArrivee;
 	@OneToOne(mappedBy = "volGenerique")
 	private Vol vol;
 	@Version
 	private int version;
-	
+
 	public VolGenerique() {
 
 	}
@@ -61,6 +60,16 @@ public class VolGenerique {
 		this.aeroportDepart = aeroportDepart;
 		this.aeroportArrivee = aeroportArrivee;
 		this.vol = vol;
+	}
+
+	public VolGenerique(double prix, String numVolGen, Horaire horaire, Aeroport aeroportDepart,
+			Aeroport aeroportArrivee) {
+		super();
+		this.prix = prix;
+		this.numVolGen = numVolGen;
+		this.horaire = horaire;
+		this.aeroportDepart = aeroportDepart;
+		this.aeroportArrivee = aeroportArrivee;
 	}
 
 	public Long getId() {
@@ -118,7 +127,7 @@ public class VolGenerique {
 	public void setVol(Vol vol) {
 		this.vol = vol;
 	}
-	
+
 	public int getVersion() {
 		return version;
 	}
@@ -126,13 +135,12 @@ public class VolGenerique {
 	public void setVersion(int version) {
 		this.version = version;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
 
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
