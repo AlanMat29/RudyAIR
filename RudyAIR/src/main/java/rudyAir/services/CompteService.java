@@ -56,4 +56,9 @@ public class CompteService {
 	public void deleteById(Long id) {
 		delete(getById(id));
 	}
+
+
+	public boolean exist(Long id) {
+		return compteRepo.existsById(id);
+	}
 }
