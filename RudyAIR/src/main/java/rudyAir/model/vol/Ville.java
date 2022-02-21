@@ -42,9 +42,7 @@ public class Ville {
 	private int version;
 
 
-	public Ville() {
-		
-	}
+	public Ville() {}
 	
 	
 

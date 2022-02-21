@@ -74,31 +74,7 @@ public class Compte {
 		this.email = email;
 		this.password = password;
 	}
-
-	// M�thodes
-	public static void rechercherTrajet() {
-
-	}
-
-	public static void reserverTrajet() {
-
-	}
-
-	public static void acheterBillet() {
-
-	}
-
-	public static void modifierBillet() {
-
-	}
-
-	public static void annulerBillet() {
-
-	}
-
-	public static void consulterVol() {
-
-	}
+	
 
 	// Getters-Setters
 	public Long getId() {

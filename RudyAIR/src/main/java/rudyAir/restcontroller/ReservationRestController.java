@@ -19,52 +19,51 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import rudyAir.exceptions.CompteException;
+import rudyAir.exceptions.ReservationException;
 import rudyAir.model.Views;
-import rudyAir.model.compte.Compte;
-import rudyAir.services.CompteService;
+import rudyAir.model.compte.Reservation;
+import rudyAir.services.ReservationService;
 
 @RestController
-@RequestMapping("/api/compte")
-public class CompteRestController {
-	
+@RequestMapping("/api/reservation")
+public class ReservationRestController {
+
 	@Autowired
-	private CompteService compteService;
-	
+	private ReservationService reservationService;
+
 	@GetMapping("")
 	@JsonView(Views.Common.class)
-	public List<Compte> getAll() {
-		return compteService.getAll();
+	public List<Reservation> getAll() {
+		return reservationService.getAll();
 	}
-	
+
 	@GetMapping("/{id}")
-	public Compte getById(@PathVariable Long id) {
-		return compteService.getById(id);
+	@JsonView(Views.Common.class)
+	public Reservation getById(@PathVariable Long id) {
+		return reservationService.getById(id);
 	}
 
 	@PostMapping("")
-	@JsonView(Views.Common.class)
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Compte create(@Valid @RequestBody Compte compte, BindingResult br) {
+	public Reservation create(@Valid @RequestBody Reservation reservation, BindingResult br) {
 		if (br.hasErrors()) {
-			throw new CompteException();
+			throw new ReservationException();
 		}
-		return compteService.save(compte);
+		return reservationService.save(reservation);
 	}
 
 	@PutMapping("/{id}")
-	@JsonView(Views.Common.class)
-	public Compte update(@Valid @RequestBody Compte compte, BindingResult br, @PathVariable Long id) {
-		if (br.hasErrors() || !compteService.exist(id)) {
-			throw new CompteException();
+	public Reservation update(@PathVariable Long id, @Valid @RequestBody Reservation reservation, BindingResult br) {
+		if (reservation.getId() == null || id != reservation.getId() || br.hasErrors()) {
+			throw new ReservationException();
 		}
-		return compteService.save(compte);
+		return reservationService.save(reservation);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
-		compteService.deleteById(id);
+		reservationService.deleteById(id);
 	}
 
 }

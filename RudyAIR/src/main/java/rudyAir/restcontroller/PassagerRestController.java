@@ -19,52 +19,52 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import rudyAir.exceptions.CompteException;
+import rudyAir.exceptions.PassagerException;
 import rudyAir.model.Views;
-import rudyAir.model.compte.Compte;
-import rudyAir.services.CompteService;
+import rudyAir.model.compte.Passager;
+import rudyAir.services.PassagerService;
 
 @RestController
-@RequestMapping("/api/compte")
-public class CompteRestController {
-	
+@RequestMapping("/api/passager")
+public class PassagerRestController {
+
 	@Autowired
-	private CompteService compteService;
+	private PassagerService passagerService;
+
 	
 	@GetMapping("")
 	@JsonView(Views.Common.class)
-	public List<Compte> getAll() {
-		return compteService.getAll();
+	public List<Passager> getAll() {
+		return passagerService.getAll();
 	}
 	
 	@GetMapping("/{id}")
-	public Compte getById(@PathVariable Long id) {
-		return compteService.getById(id);
+	@JsonView(Views.Common.class)
+	public Passager getById(@PathVariable Long id) {
+		return passagerService.getById(id);
 	}
 
 	@PostMapping("")
-	@JsonView(Views.Common.class)
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Compte create(@Valid @RequestBody Compte compte, BindingResult br) {
+	public Passager create(@Valid @RequestBody Passager passager, BindingResult br) {
 		if (br.hasErrors()) {
-			throw new CompteException();
+			throw new PassagerException();
 		}
-		return compteService.save(compte);
+		return passagerService.save(passager);
 	}
 
 	@PutMapping("/{id}")
-	@JsonView(Views.Common.class)
-	public Compte update(@Valid @RequestBody Compte compte, BindingResult br, @PathVariable Long id) {
-		if (br.hasErrors() || !compteService.exist(id)) {
-			throw new CompteException();
+	public Passager update(@PathVariable Long id, @Valid @RequestBody Passager passager, BindingResult br) {
+		if (passager.getId() == null || id != passager.getId() || br.hasErrors()) {
+			throw new PassagerException();
 		}
-		return compteService.save(compte);
+		return passagerService.save(passager);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
-		compteService.deleteById(id);
+		passagerService.deleteById(id);
 	}
 
 }

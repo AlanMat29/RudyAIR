@@ -32,4 +32,7 @@ public class Views {
 	public static class VolGeneneriqueWithVol extends Common {
 
 	}
+	public static class PassgerWithClient extends Common {
+
+	}
 }

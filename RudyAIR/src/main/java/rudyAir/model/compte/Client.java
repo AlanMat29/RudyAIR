@@ -22,9 +22,8 @@ public class Client extends Compte {
 	@OneToMany(mappedBy = "client")
 	private List<Reservation> reservations = new ArrayList<Reservation>();
 
-	public Client() {
 
-	}
+	public Client() {}
 
 	public Client(Adresse adresse, Abonnement abonnement, List<Reservation> reservations) {
 		super();

@@ -4,6 +4,7 @@ package rudyAir.model.vol;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -17,6 +18,7 @@ import javax.persistence.Version;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -32,6 +34,7 @@ public class Aeroport {
 	@Length(min = 1, max = 50)
 	@NotEmpty
 	@JsonView(Views.Common.class)
+	@Column(unique = true)
 	private String nom;
 	@ManyToOne
 	@JoinColumn(name="ville_id", foreignKey=@ForeignKey(name="aeroport_ville_id_fk"))
