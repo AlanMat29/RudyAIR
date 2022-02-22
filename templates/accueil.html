@@ -16,6 +16,7 @@
 body {
   margin: auto;
   width: 100%;
+  height: 200%;
   font-size: 1em;
   font-family: 'Open Sans',Helvetica,sans-serif;
   max-width: 3840px;
@@ -77,12 +78,12 @@ header{
 }
 
 .logo-img:hover{
-  filter: contrast(1.6);
+  filter: contrast(1.5);
 }
 
 .menu-burger{
-  margin-top: 35px;
-  padding-left: 10px;
+  margin-top: 25px;
+  padding: 5px;
   height: 45px;
 }
 
@@ -99,9 +100,8 @@ header{
 .main-menu{
   display: flex;
   font-size: 16px;
-  color:blue;
   width:45%;
-  background-color: black;
+  background-color: none;
   justify-content: center;
 
 }
@@ -109,15 +109,20 @@ header{
 .main-menu-box{
   display: flex;
   flex-direction: row;
-  margin-top: 20px;
-  background-color: green;
+  margin-top: 30px;
+  padding-bottom: 25px;
+  background-color: none;
+}
+
+.main-menu-items{
+  margin-left: 10px;
 }
 
 a.main-menu-items {
   display: flex;
-  margin-top: 10px;
+  margin-top: 5px;
   color: var(--color-blue);
-  padding: 0px 12px 0px 12px;
+  padding: 2px 8px 0px 8px;
   border-radius: 12px;
 }
 
@@ -140,7 +145,7 @@ a.main-menu-items:hover {font-size:110%; color: white; background-color: var(--c
 --------------------------------------------------------------*/
 #main{
   display: flex;
-  min-height:200%;
+  min-height:100%;
   padding-top: 1em;
   justify-content: center;
   flex-wrap: wrap;
@@ -150,6 +155,7 @@ a.main-menu-items:hover {font-size:110%; color: white; background-color: var(--c
 /*--------------------------------------------------------------
 # CAROUSSEL
 --------------------------------------------------------------*/
+
 * {box-sizing: border-box}
 .mySlides {display: none}
 img.trip {width: 100%;height:70%;vertical-align: middle;}
@@ -265,21 +271,26 @@ img.trip {width: 100%;height:70%;vertical-align: middle;}
 /*--------------------------------------------------------------
 # PARTENAIRE
 --------------------------------------------------------------*/
-
 #parternaire{
-  display: inline-block;
+  display: flex;
+  flex-direction:column;
   width: 80%;
+}
+
+#containerParternaire{
+  display:flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.col{
+  height: 200px; width: 310px;
 }
 
 img.publicite{
-  height: 200px;width: 330px;
-}
+  height: 80%; width: 100%;
 
-#containerPart{
-  display:flex;
-  width: 80%;
-  justify-content: space-between;
-}
+  }
 
 #vaincrePeur{
   width: 80%;
@@ -292,28 +303,41 @@ footer{
   display: flex;
   color: white;
   background-color: var(--color-footer);
-  height:16em;
+  height:14em;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-end;
+  margin-top: 5%;
 
 }
 
 a.item{
   color: white;
+  font-size: 1.0em;
 
 }
 a.item-tittle-Link{
   font-size: 1.1em;
   font-weight: bolder;
-  color: #D4AF37;
+  color: var(--color-gold);
+}
+
+
+#footerLink{
+  display: flex;
+  background-color: var(--color-footer);
+  height:70%;
+  width:90%;
+  font:italic 1em/2;
+  justify-content:space-between;
+  margin-top: 10px;
 }
 
 #footerExterneLink{
-  background-color: black;
-  width: 4000px;
-
-
+  background-color: none;
+  display: flex;
+  width:25%;
+  flex-wrap: wrap;
 }
 
 .external-title{
@@ -323,24 +347,6 @@ a.item-tittle-Link{
 }
 
 .rudyairApp{
-  display: flex;
-  flex-direction: row;
-}
-
-#footerLink{
-  display: flex;
-  background-color: #3d6183;
-  height:90%;
-  width:90%;
-  font:italic 1em/2;
-  justify-content:space-around;
-  padding-top: 40px;
-}
-
-#footerExterneLink{
-  display: flex;
-  width:20%;
-  flex-wrap: wrap;
 }
 
 #footerCopyright{
@@ -411,52 +417,45 @@ a.item-tittle-Link{
 
   <main id="main" class="">
 
-    <!-- ---------------------DEBUT CAROUSSEL-------------------- -->
+    <!-- -DEBUT CAROUSSEL -->
+      <div class="slideshow-container">
 
-    <div class="slideshow-container">
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 3</div>
+          <img class="trip" src="asset/img/trip/toulouse-france.jpg">
+          <div class="text">Toulouse <br>- La ville rose -</div>
+        </div>
 
-      <div class="mySlides fade">
-        <div class="numbertext">1 / 3</div>
-        <img class="trip" src="asset/img/trip/toulouse-france.jpg">
-        <div class="text">Toulouse <br>- La ville rose -</div>
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 3</div>
+          <img class="trip" src="asset/img/trip/nosy-be.jpg">
+          <div class="text">Nosy-be <br>- Madagascar island -</div>
+        </div>
+
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 3</div>
+          <img class="trip" src="asset/img/trip/kyoto-japan.jpg">
+          <div class="text">Kyoto <br>- Terre de sakura -</div>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+        <div style="text-align:center">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+
       </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext">2 / 3</div>
-        <img class="trip" src="asset/img/trip/nosy-be.jpg">
-        <div class="text">Nosy-be <br>- Madagascar island -</div>
-      </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext">3 / 3</div>
-        <img class="trip" src="asset/img/trip/kyoto-japan.jpg">
-        <div class="text">Kyoto <br>- Terre de sakura -</div>
-      </div>
-
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-      <div style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-      </div>
-
-    </div>
-    <br>
-
-
-
-    <!-- ---------------------FIN CAROUSSEL-------------------- -->
-
-    <p></p>
+    <!-- DEBUT RECHERCHEL -->
     <div id="searchVol" class="padding10" style="border: solid black 1px" width="50%">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </div>
-    <p></p>
+    <!--  PARTENAIRE -->
     <div id="parternaire" class="padding10">
       <div class="titre">Les essentiels du voyage</div>
-      <div id="containerPart">
+      <div id="containerParternaire">
         <div class="col">
           <img alt="Chauffeur" class="publicite" src="asset/img/Chauffeur.png">
           <br><div class="">
@@ -476,46 +475,47 @@ a.item-tittle-Link{
           </div>
         </div>
       </div>
-      <p></p>
     </div>
-    <div id="vaincrePeur" class="padding10">
-      <div class="titre">Vaincre sa peur du vol</div>
-      <img alt="peurAvion" height="150px" width="100%" style="max-height:520px;max-width:1820px;" src="asset/img/vaincrePeur.png" />
+    <!-- VAINCE SA PEUR -->
+    <div id="vaincrePeur" class="dpadding10">
+      <div class="titre">Vaincre sa peur de prendre l'Avion</div>
+      <img alt="peurAvion" height="85%" width="100%" style="max-height:140px;max-width:1820px;" src="asset/img/vaincrePeur.png" />
     </div>
   </main>
-
-  <footer>
+  <!--
+  FOOTER -->
+  <footer class="">
     <div id="footerLink" class="padding10">
       <div id="footerAbout"><a class="item-tittle-Link" href="">A propos de nous</a>
         <table>
-          <tr><td><a class="item" href="">Item 1</a></td></tr>
-          <tr><td><a class="item" href="">Item 2</a></td></tr>
-          <tr><td><a class="item" href="">Item 3</a></td></tr>
-          <tr><td><a class="item" href="">Item 4</a></td></tr>
+          <tr><td><a class="item" href="">RudyAIR</a></td></tr>
+          <tr><td><a class="item" href="">Nos valeurs</a></td></tr>
+          <tr><td><a class="item" href="">Nos collaborations</a></td></tr>
+          <tr><td><a class="item" href="">Nous contacter</a></td></tr>
         </table>
       </div>
       <div id="footerSAV"><a class="item-tittle-Link" href="">Service client</a>
         <table>
-          <tr><td><a class="item" href="">Item 1</a></td></tr>
-          <tr><td><a class="item" href="">Item 2</a></td></tr>
-          <tr><td><a class="item" href="">Item 3</a></td></tr>
-          <tr><td><a class="item" href="">Item 4</a></td></tr>
+          <tr><td><a class="item" href="">Réserver un billet</a></td></tr>
+          <tr><td><a class="item" href="">Remboursement</a></td></tr>
+          <tr><td><a class="item" href="">Assistance à la personne</a></td></tr>
+          <tr><td><a class="item" href="">Services Prenium</a></td></tr>
         </table>
       </div>
       <div id="footerPlanifier"><a class="item-tittle-Link"  href="">Planifier votre voyage</a>
         <table>
-          <tr><td><a class="item" href="">Item 1</a></td></tr>
-          <tr><td><a class="item" href="">Item 2</a></td></tr>
-          <tr><td><a class="item" href="">Item 3</a></td></tr>
-          <tr><td><a class="item" href="">Item 4</a></td></tr>
+          <tr><td><a class="item" href="">Documents Utiles</a></td></tr>
+          <tr><td><a class="item" href="">Préparer ses bagages</a></td></tr>
+          <tr><td><a class="item" href="">Parking</a></td></tr>
+          <tr><td><a class="item" href="">Comment s'enregister</a></td></tr>
         </table>
       </div>
       <div id="footerTrip"><a class="item-tittle-Link" href="">Top destinations</a>
         <table>
-          <tr><td><a class="item" href="">Item 1</a></td></tr>
-          <tr><td><a class="item" href="">Item 2</a></td></tr>
-          <tr><td><a class="item" href="">Item 3</a></td></tr>
-          <tr><td><a class="item" href="">Item 4</a></td></tr>
+          <tr><td><a class="item" href="">>Toulouse</a></td></tr>
+          <tr><td><a class="item" href="">>Kyoto</a></td></tr>
+          <tr><td><a class="item" href="">>Nosy-be</a></td></tr>
+          <tr><td><a class="item" href="">>Auckland</a></td></tr>
         </table>
       </div>
 
@@ -539,9 +539,9 @@ a.item-tittle-Link{
 
 
 </body>
-<!------------------------------------------------------------
+<!---
 # CAROUSSEL
--------------------------------------------------------------->
+--->
 <script>
 var slideIndex = 1;
 showSlides(slideIndex);

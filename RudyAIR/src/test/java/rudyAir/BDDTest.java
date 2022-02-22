@@ -19,6 +19,7 @@ import rudyAir.model.compte.Reservation;
 import rudyAir.model.vol.Aeroport;
 import rudyAir.model.vol.Avion;
 import rudyAir.model.vol.Horaire;
+import rudyAir.model.vol.Siege;
 import rudyAir.model.vol.StatutAvion;
 import rudyAir.model.vol.StatutVol;
 import rudyAir.model.vol.Ville;
@@ -150,11 +151,12 @@ public class BDDTest {
 		resa.setBagage(3);
 		reservationService.save(resa);
 
-//		Siege siege = new Siege();
-//		siege.setNumero(13);
-////		siege.setAvion(avion);
-////		siege.setReservation(resa);
-//		siegeService.save(siege);
+		Siege siege = new Siege();
+		siege.setNumero(13);
+		siege.setId(null);
+//		siege.setAvion(avion);
+//		siege.setReservation(resa);
+		siegeService.save(siege);
 
 
 	}

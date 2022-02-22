@@ -30,17 +30,17 @@ public class Reservation {
 	@JsonView(Views.Common.class)
 	private Long id;
 	@ManyToOne
-	@JoinColumn(name = "resa_vol_id", foreignKey = @ForeignKey(name = "resa_vol_id_fk"), nullable = false)
-	@NotEmpty
+	@JoinColumn(name = "resa_vol_id", foreignKey = @ForeignKey(name = "resa_vol_id_fk"), nullable = true)
+	//@NotEmpty
 	@JsonView(Views.Common.class)
 	private Vol vol;
 	@OneToOne
-	@JoinColumn(name = "resa_passager_id", foreignKey = @ForeignKey(name = "resa_passager_id_fk"), nullable = false)
-	@NotEmpty
+	@JoinColumn(name = "resa_passager_id", foreignKey = @ForeignKey(name = "resa_passager_id_fk"), nullable = true)
+	//@NotEmpty
 	@JsonView(Views.Common.class)
 	private Passager passager;
 	@ManyToOne
-	@NotEmpty
+	//@NotEmpty
 	@JsonView(Views.PassgerWithClient.class)
 	private Client client;
 	@JsonView(Views.Common.class)

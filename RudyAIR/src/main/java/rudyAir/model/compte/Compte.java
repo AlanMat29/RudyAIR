@@ -47,7 +47,7 @@ public class Compte {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateNaissance;
 	@JsonView(Views.Common.class)
-	@NotEmpty
+	//@NotEmpty
 	@Column(length = 50, nullable = false, unique = true)
 	@Email
 	private String email;
