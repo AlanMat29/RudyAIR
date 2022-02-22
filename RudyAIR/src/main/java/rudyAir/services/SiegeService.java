@@ -19,7 +19,7 @@ public class SiegeService {
 	
 
 	private void checkData(Siege s) {
-		if (s.getNumero() < 0 || s.getNumero() > 800) {
+		if (s.getNumero() <= 0 || s.getNumero() > 800) {
 			throw new SiegeException("Donnees incorrectes");
 		}
 	}
@@ -35,20 +35,15 @@ public class SiegeService {
 	}
 	
 	public Siege save(Siege siege) {
-		if(siege==null) {
-			throw new SiegeException();
-		}
-		// Create new
-		if (siege.getId() == null) {
-			checkData(siege);
-			return siegeRepo.save(siege);
-		}
-		// Update existing
-		else {
-			Siege siegeEnBase = getById(siege.getId());
+		Siege siegeEnBase = null;
+		checkData(siege);
+		try {
+			siegeEnBase = getById(siege.getId());
 			siegeEnBase.setNumero(siege.getNumero());
-			return siegeRepo.save(siegeEnBase);
+		} catch (SiegeException e) {
+			siegeEnBase = siegeRepo.save(siege);
 		}
+		return siegeEnBase;
 	}
 	
 	public void delete(SiegeKey siegeKey) {
