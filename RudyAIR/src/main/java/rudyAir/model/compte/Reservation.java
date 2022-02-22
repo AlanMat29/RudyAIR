@@ -14,7 +14,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -31,16 +30,13 @@ public class Reservation {
 	private Long id;
 	@ManyToOne
 	@JoinColumn(name = "resa_vol_id", foreignKey = @ForeignKey(name = "resa_vol_id_fk"), nullable = false)
-	@NotEmpty
 	@JsonView(Views.Common.class)
 	private Vol vol;
 	@OneToOne
 	@JoinColumn(name = "resa_passager_id", foreignKey = @ForeignKey(name = "resa_passager_id_fk"), nullable = false)
-	@NotEmpty
 	@JsonView(Views.Common.class)
 	private Passager passager;
 	@ManyToOne
-	@NotEmpty
 	@JsonView(Views.PassgerWithClient.class)
 	private Client client;
 	@JsonView(Views.Common.class)
@@ -61,6 +57,18 @@ public class Reservation {
 			int bagage) {
 		super();
 		this.id = id;
+		this.vol = vol;
+		this.passager = passager;
+		this.client = client;
+		this.statut = statut;
+		this.animaux = animaux;
+		this.bagage = bagage;
+	}
+	
+
+	public Reservation(Vol vol, Passager passager, Client client, boolean statut, @DecimalMin("0") Integer animaux,
+			@DecimalMin("0") int bagage) {
+		super();
 		this.vol = vol;
 		this.passager = passager;
 		this.client = client;

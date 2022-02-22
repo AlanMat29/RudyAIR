@@ -42,6 +42,12 @@ public class Avion {
 		this.statutAvion = statutAvion;
 		this.vol = vol;
 	}
+	
+	public Avion(String ref, StatutAvion statutAvion) {
+		super();
+		this.ref = ref;
+		this.statutAvion = statutAvion;
+	}
 
 
 	public String getRef() {

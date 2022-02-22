@@ -21,10 +21,8 @@ import javax.persistence.Version;
 
 import rudyAir.model.compte.Reservation;
 
-
-
 @Entity
-@Table(name="vol")
+@Table(name = "vol")
 @SequenceGenerator(name = "seqVol", sequenceName = "seq_vol", initialValue = 100, allocationSize = 1)
 public class Vol {
 
@@ -42,23 +40,37 @@ public class Vol {
 	@Column(name = "vol_numero")
 	private String numeroVol;
 	@OneToOne
-	@JoinColumn(name="vol_volGen_id", foreignKey=@ForeignKey(name="vol_volGen_id_fk"))
+	@JoinColumn(name = "vol_volGen_id", foreignKey = @ForeignKey(name = "vol_volGen_id_fk"))
 	private VolGenerique volGenerique;
 	@OneToOne
-	@JoinColumn(name="vol_avion_id", foreignKey=@ForeignKey(name="vol_avion_id_fk"))
+	@JoinColumn(name = "vol_avion_id", foreignKey = @ForeignKey(name = "vol_avion_id_fk"))
 	private Avion avion;
-	@OneToMany(mappedBy="vol")
+	@OneToMany(mappedBy = "vol")
 	private List<Reservation> reservations;
 	@Version
 	private int version;
 
-	
-	public Vol() {}
-			
-	public Vol(Long id, LocalDate dateArrivee, LocalDate dateDepart, StatutVol statutVol, String numeroVol, VolGenerique volGenerique, Horaire horaire, Avion avion) {
+	public Vol() {
+	}
+
+	public Vol(Long id, LocalDate dateDepart, LocalDate dateArrivee, StatutVol statutVol, String numeroVol,
+			VolGenerique volGenerique, Avion avion, List<Reservation> reservations) {
+		super();
 		this.id = id;
-		this.dateArrivee = dateArrivee;
 		this.dateDepart = dateDepart;
+		this.dateArrivee = dateArrivee;
+		this.statutVol = statutVol;
+		this.numeroVol = numeroVol;
+		this.volGenerique = volGenerique;
+		this.avion = avion;
+		this.reservations = reservations;
+	}
+
+	public Vol(LocalDate dateDepart, LocalDate dateArrivee, StatutVol statutVol, String numeroVol,
+			VolGenerique volGenerique, Avion avion) {
+		super();
+		this.dateDepart = dateDepart;
+		this.dateArrivee = dateArrivee;
 		this.statutVol = statutVol;
 		this.numeroVol = numeroVol;
 		this.volGenerique = volGenerique;
@@ -154,6 +166,4 @@ public class Vol {
 		return Objects.equals(id, other.id);
 	}
 
-
 }
-
