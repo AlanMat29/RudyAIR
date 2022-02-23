@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import rudyAir.exceptions.ReservationException;
-import rudyAir.exceptions.VilleException;
 import rudyAir.model.compte.Reservation;
 import rudyAir.repositories.IReservationRepository;
 
@@ -19,7 +18,7 @@ public class ReservationService {
 	private void checkData(Reservation reservation) {
 		if (reservation.getVol() == null || reservation.getPassager() == null || reservation.getAnimaux() < 0
 				|| reservation.getAnimaux() == null || reservation.getBagage() < 0) {
-			throw new VilleException("Donnees incorrectes");
+			throw new ReservationException("Donnees incorrectes");
 		}
 	}
 
@@ -57,5 +56,9 @@ public class ReservationService {
 
 	public void deleteById(Long id) {
 		delete(getById(id));
+	}
+	
+	public boolean exist(Long id) {
+		return reservationRepo.existsById(id);
 	}
 }

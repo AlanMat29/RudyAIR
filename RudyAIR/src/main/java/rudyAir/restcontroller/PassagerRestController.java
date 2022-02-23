@@ -23,6 +23,7 @@ import rudyAir.exceptions.PassagerException;
 import rudyAir.model.Views;
 import rudyAir.model.compte.Passager;
 import rudyAir.services.PassagerService;
+import rudyAir.services.SiegeService;
 
 @RestController
 @RequestMapping("/api/passager")
@@ -31,16 +32,30 @@ public class PassagerRestController {
 	@Autowired
 	private PassagerService passagerService;
 
-	
+	@Autowired
+	private SiegeService siegeService;
+
 	@GetMapping("")
 	@JsonView(Views.Common.class)
 	public List<Passager> getAll() {
 		return passagerService.getAll();
 	}
-	
+
+	@GetMapping("/reservation")
+	@JsonView(Views.PassagerWithReservation.class)
+	public List<Passager> getAllWithReservation() {
+		return passagerService.getAll();
+	}
+
 	@GetMapping("/{id}")
 	@JsonView(Views.Common.class)
 	public Passager getById(@PathVariable Long id) {
+		return passagerService.getById(id);
+	}
+
+	@GetMapping("/{id}/reservation")
+	@JsonView(Views.PassagerWithReservation.class)
+	public Passager getByIdWithReservation(@PathVariable Long id) {
 		return passagerService.getById(id);
 	}
 
@@ -55,7 +70,7 @@ public class PassagerRestController {
 
 	@PutMapping("/{id}")
 	public Passager update(@PathVariable Long id, @Valid @RequestBody Passager passager, BindingResult br) {
-		if (passager.getId() == null || id != passager.getId() || br.hasErrors()) {
+		if (!passagerService.exist(id) || passager.getId() == null || id != passager.getId() || br.hasErrors()) {
 			throw new PassagerException();
 		}
 		return passagerService.save(passager);
@@ -64,6 +79,7 @@ public class PassagerRestController {
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
+		siegeService.deleteById(siegeService.getSiegeByReservationId(id).getId());
 		passagerService.deleteById(id);
 	}
 
