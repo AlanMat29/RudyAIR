@@ -1,5 +1,6 @@
 package rudyAir.model.compte;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,14 +23,22 @@ public class Client extends Compte {
 	@OneToMany(mappedBy = "client")
 	private List<Reservation> reservations = new ArrayList<Reservation>();
 
+	public Client() {
+	}
 
-	public Client() {}
-
-	public Client(Adresse adresse, Abonnement abonnement, List<Reservation> reservations) {
-		super();
+	public Client(Long id, String nom, String prenom, LocalDate dateNaissance, String email, String password,
+			Adresse adresse, Abonnement abonnement, List<Reservation> reservations) {
+		super(id, nom, prenom, dateNaissance, email, password);
 		this.adresse = adresse;
 		this.abonnement = abonnement;
 		this.reservations = reservations;
+	}
+
+	public Client(String nom, String prenom, LocalDate dateNaissance, String email, String password, Adresse adresse,
+			Abonnement abonnement) {
+		super(nom, prenom, dateNaissance, email, password);
+		this.adresse = adresse;
+		this.abonnement = abonnement;
 	}
 
 	public Adresse getAdresse() {

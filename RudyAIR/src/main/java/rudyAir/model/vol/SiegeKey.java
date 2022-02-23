@@ -12,16 +12,17 @@ import rudyAir.model.compte.Reservation;
 
 @SuppressWarnings("serial")
 @Embeddable
-public class SiegeKey implements Serializable{
+public class SiegeKey implements Serializable {
 
 	@ManyToOne
-	@JoinColumn(name="siege_resa_id", foreignKey=@ForeignKey(name="siege_resa_id_fk"))
+	@JoinColumn(name = "siege_resa_id", foreignKey = @ForeignKey(name = "siege_resa_id_fk"))
 	private Reservation reservation;
 	@ManyToOne
-	@JoinColumn(name="siege_avion_id", foreignKey=@ForeignKey(name="siege_avion_id_fk"))
+	@JoinColumn(name = "siege_avion_id", foreignKey = @ForeignKey(name = "siege_avion_id_fk"))
 	private Avion avion;
 
-	public SiegeKey() {}
+	public SiegeKey() {
+	}
 
 	public SiegeKey(Reservation reservation, Avion avion) {
 		super();

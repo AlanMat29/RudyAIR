@@ -26,7 +26,7 @@ import rudyAir.model.Views;
 
 @Entity
 @Table(name = "compte")
-@SequenceGenerator(name = "seqCompte", sequenceName = "seq_compte")
+@SequenceGenerator(name = "seqCompte", sequenceName = "seq_compte", initialValue = 100, allocationSize = 1)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "compte", discriminatorType = DiscriminatorType.STRING, length = 15)
 public class Compte {
