@@ -2,6 +2,7 @@ package rudyAir.model.compte;
 
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
@@ -26,26 +27,27 @@ import rudyAir.model.vol.Vol;
 public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqReservation")
-	@JsonView(Views.Common.class)
+	@JsonView({Views.Common.class, Views.PassagerWithReservation.class})
 	private Long id;
 	@ManyToOne
 	@JoinColumn(name = "resa_vol_id", foreignKey = @ForeignKey(name = "resa_vol_id_fk"), nullable = false)
-	@JsonView(Views.Common.class)
+	@JsonView(Views.Reservation.class)
 	private Vol vol;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@JoinColumn(name = "resa_passager_id", foreignKey = @ForeignKey(name = "resa_passager_id_fk"), nullable = false)
-	@JsonView(Views.Common.class)
+	@JsonView(Views.Reservation.class)
 	private Passager passager;
 	@ManyToOne
-	@JsonView(Views.PassgerWithClient.class)
+	@JoinColumn(name = "resa_client_id", foreignKey = @ForeignKey(name = "resa_client_id_fk"), nullable = false)
+	@JsonView(Views.Reservation.class)
 	private Client client;
-	@JsonView(Views.Common.class)
+	@JsonView(Views.Reservation.class)
 	private boolean statut;
 	@DecimalMin("0")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.Reservation.class)
 	private Integer animaux;
 	@DecimalMin("0")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.Reservation.class)
 	private int bagage;
 	@Version
 	private int version;

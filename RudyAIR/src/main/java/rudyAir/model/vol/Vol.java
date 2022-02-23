@@ -19,6 +19,9 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import rudyAir.model.Views;
 import rudyAir.model.compte.Reservation;
 
 @Entity
@@ -29,15 +32,20 @@ public class Vol {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqVol")
 	@Column(name = "vol_id")
+	@JsonView({Views.Common.class, Views.ReservationPassagerWithVol.class})
 	private Long id;
 	@Column(name = "vol_date_depart")
+	@JsonView({Views.ReservationPassagerWithVol.class})
 	private LocalDate dateDepart;
 	@Column(name = "vol_date_arrivee")
+	@JsonView({Views.ReservationPassagerWithVol.class})
 	private LocalDate dateArrivee;
 	@Enumerated(EnumType.STRING)
 	@Column(name = "vol_statut")
+	@JsonView(Views.Common.class)
 	private StatutVol statutVol;
 	@Column(name = "vol_numero")
+	@JsonView(Views.Common.class)
 	private String numeroVol;
 	@OneToOne
 	@JoinColumn(name = "vol_volGen_id", foreignKey = @ForeignKey(name = "vol_volGen_id_fk"))

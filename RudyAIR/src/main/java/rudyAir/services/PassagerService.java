@@ -38,11 +38,9 @@ public class PassagerService {
 			throw new PassagerException();
 		}
 		checkData(passager);
-		// Create new
 		if (passager.getId() == null) {
 			return passagerRepo.save(passager);
 		}
-		// Update existing
 		else {
 			Passager passagerEnBase = getById(passager.getId());
 			passagerEnBase.setNom(passager.getNom());
@@ -60,5 +58,9 @@ public class PassagerService {
 	
 	public void deleteById(Long id) {
 		delete(getById(id));
+	}
+	
+	public boolean exist(Long id) {
+		return passagerRepo.existsById(id);
 	}
 }
