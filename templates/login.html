@@ -14,7 +14,7 @@
   #connect{
 
   }
-  input[type=text], input[type=password] {
+  input[type=email], input[type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -135,59 +135,51 @@
 <body>
 
   <!-- Button to open the modal login form -->
-  <button class="btn btn-primary" onclick="document.getElementById('id01').style.display='block'" ><b style="display: flex;
-  justify-content: center;">Connexion</b></button>
+  <button class="btn" onclick="document.getElementById('id01').style.display='block'" >
+    <b style="display: flex;justify-content: center;">Se&nbspconnecter<br>/S'inscrire</b>
+  </button>
   <!-- The Modal -->
   <div id="id01" class="modal" role="menu">
-    <div class="modal-content" role="menu">
-      <div class="modal-animate" action="/login.html">
-        <div class="modal-header">
-          <h2 class="modal-title">
-            <font style="vertical-align: inherit;">
-              <font style="vertical-align: inherit; ">Connectez-vous sur RudyAIR</font>
-            </font>
-          </h2>
+    <div class="modal-content modal-animate" role="menu" action="/login.html">
+      <div class="modal-header">
+        <h2 class="modal-title"><font style="vertical-align: inherit; ">Connectez-vous sur RudyAIR</font>
+        </h2>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="login"><b>Login</b></label>
+          <input type="email" placeholder="Entrez votre adresse mail" name="login" required>
+          <label for="mdp"><b>Mot de passe</b></label>
+          <input type="password" placeholder="Entrez votre mot de passe" name="mdp" required>
         </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="mail"><b>Adresse mail</b></label>
-            <input type="text" placeholder="Entrez votre adresse mail" name="mail" required>
-            <label for="mdp"><b>Mot de passe</b></label>
-            <input type="password" placeholder="entrez votre mot de passe" name="mdp" required>
-          </div>
-          <div class="form-group">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal"><b style="display: flex;
-            justify-content: center;">Connexion</b></button>
-            <label >
-              <input type="checkbox"  name="remember"> Rester connecté
-              <span class="mdp"><a href="#">Mot de passe oublié ?</a></span>
-            </label>
-          </div>
+        <div class="form-group">
+          <button type="button" class="btn" data-dismiss="modal">
+            <b style="display: flex;justify-content: center;">Connexion</b>
+          </button>
+          <label >
+            <input type="checkbox"  name="remember">Rester connecté<span class="mdp"><a href="#">Mot de passe oublié ?</a></span>
+          </label>
         </div>
-        <div class="modal-footer">
-          <div class="form-group" style="background-color:#c5e9ff; height: 100%; display: flex; align-items: center; justify-content: space-around;">
-            <span><font style="vertical-align: inherit;">
-              <font style="vertical-align: inherit;">Vous n'avez pas encore de compte ?</font>
-            </font>
-          </span>
+      </div>
+      <div class="modal-footer">
+        <div class="form-group" style="background-color:blue; height: 100%; display: flex; align-items: center; justify-content: space-around;">
+          <font style="vertical-align: inherit;">Vous n'avez pas encore de compte ?</font>
           <span class="compte"><a href="#" style="vertical-align: inherit;">Créer votre compte</a></span>
         </div>
       </div>
     </div>
   </div>
-</div>
-</div>
 
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
+  <script>
+  // Get the modal
+  var modal = document.getElementById('id01');
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
   }
-}
 </script>
 
 </body>
