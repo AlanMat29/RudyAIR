@@ -21,21 +21,27 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import rudyAir.exceptions.CompteException;
 import rudyAir.model.Views;
+import rudyAir.model.compte.Client;
 import rudyAir.model.compte.Compte;
+import rudyAir.services.ClientService;
 import rudyAir.services.CompteService;
 
 @RestController
-@RequestMapping("/api/compte")
+@RequestMapping("/api/comptetest")
 public class CompteRestController {
 	
 	@Autowired
 	private CompteService compteService;
+	
+	@Autowired
+	private ClientService clientService;
 	
 	@GetMapping("")
 	@JsonView(Views.Common.class)
 	public List<Compte> getAll() {
 		return compteService.getAll();
 	}
+	
 	
 	@GetMapping("/{id}")
 	public Compte getById(@PathVariable Long id) {
@@ -65,6 +71,14 @@ public class CompteRestController {
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		compteService.deleteById(id);
+	}
+	
+	
+	//admin
+	@GetMapping("/client")
+	@JsonView(Views.Common.class)
+	public List<Client> getAllClient() {
+		return clientService.getAllClient();
 	}
 
 }
