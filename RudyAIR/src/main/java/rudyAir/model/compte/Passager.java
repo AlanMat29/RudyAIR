@@ -3,6 +3,7 @@ package rudyAir.model.compte;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,26 +28,30 @@ import rudyAir.model.Views;
 @SequenceGenerator(name = "seqPassager", sequenceName = "seq_passager", initialValue = 100, allocationSize = 1)
 public class Passager {
 
+	@JsonView(Views.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqPassager")
-	@JsonView(Views.Common.class)
 	private Long id;
+
+	@JsonView(Views.Common.class)
 	@Length(min = 1, max = 100)
 	@Pattern(regexp = "^[a-zA-Z]((-|')?([a-zA-Z]{1,}))*$")
 	@NotEmpty
-	@JsonView(Views.Common.class)
 	private String nom;
+
+	@JsonView(Views.Common.class)
 	@Length(min = 1, max = 100)
 	@Pattern(regexp = "^[a-zA-Z]((-|')?([a-zA-Z]{1,}))*$")
 	@NotEmpty
-	@JsonView(Views.Common.class)
 	private String prenom;
+
+	@JsonView(Views.Common.class)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Past
-	@JsonView(Views.Common.class)
 	private LocalDate dateDeNaissance;
-	@OneToOne(mappedBy = "passager")
-	@JsonView(Views.Common.class)
+
+	@JsonView(Views.PassagerWithReservation.class)
+	@OneToOne(mappedBy = "passager", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private Reservation reservation;
 
 	@Version
@@ -62,7 +67,7 @@ public class Passager {
 		this.dateDeNaissance = dateDeNaissance;
 		this.reservation = reservation;
 	}
-	
+
 	public Passager(String nom, String prenom, LocalDate dateDeNaissance) {
 		this.nom = nom;
 		this.prenom = prenom;

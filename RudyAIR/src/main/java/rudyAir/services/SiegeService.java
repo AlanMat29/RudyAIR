@@ -12,11 +12,9 @@ import rudyAir.repositories.ISiegeRepository;
 
 @Service
 public class SiegeService {
-	
-	
+
 	@Autowired
 	private ISiegeRepository siegeRepo;
-	
 
 	private void checkData(Siege s) {
 		if (s.getNumero() <= 0 || s.getNumero() > 800) {
@@ -24,16 +22,18 @@ public class SiegeService {
 		}
 	}
 
-	
-	
 	public List<Siege> getAll() {
 		return siegeRepo.findAll();
 	}
-	
+
 	public Siege getById(SiegeKey siegeKey) {
 		return siegeRepo.findById(siegeKey).orElseThrow(SiegeException::new);
 	}
-	
+
+	public Siege getSiegeByReservationId(Long id) {
+		return siegeRepo.findSiegeByReservationId(id).orElseThrow(SiegeException::new);
+	}
+
 	public Siege save(Siege siege) {
 		Siege siegeEnBase = null;
 		checkData(siege);
@@ -45,8 +45,8 @@ public class SiegeService {
 		}
 		return siegeEnBase;
 	}
-	
-	public void delete(SiegeKey siegeKey) {
+
+	public void deleteById(SiegeKey siegeKey) {
 		siegeRepo.delete(getById(siegeKey));
 	}
 
