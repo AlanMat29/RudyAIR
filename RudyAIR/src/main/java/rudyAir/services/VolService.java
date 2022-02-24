@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import rudyAir.exceptions.AeroportException;
 import rudyAir.exceptions.VolException;
 import rudyAir.model.vol.Vol;
+import rudyAir.repositories.IAeroportRepository;
 import rudyAir.repositories.IVolRepository;
 
 @Service
@@ -16,8 +18,11 @@ public class VolService {
 	@Autowired
 	private IVolRepository volRepo;
 	
+	@Autowired
+	private IAeroportRepository aeroportRepo;
+	
 	// Un vol doit obligatoirement avoir un numero de vol
-	//TODO: Mettre un vérification sur le format du numero de vol: XX0000
+	//TODO: Mettre un vï¿½rification sur le format du numero de vol: XX0000
 	private void checkData(Vol v) {
 		if (v.getNumeroVol() == null || v.getNumeroVol().isEmpty()) {
 			throw new VolException("Donnees incorrectes");
@@ -57,6 +62,45 @@ public class VolService {
 	
 	public void delete(Long id) {
 		volRepo.delete(getById(id));
+	}
+	
+	public List<Vol> getVolByAeroportDepart(String nomAeroport) {
+		if (nomAeroport == null) {
+			throw new AeroportException();
+		}
+
+		if (!aeroportRepo.findByNom(nomAeroport).isPresent()) {
+			throw new AeroportException();
+		}
+
+		return volRepo.findVolByAeroportDepartNom(nomAeroport);
+	}
+
+	public List<Vol> getVolByAeroportArrivee(String nomAeroport) {
+		if (nomAeroport == null) {
+			throw new AeroportException();
+		}
+
+		if (!aeroportRepo.findByNom(nomAeroport).isPresent()) {
+			throw new AeroportException();
+		}
+
+		return volRepo.findVolByAeroportArriveeNom(nomAeroport);
+	}
+	
+
+	public List<Vol> getVolByDateDepart(String date) {
+		if (date == null) {
+			throw new VolException();
+		}
+		return volRepo.findVolByDateDepart(date);
+	}
+
+	public List<Vol> getVolByDateArrivee(String date) {
+		if (date == null) {
+			throw new VolException();
+		}
+		return volRepo.findVolByDateArrivee(date);
 	}
 
 }
