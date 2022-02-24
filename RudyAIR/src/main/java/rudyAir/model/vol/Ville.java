@@ -26,7 +26,7 @@ public class Ville {
 	@JsonView(Views.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqVille")
-	private Long Id;
+	private Long id;
 	@Length(min = 1, max = 50)
 	@NotEmpty
 	@JsonView(Views.Common.class)
@@ -56,7 +56,7 @@ public class Ville {
 
 	public Ville(Long id, String nom, String cp) {
 		super();
-		Id = id;
+		this.id = id;
 		this.nom = nom;
 		this.cp = cp;
 	}
@@ -65,7 +65,7 @@ public class Ville {
 
 	public Ville(Long id, String nom, String cp, List<Aeroport> aeroports) {
 		super();
-		Id = id;
+		this.id = id;
 		this.nom = nom;
 		this.cp = cp;
 		this.aeroports = aeroports;
@@ -101,12 +101,12 @@ public class Ville {
 
 
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 
 
@@ -122,7 +122,7 @@ public class Ville {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(Id);
+		return Objects.hash(id);
 	}
 
 
@@ -135,7 +135,7 @@ public class Ville {
 		if (getClass() != obj.getClass())
 			return false;
 		Ville other = (Ville) obj;
-		return Objects.equals(Id, other.Id);
+		return Objects.equals(id, other.id);
 	}
 
 

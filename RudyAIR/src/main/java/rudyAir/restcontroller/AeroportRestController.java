@@ -37,12 +37,13 @@ public class AeroportRestController {
 	}
 
 	@GetMapping("/{id}")
+	@JsonView(Views.AeroportWithVille.class)
 	public Aeroport getById(@PathVariable Long id) {
 		return aeroportService.getById(id);
 	}
 	
 	@PostMapping("")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.AeroportWithVille.class)
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Aeroport create(@Valid @RequestBody Aeroport aeroport, BindingResult br) {
 		if (br.hasErrors()) {

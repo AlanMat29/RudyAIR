@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,6 @@ import javax.persistence.Version;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.UniqueElements;
 
 import com.fasterxml.jackson.annotation.JsonView;
 

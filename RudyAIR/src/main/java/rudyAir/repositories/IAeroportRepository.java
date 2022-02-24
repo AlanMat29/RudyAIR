@@ -9,4 +9,6 @@ import rudyAir.model.vol.Aeroport;
 public interface IAeroportRepository extends JpaRepository<Aeroport, Long> {
 
 	Optional<Aeroport> findByNom(String nomAeroport);
+	
+
 }
