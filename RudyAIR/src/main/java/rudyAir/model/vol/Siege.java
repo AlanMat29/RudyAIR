@@ -7,13 +7,19 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import rudyAir.model.Views;
+
 @Entity
 @Table(name = "siege")
 public class Siege {
 	
 	@EmbeddedId
+	@JsonView(Views.Common.class)
 	private SiegeKey id;
 	@Column(name="siege_num")
+	@JsonView(Views.Common.class)
 	private int numero;
 	
 	public Siege() {}

@@ -13,4 +13,8 @@ public interface ISiegeRepository extends JpaRepository<Siege, SiegeKey> {
 
 	@Query("select s from Siege s where s.id.reservation.id=:id")
 	Optional<Siege> findSiegeByReservationId(@Param("id") Long id);
+	
+	@Query("select s from Siege s where s.id.avion.id=:id")
+	Optional<Siege> findSiegeByAvionId(@Param("id") Long id);
+	
 }

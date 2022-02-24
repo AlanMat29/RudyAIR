@@ -1,5 +1,6 @@
 package rudyAir.model.vol;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -9,38 +10,58 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import rudyAir.model.Views;
+
 @Entity
-@Table(name="avion")
-@SequenceGenerator(name="seqAvion", sequenceName="seq_avion", initialValue=100, allocationSize=1)
+@Table(name = "avion")
+@SequenceGenerator(name = "seqAvion", sequenceName = "seq_avion", initialValue = 100, allocationSize = 1)
 
 public class Avion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAvion")
+	@JsonView(Views.Common.class)
 	private Long id;
-	@Column(length= 10, nullable=false)
+	@Column(length = 10, nullable = false)
+	@JsonView(Views.Common.class)
 	private String ref;
 	@Enumerated(EnumType.STRING)
-	@Column(length=10)
+	@Column(length = 10)
+	@JsonView(Views.Common.class)
 	private StatutAvion statutAvion;
-	@OneToOne(mappedBy="avion")
+	@OneToOne(mappedBy = "avion")
 	private Vol vol;
+	@JsonView(Views.Common.class)
+	@OneToMany(mappedBy = "id.avion")
+	private List<Siege> sieges;
+
 	@Version
 	private int version;
 
-	public Avion() {}
+	public Avion() {
+	}
 
-
-	public Avion(Long id, String ref, StatutAvion statutAvion, Vol vol) {
+	public Avion(Long id, String ref, StatutAvion statutAvion, Vol vol, List<Siege> sieges) {
 		super();
 		this.id = id;
 		this.ref = ref;
 		this.statutAvion = statutAvion;
 		this.vol = vol;
+		this.sieges = sieges;
+	}
+
+	public Avion(String ref, StatutAvion statutAvion, List<Siege> sieges) {
+		super();
+		this.ref = ref;
+		this.statutAvion = statutAvion;
+		this.sieges = sieges;
 	}
 	
 	public Avion(String ref, StatutAvion statutAvion) {
@@ -49,10 +70,17 @@ public class Avion {
 		this.statutAvion = statutAvion;
 	}
 
+	public List<Siege> getSieges() {
+		return sieges;
+	}
+
+	public void setSieges(List<Siege> sieges) {
+		this.sieges = sieges;
+	}
 
 	public String getRef() {
 		return this.ref;
-	}	
+	}
 
 	public void setRef(String ref) {
 		this.ref = ref;
@@ -110,5 +138,5 @@ public class Avion {
 		Avion other = (Avion) obj;
 		return Objects.equals(id, other.id);
 	}
-	
+
 }

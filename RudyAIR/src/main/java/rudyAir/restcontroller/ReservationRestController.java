@@ -58,7 +58,8 @@ public class ReservationRestController {
 
 	@PutMapping("/{id}")
 	public Reservation update(@PathVariable Long id, @Valid @RequestBody Reservation reservation, BindingResult br) {
-		if (!reservationService.exist(id) ||reservation.getId() == null || id != reservation.getId() || br.hasErrors()) {
+		if (!reservationService.exist(id) || reservation.getId() == null || id != reservation.getId()
+				|| br.hasErrors()) {
 			throw new ReservationException();
 		}
 		return reservationService.save(reservation);
@@ -67,7 +68,7 @@ public class ReservationRestController {
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
-		siegeService.deleteById(siegeService.getSiegeByReservationId(id).getId());
+		siegeService.deleteBySiegeKey(siegeService.getSiegeByReservationId(id).getId());
 		reservationService.deleteById(id);
 
 	}

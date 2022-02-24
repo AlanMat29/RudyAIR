@@ -56,4 +56,8 @@ public class Views {
 
 	}
 
+	// Siege
+	public static class SiegeWithReservationAndAvion extends Common {
+
+	}
 }

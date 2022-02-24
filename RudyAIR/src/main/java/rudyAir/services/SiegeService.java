@@ -26,7 +26,7 @@ public class SiegeService {
 		return siegeRepo.findAll();
 	}
 
-	public Siege getById(SiegeKey siegeKey) {
+	public Siege getBySiegeKey(SiegeKey siegeKey) {
 		return siegeRepo.findById(siegeKey).orElseThrow(SiegeException::new);
 	}
 
@@ -34,11 +34,15 @@ public class SiegeService {
 		return siegeRepo.findSiegeByReservationId(id).orElseThrow(SiegeException::new);
 	}
 
+	public Siege getSiegeByAvionId(Long id) {
+		return siegeRepo.findSiegeByAvionId(id).orElseThrow(SiegeException::new);
+	}
+
 	public Siege save(Siege siege) {
 		Siege siegeEnBase = null;
 		checkData(siege);
 		try {
-			siegeEnBase = getById(siege.getId());
+			siegeEnBase = getBySiegeKey(siege.getId());
 			siegeEnBase.setNumero(siege.getNumero());
 		} catch (SiegeException e) {
 			siegeEnBase = siegeRepo.save(siege);
@@ -46,8 +50,17 @@ public class SiegeService {
 		return siegeEnBase;
 	}
 
-	public void deleteById(SiegeKey siegeKey) {
-		siegeRepo.delete(getById(siegeKey));
+	public void deleteBySiegeKey(SiegeKey siegeKey) {
+		siegeRepo.delete(getBySiegeKey(siegeKey));
 	}
 
+	public void deleteByReservationId(Long id) {
+		siegeRepo.delete(getSiegeByReservationId(id));
+	}
+
+	public void deleteByAvionId(Long id) {
+		siegeRepo.delete(getSiegeByAvionId(id));
+	}
+
+	
 }

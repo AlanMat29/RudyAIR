@@ -19,6 +19,7 @@ import javax.validation.constraints.DecimalMin;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import rudyAir.model.Views;
+import rudyAir.model.vol.Siege;
 import rudyAir.model.vol.Vol;
 
 @Entity
@@ -27,7 +28,7 @@ import rudyAir.model.vol.Vol;
 public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqReservation")
-	@JsonView({Views.Common.class, Views.PassagerWithReservation.class})
+	@JsonView({ Views.Common.class, Views.PassagerWithReservation.class })
 	private Long id;
 	@ManyToOne
 	@JoinColumn(name = "resa_vol_id", foreignKey = @ForeignKey(name = "resa_vol_id_fk"), nullable = false)
@@ -35,7 +36,7 @@ public class Reservation {
 	private Vol vol;
 	@OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@JoinColumn(name = "resa_passager_id", foreignKey = @ForeignKey(name = "resa_passager_id_fk"), nullable = false)
-	@JsonView(Views.Reservation.class)
+	@JsonView({ Views.Reservation.class, Views.SiegeWithReservationAndAvion.class })
 	private Passager passager;
 	@ManyToOne
 	@JoinColumn(name = "resa_client_id", foreignKey = @ForeignKey(name = "resa_client_id_fk"), nullable = false)
@@ -49,14 +50,17 @@ public class Reservation {
 	@DecimalMin("0")
 	@JsonView(Views.Reservation.class)
 	private int bagage;
+	@OneToOne(mappedBy = "id.reservation", cascade = CascadeType.REMOVE, orphanRemoval = true)
+	@JsonView(Views.Reservation.class)
+	private Siege siege;
 	@Version
 	private int version;
 
 	public Reservation() {
 	}
 
-	public Reservation(Long id, Vol vol, Passager passager, Client client, boolean statut, Integer animaux,
-			int bagage) {
+	public Reservation(Long id, Vol vol, Passager passager, Client client, boolean statut,
+			@DecimalMin("0") Integer animaux, @DecimalMin("0") int bagage, Siege siege) {
 		super();
 		this.id = id;
 		this.vol = vol;
@@ -65,8 +69,20 @@ public class Reservation {
 		this.statut = statut;
 		this.animaux = animaux;
 		this.bagage = bagage;
+		this.siege = siege;
 	}
-	
+
+	public Reservation(Vol vol, Passager passager, Client client, boolean statut, @DecimalMin("0") Integer animaux,
+			@DecimalMin("0") int bagage, Siege siege) {
+		super();
+		this.vol = vol;
+		this.passager = passager;
+		this.client = client;
+		this.statut = statut;
+		this.animaux = animaux;
+		this.bagage = bagage;
+		this.siege = siege;
+	}
 
 	public Reservation(Vol vol, Passager passager, Client client, boolean statut, @DecimalMin("0") Integer animaux,
 			@DecimalMin("0") int bagage) {
@@ -77,6 +93,14 @@ public class Reservation {
 		this.statut = statut;
 		this.animaux = animaux;
 		this.bagage = bagage;
+	}
+
+	public Siege getSieges() {
+		return siege;
+	}
+
+	public void setSieges(Siege siege) {
+		this.siege = siege;
 	}
 
 	public Long getId() {

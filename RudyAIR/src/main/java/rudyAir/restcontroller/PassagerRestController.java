@@ -79,7 +79,7 @@ public class PassagerRestController {
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
-		siegeService.deleteById(siegeService.getSiegeByReservationId(id).getId());
+		siegeService.deleteByReservationId(passagerService.getById(id).getReservation().getId());
 		passagerService.deleteById(id);
 	}
 
