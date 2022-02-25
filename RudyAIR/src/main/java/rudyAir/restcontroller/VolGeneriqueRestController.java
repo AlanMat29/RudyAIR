@@ -24,11 +24,10 @@ import rudyAir.exceptions.VolGeneriqueException;
 import rudyAir.model.Views;
 import rudyAir.model.vol.Aeroport;
 import rudyAir.model.vol.VolGenerique;
-import rudyAir.services.CompteService;
 import rudyAir.services.VolGeneriqueService;
 
 @RestController
-@RequestMapping("/api/volgen")
+@RequestMapping("/api/volGen")
 public class VolGeneriqueRestController {
 	
 	@Autowired
@@ -37,13 +36,10 @@ public class VolGeneriqueRestController {
 	@GetMapping("")
 	@JsonView(Views.Common.class)
 	public List<VolGenerique> getAll() {
-		List<VolGenerique> list = volGeneriqueService.getAll();
-		System.out.println(list);
-		return list;}
+		return volGeneriqueService.getAll();
+	}
 	
-
 	@GetMapping("/{id}")
-	@JsonView(Views.Common.class)
 	public VolGenerique getById(@PathVariable Long id) {
 		return volGeneriqueService.getById(id);
 	}
@@ -51,25 +47,21 @@ public class VolGeneriqueRestController {
 	@GetMapping("/{id}/horaire")
 	@JsonView(Views.VolGeneneriqueWithHoraire.class)
 	public VolGenerique getByIdWithHoraire(@PathVariable Long id) {
-		return volGeneriqueService.getByIdWithHoraires(id);
+		return volGeneriqueService.getById(id);
 	}
 	
 	@GetMapping("/{id}/vol")
 	@JsonView(Views.VolGeneneriqueWithVol.class)
 	public VolGenerique getByIdWithVol(@PathVariable Long id) {
-		return volGeneriqueService.getByIdWithVols(id);
+		return volGeneriqueService.getById(id);
 	}
 	
-//	@GetMapping("/{id}/Aeroports")
-//	@JsonView(Views.VolGeneneriqueDepartWithAeroport.class)
-//	public VolGeneriqueDepart getByIdWithAeroports(@PathVariable Long id) {
-//		return volGeneriqueService.getByIdWithAeroports(id);
-//		
-//	@GetMapping("/{id}/Aeroports")
-//	@JsonView(Views.VolGeneneriqueArriveeWithAeroport.class)
-//	public VolGeneriqueArrivee getByIdWithAeroports(@PathVariable Long id) {
-//			return volGeneriqueService.getByIdWithAeroports(id);
-//	}
+	@GetMapping("/{nom}/aeroportDepart")
+	@JsonView(Views.VolGeneneriquetWithAeroportDepart.class)
+	public List<VolGenerique> getByVolGeneriqueWithAeroports(@PathVariable String nom) {
+		return volGeneriqueService.getVolGeneriqueByAeroportDepartName(nom);
+	
+	}
 	@PostMapping("")
 	@JsonView(Views.Common.class)
 	@ResponseStatus(code = HttpStatus.CREATED)
