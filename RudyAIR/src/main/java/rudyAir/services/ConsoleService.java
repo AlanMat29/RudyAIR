@@ -8,7 +8,7 @@ public class ConsoleService implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-	//	initDataBase();
+	initDataBase();
 	}
 
 	private void initDataBase() {

@@ -23,7 +23,6 @@ import rudyAir.exceptions.PassagerException;
 import rudyAir.model.Views;
 import rudyAir.model.compte.Passager;
 import rudyAir.services.PassagerService;
-import rudyAir.services.SiegeService;
 
 @RestController
 @RequestMapping("/api/passager")
@@ -31,9 +30,6 @@ public class PassagerRestController {
 
 	@Autowired
 	private PassagerService passagerService;
-
-	@Autowired
-	private SiegeService siegeService;
 
 	@GetMapping("")
 	@JsonView(Views.Common.class)
@@ -61,6 +57,7 @@ public class PassagerRestController {
 
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
+	@JsonView(Views.PassagerWithReservation.class)
 	public Passager create(@Valid @RequestBody Passager passager, BindingResult br) {
 		if (br.hasErrors()) {
 			throw new PassagerException();
@@ -69,6 +66,7 @@ public class PassagerRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(Views.Common.class)
 	public Passager update(@PathVariable Long id, @Valid @RequestBody Passager passager, BindingResult br) {
 		if (!passagerService.exist(id) || passager.getId() == null || id != passager.getId() || br.hasErrors()) {
 			throw new PassagerException();
@@ -78,8 +76,7 @@ public class PassagerRestController {
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Long id) {
-		siegeService.deleteByReservationId(passagerService.getById(id).getReservation().getId());
+	public void deleteById(@PathVariable Long id) {
 		passagerService.deleteById(id);
 	}
 

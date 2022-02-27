@@ -19,51 +19,32 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import rudyAir.exceptions.AeroportException;
 import rudyAir.exceptions.VolGeneriqueException;
 import rudyAir.model.Views;
-import rudyAir.model.vol.Aeroport;
 import rudyAir.model.vol.VolGenerique;
 import rudyAir.services.VolGeneriqueService;
 
 @RestController
-@RequestMapping("/api/volGen")
+@RequestMapping("/api/volgen")
 public class VolGeneriqueRestController {
-	
+
 	@Autowired
 	private VolGeneriqueService volGeneriqueService;
-	
+
 	@GetMapping("")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.VolGeneneriqueWithHoraire.class)
 	public List<VolGenerique> getAll() {
 		return volGeneriqueService.getAll();
 	}
-	
+
 	@GetMapping("/{id}")
+	@JsonView(Views.VolGeneneriqueWithHoraire.class)
 	public VolGenerique getById(@PathVariable Long id) {
 		return volGeneriqueService.getById(id);
 	}
-	
-	@GetMapping("/{id}/horaire")
-	@JsonView(Views.VolGeneneriqueWithHoraire.class)
-	public VolGenerique getByIdWithHoraire(@PathVariable Long id) {
-		return volGeneriqueService.getById(id);
-	}
-	
-	@GetMapping("/{id}/vol")
-	@JsonView(Views.VolGeneneriqueWithVol.class)
-	public VolGenerique getByIdWithVol(@PathVariable Long id) {
-		return volGeneriqueService.getById(id);
-	}
-	
-	@GetMapping("/{nom}/aeroportDepart")
-	@JsonView(Views.VolGeneneriquetWithAeroportDepart.class)
-	public List<VolGenerique> getByVolGeneriqueWithAeroports(@PathVariable String nom) {
-		return volGeneriqueService.getVolGeneriqueByAeroportDepartName(nom);
-	
-	}
+
 	@PostMapping("")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.VolGeneneriqueWithHoraire.class)
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public VolGenerique create(@Valid @RequestBody VolGenerique volGenerique, BindingResult br) {
 		if (br.hasErrors()) {
@@ -73,19 +54,38 @@ public class VolGeneriqueRestController {
 	}
 
 	@PutMapping("/{id}")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.VolGeneneriqueWithHoraire.class)
 	public VolGenerique update(@Valid @RequestBody VolGenerique volGenerique, BindingResult br, @PathVariable Long id) {
-		if (br.hasErrors() || !volGeneriqueService.exist(id)) {
+		if (br.hasErrors() || !volGeneriqueService.exist(id) || volGenerique.getId() == null
+				|| id != volGenerique.getId()) {
 			throw new VolGeneriqueException();
 		}
 		return volGeneriqueService.save(volGenerique);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		volGeneriqueService.deleteById(id);
 	}
 
-	
+	// Additional Web Service
+	@GetMapping("/{id}/horaire")
+	@JsonView(Views.VolGeneneriqueWithHoraire.class)
+	public VolGenerique getByIdWithHoraire(@PathVariable Long id) {
+		return volGeneriqueService.getById(id);
+	}
+
+	@GetMapping("/{id}/vol")
+	@JsonView(Views.VolGeneneriqueWithVol.class)
+	public VolGenerique getByIdWithVol(@PathVariable Long id) {
+		return volGeneriqueService.getById(id);
+	}
+
+	@GetMapping("/{nom}/aeroportDepart")
+	@JsonView(Views.VolGeneneriquetWithAeroport.class)
+	public List<VolGenerique> getByVolGeneriqueWithAeroports(@PathVariable String nom) {
+		return volGeneriqueService.getVolGeneriqueByAeroportDepartName(nom);
+
+	}
 }

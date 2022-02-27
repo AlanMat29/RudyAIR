@@ -1,7 +1,7 @@
 package rudyAir.model.vol;
 
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,9 +38,9 @@ public class Avion {
 	private StatutAvion statutAvion;
 	@OneToOne(mappedBy = "avion")
 	private Vol vol;
-	@JsonView(Views.Common.class)
-	@OneToMany(mappedBy = "id.avion")
-	private List<Siege> sieges;
+	@JsonView(Views.AvionWithSiege.class)
+	@OneToMany(mappedBy = "avion")
+	private Set<Siege> sieges;
 
 	@Version
 	private int version;
@@ -48,7 +48,7 @@ public class Avion {
 	public Avion() {
 	}
 
-	public Avion(Long id, String ref, StatutAvion statutAvion, Vol vol, List<Siege> sieges) {
+	public Avion(Long id, String ref, StatutAvion statutAvion, Vol vol, Set<Siege> sieges) {
 		super();
 		this.id = id;
 		this.ref = ref;
@@ -57,24 +57,24 @@ public class Avion {
 		this.sieges = sieges;
 	}
 
-	public Avion(String ref, StatutAvion statutAvion, List<Siege> sieges) {
+	public Avion(String ref, StatutAvion statutAvion, Set<Siege> sieges) {
 		super();
 		this.ref = ref;
 		this.statutAvion = statutAvion;
 		this.sieges = sieges;
 	}
-	
+
 	public Avion(String ref, StatutAvion statutAvion) {
 		super();
 		this.ref = ref;
 		this.statutAvion = statutAvion;
 	}
 
-	public List<Siege> getSieges() {
+	public Set<Siege> getSieges() {
 		return sieges;
 	}
 
-	public void setSieges(List<Siege> sieges) {
+	public void setSieges(Set<Siege> sieges) {
 		this.sieges = sieges;
 	}
 

@@ -16,49 +16,51 @@ public class CompteService {
 	private ICompteRepository compteRepo;
 
 	private void checkData(Compte c) {
-		if(c==null || c.getId()==null) {
-			throw new CompteException("donn�es inconnus");
+		if (c.getEmail() == null || c.getNom() == null || c.getPrenom() == null) {
+			throw new CompteException("donnees inconnus");
 		}
 	}
-	
-	
-	public List<Compte> getAll(){
+
+	public boolean exist(Long id) {
+		return compteRepo.existsById(id);
+	}
+
+	public List<Compte> getAll() {
 		return compteRepo.findAll();
 	}
-	
+
 	public Compte getById(Long id) {
 		return compteRepo.findById(id).orElseThrow(CompteException::new);
 	}
-	
+
 	public Compte save(Compte c) {
-		if(c==null) {
+		if (c == null) {
 			throw new CompteException();
 		}
-		if(c.getId()==null) {
-			checkData(c);
+		checkData(c);
+		if (c.getId() == null) {
 			return compteRepo.save(c);
 		} else {
 			Compte compteEnBase = this.getById(c.getId());
-			checkData(c);
 			compteEnBase.setNom(c.getNom());
+			compteEnBase.setPrenom(c.getPrenom());
+			compteEnBase.setDateNaissance(c.getDateNaissance());
+			compteEnBase.setEmail(c.getEmail());
+			compteEnBase.setPassword(c.getPassword());
 			return compteRepo.save(compteEnBase);
 		}
 	}
-	
+
 	public void delete(Compte c) {
-		if(c==null || c.getId()==null) {
+		if (c == null || c.getId() == null) {
 			throw new CompteException();
 		}
 		Compte compteEnBase = compteRepo.findById(c.getId()).orElseThrow(CompteException::new);
 		compteRepo.delete(compteEnBase);
 	}
-	
+
 	public void deleteById(Long id) {
 		delete(getById(id));
 	}
 
-
-	public boolean exist(Long id) {
-		return compteRepo.existsById(id);
-	}
 }

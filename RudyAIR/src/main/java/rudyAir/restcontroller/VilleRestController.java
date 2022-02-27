@@ -34,9 +34,7 @@ public class VilleRestController {
 	@GetMapping("")
 	@JsonView(Views.Common.class)
 	public List<Ville> getAll() {
-		List<Ville> list = villeService.getAll();
-		System.out.println(list);
-		return list;
+		return villeService.getAll();
 	}
 
 	@GetMapping("/{id}")

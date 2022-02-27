@@ -22,7 +22,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 import rudyAir.exceptions.SiegeException;
 import rudyAir.model.Views;
 import rudyAir.model.vol.Siege;
-import rudyAir.model.vol.SiegeKey;
 import rudyAir.services.SiegeService;
 
 @RestController
@@ -38,21 +37,27 @@ public class SiegeRestController {
 		return siegeService.getAll();
 	}
 
+	@GetMapping("/{id}")
+	@JsonView(Views.SiegeWithReservationAndAvion.class)
+	public Siege getById(@PathVariable Long id) {
+		return siegeService.getById(id);
+	}
+
 	@GetMapping("/{id}/reservation")
-	@JsonView(Views.Common.class)
-	public Siege getByIdWithReservation(@PathVariable Long id) {
+	@JsonView(Views.SiegeWithReservationAndAvion.class)
+	public Siege getSiegeByReservationId(@PathVariable Long id) {
 		return siegeService.getSiegeByReservationId(id);
 	}
-	
-	
+
 	@GetMapping("/{id}/avion")
-	@JsonView(Views.Common.class)
-	public Siege getByIdWithAvion(@PathVariable Long id) {
+	@JsonView(Views.SiegeWithReservationAndAvion.class)
+	public List<Siege> getByIdWithAvion(@PathVariable Long id) {
 		return siegeService.getSiegeByAvionId(id);
 	}
 
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
+	@JsonView(Views.SiegeWithReservationAndAvion.class)
 	public Siege create(@Valid @RequestBody Siege siege, BindingResult br) {
 		if (br.hasErrors()) {
 			throw new SiegeException();
@@ -61,7 +66,8 @@ public class SiegeRestController {
 	}
 
 	@PutMapping("/{id}")
-	public Siege update(@PathVariable SiegeKey id, @Valid @RequestBody Siege siege, BindingResult br) {
+	@JsonView(Views.SiegeWithReservationAndAvion.class)
+	public Siege update(@PathVariable Long id, @Valid @RequestBody Siege siege, BindingResult br) {
 		if (siege.getId() == null || id != siege.getId() || br.hasErrors()) {
 			throw new SiegeException();
 		}
@@ -70,20 +76,8 @@ public class SiegeRestController {
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void deleteById(@PathVariable SiegeKey id) {
-		siegeService.deleteBySiegeKey(id);
+	public void deleteById(@PathVariable Long id) {
+		siegeService.deleteById(id);
 	}
-
-	@DeleteMapping("/{id}/reservation")
-	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void deleteByReservationId(@PathVariable Long id) {
-		siegeService.deleteBySiegeKey(siegeService.getSiegeByReservationId(id).getId());
-	}
-	
-//	@DeleteMapping("/{id}/reservation")
-//	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-//	public void deleteByReservationId(@PathVariable Long id) {
-//		siegeService.deleteBySiegeKey(siegeService.getSiegeByReservationId(id).getId());
-//	}
 
 }

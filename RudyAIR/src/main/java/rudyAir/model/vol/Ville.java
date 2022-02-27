@@ -19,14 +19,14 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import rudyAir.model.Views;
 
-
 @Entity
-@SequenceGenerator(name="seqVille", sequenceName="seq_ville", initialValue = 100, allocationSize = 1)
+@SequenceGenerator(name = "seqVille", sequenceName = "seq_ville", initialValue = 100, allocationSize = 1)
 public class Ville {
-	@JsonView(Views.Common.class)
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqVille")
-	private Long Id;
+	@JsonView(Views.Common.class)
+	private Long id;
 	@Length(min = 1, max = 50)
 	@NotEmpty
 	@JsonView(Views.Common.class)
@@ -38,13 +38,12 @@ public class Ville {
 	@OneToMany(mappedBy = "ville")
 	@JsonView(Views.VilleWithAeroports.class)
 	private List<Aeroport> aeroports;
+	
 	@Version
 	private int version;
 
-
-	public Ville() {}
-	
-	
+	public Ville() {
+	}
 
 	public Ville(String nom, String cp) {
 		super();
@@ -52,79 +51,65 @@ public class Ville {
 		this.cp = cp;
 	}
 
-	
-
 	public Ville(Long id, String nom, String cp) {
 		super();
-		Id = id;
+		this.id = id;
 		this.nom = nom;
 		this.cp = cp;
 	}
 
-
-
 	public Ville(Long id, String nom, String cp, List<Aeroport> aeroports) {
 		super();
-		Id = id;
+		this.id = id;
 		this.nom = nom;
 		this.cp = cp;
 		this.aeroports = aeroports;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getNom() {
-		return this.nom;
+		return nom;
 	}
 
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
-	
 	public String getCp() {
 		return cp;
 	}
-
 
 	public void setCp(String cp) {
 		this.cp = cp;
 	}
 
-
 	public List<Aeroport> getAeroports() {
-		return this.aeroports;
+		return aeroports;
 	}
 
 	public void setAeroports(List<Aeroport> aeroports) {
 		this.aeroports = aeroports;
 	}
 
-
-	public Long getId() {
-		return Id;
-	}
-
-
-	public void setId(Long id) {
-		Id = id;
-	}
-
-
 	public int getVersion() {
 		return version;
 	}
-
 
 	public void setVersion(int version) {
 		this.version = version;
 	}
 
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(Id);
+		return Objects.hash(id);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -135,9 +120,7 @@ public class Ville {
 		if (getClass() != obj.getClass())
 			return false;
 		Ville other = (Ville) obj;
-		return Objects.equals(Id, other.Id);
+		return Objects.equals(id, other.id);
 	}
 
-
-	
 }

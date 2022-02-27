@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,6 +16,9 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 import javax.validation.constraints.DecimalMin;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -28,31 +32,40 @@ import rudyAir.model.vol.Vol;
 public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqReservation")
-	@JsonView({ Views.Common.class, Views.PassagerWithReservation.class })
+	@JsonView(Views.Common.class)
 	private Long id;
-	@ManyToOne
-	@JoinColumn(name = "resa_vol_id", foreignKey = @ForeignKey(name = "resa_vol_id_fk"), nullable = false)
-	@JsonView(Views.Reservation.class)
-	private Vol vol;
+	@JsonView({ Views.Reservation.class, Views.SiegeWithReservationAndAvion.class,
+			Views.CompteClientWithReservation.class })
+	private boolean statut;
+	@DecimalMin("0")
+	@JsonView({ Views.Reservation.class, Views.SiegeWithReservationAndAvion.class,
+			Views.CompteClientWithReservation.class })
+	private Integer animaux;
+	@DecimalMin("0")
+	@JsonView({ Views.Reservation.class, Views.SiegeWithReservationAndAvion.class,
+			Views.CompteClientWithReservation.class })
+	private int bagage;
+
 	@OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@JoinColumn(name = "resa_passager_id", foreignKey = @ForeignKey(name = "resa_passager_id_fk"), nullable = false)
-	@JsonView({ Views.Reservation.class, Views.SiegeWithReservationAndAvion.class })
+	@JsonView({ Views.Reservation.class, Views.SiegeWithReservationAndAvion.class,
+			Views.CompteClientWithReservation.class })
 	private Passager passager;
 	@ManyToOne
+	@JoinColumn(name = "resa_vol_id", foreignKey = @ForeignKey(name = "resa_vol_id_fk"), nullable = false)
+	@JsonView({ Views.Reservation.class, Views.CompteClientWithReservation.class })
+	private Vol vol;
+	@OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
+	@JoinColumn(name = "resa_siege_id", foreignKey = @ForeignKey(name = "resa_siege_id_fk"))
+	@JsonView({ Views.Reservation.class, Views.CompteClientWithReservation.class })
+	private Siege siege;
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "resa_client_id", foreignKey = @ForeignKey(name = "resa_client_id_fk"), nullable = false)
 	@JsonView(Views.Reservation.class)
 	private Client client;
-	@JsonView(Views.Reservation.class)
-	private boolean statut;
-	@DecimalMin("0")
-	@JsonView(Views.Reservation.class)
-	private Integer animaux;
-	@DecimalMin("0")
-	@JsonView(Views.Reservation.class)
-	private int bagage;
-	@OneToOne(mappedBy = "id.reservation", cascade = CascadeType.REMOVE, orphanRemoval = true)
-	@JsonView(Views.Reservation.class)
-	private Siege siege;
+
 	@Version
 	private int version;
 
@@ -95,11 +108,11 @@ public class Reservation {
 		this.bagage = bagage;
 	}
 
-	public Siege getSieges() {
+	public Siege getSiege() {
 		return siege;
 	}
 
-	public void setSieges(Siege siege) {
+	public void setSiege(Siege siege) {
 		this.siege = siege;
 	}
 
