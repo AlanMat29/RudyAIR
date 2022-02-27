@@ -19,55 +19,53 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import rudyAir.exceptions.ReservationException;
+import rudyAir.exceptions.AvionException;
 import rudyAir.model.Views;
-import rudyAir.model.compte.Reservation;
-import rudyAir.services.ReservationService;
+import rudyAir.model.vol.Avion;
+import rudyAir.services.AvionService;
 
 @RestController
-@RequestMapping("/api/reservation")
-public class ReservationRestController {
+@RequestMapping("/api/avion")
+public class AvionRestController {
 
 	@Autowired
-	private ReservationService reservationService;
+	private AvionService avionService;
 
 	@GetMapping("")
-	@JsonView(Views.Reservation.class)
-	public List<Reservation> getAll() {
-		return reservationService.getAll();
+	@JsonView(Views.AvionWithSiege.class)
+	public List<Avion> getAll() {
+		return avionService.getAll();
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.Reservation.class)
-	public Reservation getById(@PathVariable Long id) {
-		return reservationService.getById(id);
+	@JsonView(Views.AvionWithSiege.class)
+	public Avion getById(@PathVariable Long id) {
+		return avionService.getById(id);
 	}
 
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	@JsonView(Views.Reservation.class)
-	public Reservation create(@Valid @RequestBody Reservation reservation, BindingResult br) {
+	@JsonView(Views.AvionWithSiege.class)
+	public Avion create(@Valid @RequestBody Avion avion, BindingResult br) {
 		if (br.hasErrors()) {
-			throw new ReservationException();
+			throw new AvionException();
 		}
-		return reservationService.save(reservation);
+		return avionService.save(avion);
 	}
 
 	@PutMapping("/{id}")
-	@JsonView(Views.Reservation.class)
-	public Reservation update(@PathVariable Long id, @Valid @RequestBody Reservation reservation, BindingResult br) {
-		if (!reservationService.exist(id) || reservation.getId() == null || id != reservation.getId()
-				|| br.hasErrors()) {
-			throw new ReservationException();
+	@JsonView(Views.AvionWithSiege.class)
+	public Avion update(@PathVariable Long id, @Valid @RequestBody Avion avion, BindingResult br) {
+		if (!avionService.exist(id) || avion.getId() == null || id != avion.getId() || br.hasErrors()) {
+			throw new AvionException();
 		}
-		return reservationService.save(reservation);
+		return avionService.save(avion);
 	}
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void deleteById(@PathVariable Long id) {
-		reservationService.deleteById(id);
-
+		avionService.deleteById(id);
 	}
 
 }

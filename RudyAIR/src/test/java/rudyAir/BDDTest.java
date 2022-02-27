@@ -20,7 +20,6 @@ import rudyAir.model.vol.Aeroport;
 import rudyAir.model.vol.Avion;
 import rudyAir.model.vol.Horaire;
 import rudyAir.model.vol.Siege;
-import rudyAir.model.vol.SiegeKey;
 import rudyAir.model.vol.StatutAvion;
 import rudyAir.model.vol.StatutVol;
 import rudyAir.model.vol.Ville;
@@ -97,14 +96,18 @@ public class BDDTest {
 			aeroportService.save(aeroportArrivee);
 			aeroportService.save(aeroportDepart);
 
-			Avion avion = new Avion("RD000" + i, StatutAvion.enVol);
-			avionService.save(avion);
-
 			Horaire horaire = new Horaire(LocalTime.parse("10:" + (10 + i)), LocalTime.parse("15:" + (20 + i)));
 
 			VolGenerique volGenerique = new VolGenerique(20 + i, "NumVolGen" + i, horaire, aeroportArrivee,
 					aeroportDepart);
 			volGeneriqueService.save(volGenerique);
+
+			Avion avion = new Avion("RD000" + i, StatutAvion.enVol);// , sieges);
+			avionService.save(avion);
+
+			Siege siege = new Siege(i, avion);
+			siegeService.save(siege);
+
 			Vol vol = new Vol(LocalDate.parse("2022-02-" + ("0" + i)), LocalDate.parse("2022-02-" + ("0" + (i + 1))),
 					StatutVol.onTime, "NumVol" + i, volGenerique, avion);
 			volService.save(vol);
@@ -114,12 +117,9 @@ public class BDDTest {
 					LocalDate.parse("1999-02-" + ("0" + (i + 1))));
 			passagerService.save(passager);
 
-			Reservation resa = new Reservation(vol, passager, client, true, 0, 2);
+			Reservation resa = new Reservation(vol, passager, client, true, 0, 2, siege);
 			reservationService.save(resa);
 
-			SiegeKey sk = new SiegeKey(resa, avion);
-			Siege siege = new Siege(sk, i);
-			siegeService.save(siege);
 		}
 
 		Client user = new Client();
@@ -136,7 +136,7 @@ public class BDDTest {
 		admin.setNom("rola");
 		admin.setPrenom("moto");
 		admin.setDateNaissance(LocalDate.parse("2002-02-02"));
-		admin.setEmail("admin@rudyairr.fr");
+		admin.setEmail("admin@rudyair.fr");
 		admin.setPassword("admin1");
 		compteRepo.save(admin);
 
@@ -150,11 +150,6 @@ public class BDDTest {
 		aeroport.setVille(ville);
 		aeroportService.save(aeroport);
 
-		Avion avion = new Avion();
-		avion.setRef("A350-705");
-		avion.setStatutAvion(StatutAvion.auSol);
-		avionService.save(avion);
-
 		VolGenerique volGenerique = new VolGenerique();
 		volGenerique.setPrix(750);
 		volGenerique.setNumVolGen("ORY-G100-10A10");
@@ -162,6 +157,16 @@ public class BDDTest {
 		volGenerique.setAeroportDepart(aeroport);
 		volGenerique.setAeroportArrivee(aeroportService.getById((long) 100));
 		volGeneriqueService.save(volGenerique);
+
+		Avion avion = new Avion();
+		avion.setRef("A350-705");
+		avion.setStatutAvion(StatutAvion.auSol);
+		avionService.save(avion);
+
+		Siege siege = new Siege();
+		siege.setNumero(15);
+		siege.setAvion(avion);
+		siegeService.save(siege);
 
 		Vol vol = new Vol();
 		vol.setDateDepart(LocalDate.parse("2022-02-02"));
@@ -185,13 +190,8 @@ public class BDDTest {
 		resa.setStatut(true);
 		resa.setAnimaux(1);
 		resa.setBagage(3);
+		resa.setSiege(siege);
 		reservationService.save(resa);
-
-		Siege siege = new Siege();
-		SiegeKey sk = new SiegeKey(resa, avion);
-		siege.setId(sk);
-		siege.setNumero(15);
-		siegeService.save(siege);
 
 	}
 

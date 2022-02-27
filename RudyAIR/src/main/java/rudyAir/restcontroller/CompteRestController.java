@@ -21,29 +21,39 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import rudyAir.exceptions.CompteException;
 import rudyAir.model.Views;
+import rudyAir.model.compte.Admin;
 import rudyAir.model.compte.Client;
 import rudyAir.model.compte.Compte;
+import rudyAir.model.compte.Reservation;
+import rudyAir.services.AdminService;
 import rudyAir.services.ClientService;
 import rudyAir.services.CompteService;
+import rudyAir.services.ReservationService;
 
 @RestController
-@RequestMapping("/api/comptetest")
+@RequestMapping("/api/compte")
 public class CompteRestController {
-	
+
 	@Autowired
 	private CompteService compteService;
-	
+
 	@Autowired
 	private ClientService clientService;
-	
+
+	@Autowired
+	private AdminService adminService;
+
+	@Autowired
+	private ReservationService reservationService;
+
 	@GetMapping("")
 	@JsonView(Views.Common.class)
 	public List<Compte> getAll() {
 		return compteService.getAll();
 	}
-	
-	
+
 	@GetMapping("/{id}")
+	@JsonView(Views.Common.class)
 	public Compte getById(@PathVariable Long id) {
 		return compteService.getById(id);
 	}
@@ -60,25 +70,43 @@ public class CompteRestController {
 
 	@PutMapping("/{id}")
 	@JsonView(Views.Common.class)
-	public Compte update(@Valid @RequestBody Compte compte, BindingResult br, @PathVariable Long id) {
+	public Compte update(@PathVariable Long id, @Valid @RequestBody Compte compte, BindingResult br) {
 		if (br.hasErrors()) {
 			throw new CompteException();
 		}
 		return compteService.save(compte);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
+		// Delete Client reservation before deleting account
+		if (getById(id) instanceof Client) {
+			for (Reservation r : ((Client) getById(id)).getReservations()) {
+				reservationService.deleteById(r.getId());
+			}
+		}
 		compteService.deleteById(id);
 	}
-	
-	
-	//admin
+
+	// Additional Web Service
+	// admin
 	@GetMapping("/client")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.CompteClient.class)
 	public List<Client> getAllClient() {
 		return clientService.getAllClient();
+	}
+
+	@GetMapping("/client/{id}/reservations")
+	@JsonView(Views.Reservation.class)
+	public List<Reservation> getAllClientReservationsByClientId(@PathVariable Long id) {
+		return clientService.getAllClientReservationsByClientId(id);
+	}
+
+	@GetMapping("/admin")
+	@JsonView(Views.CompteClient.class)
+	public List<Admin> getAllAdmin() {
+		return adminService.getAllAdmin();
 	}
 
 }

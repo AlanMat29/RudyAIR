@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -12,13 +11,19 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import rudyAir.model.Views;
+
 @Entity
 @DiscriminatorValue("client")
 public class Client extends Compte {
 
 	@Embedded
+	@JsonView(Views.CompteClient.class)
 	private Adresse adresse;
 	@Enumerated(EnumType.ORDINAL)
+	@JsonView(Views.CompteClient.class)
 	private Abonnement abonnement;
 	@OneToMany(mappedBy = "client")
 	private List<Reservation> reservations = new ArrayList<Reservation>();

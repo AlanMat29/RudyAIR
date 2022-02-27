@@ -16,8 +16,10 @@ public class ReservationService {
 	private IReservationRepository reservationRepo;
 
 	private void checkData(Reservation reservation) {
-		if (reservation.getVol() == null || reservation.getPassager() == null || reservation.getAnimaux() < 0
-				|| reservation.getAnimaux() == null || reservation.getBagage() < 0) {
+		if (reservation.getAnimaux() == null || reservation.getBagage() < 0
+		|| reservation.getSiege() == null || reservation.getVol() == null ||
+		reservation.getPassager() == null || reservation.getAnimaux() < 0
+		) {
 			throw new ReservationException("Donnees incorrectes");
 		}
 	}
@@ -40,12 +42,12 @@ public class ReservationService {
 			return reservationRepo.save(reservation);
 		} else {
 			Reservation reservationEnBase = getById(reservation.getId());
-			reservationEnBase.setVol(reservation.getVol());
-			reservationEnBase.setPassager(reservation.getPassager());
-			reservationEnBase.setClient(reservation.getClient());
 			reservationEnBase.setStatut(reservation.isStatut());
 			reservationEnBase.setAnimaux(reservation.getAnimaux());
 			reservationEnBase.setBagage(reservation.getBagage());
+			reservationEnBase.setSiege(reservation.getSiege());
+			reservationEnBase.setVol(reservation.getVol());
+			reservationEnBase.setPassager(reservation.getPassager());
 			return reservationRepo.save(reservationEnBase);
 		}
 	}
@@ -57,7 +59,7 @@ public class ReservationService {
 	public void deleteById(Long id) {
 		delete(getById(id));
 	}
-	
+
 	public boolean exist(Long id) {
 		return reservationRepo.existsById(id);
 	}

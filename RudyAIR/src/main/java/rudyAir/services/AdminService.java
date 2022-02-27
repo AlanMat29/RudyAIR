@@ -5,42 +5,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import rudyAir.exceptions.VolException;
-import rudyAir.model.compte.Abonnement;
-import rudyAir.model.compte.Client;
-import rudyAir.model.compte.Reservation;
-import rudyAir.model.vol.Vol;
-import rudyAir.repositories.IClientRepository;
-import rudyAir.repositories.IReservationRepository;
-import rudyAir.repositories.IVolGeneriqueRepository;
-import rudyAir.repositories.IVolRepository;
+import rudyAir.model.compte.Admin;
+import rudyAir.repositories.IAdminRepository;
 
 @Service
 public class AdminService {
 
 	@Autowired
-	private IClientRepository clientRepo;
+	private IAdminRepository adminRepo;
 
-	@Autowired
-	private IReservationRepository resaRepo;
-
-	@Autowired
-	private IVolRepository volRepo;
-
-
-
-	public List<Client> getAllClient(){
-		return clientRepo.findAll();
+	public List<Admin> getAllAdmin() {
+		return adminRepo.findAll();
 	}
 
-	public List<Reservation> getAllReservation(){
-		return resaRepo.findAll();
-	}
-
-	public List<Vol> getAllVol(){
-		return volRepo.findAll();
-	}
-
-
-	
 }

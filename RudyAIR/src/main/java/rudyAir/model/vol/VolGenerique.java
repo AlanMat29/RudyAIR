@@ -45,13 +45,15 @@ public class VolGenerique {
 	private Horaire horaire;
 	@ManyToOne
 	@JoinColumn(name = "volGen_aeroportDepart_id", foreignKey = @ForeignKey(name = "volGen_aeroportDepart_id_fk"), nullable = false)
-	@JsonView(Views.VolGeneneriquetWithAeroportDepart.class)
+	@JsonView({ Views.VolGeneneriquetWithAeroport.class, Views.VolWithAeroport.class })
 	private Aeroport aeroportDepart;
 	@ManyToOne
 	@JoinColumn(name = "volGen_aeroportArrivee_id", foreignKey = @ForeignKey(name = "volGen_aeroportArrivee_id_fk"), nullable = false)
+	@JsonView({ Views.VolGeneneriquetWithAeroport.class, Views.VolWithAeroport.class })
 	private Aeroport aeroportArrivee;
 	@OneToOne(mappedBy = "volGenerique")
 	private Vol vol;
+
 	@Version
 	private int version;
 
