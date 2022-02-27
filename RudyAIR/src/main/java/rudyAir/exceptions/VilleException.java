@@ -1,6 +1,6 @@
 package rudyAir.exceptions;
 
-public class VilleException extends RuntimeException{
+public class VilleException extends RuntimeException {
 	public VilleException() {
 
 	}

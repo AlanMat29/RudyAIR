@@ -1,7 +1,6 @@
 package rudyAir.exceptions;
 
-public class PassagerException extends RuntimeException{
-	
+public class PassagerException extends RuntimeException {
 
 	public PassagerException() {
 
@@ -10,6 +9,5 @@ public class PassagerException extends RuntimeException{
 	public PassagerException(String message) {
 		super(message);
 	}
-
 
 }

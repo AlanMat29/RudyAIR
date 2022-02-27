@@ -1,6 +1,6 @@
 package rudyAir.exceptions;
 
-public class SiegeException extends RuntimeException{
+public class SiegeException extends RuntimeException {
 	public SiegeException() {
 
 	}

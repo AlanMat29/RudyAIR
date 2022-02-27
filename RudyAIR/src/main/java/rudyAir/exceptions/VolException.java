@@ -1,6 +1,6 @@
 package rudyAir.exceptions;
 
-public class VolException extends RuntimeException{
+public class VolException extends RuntimeException {
 	public VolException() {
 
 	}

@@ -1,7 +1,6 @@
 package rudyAir.exceptions;
 
-public class CompteException extends RuntimeException{
-	
+public class CompteException extends RuntimeException {
 
 	public CompteException() {
 
