@@ -18,6 +18,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import rudyAir.model.Views;
+
 @Entity
 @Table(name = "vol_generique")
 @SequenceGenerator(name = "seqVolGen", sequenceName = "seq_volGen", initialValue = 100, allocationSize = 1)
@@ -25,24 +29,31 @@ public class VolGenerique {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqVolGen")
+	@JsonView(Views.Common.class)
 	@Column(name = "volGen_id")
 	private Long id;
 	@Column(name = "volGen_prix")
+	@JsonView(Views.Common.class)
 	private double prix;
+	@JsonView(Views.Common.class)
 	@Column(name = "volGen_num")
 	private String numVolGen;
 	@Embedded
 	@AttributeOverrides({ @AttributeOverride(name = "heureDepart", column = @Column(name = "volGen_heuredepart")),
 			@AttributeOverride(name = "heureArrivee", column = @Column(name = "volGen_heurearrivee")) })
+	@JsonView(Views.VolGeneneriqueWithHoraire.class)
 	private Horaire horaire;
 	@ManyToOne
 	@JoinColumn(name = "volGen_aeroportDepart_id", foreignKey = @ForeignKey(name = "volGen_aeroportDepart_id_fk"), nullable = false)
+	@JsonView({ Views.VolGeneneriquetWithAeroport.class, Views.VolWithAeroport.class })
 	private Aeroport aeroportDepart;
 	@ManyToOne
 	@JoinColumn(name = "volGen_aeroportArrivee_id", foreignKey = @ForeignKey(name = "volGen_aeroportArrivee_id_fk"), nullable = false)
+	@JsonView({ Views.VolGeneneriquetWithAeroport.class, Views.VolWithAeroport.class })
 	private Aeroport aeroportArrivee;
 	@OneToOne(mappedBy = "volGenerique")
 	private Vol vol;
+
 	@Version
 	private int version;
 

@@ -20,21 +20,24 @@ public class AeroportService {
 		}
 	}
 
-	
+	public boolean exist(Long id) {
+		return aeroportRepo.existsById(id);
+	}
+
 	public List<Aeroport> getAll() {
 		return aeroportRepo.findAll();
 	}
-	
+
 	public Aeroport getById(Long id) {
 		return aeroportRepo.findById(id).orElseThrow(AeroportException::new);
 	}
-	
+
 	public Aeroport getbyNom(String Nom) {
 		return aeroportRepo.findByNom(Nom).orElseThrow(AeroportException::new);
 	}
-	
+
 	public Aeroport save(Aeroport aeroport) {
-		if(aeroport==null) {
+		if (aeroport == null) {
 			throw new AeroportException();
 		}
 		// Create new
@@ -47,22 +50,16 @@ public class AeroportService {
 			Aeroport aeroportEnBase = getById(aeroport.getId());
 			aeroportEnBase.setNom(aeroport.getNom());
 			aeroportEnBase.setVille(aeroport.getVille());
-			aeroportEnBase.setVolsGeneriquesDeparts(aeroport.getVolsGeneriquesArrivees());
 			return aeroportRepo.save(aeroportEnBase);
 		}
 	}
-	
+
 	public void deleteById(Long id) {
 		delete(getById(id));
 	}
-	
-	public void delete(Aeroport  aeroport) {
+
+	public void delete(Aeroport aeroport) {
 		aeroportRepo.delete(aeroport);
 	}
-	
-	public boolean exist(Long id) {
-		return aeroportRepo.existsById(id);
-	}
 
-	
 }

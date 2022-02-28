@@ -86,16 +86,6 @@
 							"name": "prix",
 							"visibility": "private",
 							"type": "double"
-						},
-						{
-							"_type": "UMLAttribute",
-							"_id": "AAAAAAF+uw6ndzQstF8=",
-							"_parent": {
-								"$ref": "AAAAAAF+uv/kejP6Syk="
-							},
-							"name": "lieux",
-							"visibility": "private",
-							"type": "String"
 						}
 					],
 					"operations": [
@@ -310,30 +300,13 @@
 											"height": 13,
 											"text": "-prix: double",
 											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAF+uw6nezQvaoU=",
-											"_parent": {
-												"$ref": "AAAAAAF+uv/kfDQCknw="
-											},
-											"model": {
-												"$ref": "AAAAAAF+uw6ndzQstF8="
-											},
-											"font": "Arial;13;0",
-											"left": 709,
-											"top": 541,
-											"width": 159,
-											"height": 13,
-											"text": "-lieux: String",
-											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 704,
 									"top": 521,
 									"width": 169,
-									"height": 38
+									"height": 23
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -356,7 +329,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 709,
-											"top": 564,
+											"top": 549,
 											"width": 159,
 											"height": 13,
 											"text": "+recherche(vol): void",
@@ -373,7 +346,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 709,
-											"top": 579,
+											"top": 564,
 											"width": 159,
 											"height": 13,
 											"text": "+filtrer(vol): void",
@@ -390,7 +363,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 709,
-											"top": 594,
+											"top": 579,
 											"width": 159,
 											"height": 13,
 											"text": "+afficher(vol): void",
@@ -399,7 +372,7 @@
 									],
 									"font": "Arial;13;0",
 									"left": 704,
-									"top": 559,
+									"top": 544,
 									"width": 169,
 									"height": 53
 								},

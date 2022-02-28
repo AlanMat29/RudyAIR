@@ -27,14 +27,15 @@ import rudyAir.model.Views;
 @Entity
 @SequenceGenerator(name = "seqAeroport", sequenceName = "seq_aeroport", initialValue = 100, allocationSize = 1)
 public class Aeroport {
-	@JsonView(Views.Common.class)
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAeroport")
+	@JsonView(Views.Common.class)
 	private Long id;
 	@Length(min = 1, max = 50)
 	@NotEmpty
-	@JsonView(Views.Common.class)
 	@Column(unique = true)
+	@JsonView(Views.Common.class)
 	private String nom;
 	@ManyToOne
 	@JoinColumn(name = "ville_id", foreignKey = @ForeignKey(name = "aeroport_ville_id_fk"))
@@ -133,6 +134,5 @@ public class Aeroport {
 		Aeroport other = (Aeroport) obj;
 		return Objects.equals(id, other.id);
 	}
-
 
 }

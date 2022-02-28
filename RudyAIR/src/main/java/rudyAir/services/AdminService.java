@@ -5,42 +5,50 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import rudyAir.exceptions.VolException;
-import rudyAir.model.compte.Abonnement;
-import rudyAir.model.compte.Client;
-import rudyAir.model.compte.Reservation;
-import rudyAir.model.vol.Vol;
-import rudyAir.repositories.IClientRepository;
-import rudyAir.repositories.IReservationRepository;
-import rudyAir.repositories.IVolGeneriqueRepository;
-import rudyAir.repositories.IVolRepository;
+import rudyAir.exceptions.AdminException;
+import rudyAir.model.compte.Admin;
+import rudyAir.repositories.IAdminRepository;
 
 @Service
 public class AdminService {
 
 	@Autowired
-	private IClientRepository clientRepo;
+	private IAdminRepository adminRepo;
 
-	@Autowired
-	private IReservationRepository resaRepo;
-
-	@Autowired
-	private IVolRepository volRepo;
-
-
-
-	public List<Client> getAllClient(){
-		return clientRepo.findAll();
+	private void checkData(Admin c) {
+		if (c.getEmail() == null || c.getNom() == null || c.getPrenom() == null) {
+			throw new AdminException("donnees inconnus");
+		}
 	}
 
-	public List<Reservation> getAllReservation(){
-		return resaRepo.findAll();
+	public List<Admin> getAllAdmin() {
+		return adminRepo.findAll();
 	}
 
-	public List<Vol> getAllVol(){
-		return volRepo.findAll();
+	public Admin getById(Long id) {
+		return adminRepo.findById(id).orElseThrow(AdminException::new);
 	}
 
+	public Admin save(Admin admin) {
+		if (admin == null) {
+			throw new AdminException();
+		}
+		if (admin.getId() == null) {
+			checkData(admin);
+			return adminRepo.save(admin);
+		} else {
+			Admin adminEnBase = getById(admin.getId());
+			adminEnBase.setNom(admin.getNom());
+			adminEnBase.setPrenom(admin.getPrenom());
+			adminEnBase.setDateNaissance(admin.getDateNaissance());
+			adminEnBase.setEmail(admin.getEmail());
+			adminEnBase.setPassword(admin.getPassword());
+			return adminRepo.save(adminEnBase);
+		}
+	}
 
-	
+	public void deleteById(Long id) {
+		adminRepo.delete(getById(id));
+	}
+
 }

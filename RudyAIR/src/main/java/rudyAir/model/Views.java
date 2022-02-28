@@ -22,19 +22,16 @@ public class Views {
 
 	}
 
-	public static class VolGeneneriqueDepartWithAeroports extends Common {
-
-	}
-
-	public static class VolGeneneriqueArriveeWithAeroports extends Common {
-
-	}
-
-	public static class VolGeneneriqueWithHoraire extends Common {
-
-	}
-
+	// VolGen
 	public static class VolGeneneriqueWithVol extends Common {
+
+	}
+
+	public static class VolGeneneriquetWithAeroport extends Common {
+
+	}
+
+	public static class VolGeneneriqueWithHoraire extends VolGeneneriquetWithAeroport {
 
 	}
 
@@ -53,6 +50,34 @@ public class Views {
 	}
 
 	public static class ReservationPassagerWithVol extends Common {
+
+	}
+
+	// Siege
+	public static class SiegeWithReservationAndAvion extends Common {
+
+	}
+
+	// Avion
+	public static class AvionWithSiege extends Common {
+
+	}
+
+	// Vol
+	public static class VolWithVolGenAndAvion extends Common {
+
+	}
+
+	public static class VolWithAeroport extends VolWithVolGenAndAvion {
+
+	}
+
+	// Compte
+	public static class CompteClient extends Common {
+
+	}
+
+	public static class CompteClientWithReservation extends CompteClient {
 
 	}
 

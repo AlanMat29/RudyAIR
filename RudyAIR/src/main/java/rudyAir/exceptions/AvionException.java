@@ -1,6 +1,6 @@
 package rudyAir.exceptions;
 
-public class AvionException extends RuntimeException{
+public class AvionException extends RuntimeException {
 	public AvionException() {
 
 	}

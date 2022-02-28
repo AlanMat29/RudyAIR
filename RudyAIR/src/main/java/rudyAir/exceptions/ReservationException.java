@@ -1,7 +1,6 @@
 package rudyAir.exceptions;
 
-public class ReservationException extends RuntimeException{
-	
+public class ReservationException extends RuntimeException {
 
 	public ReservationException() {
 

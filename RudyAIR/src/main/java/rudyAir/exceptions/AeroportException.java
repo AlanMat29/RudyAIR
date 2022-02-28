@@ -1,6 +1,6 @@
 package rudyAir.exceptions;
 
-public class AeroportException extends RuntimeException{
+public class AeroportException extends RuntimeException {
 	public AeroportException() {
 
 	}

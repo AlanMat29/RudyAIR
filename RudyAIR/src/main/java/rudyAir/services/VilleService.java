@@ -8,16 +8,12 @@ import org.springframework.stereotype.Service;
 import rudyAir.exceptions.VilleException;
 import rudyAir.model.vol.Aeroport;
 import rudyAir.model.vol.Ville;
-import rudyAir.repositories.IAeroportRepository;
 import rudyAir.repositories.IVilleRepository;
 
 @Service
 public class VilleService {
 	@Autowired
 	private IVilleRepository villeRepo;
-
-	@Autowired
-	private IAeroportRepository aeroRepo;
 
 	private void checkData(Ville ville) {
 		if (ville.getNom() == null || ville.getNom().isEmpty()) {
@@ -48,7 +44,6 @@ public class VilleService {
 			Ville villeEnBase = getById(ville.getId());
 			villeEnBase.setNom(ville.getNom());
 			villeEnBase.setCp(ville.getCp());
-			villeEnBase.setAeroports(ville.getAeroports());
 			return villeRepo.save(villeEnBase);
 		}
 	}

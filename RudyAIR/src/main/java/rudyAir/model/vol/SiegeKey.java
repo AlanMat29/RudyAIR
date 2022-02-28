@@ -3,22 +3,29 @@ package rudyAir.model.vol;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import rudyAir.model.Views;
 import rudyAir.model.compte.Reservation;
 
 @SuppressWarnings("serial")
 @Embeddable
 public class SiegeKey implements Serializable {
 
-	@ManyToOne
+	@OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@JoinColumn(name = "siege_resa_id", foreignKey = @ForeignKey(name = "siege_resa_id_fk"))
+	@JsonView(Views.Common.class)
 	private Reservation reservation;
 	@ManyToOne
 	@JoinColumn(name = "siege_avion_id", foreignKey = @ForeignKey(name = "siege_avion_id_fk"))
+	@JsonView(Views.Common.class)
 	private Avion avion;
 
 	public SiegeKey() {

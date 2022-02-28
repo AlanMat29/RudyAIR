@@ -18,6 +18,7 @@ import javax.persistence.Version;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -35,23 +36,31 @@ public class Compte {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCompte")
 	@JsonView(Views.Common.class)
 	private Long id;
-	@JsonView(Views.Common.class)
+
+	@Column(length = 100, nullable = false)
 	@NotEmpty
-	@Column(length = 50, nullable = false)
+	@Length(min = 1, max = 100)
+	@JsonView(Views.Common.class)
 	private String nom;
-	@JsonView(Views.Common.class)
 	@NotEmpty
-	@Column(length = 50, nullable = false)
+	@Column(length = 100, nullable = false)
+	@Length(min = 1, max = 100)
+	@JsonView(Views.Common.class)
 	private String prenom;
 	@JsonView(Views.Common.class)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dateNaissance;
-	@JsonView(Views.Common.class)
+	@Column(length = 100, nullable = false, unique = true)
 	@NotEmpty
+	@Email
+	@Length(min = 5, max = 100)
+	@JsonView(Views.Common.class)
+	//@NotEmpty
 	@Column(length = 50, nullable = false, unique = true)
 	@Email
 	private String email;
 	private String password;
+
 	@Version
 	private int version;
 
@@ -75,7 +84,6 @@ public class Compte {
 		this.email = email;
 		this.password = password;
 	}
-	
 
 	// Getters-Setters
 	public Long getId() {

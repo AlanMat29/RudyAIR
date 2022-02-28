@@ -45,6 +45,7 @@ public class AeroportRestController {
 	@PostMapping("")
 	@JsonView(Views.AeroportWithVille.class)
 	@ResponseStatus(code = HttpStatus.CREATED)
+	@JsonView(Views.AeroportWithVille.class)
 	public Aeroport create(@Valid @RequestBody Aeroport aeroport, BindingResult br) {
 		if (br.hasErrors()) {
 			throw new AeroportException();
@@ -53,7 +54,7 @@ public class AeroportRestController {
 	}
 
 	@PutMapping("/{id}")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.AeroportWithVille.class)
 	public Aeroport update(@Valid @RequestBody Aeroport aeroport, BindingResult br, @PathVariable Long id) {
 		if (br.hasErrors() || !aeroportService.exist(id)) {
 			throw new AeroportException();
