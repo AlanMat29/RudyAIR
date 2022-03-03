@@ -16,14 +16,7 @@ function goHomePage(){
 
 
 <style>
-#footerCopyright{
-  display: flex;
-  background-color:#f2f2f2;
-  height:2em;
-  width:100%;
-  justify-content: center;
-  align-items:center;
-}
+
 #contente-without-footer{
   height:110%;
 }
@@ -152,8 +145,7 @@ TODO: Ajout la possibilité de filtrer le tableau selon les colonnes
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
     <!-- Import external css files -->
-    <link rel="stylesheet" href="css\burger-menu.css">
-    <link rel="stylesheet" href="css\header.css">
+    <link rel="stylesheet" href="css\rudyair.css">
 
     <title>RudyAir</title>
     <link rel="icon" href="asset/img/logo-white-bg.png">
@@ -164,27 +156,40 @@ TODO: Ajout la possibilité de filtrer le tableau selon les colonnes
     <!-- Start of page main page content -->
     <div id="contente-without-footer">
       <header>
-        <!-- Latteral burger menu -->
-        <div id="lateral-list-menu">
-          <div>
+        <div id="header-content-left">
+          <div id="logo"><a href="accueil.html"><img class="logo-img" src="asset/img/icon/logo-icon.png" alt="logo_image"></a></div>
+          <div class="menu-burger">
             <input id="menu__toggle" type="checkbox" />
             <label class="menu__btn" for="menu__toggle">
               <span></span>
             </label>
-            <ul class="menu__box">
-              <li><a class="menu__item" href="accueil.html">Accueil</a></li>
-              <li><a class="menu__item" href="tableauvols.html">Liste des vols</a></li>
-              <li><a class="menu__item" href="#">Liste des avions</a></li>
-              <li><a class="menu__item" href="#">Liste des utilisateurs</a></li>
+            <ul id="idBurger" class="menu__box">
+              <li><a class="menu__item" href="#">Home</a></li>
+              <li><a class="menu__item" href="#">About</a></li>
+              <li><a class="menu__item" href="#">Team</a></li>
+              <li><a class="menu__item" href="#">Contact</a></li>
+              <li><a class="menu__item" href="#">Twitter</a></li>
             </ul>
           </div>
         </div>
-            <!-- Icone -->
-        <div id="rudyair-logo" onclick="goHomePage()">
-          <div class="d-flex justify-content-center align-items-center">
-            <img class="logo-img" src="asset/img/icon/logo-icon.png" alt="logo-icon">
-          </div>
+
+        <div class="main-menu">
+          <ul class="main-menu-box">
+            <li><a class="main-menu-items" href="">RESERVER</a></li>
+            <li><a class="main-menu-items" href="">GERER</a></li>
+            <li><a class="main-menu-items" href="">ENREGISTREMENT</a></li>
+            <li><a class="main-menu-items" href="">BUSINESS</a></li>
+            <li><a class="main-menu-items" href="">INFORMATIONS</a></li>
+          </ul>
         </div>
+
+        <div id="login">
+          <!-- Button to open the modal login form -->
+          <button class="btn-login" onclick="document.getElementById('id01').style.display='block'" >
+            <b style="display: flex;justify-content: center;">Se&nbspdéconnecter</b>
+          </button>
+        </div>
+
 
       </header>
         <!-- Table fly-->
@@ -264,6 +269,278 @@ TODO: Ajout la possibilité de filtrer le tableau selon les colonnes
                 <td> <button type="button" class="btn btn-warning">Modifier</button> </td>
                 <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
               </tr>
+              <tr>
+                <td>RA3254</td>
+                <td>27/01/2022</td>
+                <td>14h20</td>
+                <td>Rome</td>
+                <td>Rome-Fiumicino</td>
+
+                <td>27/01/2022</td>
+                <td>19h50</td>
+                <td>Moscou</td>
+                <td>Moscou-Cheremetievo</td>
+
+                <td>5h30</td>
+                <td> <button type="button" class="btn btn-warning">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA3254</td>
+                <td>27/01/2022</td>
+                <td>14h20</td>
+                <td>Rome</td>
+                <td>Rome-Fiumicino</td>
+
+                <td>27/01/2022</td>
+                <td>19h50</td>
+                <td>Moscou</td>
+                <td>Moscou-Cheremetievo</td>
+
+                <td>5h30</td>
+                <td> <button type="button" class="btn btn-warning">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA3254</td>
+                <td>27/01/2022</td>
+                <td>14h20</td>
+                <td>Rome</td>
+                <td>Rome-Fiumicino</td>
+
+                <td>27/01/2022</td>
+                <td>19h50</td>
+                <td>Moscou</td>
+                <td>Moscou-Cheremetievo</td>
+
+                <td>5h30</td>
+                <td> <button type="button" class="btn btn-warning">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA3254</td>
+                <td>27/01/2022</td>
+                <td>14h20</td>
+                <td>Rome</td>
+                <td>Rome-Fiumicino</td>
+
+                <td>27/01/2022</td>
+                <td>19h50</td>
+                <td>Moscou</td>
+                <td>Moscou-Cheremetievo</td>
+
+                <td>5h30</td>
+                <td> <button type="button" class="btn btn-warning">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA3254</td>
+                <td>27/01/2022</td>
+                <td>14h20</td>
+                <td>Rome</td>
+                <td>Rome-Fiumicino</td>
+
+                <td>27/01/2022</td>
+                <td>19h50</td>
+                <td>Moscou</td>
+                <td>Moscou-Cheremetievo</td>
+
+                <td>5h30</td>
+                <td> <button type="button" class="btn btn-warning">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA3254</td>
+                <td>27/01/2022</td>
+                <td>14h20</td>
+                <td>Rome</td>
+                <td>Rome-Fiumicino</td>
+
+                <td>27/01/2022</td>
+                <td>19h50</td>
+                <td>Moscou</td>
+                <td>Moscou-Cheremetievo</td>
+
+                <td>5h30</td>
+                <td> <button type="button" class="btn btn-warning">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA3254</td>
+                <td>27/01/2022</td>
+                <td>14h20</td>
+                <td>Rome</td>
+                <td>Rome-Fiumicino</td>
+
+                <td>27/01/2022</td>
+                <td>19h50</td>
+                <td>Moscou</td>
+                <td>Moscou-Cheremetievo</td>
+
+                <td>5h30</td>
+                <td> <button type="button" class="btn btn-warning">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA3254</td>
+                <td>27/01/2022</td>
+                <td>14h20</td>
+                <td>Rome</td>
+                <td>Rome-Fiumicino</td>
+
+                <td>27/01/2022</td>
+                <td>19h50</td>
+                <td>Moscou</td>
+                <td>Moscou-Cheremetievo</td>
+
+                <td>5h30</td>
+                <td> <button type="button" class="btn btn-warning">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA3254</td>
+                <td>27/01/2022</td>
+                <td>14h20</td>
+                <td>Rome</td>
+                <td>Rome-Fiumicino</td>
+
+                <td>27/01/2022</td>
+                <td>19h50</td>
+                <td>Moscou</td>
+                <td>Moscou-Cheremetievo</td>
+
+                <td>5h30</td>
+                <td> <button type="button" class="btn btn-warning">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA3254</td>
+                <td>27/01/2022</td>
+                <td>14h20</td>
+                <td>Rome</td>
+                <td>Rome-Fiumicino</td>
+
+                <td>27/01/2022</td>
+                <td>19h50</td>
+                <td>Moscou</td>
+                <td>Moscou-Cheremetievo</td>
+
+                <td>5h30</td>
+                <td> <button type="button" class="btn btn-warning">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA3254</td>
+                <td>27/01/2022</td>
+                <td>14h20</td>
+                <td>Rome</td>
+                <td>Rome-Fiumicino</td>
+
+                <td>27/01/2022</td>
+                <td>19h50</td>
+                <td>Moscou</td>
+                <td>Moscou-Cheremetievo</td>
+
+                <td>5h30</td>
+                <td> <button type="button" class="btn btn-warning">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA3254</td>
+                <td>27/01/2022</td>
+                <td>14h20</td>
+                <td>Rome</td>
+                <td>Rome-Fiumicino</td>
+
+                <td>27/01/2022</td>
+                <td>19h50</td>
+                <td>Moscou</td>
+                <td>Moscou-Cheremetievo</td>
+
+                <td>5h30</td>
+                <td> <button type="button" class="btn btn-warning">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA3254</td>
+                <td>27/01/2022</td>
+                <td>14h20</td>
+                <td>Rome</td>
+                <td>Rome-Fiumicino</td>
+
+                <td>27/01/2022</td>
+                <td>19h50</td>
+                <td>Moscou</td>
+                <td>Moscou-Cheremetievo</td>
+
+                <td>5h30</td>
+                <td> <button type="button" class="btn btn-warning">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA3254</td>
+                <td>27/01/2022</td>
+                <td>14h20</td>
+                <td>Rome</td>
+                <td>Rome-Fiumicino</td>
+
+                <td>27/01/2022</td>
+                <td>19h50</td>
+                <td>Moscou</td>
+                <td>Moscou-Cheremetievo</td>
+
+                <td>5h30</td>
+                <td> <button type="button" class="btn btn-warning">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA3254</td>
+                <td>27/01/2022</td>
+                <td>14h20</td>
+                <td>Rome</td>
+                <td>Rome-Fiumicino</td>
+
+                <td>27/01/2022</td>
+                <td>19h50</td>
+                <td>Moscou</td>
+                <td>Moscou-Cheremetievo</td>
+
+                <td>5h30</td>
+                <td> <button type="button" class="btn btn-warning">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA3254</td>
+                <td>27/01/2022</td>
+                <td>14h20</td>
+                <td>Rome</td>
+                <td>Rome-Fiumicino</td>
+
+                <td>27/01/2022</td>
+                <td>19h50</td>
+                <td>Moscou</td>
+                <td>Moscou-Cheremetievo</td>
+
+                <td>5h30</td>
+                <td> <button type="button" class="btn btn-warning">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
+              <tr>
+                <td>RA3254</td>
+                <td>27/01/2022</td>
+                <td>14h20</td>
+                <td>Rome</td>
+                <td>Rome-Fiumicino</td>
+
+                <td>27/01/2022</td>
+                <td>19h50</td>
+                <td>Moscou</td>
+                <td>Moscou-Cheremetievo</td>
+
+                <td>5h30</td>
+                <td> <button type="button" class="btn btn-warning">Modifier</button> </td>
+                <td> <button type="button" class="btn btn-danger">Supprimer</button> </td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -274,11 +551,11 @@ TODO: Ajout la possibilité de filtrer le tableau selon les colonnes
     </div>
     <!-- End of page main page content -->
 
-    <footer>
-      <div id="footerCopyright">
-        <span> &copy Copyright - 2022 - RudyAIR </span>
-      </div>
-    </footer>
+
+    <div id="footerCopyright">
+      <span> &copy Copyright - 2022 - RudyAIR </span>
+    </div>
+
     <!--
     ============================
     ========    Popup   ========
