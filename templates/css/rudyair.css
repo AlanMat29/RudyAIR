@@ -1,0 +1,564 @@
+
+:root{
+  --color-blue:#6890BC;
+  --color-gold:#D4AF37;
+  --color-footer:#3d6183;
+}
+/*--------------------------------------------------------------
+# GENERAL
+--------------------------------------------------------------*/
+body {
+  margin: auto;
+  font-size: 1em;
+  font-family: Arial,sans-serif;
+  max-width: 3840px;
+  max-height: 2160px;
+  min-height: 100%;
+  background-color: #f2f2f2;
+  align-content:space-between;
+  /* overflow-y: hidden;
+  overflow-x: hidden;  */
+}
+
+ul{list-style-type :none;}
+a:link {color:black;text-decoration:none;}
+a:visited {color:black;text-decoration:none;}
+a.item{margin-left: 5px;}
+
+.padding10{
+  padding-top:10px;
+}
+
+.icon{
+  min-height:42px;
+  height: 42px;
+}
+/*--------------------------------------------------------------
+# HEADER
+--------------------------------------------------------------*/
+header{
+  background-color: #fff;
+  font-family: Arial;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+  width: 100% ;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  z-index: 3;
+}
+
+#header-content-left{
+  display: flex;
+  font-size: 20px;
+  height: 3em;
+  margin-left: 10px;
+  align-items: center;
+  background-color: none;
+  flex-direction : row-reverse;
+}
+
+#logo{
+  margin-top: -30px;
+  padding-left: 15px;
+  height: 45px;
+}
+
+.logo-img{
+  height:75px;
+}
+
+.logo-img:hover{
+  filter: contrast(1.2);
+}
+/*--------------------------------------------------------------
+# HEADER MENU BURGER
+--------------------------------------------------------------*/
+.menu-burger{
+  margin-top: 25px;
+  padding: 5px;
+  height: 45px;
+}
+/* Burger menu */
+#menu__toggle {
+  opacity: 0;
+  position: absolute;
+}
+#menu__toggle:checked + .menu__btn > span {
+  transform: rotate(45deg);
+}
+#menu__toggle:checked + .menu__btn > span::before {
+  top: 0;
+  transform: rotate(0deg);
+}
+#menu__toggle:checked + .menu__btn > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+#menu__toggle:checked ~ .menu__box {
+  left: 0 !important;
+}
+.menu__btn {
+  position: absolute;
+  width: 25px;
+  cursor: pointer;
+  z-index: 2;
+}
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background-color: var(--color-gold);
+  transition-duration: .25s;
+}
+
+.menu__btn > span::before {
+  content: '';
+  top: -8px;
+}
+.menu__btn > span::after {
+  content: '';
+  top: 8px;
+}
+.menu__box {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 230px;
+  height: 65%;
+  margin: 0;
+  padding: 80px 0;
+  list-style: none;
+  background-color: #fff;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
+  transition-duration: .25s;
+  z-index:0;
+}
+.menu__item {
+  display: block;
+  padding: 12px 24px;
+  color: #1e2025;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  text-decoration: none;
+  transition-duration: .25s;
+}
+.menu__item:hover {
+  background-color: #f2f2f2;
+  text-decoration: none;
+}
+#lateral-list-menu{
+  margin-left:1.5%;
+}
+/*--------------------------------------------------------------
+# HEADER MAIN MENU
+--------------------------------------------------------------*/
+.main-menu{
+  display: flex;
+  font-size: 16px;
+  width:45%;
+  margin-right: 10%;
+  background-color: none;
+  justify-content: center;
+}
+
+.main-menu-box{
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  margin-left: 15%;
+  margin-top: 20px;
+  padding-top: 15px;
+  padding-bottom: 25px;
+  background-color: none;
+}
+
+.main-menu-items{
+  margin-left: 10px;
+}
+
+a.main-menu-items {
+  display: flex;
+  margin-top: 6px;
+  color: var(--color-blue);
+  padding: 8px 8px 5px 8px;
+  border-radius: 8px;
+}
+
+a.main-menu-items:hover {font-size:100%; color: white; background-color: var(--color-gold);}
+/*--------------------------------------------------------------
+# LOGIN
+--------------------------------------------------------------*/
+#login{
+  display: flex;
+  align-items: center;
+}
+
+.modal-body{
+  padding-bottom: 0;
+}
+
+input[type=email], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+.btn-login {
+  background-color: var(--color-blue);
+  border-color: #c5e9ff;
+  border-radius: 0.25rem;
+  color: white;
+  padding: 4px 10px;
+  margin: 6px 0;
+  border: none;
+  cursor: pointer;
+  width: 120px;
+  min-height:2.5em;
+}
+
+.btn-signin {
+  background-color: var(--color-gold);
+  border-color: #c5e9ff;
+  border-radius: 0.25rem;
+  padding: 4px 10px;
+  margin: 6px 0;
+  border: none;
+  cursor: pointer;
+  width: 120px;
+  min-height:2.5em;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+/* Extra styles for the cancel button */
+.header-wrapper{
+  display: inline-block;
+  top: 0;
+  width: 100%;
+  z-index: 400;
+  background-color: white;
+  min-height: 61px;
+}
+
+#login-title{
+  margin: 20px;
+}
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+span.mdp {
+  text-decoration:underline;
+  float: right;
+  margin-left: 141px;
+  background-color: #f8f9fa;
+  margin-top: -70px;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 2; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+.modal-header{
+  display: flex;
+  align-items: flex-start;
+}
+
+.modal-title{
+  padding-left:1rem;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5px auto; /* 15% from the top and centered */
+  border: 1px solid #888;
+  width: 500px; /* Could be more or less, depending on screen size */
+}
+
+.modal-animate{
+  width: 500px
+}
+
+.form-group{
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.modal-footer{
+  display: flex;
+  align-content: center;
+  background-color: var(--color-blue);
+  height: 60px;
+
+}
+.form-modal-footer{
+  width: 100%;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color:white;
+}
+
+a.compte{
+  color: black;
+  background-color: var(--color-gold);
+  border-radius: 0.25rem;
+  padding: 12px;
+}
+
+.text-mid{font-size-adjust: 0.5; }
+
+.animate {
+  --webkit-animation: animatezoom 0.3s;
+  animation: animatezoom 0.3s;
+  background-color: #fff;
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+/*--------------------------------------------------------------
+# CORPS PRINCIPALE
+--------------------------------------------------------------*/
+main{
+  display: flex;
+  min-height:100%;
+  padding-top: 1em;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+/*--------------------------------------------------------------
+# CAROUSSEL
+--------------------------------------------------------------*/
+* {box-sizing: border-box}
+.mySlides {display: none}
+img.trip {width: 100%;height:10%;vertical-align: middle;}
+/* Slideshow container */
+.slideshow-container {
+  max-width: 2900px;
+  width: 100%;
+  top: 75px;
+  position: relative;
+  margin-bottom: 40px;
+}
+/* Next & previous buttons */
+.prev-slide, .next-slide {
+  cursor: pointer;
+  position: absolute;
+  top: 35%;
+  width: auto;
+  padding: 12px;
+  margin-top: 0px;
+  color: white;
+  font-weight: bold;
+  font-size: 2.5em;
+  transition: 0.6s ease;
+  border-radius: 0 6px 6px 0;
+  user-select: none;
+}
+/* Position the "next button" to the right */
+.next-slide {
+  right: 0;
+  border-radius: 6px 0 0 6px;
+}
+/* On hover, add a black background color with a little bit see-through */
+.prev-slide:hover, .next-slide:hover {
+  background-color: var(--color-blue);
+  color: white;
+  text-decoration: none;
+}
+/* Caption text */
+.text {
+  color: #fff;
+  font-size: 1.2em;
+  position: relative;
+  background-color: rgb(0 0 0 / 20%);
+  background-size: cover;
+  bottom: 90px;
+  z-index: 2;
+  text-align: center;
+}
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 6px;
+  width: 25px;
+  position: relative;
+  margin: 0px 2px;
+  bottom: 80px;
+  background-color: #f2f2f2;
+  border-radius: 20%;
+  display: inline-block;
+  border: 1px solid white;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: var(--color-blue);
+}
+/* Fading animation */
+.fade-slide {
+  -webkit-animation-name: fade-slide;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade-slide;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+/*--------------------------------------------------------------
+# RECHERCHE VOL
+--------------------------------------------------------------*/
+
+
+
+
+
+
+/*--------------------------------------------------------------
+# PARTENAIRE
+--------------------------------------------------------------*/
+#parternaire{
+  display: flex;
+  flex-direction:column;
+  width: 80%;
+  height: 80%;
+}
+
+.tittle{
+  font-weight: 700;
+  padding: 5px;
+}
+
+#containerParternaire{
+  display:flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.col{
+  height: 200px; width: 310px;
+}
+
+img.publicite{
+  height: 80%; width: 100%;
+}
+
+#vaincrePeur{
+  width: 80%;
+}
+/*--------------------------------------------------------------
+# FOOTER
+--------------------------------------------------------------*/
+footer{
+  display: flex;
+  color: white;
+  background-color: var(--color-footer);
+  height:14em;
+  width: 100%;
+  flex-wrap: wrap;
+  align-content: space-between;
+  justify-content: center;
+  margin-top: 5%;
+  position: relative;
+  bottom: 0;
+  z-index: 2;
+}
+
+a.item{
+  color: white;
+  font-size: 1.0em;
+}
+
+a.item-tittle-Link{
+  font-size: 1.1em;
+  font-weight: bolder;
+  color: var(--color-gold);
+}
+
+#footerLink{
+  display: flex;
+  background-color: var(--color-footer);
+  height:70%;
+  width:90%;
+  font:italic 1em/2;
+  justify-content:space-between;
+  margin-top: 10px;
+}
+
+#footerExterneLink{
+  background-color: none;
+  display: flex;
+  width:25%;
+  flex-wrap: wrap;
+}
+
+.external-title{
+  color: white;
+  font-weight: bolder;
+
+}
+
+.rudyairApp{
+  position: relative;
+}
+
+#footerCopyright{
+  display: flex;
+  background-color:#f2f2f2;
+  height:2em;
+  width:100%;
+  justify-content: center;
+  align-items: center;
+}
