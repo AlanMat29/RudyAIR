@@ -43,7 +43,6 @@ public class AeroportRestController {
 	}
 	
 	@PostMapping("")
-	@JsonView(Views.AeroportWithVille.class)
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@JsonView(Views.AeroportWithVille.class)
 	public Aeroport create(@Valid @RequestBody Aeroport aeroport, BindingResult br) {

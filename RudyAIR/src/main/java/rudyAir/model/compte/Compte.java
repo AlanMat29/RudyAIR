@@ -55,9 +55,6 @@ public class Compte {
 	@Email
 	@Length(min = 5, max = 100)
 	@JsonView(Views.Common.class)
-	//@NotEmpty
-	@Column(length = 50, nullable = false, unique = true)
-	@Email
 	private String email;
 	private String password;
 

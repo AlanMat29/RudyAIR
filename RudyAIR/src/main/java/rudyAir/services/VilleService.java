@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import rudyAir.exceptions.VilleException;
-import rudyAir.model.vol.Aeroport;
 import rudyAir.model.vol.Ville;
 import rudyAir.repositories.IVilleRepository;
 
@@ -49,12 +48,7 @@ public class VilleService {
 	}
 
 	public void deleteById(Long id) {
-		for (Aeroport a : villeRepo.getById(id).getAeroports()) {
-			aeroRepo.deleteById(a.getId());
-		}
-		
-		delete(getById(id));
-			
+		villeRepo.delete(getById(id));
 	}
 
 	public void delete(Ville ville) {
