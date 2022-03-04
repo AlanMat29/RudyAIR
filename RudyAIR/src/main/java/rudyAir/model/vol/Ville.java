@@ -30,6 +30,9 @@ public class Ville {
 	@Length(min = 1, max = 50)
 	@NotEmpty
 	@JsonView(Views.Common.class)
+	private String pays;
+	@NotEmpty
+	@JsonView(Views.Common.class)
 	private String nom;
 	@NotEmpty
 	@JsonView(Views.Common.class)
@@ -38,7 +41,7 @@ public class Ville {
 	@OneToMany(mappedBy = "ville")
 	@JsonView(Views.VilleWithAeroports.class)
 	private List<Aeroport> aeroports;
-	
+
 	@Version
 	private int version;
 
@@ -51,9 +54,9 @@ public class Ville {
 		this.cp = cp;
 	}
 
-	public Ville(Long id, String nom, String cp) {
+	public Ville(@Length(min = 1, max = 50) @NotEmpty String pays, @NotEmpty String nom, @NotEmpty String cp) {
 		super();
-		this.id = id;
+		this.pays = pays;
 		this.nom = nom;
 		this.cp = cp;
 	}
@@ -64,6 +67,14 @@ public class Ville {
 		this.nom = nom;
 		this.cp = cp;
 		this.aeroports = aeroports;
+	}
+
+	public String getPays() {
+		return pays;
+	}
+
+	public void setPays(String pays) {
+		this.pays = pays;
 	}
 
 	public Long getId() {
