@@ -20,16 +20,28 @@ public class Adresse {
 	private String cp;
 	@JsonView(Views.Common.class)
 	private String ville;
+	@JsonView(Views.Common.class)
+	private String pays;
 
 	public Adresse() {
 
 	}
 
-	public Adresse(int numero, String voie, String cp, String ville) {
+	public Adresse(int numero, String voie, String cp, String ville, String pays) {
+		super();
 		this.numero = numero;
 		this.voie = voie;
 		this.cp = cp;
 		this.ville = ville;
+		this.pays = pays;
+	}
+
+	public String getPays() {
+		return pays;
+	}
+
+	public void setPays(String pays) {
+		this.pays = pays;
 	}
 
 	public int getNumero() {
