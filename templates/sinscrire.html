@@ -8,7 +8,7 @@
   <meta content="Billet d'avion, RudyAIR, moins cher, securite, compagnie aérienne, trouver un vol, meilleurs offres ,meilleurs prix, vol direct, achetez billet d'avion,Billet d’avion pas cher Madagascar,billet d’avion pas cher Toulouse,billet d’avion pas cher,site web fictif,reservation,vols,vols France,
   site RudyAIR, site web RudyAIR, SNK, Toulouse, voyages" name="keywords">
   <meta property="og:type" content="Site web" />
-  <meta property="og:image" content="asset/img/logo/icon_title2.png" />
+  <link rel="icon" href="asset/img/logo/icon_title2.png" />
   <meta property="og:description" content="Compagnie Aérienne fictif pour un projet d'etude" />
   <title >RudyAir ~ The Wings of Freedom ~</title>
   <!-- <link rel="icon" href="asset/img/logo/icon_title2.png"> -->
@@ -16,7 +16,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-
+  <!-- ==================== Timeline bootstrap ============================= -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
   <link rel="stylesheet" type="text/css" href="css/rudyair.css">
 
   <!-- ==================== SCRIPT ============================= -->
@@ -32,10 +34,18 @@
   main{
     display: flex;
     align-items: center;
+    background-image: url('../templates/asset/img/wall/cloud-up.jpg');
+    background-size: cover;
+  }
+
+  div.clearfix{
+    margin-bottom: 0px;
   }
 
   .page-heading{
     margin-top: 15%;
+    background-color: var(--color-blue);
+    color:white;
   }
 
   form {
@@ -93,7 +103,7 @@
   }
   .icon-chevron-right:before {
     content: &#10094;
-}
+  }
   .pull-right{
     float: right;
   }
@@ -180,12 +190,12 @@
   <!--  ===================== MAIN =====================   -->
   <main id="main" class="padding10">
     <section>
-      <h1 class="page-heading padding10">Créez votre compte</h1>
+      <h1 class="page-heading padding10 d-flex justify-content-center align-content-center">Créez votre compte</h1>
       <form action="/creercompte" method="post" id="account-creation_form" class="std box">
         <div class="account_creation">
           <h3 class="page-subheading">Vos informations personnelles</h3>
-          <div class="clearfix">
-            <label class="hidden-xs form-group">Titre</label> <br>
+          <div class="clearfix form-group">
+            <label class="hidden-xs">Titre</label><br>
             <div class="radio-inline">
               <label for="id_gender1" class="top">
                 <input type="radio" name="id_gender" id="id_gender1" value="1"> M
@@ -223,81 +233,81 @@
           <div class="form-group">
             <label class="hidden-xs">Date de naissance
             </label> <input type="date" class="form-control" name="date-de-naissance" required placeholder="Saisir la date de depart" value="" >
-            </div>
-          </div>
-          <div class="checkbox">
-            <label for="newsletter">
-              <input type="checkbox" name="newsletter" id="newsletter" value="1"> S'inscrire à la newsletter
-            </label>
           </div>
         </div>
-        <div class="submit clearfix">
-          <input type="hidden" name="email_create" value="1">
-          <input type="hidden" name="is_new_customer" value="1">
-          <input type="hidden" class="hidden" name="back" value="my-account">
-          <button type="submit" name="submitAccount" id="submitAccount" class="btn btn-login btn-default button button-medium">
-            <span>S'inscrire &#10095; <i class="icon-chevron-right right"></i>
-            </span>
-          </button>
-          <p class="pull-right required"><span><sup>*</sup>Champ requis</span>
-          </p>
-        </div>
-      </form>
-    </section>
-  </main>
-  <!--  ===================== FOOTER =====================   -->
-  <footer>
-    <div id="footerLink" class="padding10">
-      <div id="footerAbout"><a class="item-tittle-Link" href="">A propos de nous</a>
-        <table>
-          <tr><td><a class="item" href="">RudyAIR</a></td></tr>
-          <tr><td><a class="item" href="">Nos valeurs</a></td></tr>
-          <tr><td><a class="item" href="">Nos collaborations</a></td></tr>
-          <tr><td><a class="item" href="">Nous contacter</a></td></tr>
-        </table>
-      </div>
-      <div id="footerSAV"><a class="item-tittle-Link" href="">Service client</a>
-        <table>
-          <tr><td><a class="item" href="">Réserver un billet</a></td></tr>
-          <tr><td><a class="item" href="">Remboursement</a></td></tr>
-          <tr><td><a class="item" href="">Assistance à la personne</a></td></tr>
-          <tr><td><a class="item" href="">Services Prenium</a></td></tr>
-        </table>
-      </div>
-      <div id="footerPlanifier"><a class="item-tittle-Link"  href="">Planifier votre voyage</a>
-        <table>
-          <tr><td><a class="item" href="">Documents Utiles</a></td></tr>
-          <tr><td><a class="item" href="">Préparer ses bagages</a></td></tr>
-          <tr><td><a class="item" href="">Parking</a></td></tr>
-          <tr><td><a class="item" href="">Comment s'enregister</a></td></tr>
-        </table>
-      </div>
-      <div id="footerTrip"><a class="item-tittle-Link" href="">Top destinations</a>
-        <table>
-          <tr><td><a class="item" href="">Toulouse</a></td></tr>
-          <tr><td><a class="item" href="">Kyoto</a></td></tr>
-          <tr><td><a class="item" href="">Nosy-be</a></td></tr>
-          <tr><td><a class="item" href="">Auckland</a></td></tr>
-        </table>
-      </div>
-
-      <div id="footerExterneLink" class="">
-        <div class="rudyairNetword external-title" >Suivez-nous sur nos réseaux:<br>
-          <span id="rudyairFacebook"><img class="icon" src="asset/img/icon/fb-gold.png" alt="rudy-fb"><a href=""></a></span>
-          <span id="rudyairInsta"><img class="icon" src="asset/img/icon/insta-gold.png" alt="rudy-insta"><a href=""></a></span>
-          <span id="rudyairTwitter"><img class="icon" src="asset/img/icon/tweet-gold.png" alt="rudy-tweet"><a href=""></a></span>
-        </div>
-        <div class="external-title">Télécharger notre Application:<br>
-          <span id="rudyairApple" class="rudyairApp"><img width="120px" height="40px" src="asset/img/applestore.png" alt=""></span>
-          <span id="rudyairGoogle" class="rudyairApp"><img width="120px" height="40px" src="asset/img/googlestore.png" alt=""></span>
+        <div class="checkbox">
+          <label for="newsletter">
+            <input type="checkbox" name="newsletter" id="newsletter" value="1"> S'inscrire à la newsletter
+          </label>
         </div>
       </div>
+      <div class="submit clearfix">
+        <input type="hidden" name="email_create" value="1">
+        <input type="hidden" name="is_new_customer" value="1">
+        <input type="hidden" class="hidden" name="back" value="my-account">
+        <button type="submit" name="submitAccount" id="submitAccount" class="btn btn-login btn-default button button-medium">
+          <span>S'inscrire &#10095; <i class="icon-chevron-right right"></i>
+          </span>
+        </button>
+        <p class="pull-right required"><span><sup>*</sup>Champ requis</span>
+        </p>
+      </div>
+    </form>
+  </section>
+</main>
+<!--  ===================== FOOTER =====================   -->
+<footer>
+  <div id="footerLink" class="padding10">
+    <div id="footerAbout"><a class="item-tittle-Link" href="">A propos de nous</a>
+      <table>
+        <tr><td><a class="item" href="">RudyAIR</a></td></tr>
+        <tr><td><a class="item" href="">Nos valeurs</a></td></tr>
+        <tr><td><a class="item" href="">Nos collaborations</a></td></tr>
+        <tr><td><a class="item" href="">Nous contacter</a></td></tr>
+      </table>
+    </div>
+    <div id="footerSAV"><a class="item-tittle-Link" href="">Service client</a>
+      <table>
+        <tr><td><a class="item" href="">Réserver un billet</a></td></tr>
+        <tr><td><a class="item" href="">Remboursement</a></td></tr>
+        <tr><td><a class="item" href="">Assistance à la personne</a></td></tr>
+        <tr><td><a class="item" href="">Services Premium</a></td></tr>
+      </table>
+    </div>
+    <div id="footerPlanifier"><a class="item-tittle-Link"  href="">Planifier votre voyage</a>
+      <table>
+        <tr><td><a class="item" href="">Documents Utiles</a></td></tr>
+        <tr><td><a class="item" href="">Préparer ses bagages</a></td></tr>
+        <tr><td><a class="item" href="">Parking</a></td></tr>
+        <tr><td><a class="item" href="">Comment s'enregister</a></td></tr>
+      </table>
+    </div>
+    <div id="footerTrip"><a class="item-tittle-Link" href="">Top destinations</a>
+      <table>
+        <tr><td><a class="item" href="">Toulouse</a></td></tr>
+        <tr><td><a class="item" href="">Kyoto</a></td></tr>
+        <tr><td><a class="item" href="">Nosy-be</a></td></tr>
+        <tr><td><a class="item" href="">Auckland</a></td></tr>
+      </table>
     </div>
 
-    <div id="footerCopyright">
-      <a href="" target="_blank"> &copy Copyright - 2022 - <span>RudyAIR</span> </a>
+    <div id="footerExterneLink" class="">
+      <div class="rudyairNetword external-title" >Suivez-nous sur nos réseaux:<br>
+        <span id="rudyairFacebook"><img class="icon" src="asset/img/icon/fb-gold.png" alt="rudy-fb"><a href=""></a></span>
+        <span id="rudyairInsta"><img class="icon" src="asset/img/icon/insta-gold.png" alt="rudy-insta"><a href=""></a></span>
+        <span id="rudyairTwitter"><img class="icon" src="asset/img/icon/tweet-gold.png" alt="rudy-tweet"><a href=""></a></span>
+      </div>
+      <div class="external-title">Télécharger notre Application:<br>
+        <span id="rudyairApple" class="rudyairApp"><img width="120px" height="40px" src="asset/img/applestore.png" alt=""></span>
+        <span id="rudyairGoogle" class="rudyairApp"><img width="120px" height="40px" src="asset/img/googlestore.png" alt=""></span>
+      </div>
     </div>
-  </footer>
+  </div>
+
+  <div id="footerCopyright">
+    <a href="" target="_blank"> &copy Copyright - 2022 - <span>RudyAIR</span> </a>
+  </div>
+</footer>
 </body>
 
 <script>
