@@ -1,4 +1,3 @@
-import { Siege } from './../vol/siege';
 import { Passager } from './passager';
 export class Reservation {
   private _id: number | undefined;
@@ -7,7 +6,7 @@ export class Reservation {
   private _bagage: number | undefined;
   private _passager: Passager | undefined;
   private _vol: Vol | undefined;
-  private _siege: Siege | undefined;
+  private _siege: string | undefined;
   private _client: Client | undefined;
 
   constructor(
@@ -17,7 +16,7 @@ export class Reservation {
     bagage: number,
     passager: Passager,
     vol: Vol,
-    siege: Siege,
+    siege: string,
     client: Client
   ) {
     this._id = id;
@@ -80,9 +79,9 @@ export class Reservation {
 
   /**
    * Getter siege
-   * @return {Siege }
+   * @return {string }
    */
-  public get siege(): Siege | undefined {
+  public get siege(): string | undefined {
     return this._siege;
   }
 
@@ -144,9 +143,9 @@ export class Reservation {
 
   /**
    * Setter siege
-   * @param {Siege } value
+   * @param {string } value
    */
-  public set siege(value: Siege | undefined) {
+  public set siege(value: string | undefined) {
     this._siege = value;
   }
 
