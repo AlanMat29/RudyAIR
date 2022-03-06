@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Compte } from '../model/compte/Compte';
+import { Compte } from '../model/compte/compte';
 
 @Injectable({
   providedIn: 'root',
@@ -11,16 +11,23 @@ export class CompteService {
 
   constructor(private httpCompte: HttpClient) {}
 
+  private compteToJson(compte: Compte): any {
+    const obj = {
+      id: compte.id,
+      nom: compte.nom,
+      prenom: compte.prenom,
+      dateNaissance: compte.dateNaissance,
+      email: compte.email,
+      password: compte.password,
+    };
+  }
+
   public getAll(): Observable<Compte[]> {
     return this.httpCompte.get<Compte[]>(CompteService.URL);
   }
 
-  public get(id: number): Observable<Compte[]> {
-    return this.httpCompte.get<Compte>(`${CompteService.URL}/${id}`);
-  }
-
-  public delete(id: number): Observable<void> {
-    return this.httpCompte.delete<void>(`${CompteService.URL}/${id}`);
+  public getById(id: number): Observable<Compte[]> {
+    return this.httpCompte.get<Compte[]>(`${CompteService.URL}/${id}`);
   }
 
   public create(compte: Compte): Observable<Compte> {
@@ -38,14 +45,7 @@ export class CompteService {
     );
   }
 
-  private compteToJson(compte: Compte): any {
-    const obj = {
-      id: compte.id,
-      nom: compte.nom,
-      prenom: compte.prenom,
-      dateNaissance: compte.dateNaissance,
-      email: compte.email,
-      password: compte.password,
-    };
+  public deleteById(id: number): Observable<void> {
+    return this.httpCompte.delete<void>(`${CompteService.URL}/${id}`);
   }
 }

@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Client } from './../model/compte/Client';
+import { Client } from '../model/compte/client';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -11,16 +11,25 @@ export class ClientService {
 
   constructor(private httpClient: HttpClient) {}
 
+  private clientToJson(client: Client): any {
+    const obj = {
+      id: client.id,
+      nom: client.nom,
+      prenom: client.prenom,
+      dateNaissance: client.dateNaissance,
+      email: client.email,
+      password: client.password,
+      adresse: client.adresse,
+      abonnement: client.abonnement,
+    };
+  }
+
   public getAll(): Observable<Client[]> {
     return this.httpClient.get<Client[]>(ClientService.URL);
   }
 
-  public get(id: number): Observable<Client[]> {
-    return this.httpClient.get<Client>(`${ClientService.URL}/${id}`);
-  }
-
-  public delete(id: number): Observable<void> {
-    return this.httpClient.delete<void>(`${ClientService.URL}/${id}`);
+  public getById(id: number): Observable<Client[]> {
+    return this.httpClient.get<Client[]>(`${ClientService.URL}/${id}`);
   }
 
   public create(client: Client): Observable<Client> {
@@ -38,16 +47,7 @@ export class ClientService {
     );
   }
 
-  private clientToJson(client: Client): any {
-    const obj = {
-      id: client.id,
-      nom: client.nom,
-      prenom: client.prenom,
-      dateNaissance: client.dateNaissance,
-      email: client.email,
-      password: client.password,
-      adresse: client.adresse,
-      abonnement: client.abonnement,
-    };
+  public deleteById(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`${ClientService.URL}/${id}`);
   }
 }
