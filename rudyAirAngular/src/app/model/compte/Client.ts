@@ -1,4 +1,6 @@
-import { Compte } from './Compte';
+import { Abonnement } from './abonnement';
+import { Adresse } from './adresse';
+import { Compte } from './compte';
 
 export class Client extends Compte {
   private _adresse: Adresse | undefined;

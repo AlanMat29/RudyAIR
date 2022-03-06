@@ -1,7 +1,7 @@
-import { Admin } from './../model/compte/Admin';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Admin } from '../model/compte/admin';
 
 @Injectable({
   providedIn: 'root',
@@ -11,16 +11,23 @@ export class AdminService {
 
   constructor(private httpAdmin: HttpClient) {}
 
+  private adminToJson(admin: Admin): any {
+    const obj = {
+      id: admin.id,
+      nom: admin.nom,
+      prenom: admin.prenom,
+      dateNaissance: admin.dateNaissance,
+      email: admin.email,
+      password: admin.password,
+    };
+  }
+
   public getAll(): Observable<Admin[]> {
     return this.httpAdmin.get<Admin[]>(AdminService.URL);
   }
 
-  public get(id: number): Observable<Admin[]> {
-    return this.httpAdmin.get<Admin>(`${AdminService.URL}/${id}`);
-  }
-
-  public delete(id: number): Observable<void> {
-    return this.httpAdmin.delete<void>(`${AdminService.URL}/${id}`);
+  public getById(id: number): Observable<Admin[]> {
+    return this.httpAdmin.get<Admin[]>(`${AdminService.URL}/${id}`);
   }
 
   public create(admin: Admin): Observable<Admin> {
@@ -38,14 +45,7 @@ export class AdminService {
     );
   }
 
-  private adminToJson(admin: Admin): any {
-    const obj = {
-      id: admin.id,
-      nom: admin.nom,
-      prenom: admin.prenom,
-      dateNaissance: admin.dateNaissance,
-      email: admin.email,
-      password: admin.password,
-    };
+  public deleteById(id: number): Observable<void> {
+    return this.httpAdmin.delete<void>(`${AdminService.URL}/${id}`);
   }
 }

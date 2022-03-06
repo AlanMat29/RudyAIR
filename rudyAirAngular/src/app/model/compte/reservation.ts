@@ -1,3 +1,4 @@
+import { Client } from './client';
 import { Passager } from './passager';
 export class Reservation {
   private _id: number | undefined;

@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -12,14 +13,19 @@ import rudyAir.model.Views;
 @Embeddable
 public class Adresse {
 	@Column(length = 5, nullable = true)
+	@NotEmpty
 	@JsonView(Views.Common.class)
-	private int numero;
+	private String numero;
+	@NotEmpty
 	@JsonView(Views.Common.class)
 	private String voie;
+	@NotEmpty
 	@JsonView(Views.Common.class)
 	private String cp;
+	@NotEmpty
 	@JsonView(Views.Common.class)
 	private String ville;
+	@NotEmpty
 	@JsonView(Views.Common.class)
 	private String pays;
 
@@ -27,7 +33,7 @@ public class Adresse {
 
 	}
 
-	public Adresse(int numero, String voie, String cp, String ville, String pays) {
+	public Adresse(String numero, String voie, String cp, String ville, String pays) {
 		super();
 		this.numero = numero;
 		this.voie = voie;
@@ -44,11 +50,11 @@ public class Adresse {
 		this.pays = pays;
 	}
 
-	public int getNumero() {
+	public String getNumero() {
 		return this.numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 
