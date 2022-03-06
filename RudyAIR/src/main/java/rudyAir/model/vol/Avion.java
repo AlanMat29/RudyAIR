@@ -1,7 +1,6 @@
 package rudyAir.model.vol;
 
 import java.util.Objects;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +9,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -39,8 +37,6 @@ public class Avion {
 	@OneToOne(mappedBy = "avion")
 	private Vol vol;
 	@JsonView(Views.AvionWithSiege.class)
-	@OneToMany(mappedBy = "avion")
-	private Set<Siege> sieges;
 
 	@Version
 	private int version;
@@ -48,20 +44,12 @@ public class Avion {
 	public Avion() {
 	}
 
-	public Avion(Long id, String ref, StatutAvion statutAvion, Vol vol, Set<Siege> sieges) {
+	public Avion(Long id, String ref, StatutAvion statutAvion, Vol vol) {
 		super();
 		this.id = id;
 		this.ref = ref;
 		this.statutAvion = statutAvion;
 		this.vol = vol;
-		this.sieges = sieges;
-	}
-
-	public Avion(String ref, StatutAvion statutAvion, Set<Siege> sieges) {
-		super();
-		this.ref = ref;
-		this.statutAvion = statutAvion;
-		this.sieges = sieges;
 	}
 
 	public Avion(String ref, StatutAvion statutAvion) {
@@ -70,13 +58,6 @@ public class Avion {
 		this.statutAvion = statutAvion;
 	}
 
-	public Set<Siege> getSieges() {
-		return sieges;
-	}
-
-	public void setSieges(Set<Siege> sieges) {
-		this.sieges = sieges;
-	}
 
 	public String getRef() {
 		return this.ref;
