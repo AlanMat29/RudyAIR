@@ -23,7 +23,6 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import rudyAir.model.Views;
-import rudyAir.model.vol.Siege;
 import rudyAir.model.vol.Vol;
 
 @Entity
@@ -45,6 +44,9 @@ public class Reservation {
 	@JsonView({ Views.Reservation.class, Views.SiegeWithReservationAndAvion.class,
 			Views.CompteClientWithReservation.class })
 	private int bagage;
+	@JsonView({ Views.Reservation.class, Views.SiegeWithReservationAndAvion.class,
+			Views.CompteClientWithReservation.class })
+	private String siege;
 
 	@OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
 	@JoinColumn(name = "resa_passager_id", foreignKey = @ForeignKey(name = "resa_passager_id_fk"), nullable = false)
@@ -55,10 +57,6 @@ public class Reservation {
 	@JoinColumn(name = "resa_vol_id", foreignKey = @ForeignKey(name = "resa_vol_id_fk"), nullable = false)
 	@JsonView({ Views.Reservation.class, Views.CompteClientWithReservation.class })
 	private Vol vol;
-	@OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
-	@JoinColumn(name = "resa_siege_id", foreignKey = @ForeignKey(name = "resa_siege_id_fk"))
-	@JsonView({ Views.Reservation.class, Views.CompteClientWithReservation.class })
-	private Siege siege;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
@@ -73,7 +71,7 @@ public class Reservation {
 	}
 
 	public Reservation(Long id, Vol vol, Passager passager, Client client, boolean statut,
-			@DecimalMin("0") Integer animaux, @DecimalMin("0") int bagage, Siege siege) {
+			@DecimalMin("0") Integer animaux, @DecimalMin("0") int bagage, String siege) {
 		super();
 		this.id = id;
 		this.vol = vol;
@@ -86,7 +84,7 @@ public class Reservation {
 	}
 
 	public Reservation(Vol vol, Passager passager, Client client, boolean statut, @DecimalMin("0") Integer animaux,
-			@DecimalMin("0") int bagage, Siege siege) {
+			@DecimalMin("0") int bagage, String siege) {
 		super();
 		this.vol = vol;
 		this.passager = passager;
@@ -108,11 +106,11 @@ public class Reservation {
 		this.bagage = bagage;
 	}
 
-	public Siege getSiege() {
+	public String getSiege() {
 		return siege;
 	}
 
-	public void setSiege(Siege siege) {
+	public void setSiege(String siege) {
 		this.siege = siege;
 	}
 

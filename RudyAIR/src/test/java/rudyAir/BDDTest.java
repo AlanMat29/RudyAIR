@@ -19,7 +19,6 @@ import rudyAir.model.compte.Reservation;
 import rudyAir.model.vol.Aeroport;
 import rudyAir.model.vol.Avion;
 import rudyAir.model.vol.Horaire;
-import rudyAir.model.vol.Siege;
 import rudyAir.model.vol.StatutAvion;
 import rudyAir.model.vol.StatutVol;
 import rudyAir.model.vol.Ville;
@@ -32,7 +31,6 @@ import rudyAir.services.AeroportService;
 import rudyAir.services.AvionService;
 import rudyAir.services.PassagerService;
 import rudyAir.services.ReservationService;
-import rudyAir.services.SiegeService;
 import rudyAir.services.VilleService;
 import rudyAir.services.VolGeneriqueService;
 import rudyAir.services.VolService;
@@ -59,9 +57,6 @@ public class BDDTest {
 
 	@Autowired
 	private AvionService avionService;
-
-	@Autowired
-	private SiegeService siegeService;
 
 	@Autowired
 	private PassagerService passagerService;
@@ -105,9 +100,6 @@ public class BDDTest {
 			Avion avion = new Avion("RD000" + i, StatutAvion.enVol);// , sieges);
 			avionService.save(avion);
 
-			Siege siege = new Siege(i, avion);
-			siegeService.save(siege);
-
 			Vol vol = new Vol(LocalDate.parse("2022-02-" + ("0" + i)), LocalDate.parse("2022-02-" + ("0" + (i + 1))),
 					StatutVol.onTime, "NumVol" + i, volGenerique, avion);
 			volService.save(vol);
@@ -117,7 +109,7 @@ public class BDDTest {
 					LocalDate.parse("1999-02-" + ("0" + (i + 1))));
 			passagerService.save(passager);
 
-			Reservation resa = new Reservation(vol, passager, client, true, 0, 2, siege);
+			Reservation resa = new Reservation(vol, passager, client, true, 0, 2, "A" + i);
 			reservationService.save(resa);
 
 		}
@@ -164,11 +156,6 @@ public class BDDTest {
 		avion.setStatutAvion(StatutAvion.auSol);
 		avionService.save(avion);
 
-		Siege siege = new Siege();
-		siege.setNumero(15);
-		siege.setAvion(avion);
-		siegeService.save(siege);
-
 		Vol vol = new Vol();
 		vol.setDateDepart(LocalDate.parse("2022-02-02"));
 		vol.setDateArrivee(LocalDate.parse("2022-02-03"));
@@ -191,7 +178,7 @@ public class BDDTest {
 		resa.setStatut(true);
 		resa.setAnimaux(1);
 		resa.setBagage(3);
-		resa.setSiege(siege);
+		resa.setSiege("B1");
 		reservationService.save(resa);
 
 	}

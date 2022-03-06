@@ -17,6 +17,7 @@ export class ReservationService {
       statut: reservation.statut,
       animaux: reservation.animaux,
       bagage: reservation.bagage,
+      siege: reservation.siege,
     };
 
     if (reservation.passager) {
@@ -40,16 +41,6 @@ export class ReservationService {
           numeroVol: reservation.vol.numeroVol,
           volGenerique: reservation.vol.volGenerique,
           avion: reservation.vol.avion,
-        },
-      });
-    }
-
-    if (reservation.siege) {
-      Object.assign(reservationJson, {
-        siege: {
-          id: reservation.siege.id,
-          numero: reservation.siege.numero,
-          avion: reservation.siege.avion,
         },
       });
     }
