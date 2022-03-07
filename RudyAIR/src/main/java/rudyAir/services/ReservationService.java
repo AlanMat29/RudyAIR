@@ -16,10 +16,8 @@ public class ReservationService {
 	private IReservationRepository reservationRepo;
 
 	private void checkData(Reservation reservation) {
-		if (reservation.getAnimaux() == null || reservation.getBagage() < 0
-		|| reservation.getSiege() == null || reservation.getVol() == null ||
-		reservation.getPassager() == null || reservation.getAnimaux() < 0
-		) {
+		if (reservation.getAnimaux() == null || reservation.getBagage() < 0 || reservation.getVol() == null
+				|| reservation.getPassager() == null || reservation.getAnimaux() < 0) {
 			throw new ReservationException("Donnees incorrectes");
 		}
 	}
