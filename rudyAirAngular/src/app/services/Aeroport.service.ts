@@ -8,7 +8,7 @@ import { Aeroport } from '../model/vol/aeroport';
   providedIn: 'root',
 })
 export class AeroportService {
-  private static URL = 'http://localhost:8888/rudyAir/api/aeroport';
+  private static URL = 'http://localhost:8080/rudyair/api/aeroport';
   constructor(private httpAeroport: HttpClient) {}
 
   private aeroportToJson(aeroport: Aeroport): any {

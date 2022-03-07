@@ -7,7 +7,7 @@ import { Compte } from '../model/compte/compte';
   providedIn: 'root',
 })
 export class CompteService {
-  private static URL = 'http://localhost:8888/rudyAir/api/compte';
+  private static URL = 'http://localhost:8080/rudyair/api/compte';
 
   constructor(private httpClient: HttpClient) {}
 

@@ -7,7 +7,7 @@ import { Avion } from '../model/vol/avion';
   providedIn: 'root',
 })
 export class AvionService {
-  static URL: string = 'http://localhost:8080/boot/api/avion';
+  static URL: string = 'http://localhost:8080/rudyair/api/avion';
 
   constructor(private httpClient: HttpClient) {}
 
