@@ -1,4 +1,3 @@
-import { ClientService } from './../../../services/client.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class ReservationClientComponent implements OnInit {
   clientForm!: FormGroup;
 
-  constructor(private ClientService: ClientService) {}
+  constructor() {}
 
   ngOnInit(): void {
     this.clientForm = new FormGroup({
