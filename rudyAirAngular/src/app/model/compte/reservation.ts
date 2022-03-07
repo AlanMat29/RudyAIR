@@ -1,5 +1,7 @@
+import { Vol } from '../vol/vol';
 import { Client } from './client';
 import { Passager } from './passager';
+
 export class Reservation {
   private _id: number | undefined;
   private _statut: boolean | undefined;
