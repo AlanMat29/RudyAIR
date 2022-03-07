@@ -8,7 +8,7 @@ import { VolGenerique } from '../model/vol/volGeneriques';
   providedIn: 'root',
 })
 export class VolGeneriqueService {
-  private static URL = 'http://localhost:8888/rudyAir/api/volgen';
+  private static URL = 'http://localhost:8080/rudyair/api/volgen';
   constructor(private httpClient: HttpClient) {}
 
   private volGeneriqueToJson(volGenerique: VolGenerique): any {
