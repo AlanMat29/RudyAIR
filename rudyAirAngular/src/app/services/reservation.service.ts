@@ -44,13 +44,13 @@ export class ReservationService {
   public create(reservation: Reservation): Observable<Reservation> {
     return this.httpClient.post<Reservation>(
       ReservationService.URL,
-      this.reservationToJson
+      this.reservationToJson(reservation)
     );
   }
 
-  public update(id: number): Observable<Reservation> {
+  public update(reservation: Reservation): Observable<Reservation> {
     return this.httpClient.put<Reservation>(
-      ReservationService.URL + '/' + id,
+      ReservationService.URL + '/' + reservation.id,
       this.reservationToJson
     );
   }

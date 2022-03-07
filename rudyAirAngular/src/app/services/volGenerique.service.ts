@@ -48,17 +48,17 @@ export class VolGeneriqueService {
     );
   }
 
-  public create(VolGenerique: VolGenerique): Observable<VolGenerique> {
+  public create(volGenerique: VolGenerique): Observable<VolGenerique> {
     return this.httpClient.post<VolGenerique>(
       VolGeneriqueService.URL,
-      this.volGeneriqueToJson(VolGenerique)
+      this.volGeneriqueToJson(volGenerique)
     );
   }
 
-  public update(VolGenerique: VolGenerique): Observable<VolGenerique> {
+  public update(volGenerique: VolGenerique): Observable<VolGenerique> {
     return this.httpClient.put<VolGenerique>(
-      `${VolGeneriqueService.URL}/${VolGenerique.id}`,
-      this.volGeneriqueToJson(VolGenerique)
+      `${VolGeneriqueService.URL}/${volGenerique.id}`,
+      this.volGeneriqueToJson(volGenerique)
     );
   }
 

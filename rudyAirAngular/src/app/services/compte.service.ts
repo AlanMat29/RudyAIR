@@ -39,7 +39,6 @@ export class CompteService {
   }
 
   public update(compte: Compte): Observable<Compte> {
-    console.log(this.compteToJson(compte));
     return this.httpClient.put<Compte>(
       `${CompteService.URL}/${compte.id}`,
       this.compteToJson(compte)

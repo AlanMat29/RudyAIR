@@ -38,13 +38,13 @@ export class PassagerService {
   public create(passager: Passager): Observable<Passager> {
     return this.httpClient.post<Passager>(
       PassagerService.URL,
-      this.passagerToJson
+      this.passagerToJson(passager)
     );
   }
 
-  public update(id: number): Observable<Passager> {
+  public update(passager: Passager): Observable<Passager> {
     return this.httpClient.put<Passager>(
-      PassagerService.URL + '/' + id,
+      PassagerService.URL + '/' + passager.id,
       this.passagerToJson
     );
   }

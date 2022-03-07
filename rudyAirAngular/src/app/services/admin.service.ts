@@ -39,7 +39,6 @@ export class AdminService {
   }
 
   public update(admin: Admin): Observable<Admin> {
-    console.log(this.adminToJson(admin));
     return this.httpClient.put<Admin>(
       `${AdminService.URL}/${admin.id}`,
       this.adminToJson(admin)
