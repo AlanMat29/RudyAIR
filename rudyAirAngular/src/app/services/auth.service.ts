@@ -10,13 +10,13 @@ export class AuthService {
 
   public checkUsername(username: string): Observable<boolean> {
     return this.http.get<boolean>(
-      'http://localhost:8080/boot/api/auth/search/' + username
+      'http://localhost:8080/rudyair/api/auth/search/' + username
     );
   }
 
   public inscription(user: any): Observable<any> {
     return this.http.post(
-      'http://localhost:8080/boot/api/auth/inscription',
+      'http://localhost:8080/rudyair/api/auth/inscription',
       user
     );
   }
@@ -25,7 +25,7 @@ export class AuthService {
     let headers = new HttpHeaders({
       Authorization: 'Basic ' + btoa(login + ':' + password),
     });
-    return this.http.get<void>('http://localhost:8080/boot/api/auth', {
+    return this.http.get<void>('http://localhost:8080/rudyair/api/auth', {
       headers: headers,
     });
   }

@@ -7,7 +7,7 @@ import { Vol } from '../model/vol/vol';
   providedIn: 'root',
 })
 export class VolService {
-  private static URL = 'http://localhost:8080/boot/api/vol';
+  private static URL = 'http://localhost:8080/rudyair/api/vol';
 
   constructor(private httpClient: HttpClient) {}
 

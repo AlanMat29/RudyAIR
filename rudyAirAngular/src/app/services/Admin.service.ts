@@ -7,7 +7,7 @@ import { Admin } from '../model/compte/admin';
   providedIn: 'root',
 })
 export class AdminService {
-  private static URL = 'http://localhost:8888/rudyAir/api/admin';
+  private static URL = 'http://localhost:8080/rudyAir/api/admin';
 
   constructor(private httpClient: HttpClient) {}
 
