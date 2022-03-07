@@ -12,16 +12,27 @@ export class ClientService {
   constructor(private httpClient: HttpClient) {}
 
   private clientToJson(client: Client): any {
-    const obj = {
+    const clientJson = {
       id: client.id,
       nom: client.nom,
       prenom: client.prenom,
       dateNaissance: client.dateNaissance,
       email: client.email,
       password: client.password,
-      adresse: client.adresse,
       abonnement: client.abonnement,
     };
+    if (client.adresse) {
+      Object.assign(clientJson, {
+        adresse: {
+          numero: client.adresse.numero,
+          voie: client.adresse.voie,
+          cp: client.adresse.cp,
+          ville: client.adresse.ville,
+          pays: client.adresse.pays,
+        },
+      });
+    }
+    return clientJson;
   }
 
   public getAll(): Observable<Client[]> {

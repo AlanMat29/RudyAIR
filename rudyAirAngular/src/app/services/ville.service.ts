@@ -11,16 +11,22 @@ export class VilleService {
 
   constructor(private httpClient: HttpClient) {}
 
+  private villeToJson(ville: Ville): any {
+    const villeJson = {
+      id: ville.id,
+      nom: ville.nom,
+      pays: ville.pays,
+      cp: ville.cp,
+    };
+    return villeJson;
+  }
+
   public getAll(): Observable<Ville[]> {
     return this.httpClient.get<Ville[]>(VilleService.URL);
   }
 
-  public get(id: number): Observable<Ville> {
+  public getById(id: number): Observable<Ville> {
     return this.httpClient.get<Ville>(`${VilleService.URL}/${id}`);
-  }
-
-  public delete(id: number): Observable<void> {
-    return this.httpClient.delete<void>(`${VilleService.URL}/${id}`);
   }
 
   public create(ville: Ville): Observable<Ville> {
@@ -31,21 +37,13 @@ export class VilleService {
   }
 
   public update(ville: Ville): Observable<Ville> {
-    console.log(this.villeToJson(ville));
     return this.httpClient.put<Ville>(
       `${VilleService.URL}/${ville.id}`,
       this.villeToJson(ville)
     );
   }
 
-  private villeToJson(ville: Ville): any {
-    const obj = {
-      id: ville.id,
-      nom: ville.nom,
-      pays: ville.pays,
-      cp: ville.cp,
-    };
-
-    return obj;
+  public deleteById(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`${VilleService.URL}/${id}`);
   }
 }

@@ -11,16 +11,29 @@ export class VolService {
 
   constructor(private httpClient: HttpClient) {}
 
+  private volToJson(vol: Vol): any {
+    const volJson = {
+      id: vol.id,
+      numeroVol: vol.numeroVol,
+      dateDepart: vol.dateDepart,
+      dateArrivee: vol.dateArrivee,
+      statutVol: vol.statutVol,
+    };
+    if (vol.volGenerique) {
+      Object.assign(volJson, { volGenerique: { id: vol.volGenerique.id } });
+    }
+    if (vol.avion) {
+      Object.assign(volJson, { avion: { id: vol.avion.id } });
+    }
+    return volJson;
+  }
+
   public getAll(): Observable<Vol[]> {
     return this.httpClient.get<Vol[]>(VolService.URL);
   }
 
-  public get(id: number): Observable<Vol> {
+  public getById(id: number): Observable<Vol> {
     return this.httpClient.get<Vol>(`${VolService.URL}/${id}`);
-  }
-
-  public delete(id: number): Observable<void> {
-    return this.httpClient.delete<void>(`${VolService.URL}/${id}`);
   }
 
   public create(vol: Vol): Observable<Vol> {
@@ -28,30 +41,13 @@ export class VolService {
   }
 
   public update(vol: Vol): Observable<Vol> {
-    console.log(this.volToJson(vol));
     return this.httpClient.put<Vol>(
       `${VolService.URL}/${vol.id}`,
       this.volToJson(vol)
     );
   }
 
-  private volToJson(vol: Vol): any {
-    const obj = {
-      id: vol.id,
-      numeroVol: vol.numeroVol,
-      dateDepart: vol.dateDepart,
-      dateArrivee: vol.dateArrivee,
-      statutVol: vol.statutVol,
-    };
-
-    if (vol.volGenerique) {
-      Object.assign(obj, { volGenerique: { id: vol.volGenerique.id } });
-    }
-
-    if (vol.avion) {
-      Object.assign(obj, { avion: { id: vol.avion.id } });
-    }
-
-    return obj;
+  public deleteById(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`${VolService.URL}/${id}`);
   }
 }
