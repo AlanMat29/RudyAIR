@@ -4,7 +4,12 @@ export class Passager {
   private _prenom: string | undefined;
   private _dateDeNaissance: Date | undefined;
 
-  constructor(id: number, nom: string, prenom: string, dateDeNaissance: Date) {
+  constructor(
+    id?: number,
+    nom?: string,
+    prenom?: string,
+    dateDeNaissance?: Date
+  ) {
     this._id = id;
     this._nom = nom;
     this._prenom = prenom;

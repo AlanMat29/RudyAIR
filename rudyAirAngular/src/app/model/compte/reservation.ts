@@ -13,14 +13,14 @@ export class Reservation {
   private _client: Client | undefined;
 
   constructor(
-    id: number,
-    statut: boolean,
-    animaux: number,
-    bagage: number,
-    passager: Passager,
-    vol: Vol,
-    siege: string,
-    client: Client
+    id?: number,
+    statut?: boolean,
+    animaux?: number,
+    bagage?: number,
+    passager?: Passager,
+    vol?: Vol,
+    siege?: string,
+    client?: Client
   ) {
     this._id = id;
     this._statut = statut;
