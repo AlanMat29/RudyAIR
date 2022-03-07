@@ -33,39 +33,14 @@ export class ReservationService {
 
     if (reservation.vol) {
       Object.assign(reservationJson, {
-        vol: {
-          id: reservation.vol.id,
-          dateDepart: reservation.vol.dateDepart,
-          dateArrivee: reservation.vol.dateArrivee,
-          statutVol: reservation.vol.statutVol,
-          numeroVol: reservation.vol.numeroVol,
-          volGenerique: reservation.vol.volGenerique,
-          avion: reservation.vol.avion,
-        },
+        vol: { id: reservation.vol.id },
       });
     }
 
-    // Double imbrication de classe (Client dans Resa et Adresse dans Client)
     if (reservation.client) {
-      const clientJson = {
-        id: reservation.client.id,
-        nom: reservation.client.nom,
-        prenom: reservation.client.prenom,
-        dateNaissance: reservation.client.dateNaissance,
-        emaild: reservation.client.email,
-        abonnement: reservation.client.abonnement,
-      };
-      if (reservation.client.adresse) {
-        Object.assign(clientJson, {
-          adresse: {
-            numero: reservation.client.adresse.numero,
-            voie: reservation.client.adresse.voie,
-            cp: reservation.client.adresse.cp,
-            pays: reservation.client.adresse.pays,
-          },
-        });
-      }
-      Object.assign(reservationJson, clientJson);
+      Object.assign(reservationJson, {
+        client: { id: reservation.client.id },
+      });
     }
 
     return reservationJson;
