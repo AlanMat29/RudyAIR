@@ -4,10 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ReservationComponent } from './component/admin/reservation/reservation.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    ReservationComponent
+    ReservationComponent,
+
   ],
   imports: [
     BrowserModule
