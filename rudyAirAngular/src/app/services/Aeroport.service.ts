@@ -2,23 +2,28 @@ import { HttpClient } from '@angular/common/http';
 
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Aeroport } from '../model/Vol-generique/aeroport';
+import { Aeroport } from '../model/vol/aeroport';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AeroportService {
   private static URL = 'http://localhost:8888/rudyAir/api/aeroport';
-  constructor(private httpAeroport: HttpClient) { }
+  constructor(private httpAeroport: HttpClient) {}
 
   private aeroportToJson(aeroport: Aeroport): any {
-    const obj = {
+    const aeroportJson = {
       id: aeroport.id,
       nom: aeroport.nom,
-      ville: aeroport.ville,
-
-      };
+    };
+    if (aeroport.ville) {
+      Object.assign(aeroportJson, {
+        ville: { id: aeroport.ville.id },
+      });
+    }
+    return aeroportJson;
   }
+
   public getAll(): Observable<Aeroport[]> {
     return this.httpAeroport.get<Aeroport[]>(AeroportService.URL);
   }
