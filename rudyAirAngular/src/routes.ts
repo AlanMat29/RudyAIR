@@ -3,8 +3,8 @@ import { HomeComponent } from './app/component/home/home.component';
 import { PageNotFoundComponent } from './app/component/page-not-found/page-not-found.component';
 
 export const routes: Routes = [
-  { path: 'acceuil', component: HomeComponent },
-  { path: '', redirectTo: 'acceuil', pathMatch: 'full' },
+  { path: 'accueil', component: HomeComponent },
+  { path: '', redirectTo: 'accueil', pathMatch: 'full' },
   {
     path: '**',
     component: PageNotFoundComponent,
