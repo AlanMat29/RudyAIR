@@ -8,18 +8,23 @@ import { Avion } from '../model/vol/avion';
 })
 export class AvionService {
   static URL: string = 'http://localhost:8080/boot/api/avion';
-  constructor(private http: HttpClient) {}
 
+  constructor(private httpClient: HttpClient) {}
+
+  private avionToJson(avion: Avion): any {
+    const avionJson = {
+      id: avion.id,
+      ref: avion.ref,
+      statutAvion: avion.statutAvion,
+    };
+    return avionJson;
+  }
   public getAll(): Observable<Avion[]> {
     return this.httpClient.get<Avion[]>(AvionService.URL);
   }
 
-  public get(id: number): Observable<Avion> {
+  public getById(id: number): Observable<Avion> {
     return this.httpClient.get<Avion>(`${AvionService.URL}/${id}`);
-  }
-
-  public delete(id: number): Observable<void> {
-    return this.httpClient.delete<void>(`${AvionService.URL}/${id}`);
   }
 
   public create(avion: Avion): Observable<Avion> {
@@ -37,19 +42,7 @@ export class AvionService {
     );
   }
 
-  private avionToJson(avion: Avion): any {
-    const obj = {
-      id: avion.id,
-      ref: avion.ref,
-      statutAvion: avion.statutAvion,
-    };
-
-    if (avion.vol) {
-      Object.assign(obj, { avion: { id: avion.vol.id } });
-    }
-    if (avion.siege) {
-      Object.assign(obj, { avion: { id: avion.siege.id } });
-    }
-    return obj;
+  public deleteById(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`${AvionService.URL}/${id}`);
   }
 }

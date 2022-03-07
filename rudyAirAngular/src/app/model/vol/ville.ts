@@ -3,20 +3,12 @@ export class Ville {
   private _nom: string | undefined;
   private _pays: string | undefined;
   private _cp: string | undefined;
-  private _aeroports: Aeroports | undefined;
 
-  constructor(
-    id?: number,
-    nom?: string,
-    pays?: string,
-    cp?: string,
-    aeroports?: Aeroports
-  ) {
+  constructor(id?: number, nom?: string, pays?: string, cp?: string) {
     this._id = id;
     this._nom = nom;
     this._pays = pays;
     this._cp = cp;
-    this._aeroports = aeroports;
   }
 
   /**
@@ -52,14 +44,6 @@ export class Ville {
   }
 
   /**
-   * Getter aeroports
-   * @return {Aeroports }
-   */
-  public get aeroports(): Aeroports | undefined {
-    return this._aeroports;
-  }
-
-  /**
    * Setter id
    * @param {number } value
    */
@@ -89,13 +73,5 @@ export class Ville {
    */
   public set cp(value: string | undefined) {
     this._cp = value;
-  }
-
-  /**
-   * Setter aeroports
-   * @param {Aeroports } value
-   */
-  public set aeroports(value: Aeroports) {
-    this._aeroports = value;
   }
 }

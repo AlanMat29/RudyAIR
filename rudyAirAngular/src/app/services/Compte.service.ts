@@ -9,10 +9,10 @@ import { Compte } from '../model/compte/compte';
 export class CompteService {
   private static URL = 'http://localhost:8888/rudyAir/api/compte';
 
-  constructor(private httpCompte: HttpClient) {}
+  constructor(private httpClient: HttpClient) {}
 
   private compteToJson(compte: Compte): any {
-    const obj = {
+    const compteJson = {
       id: compte.id,
       nom: compte.nom,
       prenom: compte.prenom,
@@ -20,18 +20,19 @@ export class CompteService {
       email: compte.email,
       password: compte.password,
     };
+    return compteJson;
   }
 
   public getAll(): Observable<Compte[]> {
-    return this.httpCompte.get<Compte[]>(CompteService.URL);
+    return this.httpClient.get<Compte[]>(CompteService.URL);
   }
 
   public getById(id: number): Observable<Compte[]> {
-    return this.httpCompte.get<Compte[]>(`${CompteService.URL}/${id}`);
+    return this.httpClient.get<Compte[]>(`${CompteService.URL}/${id}`);
   }
 
   public create(compte: Compte): Observable<Compte> {
-    return this.httpCompte.post<Compte>(
+    return this.httpClient.post<Compte>(
       CompteService.URL,
       this.compteToJson(compte)
     );
@@ -39,13 +40,13 @@ export class CompteService {
 
   public update(compte: Compte): Observable<Compte> {
     console.log(this.compteToJson(compte));
-    return this.httpCompte.put<Compte>(
+    return this.httpClient.put<Compte>(
       `${CompteService.URL}/${compte.id}`,
       this.compteToJson(compte)
     );
   }
 
   public deleteById(id: number): Observable<void> {
-    return this.httpCompte.delete<void>(`${CompteService.URL}/${id}`);
+    return this.httpClient.delete<void>(`${CompteService.URL}/${id}`);
   }
 }

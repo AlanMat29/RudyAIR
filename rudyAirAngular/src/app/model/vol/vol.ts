@@ -1,5 +1,6 @@
 import { Avion } from './avion';
-import { StatutVol } from './statut-vol';
+import { StatutVol } from './statutVol';
+import { VolGenerique } from './volGeneriques';
 
 export class Vol {
   private _id: number | undefined;
@@ -9,7 +10,6 @@ export class Vol {
   private _statutVol: StatutVol | undefined;
   private _volGenerique: VolGenerique | undefined;
   private _avion: Avion | undefined;
-  private _reservation: Reservation | undefined;
 
   constructor(
     id?: number,
@@ -18,8 +18,7 @@ export class Vol {
     dateArrivee?: Date,
     statutVol?: StatutVol,
     volGenerique?: VolGenerique,
-    avion?: Avion,
-    reservation?: Reservation
+    avion?: Avion
   ) {
     this._id = id;
     this._numeroVol = numeroVol;
@@ -28,7 +27,6 @@ export class Vol {
     this._statutVol = statutVol;
     this._volGenerique = volGenerique;
     this._avion = avion;
-    this._reservation = reservation;
   }
 
   /**
@@ -88,14 +86,6 @@ export class Vol {
   }
 
   /**
-   * Getter reservation
-   * @return {Reservation }
-   */
-  public get reservation(): Reservation | undefined {
-    return this._reservation;
-  }
-
-  /**
    * Setter id
    * @param {number } value
    */
@@ -149,13 +139,5 @@ export class Vol {
    */
   public set avion(value: Avion | undefined) {
     this._avion = value;
-  }
-
-  /**
-   * Setter reservation
-   * @param {Reservation } value
-   */
-  public set reservation(value: Reservation | undefined) {
-    this._reservation = value;
   }
 }
