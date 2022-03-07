@@ -7,7 +7,7 @@ import { Ville } from '../model/vol/ville';
   providedIn: 'root',
 })
 export class VilleService {
-  private static URL = 'http://localhost:8080/boot/api/ville';
+  private static URL = 'http://localhost:8080/rudyair/api/ville';
 
   constructor(private httpClient: HttpClient) {}
 
