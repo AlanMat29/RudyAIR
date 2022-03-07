@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Aeroport } from '../model/vol/aeroport';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { VolGenerique } from '../model/vol/volGeneriques';
+import { VolGenerique } from '../model/vol/volGenerique';
 
 @Injectable({
   providedIn: 'root',

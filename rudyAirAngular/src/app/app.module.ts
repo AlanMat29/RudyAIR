@@ -21,6 +21,7 @@ import { EnregistrerReservationComponent } from './component/trouverVol/enregist
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { routes } from 'src/routes';
 import { AuthInterceptor } from './interceptor/auth-interceptor';
+import { ReservationEditComponent } from './component/admin/reservation-edit/reservation-edit.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { AuthInterceptor } from './interceptor/auth-interceptor';
     PayerBilletComponent,
     ReservationBilletComponent,
     EnregistrerReservationComponent,
+    ReservationEditComponent,
   ],
   imports: [
     BrowserModule,

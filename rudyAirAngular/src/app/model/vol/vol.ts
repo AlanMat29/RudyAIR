@@ -1,6 +1,6 @@
 import { Avion } from './avion';
 import { StatutVol } from './statutVol';
-import { VolGenerique } from './volGeneriques';
+import { VolGenerique } from './volGenerique';
 
 export class Vol {
   private _id: number | undefined;
