@@ -18,7 +18,7 @@
         <p>Paiement</p>
       </li>
       <li>
-        <img class="timeline-img" src="assets/img/InfosResa/1.png" /><br />
+        <img class="timeline-img" src="assets/img/InfosResa/4.png" /><br />
         <i class="fa fa-times"></i>
         <p>Validation</p>
       </li>
@@ -33,22 +33,24 @@
         <label>Nom</label>
         <input formControlName="nomCtrl" class="form-control" />
         <span
+          style="color: red"
           *ngIf="
             clientForm.controls['nomCtrl'].dirty &&
             clientForm.controls['nomCtrl'].invalid
           "
-          >*incorrect</span
+          >Nom incorrect</span
         >
       </div>
       <div class="form-group col-md-12">
         <label>Prénom</label>
         <input formControlName="prenomCtrl" class="form-control" />
         <span
+          style="color: red"
           *ngIf="
             clientForm.controls['prenomCtrl'].dirty &&
             clientForm.controls['prenomCtrl'].invalid
           "
-          >*incorrect</span
+          >Prenom incorrect</span
         >
       </div>
     </div>
@@ -62,11 +64,12 @@
           id="inputEmail4"
         />
         <span
+          style="color: red"
           *ngIf="
             clientForm.controls['emailCtrl'].dirty &&
             clientForm.controls['emailCtrl'].invalid
           "
-          >*incorrect</span
+          >Email incorrect</span
         >
       </div>
     </div>
@@ -79,11 +82,12 @@
           id="inputTelephone"
         />
         <span
+          style="color: red"
           *ngIf="
             clientForm.controls['telCtrl'].dirty &&
             clientForm.controls['telCtrl'].invalid
           "
-          >*incorrect</span
+          >Numéro incorrect</span
         >
       </div>
 
@@ -91,11 +95,12 @@
         <label>Date de naissance : </label>
         <input min="1930-01-01" formControlName="dateCtrl" type="date" />
         <span
+          style="color: red"
           *ngIf="
             clientForm.controls['dateCtrl'].dirty &&
             clientForm.controls['dateCtrl'].invalid
           "
-          >*incorrect</span
+          >Date non valide</span
         >
       </div>
     </div>
@@ -104,11 +109,12 @@
         <label>Voie</label>
         <input formControlName="voieCtrl" type="text" class="form-control" />
         <span
+          style="color: red"
           *ngIf="
             clientForm.controls['voieCtrl'].dirty &&
             clientForm.controls['voieCtrl'].invalid
           "
-          >*incorrect
+          >Numéro incorrect
         </span>
       </div>
       <div class="form-group col-md-6">
@@ -119,11 +125,12 @@
           id="inputAddress"
         />
         <span
+          style="color: red"
           *ngIf="
             clientForm.controls['adresseCtrl'].dirty &&
             clientForm.controls['adresseCtrl'].invalid
           "
-          >*incorrect</span
+          >Adresse incorrecte</span
         >
       </div>
       <div class="form-group col-md-5">
@@ -141,11 +148,12 @@
         <label for="inputZip">Code postal</label>
         <input formControlName="codeCtrl" class="form-control" id="inputCp" />
         <span
+          style="color: red"
           *ngIf="
             clientForm.controls['codeCtrl'].dirty &&
             clientForm.controls['codeCtrl'].invalid
           "
-          >*incorrect</span
+          >Code postal incorrect</span
         >
       </div>
       <div class="form-group col-md-6">
@@ -156,11 +164,12 @@
           id="inputVille"
         />
         <span
+          style="color: red"
           *ngIf="
             clientForm.controls['villeCtrl'].dirty &&
             clientForm.controls['villeCtrl'].invalid
           "
-          >*incorrect</span
+          >Ville incorrecte</span
         >
       </div>
       <div class="form-group col-md-6">
