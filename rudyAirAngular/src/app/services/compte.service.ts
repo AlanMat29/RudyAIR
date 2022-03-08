@@ -42,11 +42,10 @@ export class CompteService {
   }
 
   public update(compte: Compte): Observable<Compte> {
-<<<<<<< Updated upstream
-=======
+
     console.log(this.compteToJson(compte));
     let httpHeader = new HttpHeaders({ 'Content-Type': 'application/json' });
->>>>>>> Stashed changes
+
     return this.httpClient.put<Compte>(
       `${CompteService.URL}/${compte.id}`,
       this.compteToJson(compte),
@@ -58,12 +57,11 @@ export class CompteService {
     return this.httpClient.delete<void>(`${CompteService.URL}/${id}`);
   }
 
-<<<<<<< Updated upstream
+
   public getAllClient(): Observable<Client[]> {
     return this.httpClient.get<Client[]>(CompteService.URL + '/client');
-=======
+  }
   public getClientById(id: number): Observable<Compte> {
     return this.httpClient.get<Compte>(`${CompteService.URL}/${id}`);
->>>>>>> Stashed changes
-  }
+    }
 }

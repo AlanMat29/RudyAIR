@@ -1,1 +1,173 @@
-<p>payer-billet works!</p>
+<main id="main">
+	<section>
+		<!--  ===================== DEBUT TIMELINE =====================   -->
+		<div id="timeline" class="margin-top-5">
+			<ul id="menu-timeline" class="">
+				<li>
+					<img class="timeline-img" src="assets/img/InfosResa/1.png">
+					<br />
+					<i class="fa fa-check"></i>
+					<p>
+						Récapitulatif
+					</p>
+				</li>
+				<li>
+					<img class="timeline-img" src="assets/img/InfosResa/2.png">
+					<br />
+					<i class="fa fa-check"></i>
+					<p>
+						Informations Passager
+					</p>
+				</li>
+				<li>
+					<img class="timeline-img" src="assets/img/InfosResa/3.png">
+					<br />
+					<i class="fa fa-times"></i>
+					<p>
+						Paiement
+					</p>
+				</li>
+				<li>
+					<img class="timeline-img" src="assets/img/InfosResa/1.png">
+					<br />
+					<i class="fa fa-times"></i>
+					<p>
+						Validation
+					</p>
+				</li>
+			</ul>
+		</div>
+		<!--  ===================== DEBUT FORUMULAIRE =====================   -->
+		<div class="container">
+			<h2 style="text-align: center;">Comment voulez-vous payer ?</h2>
+			<!--  nav tab -->
+			<ul class="nav nav-tabs" role="tablist">
+				<li class="nav-item">
+					<a class="nav-link active" data-toggle="tab" href="#Carte"><img alt="Carte"  class="icon" src="/assets/img/Payement/card.svg">Carte</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#Paypal"><img alt="PayPal" class="icon"  src="/assets/img/Payement/paypal.svg"></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#Miles"><img alt="Miles" class="icon"  src="/assets/img/Payement/Miles.svg"></a>
+				</li>
+			</ul>
+		</div>
+		<!-- tab panes -->
+    <div class="tab-content">
+      <div class="form-group"> <!-- TODO modifier balise form groupe -->
+      <div id="Carte" class="container tab-pane active">
+        <form class="was-validated">
+					<form class="form-inline">
+
+              <input type="text" id="cc-num" autocomplete="cc-number" class="form-control mb-2 mr-sm-2" placeholder="Enter cardNumber" required>
+						<label for="number2" class="mb-2 mr-sm-2">Numéro de carte</label>
+            </form>
+					<form class="form-inline" >
+
+							<select class="form-control mb-2 mr-sm-2" id="typeCard" name="choixTypeCard"required>
+								<option selected="" disabled=""></option>
+								<option >Visa</option>
+								<option >American Express</option>
+								<option >MasterCard</option>
+								<option >CB</option>
+							</select>
+							<label for="choixTypeCard">
+								<font style="vertical-align: inherit;">
+									<font style="vertical-align: inherit;">
+										Type de carte
+									</font>
+								</font>
+							</label>
+
+					</form>
+					<form class="form-inline" >
+						<input type="text" class="form-control mb-2 mr-sm-2" id="cardOwner" placeholder="Enter name" name="name"  required>
+						<label for="name" class="mb-2 mr-sm-2">Titulaire de la carte</label>
+					</form>
+					<form class="form-inline">
+
+							<select class="form-control mb-2 mr-sm-2" id="date1" name="enter date1"required>
+								<option value=""></option>
+								<option value="01">01</option>
+								<option value="02">02</option>
+								<option value="03">03</option>
+								<option value="04">04</option>
+								<option value="05">05</option>
+								<option value="06">06</option>
+								<option value="07">07</option>
+								<option value="08">08</option>
+								<option value="09">09</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>
+							</select>
+							<select class="form-control mb-2 mr-sm-2" id="date2" name="enter date2"required>
+								<option value=""></option>
+								<option value="2022">2022</option>
+								<option value="2023">2023</option>
+								<option value="2024">2024</option>
+								<option value="2025">2025</option>
+								<option value="2027">2027</option>
+								<option value="2028">2028</option>
+								<option value="2029">2029</option>
+								<option value="2030">2030</option>
+								<option value="2031">2031</option>
+								<option value="2032">2032</option>
+								<option value="2033">2033</option>
+								<option value="2034">2034</option>
+								<option value="2035">2035</option>
+								<option value="2036">2036</option>
+								<option value="2037">2037</option>
+								<option value="2038">2038</option>
+								<option value="2039">2039</option>
+								<option value="2040">2040</option>
+								<option value="2041">2041</option>
+								<option value="2042">2042</option>
+								<option value="2043">2043</option>
+								<option value="2044">2044</option>
+								<option value="2045">2045</option>
+								<option value="2046">2046</option>
+								<option value="2047">2047</option>
+								<option value="2048">2048</option>
+								<option value="2049">2049</option>
+							</select>
+							<label for="date" class=" mb-2 mr-sm-2"> Expiration (mm/aa)</label>
+
+					</form>
+					<form class="form-inline" >
+						<input type="text" class="form-control mb-2 mr-sm-2" id="CVV" placeholder="Enter CVV" name="CVV"required>
+						<label for="CVV" class="mb-2 mr-sm-2">CVV</label>
+					</form>
+        </form>
+				</div>
+      </div>
+				<div id="Paypal" class="container tab-pane fade">
+					<form class="form-inline" >
+						<h5>
+							<strong>Prochaines étapes</strong>
+						</h5>
+						<ul style="list-style-type: disc">
+							<li>Vous serez redirigé(e) vers PayPal.</li>
+							<li>Assurez-vous d'effectuer toutes les étapes avec PayPal.</li>
+							<li>Vous recevrez une confirmation après le paiement.</li>
+						</ul>
+					</form>
+				</div>
+				<div id="Miles"  class="container tab-pane fade">
+					<form class="form-inline">
+						<input type="text" class="form-control mb-2 mr-sm-2" id="Miles" placeholder="Enter Miles" name="Miles">
+						<label for="Miles" class="mb-2 mr-sm-2">Entrez votre code RudyMiles</label>
+					</form>
+				</div>
+				<br>
+				<div class="form-check mb-2 mr-sm-2" name="phrase confirmation">
+					<label class="form-check-label"><input type="checkbox" class="form-check-input" name="remember">J'ai lu, compris et accepté les conditions de transport de RudyAir ainsi que les conditions relatives aux marchandises dangereuses.</label>
+				</div>
+				<button type="submit" class="btn btn-secondary mb-2">retour</button>
+				<button type="submit" class="btn btn-primary mb-2">Payez maintenant</button>
+			</div>
+
+
+
+
