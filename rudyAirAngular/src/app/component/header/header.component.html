@@ -100,19 +100,20 @@
     <!-- Button to open the modal login form -->
     <button
       class="btn btn-login"
-      routerLink="/seconnecter"
+      routerLink="/connexion"
       routerLinkActive="active"
     >
       <b style="display: flex; justify-content: center">Se&nbsp;connecter</b>
     </button>
-    <!-- Button to open the modal login form -->
+    <!-- se déconnecter -->
     <button
       class="btn btn-login"
-      routerLink="/sedeconnecter"
+      routerLink="/deconnexion"
       routerLinkActive="active"
     >
       <b style="display: flex; justify-content: center">Se&nbsp;deconnecter</b>
     </button>
-    <!-- The Modal -->
   </div>
 </header>
+<router-outlet></router-outlet>
+<app-footer></app-footer>

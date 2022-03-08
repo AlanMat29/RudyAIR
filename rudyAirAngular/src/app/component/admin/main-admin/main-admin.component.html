@@ -2,11 +2,12 @@
   <header>
     <div id="header-content-left">
       <div id="logo">
-        <img
-          class="logo-img"
-          src="assets/img/icon/logo-icon.png"
-          alt="logo_image"
-        />
+        <a routerLink="/accueil" routerLinkActive="active"
+          ><img
+            class="logo-img"
+            src="assets/img/icon/logo-icon.png"
+            alt="logo_image"
+        /></a>
       </div>
     </div>
 
@@ -33,11 +34,12 @@
     <!-- TODO: Modifier action se deconnecter -->
     <div id="login">
       <button
-        class="btn-login"
-        onclick="document.getElementById('id01').style.display='block'"
+        class="btn btn-login"
+        routerLink="/sedeconnecter"
+        routerLinkActive="active"
       >
         <b style="display: flex; justify-content: center"
-          >Se&nbsp;déconnecter</b
+          >Se&nbsp;deconnecter</b
         >
       </button>
     </div>
@@ -48,6 +50,4 @@
   </div>
 </div>
 
-<div id="footerCopyrightAdmin">
-  <span> &copy; Copyright - 2022 - RudyAIR </span>
-</div>
+<app-footer-admin></app-footer-admin>

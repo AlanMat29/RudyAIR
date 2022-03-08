@@ -285,9 +285,9 @@ input[type="password"] {
 span.mdp {
   text-decoration: underline;
   float: right;
-  margin-left: 141px;
+  margin-left: 140px;
   background-color: #f8f9fa;
-  margin-top: -70px;
+  margin-top: -60px;
 }
 
 .modal {
@@ -327,9 +327,6 @@ span.mdp {
 .form-group {
   position: relative;
   margin-bottom: 20px;
-  /* margin-bottom: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem; */
 }
 
 .modal-footer {
@@ -340,7 +337,7 @@ span.mdp {
 }
 .form-modal-footer {
   width: 100%;
-  padding: 2px;
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: space-around;

@@ -8,7 +8,6 @@ import { ConnexionComponent } from './component/connexion/connexion.component';
 import { Routes } from '@angular/router';
 import { TopDestinationComponent } from './component/catalogue/top-destination/top-destination.component';
 import { HomeComponent } from './component/home/home.component';
-import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { OffresComponent } from './component/catalogue/offres/offres.component';
 import { RechercheVolComponent } from './component/trouverVol/recherche-vol/recherche-vol.component';
 import { ListeRechercheVolComponent } from './component/trouverVol/liste-recherche-vol/liste-recherche-vol.component';
@@ -33,8 +32,4 @@ export const routes: Routes = [
   { path: 'admin/reservation/edit', component: ReservationEditComponent },
   { path: 'admin/reservation/edit/:id', component: ReservationEditComponent },
   { path: '', redirectTo: 'accueil', pathMatch: 'full' },
-  {
-    path: '**',
-    component: PageNotFoundComponent,
-  },
 ];
