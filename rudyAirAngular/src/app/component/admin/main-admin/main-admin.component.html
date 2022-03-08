@@ -1,0 +1,53 @@
+<div id="contente-without-footer">
+  <header>
+    <div id="header-content-left">
+      <div id="logo">
+        <img
+          class="logo-img"
+          src="assets/img/icon/logo-icon.png"
+          alt="logo_image"
+        />
+      </div>
+    </div>
+
+    <div class="main-menu">
+      <ul class="main-menu-box">
+        <li><a class="main-menu-items" href="">VILLE</a></li>
+        <li><a class="main-menu-items" href="">AEROPORT</a></li>
+        <li><a class="main-menu-items" href="">VOL&nbsp;GENERIQUE</a></li>
+        <li><a class="main-menu-items" href="">VOL</a></li>
+        <li><a class="main-menu-items" href="">AVION</a></li>
+        <li><a class="main-menu-items" href="">SIEGE</a></li>
+        <li><a class="main-menu-items" href="">PASSAGER</a></li>
+        <li>
+          <a
+            class="main-menu-items"
+            routerLink="/admin/reservation"
+            routerLinkActive="active"
+            >RESERVATION</a
+          >
+        </li>
+        <li><a class="main-menu-items" href="">COMPTE</a></li>
+      </ul>
+    </div>
+    <!-- TODO: Modifier action se deconnecter -->
+    <div id="login">
+      <button
+        class="btn-login"
+        onclick="document.getElementById('id01').style.display='block'"
+      >
+        <b style="display: flex; justify-content: center"
+          >Se&nbsp;déconnecter</b
+        >
+      </button>
+    </div>
+  </header>
+
+  <div class="router-div_position">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<div id="footerCopyrightAdmin">
+  <span> &copy; Copyright - 2022 - RudyAIR </span>
+</div>

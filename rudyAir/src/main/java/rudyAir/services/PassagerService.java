@@ -42,7 +42,6 @@ public class PassagerService {
 			passagerEnBase.setNom(passager.getNom());
 			passagerEnBase.setPrenom(passager.getPrenom());
 			passagerEnBase.setDateDeNaissance(passager.getDateDeNaissance());
-			passagerEnBase.setReservation(passager.getReservation());
 			return passagerRepo.save(passagerEnBase);
 		}
 	}

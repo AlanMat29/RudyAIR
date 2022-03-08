@@ -98,6 +98,12 @@ public class CompteRestController {
 	public List<Client> getAllClient() {
 		return clientService.getAllClient();
 	}
+	
+	@GetMapping("/client/{id}")
+	@JsonView(Views.CompteClient.class)
+	public Client getClientById(@PathVariable Long id) {
+		return clientService.getById(id);
+	}
 
 	@GetMapping("/client/{id}/reservations")
 	@JsonView(Views.Reservation.class)

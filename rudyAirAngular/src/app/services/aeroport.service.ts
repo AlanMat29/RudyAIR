@@ -32,18 +32,17 @@ export class AeroportService {
     return this.httpAeroport.get<Aeroport[]>(`${AeroportService.URL}/${id}`);
   }
 
-  public create(Aeroport: Aeroport): Observable<Aeroport> {
+  public create(aeroport: Aeroport): Observable<Aeroport> {
     return this.httpAeroport.post<Aeroport>(
       AeroportService.URL,
-      this.aeroportToJson(Aeroport)
+      this.aeroportToJson(aeroport)
     );
   }
 
-  public update(Aeroport: Aeroport): Observable<Aeroport> {
-    console.log(this.aeroportToJson(Aeroport));
+  public update(aeroport: Aeroport): Observable<Aeroport> {
     return this.httpAeroport.put<Aeroport>(
-      `${AeroportService.URL}/${Aeroport.id}`,
-      this.aeroportToJson(Aeroport)
+      `${AeroportService.URL}/${aeroport.id}`,
+      this.aeroportToJson(aeroport)
     );
   }
 

@@ -78,7 +78,7 @@ public class BDDTest {
 
 			Client client = new Client("NomClient" + i, "PrenomClient" + i,
 					LocalDate.parse("200" + i + "-0" + i + "-0" + i), "client" + i + "@rudyair.fr", "client" + i,
-					new Adresse(""+i, "street" + i, "CP" + i, "Ville" + i, "Pays" + i), Abonnement.abonnementPremium);
+					new Adresse("" + i, "street" + i, "CP" + i, "Ville" + i, "Pays" + i), Abonnement.abonnementPremium);
 			compteRepo.save(client);
 
 			Ville villeArrivee = new Ville("Pays" + i, "Ville" + i, "CP" + i);
@@ -97,7 +97,7 @@ public class BDDTest {
 					aeroportDepart);
 			volGeneriqueService.save(volGenerique);
 
-			Avion avion = new Avion("RD000" + i, StatutAvion.enVol);// , sieges);
+			Avion avion = new Avion("RD000" + i, StatutAvion.enVol);
 			avionService.save(avion);
 
 			Vol vol = new Vol(LocalDate.parse("2022-02-" + ("0" + i)), LocalDate.parse("2022-02-" + ("0" + (i + 1))),
@@ -120,7 +120,7 @@ public class BDDTest {
 		user.setDateNaissance(LocalDate.parse("2001-01-01"));
 		user.setEmail("user@rudyair.fr");
 		user.setPassword("user1");
-		user.setAdresse(new Adresse(""+25, "rue Blaise Pascal", "75000", "Paris", "France"));
+		user.setAdresse(new Adresse("" + 25, "rue Blaise Pascal", "75000", "Paris", "France"));
 		user.setAbonnement(Abonnement.sansAbonnement);
 		compteRepo.save(user);
 

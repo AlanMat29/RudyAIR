@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Aeroport } from '../model/vol/aeroport';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { VolGenerique } from '../model/vol/volGeneriques';
+import { VolGenerique } from '../model/vol/volGenerique';
 
 @Injectable({
   providedIn: 'root',
@@ -49,17 +48,17 @@ export class VolGeneriqueService {
     );
   }
 
-  public create(VolGenerique: VolGenerique): Observable<VolGenerique> {
+  public create(volGenerique: VolGenerique): Observable<VolGenerique> {
     return this.httpClient.post<VolGenerique>(
       VolGeneriqueService.URL,
-      this.volGeneriqueToJson(VolGenerique)
+      this.volGeneriqueToJson(volGenerique)
     );
   }
 
-  public update(VolGenerique: VolGenerique): Observable<VolGenerique> {
+  public update(volGenerique: VolGenerique): Observable<VolGenerique> {
     return this.httpClient.put<VolGenerique>(
-      `${VolGeneriqueService.URL}/${VolGenerique.id}`,
-      this.volGeneriqueToJson(VolGenerique)
+      `${VolGeneriqueService.URL}/${volGenerique.id}`,
+      this.volGeneriqueToJson(volGenerique)
     );
   }
 

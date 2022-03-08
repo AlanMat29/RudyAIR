@@ -70,7 +70,7 @@ public class PassagerRestController {
 	@PutMapping("/{id}")
 	@JsonView(Views.Common.class)
 	public Passager update(@PathVariable Long id, @Valid @RequestBody Passager passager, BindingResult br) {
-		if (!passagerService.exist(id) || passager.getId() == null || id != passager.getId() || br.hasErrors()) {
+		if (!passagerService.exist(id) || passager.getId() == null || (Long)id != (Long)passager.getId() || br.hasErrors()) {
 			throw new PassagerException();
 		}
 		return passagerService.save(passager);
