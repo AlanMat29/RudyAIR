@@ -40,4 +40,7 @@ public interface IVolRepository extends JpaRepository<Vol, Long> {
 	@Query("select v from Vol v left join fetch v.volGenerique vg where vg.prix between :minPrix and :maxPrix order by vg.prix")
 	List<Vol> findVolByintervalPrixOrderByPrixCroissant(@Param("minPrix") double minPrix, @Param("maxPrix") double maxPrix);
 
+	// Avion
+	@Query("select v from Vol v where v.avion.id=:id")
+	List<Vol> findVolByAvionId(@Param("id") Long id);
 }

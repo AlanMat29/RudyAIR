@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { AppComponent } from './app.component';
-
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { ConnexionComponent } from './component/connexion/connexion.component';
@@ -33,6 +33,8 @@ import { APP_BASE_HREF } from '@angular/common';
 import { InformationsClientComponent } from './component/client/informations-client/informations-client.component';
 import { ReservationPassagerComponent } from './component/client/reservation-passager/reservation-passager.component';
 import { PaiementBilletComponent } from './component/client/paiement-billet/paiement-billet.component';
+import { AvionListComponent } from './component/admin/avion-list/avion-list.component';
+import { AvionEditComponent } from './component/admin/avion-edit/avion-edit.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { PaiementBilletComponent } from './component/client/paiement-billet/paie
     ReservationEditComponent,
     ReservationListComponent,
     MainAdminComponent,
+    AvionListComponent,
+    AvionEditComponent,
     ReservationPassagerComponent,
     PaiementBilletComponent,
   ],
@@ -62,6 +66,8 @@ import { PaiementBilletComponent } from './component/client/paiement-billet/paie
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatTooltipModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
