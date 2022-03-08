@@ -5,10 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
 import { AppComponent } from './app.component';
-import { ReservationComponent } from './component/admin/reservation/reservation.component';
-
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { ConnexionComponent } from './component/connexion/connexion.component';
