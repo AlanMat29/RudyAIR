@@ -5,7 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { ReservationComponent } from './component/admin/reservation/reservation.component';
 
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
@@ -30,9 +29,10 @@ import { ReservationEditComponent } from './component/admin/reservation-edit/res
 import { ReservationListComponent } from './component/admin/reservation-list/reservation-list.component';
 import { MainAdminComponent } from './component/admin/main-admin/main-admin.component';
 
-import { ReservationClientComponent } from './component/client/reservation-client/reservation-client.component';
 import { APP_BASE_HREF } from '@angular/common';
 import { InformationsClientComponent } from './component/client/informations-client/informations-client.component';
+import { ReservationPassagerComponent } from './component/client/reservation-passager/reservation-passager.component';
+import { PaiementBilletComponent } from './component/client/paiement-billet/paiement-billet.component';
 
 @NgModule({
   declarations: [
@@ -49,11 +49,12 @@ import { InformationsClientComponent } from './component/client/informations-cli
     PayerBilletComponent,
     ReservationBilletComponent,
     EnregistrerReservationComponent,
-    ReservationClientComponent,
     InformationsClientComponent,
     ReservationEditComponent,
     ReservationListComponent,
     MainAdminComponent,
+    ReservationPassagerComponent,
+    PaiementBilletComponent,
   ],
   imports: [
     BrowserModule,
