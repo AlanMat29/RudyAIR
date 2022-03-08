@@ -39,8 +39,8 @@ export class ClientService {
     return this.httpClient.get<Client[]>(ClientService.URL);
   }
 
-  public getById(id: number): Observable<Client[]> {
-    return this.httpClient.get<Client[]>(`${ClientService.URL}/${id}`);
+  public getById(id: number): Observable<Client> {
+    return this.httpClient.get<Client>(`${ClientService.URL}/${id}`);
   }
 
   public create(client: Client): Observable<Client> {

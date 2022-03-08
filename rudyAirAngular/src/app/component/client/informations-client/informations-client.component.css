@@ -1,0 +1,26 @@
+main {
+  display: flex;
+  align-items: center;
+  background-image: url("/assets/img/wall/fond-palmier.jpeg");
+  background-size: cover;
+}
+
+.marges-form {
+  width: 80%;
+  background: #fff;
+  border: 0.5px solid #ccc;
+  padding: 25px;
+  border-radius: 15px;
+  margin-top: 100px;
+  margin-bottom: 5%;
+  margin-left: 150px;
+  margin-right: 150px;
+}
+
+.marges {
+  margin-top: 100px;
+}
+
+.marges-internes-cadres {
+  padding: 10px;
+}

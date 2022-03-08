@@ -6,11 +6,11 @@ export class Adresse {
   private _pays: string | undefined;
 
   constructor(
-    numero: string,
-    voie: string,
-    cp: string,
-    ville: string,
-    pays: string
+    numero?: string,
+    voie?: string,
+    cp?: string,
+    ville?: string,
+    pays?: string
   ) {
     this._numero = numero;
     this._voie = voie;

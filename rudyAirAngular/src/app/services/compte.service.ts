@@ -1,6 +1,6 @@
 import { Client } from './../model/compte/client';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Compte } from '../model/compte/compte';
 
@@ -28,21 +28,29 @@ export class CompteService {
     return this.httpClient.get<Compte[]>(CompteService.URL);
   }
 
-  public getById(id: number): Observable<Compte[]> {
-    return this.httpClient.get<Compte[]>(`${CompteService.URL}/${id}`);
+  public getById(id: number): Observable<Compte> {
+    return this.httpClient.get<Compte>(`${CompteService.URL}/${id}`);
   }
 
   public create(compte: Compte): Observable<Compte> {
+    let httpHeader = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.httpClient.post<Compte>(
       CompteService.URL,
-      this.compteToJson(compte)
+      this.compteToJson(compte),
+      { headers: httpHeader }
     );
   }
 
   public update(compte: Compte): Observable<Compte> {
+<<<<<<< Updated upstream
+=======
+    console.log(this.compteToJson(compte));
+    let httpHeader = new HttpHeaders({ 'Content-Type': 'application/json' });
+>>>>>>> Stashed changes
     return this.httpClient.put<Compte>(
       `${CompteService.URL}/${compte.id}`,
-      this.compteToJson(compte)
+      this.compteToJson(compte),
+      { headers: httpHeader }
     );
   }
 
@@ -50,7 +58,12 @@ export class CompteService {
     return this.httpClient.delete<void>(`${CompteService.URL}/${id}`);
   }
 
+<<<<<<< Updated upstream
   public getAllClient(): Observable<Client[]> {
     return this.httpClient.get<Client[]>(CompteService.URL + '/client');
+=======
+  public getClientById(id: number): Observable<Compte> {
+    return this.httpClient.get<Compte>(`${CompteService.URL}/${id}`);
+>>>>>>> Stashed changes
   }
 }
