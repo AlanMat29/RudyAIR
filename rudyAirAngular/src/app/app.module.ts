@@ -1,3 +1,8 @@
+import { ReservationEditComponent } from './component/admin/reservation-edit/reservation-edit.component';
+import { MainAdminComponent } from './component/admin/main-admin/main-admin.component';
+import { TopDestinationComponent } from './component/catalogue/top-destination/top-destination.component';
+import { OffresComponent } from './component/catalogue/offres/offres.component';
+import { RechercheVolComponent } from './component/trouverVol/recherche-vol/recherche-vol.component';
 import { Client } from './model/compte/client';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,7 +20,6 @@ import { HomeComponent } from './component/home/home.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { InscriptionComponent } from './component/inscription/inscription.component';
 import { ListeRechercheVolComponent } from './component/trouverVol/liste-recherche-vol/liste-recherche-vol.component';
-import { InformarionBilletComponent } from './component/trouverVol/informarion-billet/informarion-billet.component';
 import { PayerBilletComponent } from './component/trouverVol/payer-billet/payer-billet.component';
 import { ReservationBilletComponent } from './component/trouverVol/reservation-billet/reservation-billet.component';
 import { EnregistrerReservationComponent } from './component/trouverVol/enregistrer-reservation/enregistrer-reservation.component';
@@ -26,9 +30,9 @@ import {
 } from '@angular/common/http';
 import { routes } from 'src/routes';
 import { AuthInterceptor } from './interceptor/auth-interceptor';
-import { ReservationEditComponent } from './component/admin/reservation-edit/reservation-edit.component';
+import { PubliciteComponent } from './component/publicite/publicite.component';
+import { CarrouselComponent } from './component/catalogue/carrousel/carrousel.component';
 import { ReservationListComponent } from './component/admin/reservation-list/reservation-list.component';
-import { MainAdminComponent } from './component/admin/main-admin/main-admin.component';
 
 import { ReservationClientComponent } from './component/client/reservation-client/reservation-client.component';
 import { APP_BASE_HREF } from '@angular/common';
@@ -45,15 +49,18 @@ import { InformationsClientComponent } from './component/client/informations-cli
     PageNotFoundComponent,
     InscriptionComponent,
     ListeRechercheVolComponent,
-    InformarionBilletComponent,
     PayerBilletComponent,
-    ReservationBilletComponent,
     EnregistrerReservationComponent,
+    PubliciteComponent,
+    RechercheVolComponent,
+    OffresComponent,
+    TopDestinationComponent,
+    CarrouselComponent,
+    MainAdminComponent,
     ReservationClientComponent,
     InformationsClientComponent,
     ReservationEditComponent,
     ReservationListComponent,
-    MainAdminComponent,
   ],
   imports: [
     BrowserModule,
