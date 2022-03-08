@@ -4,7 +4,7 @@ export class Aeroport {
   private _nom: string | undefined;
   private _ville: Ville | undefined;
 
-  constructor(id: number, nom: string, ville: Ville) {
+  constructor(id?: number, nom?: string, ville?: Ville) {
     this._id = id;
     this._nom = nom;
     this._ville = ville;

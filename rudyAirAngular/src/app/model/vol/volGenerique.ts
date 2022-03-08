@@ -9,12 +9,12 @@ export class VolGenerique {
   private _aeroportArrivee: Aeroport | undefined;
 
   constructor(
-    id: number,
-    prix: number,
-    numVolGen: string,
-    horaire: Horaire,
-    aeroportDepart: Aeroport,
-    aeroportArrivee: Aeroport
+    id?: number,
+    prix?: number,
+    numVolGen?: string,
+    horaire?: Horaire,
+    aeroportDepart?: Aeroport,
+    aeroportArrivee?: Aeroport
   ) {
     this._id = id;
     this._prix = prix;

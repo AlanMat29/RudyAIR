@@ -51,7 +51,7 @@ public class Passager {
 	private LocalDate dateDeNaissance;
 
 	@JsonView(Views.PassagerWithReservation.class)
-	@OneToOne(mappedBy = "passager", cascade = CascadeType.REMOVE, orphanRemoval = true)
+	@OneToOne(mappedBy = "passager", cascade = CascadeType.ALL, orphanRemoval = true)
 	private Reservation reservation;
 
 	@Version
@@ -60,7 +60,23 @@ public class Passager {
 	public Passager() {
 	}
 
-	public Passager(Long id, String nom, String prenom, LocalDate dateDeNaissance, Reservation reservation) {
+	public Passager(Long id,
+			@Length(min = 1, max = 100) @Pattern(regexp = "^[a-zA-Z]((-|')?([a-zA-Z]{1,}))*$") @NotEmpty String nom,
+			@Length(min = 1, max = 100) @Pattern(regexp = "^[a-zA-Z]((-|')?([a-zA-Z]{1,}))*$") @NotEmpty String prenom,
+			@Past LocalDate dateDeNaissance, Reservation reservation, int version) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateDeNaissance = dateDeNaissance;
+		this.reservation = reservation;
+		this.version = version;
+	}
+
+	public Passager(Long id,
+			@Length(min = 1, max = 100) @Pattern(regexp = "^[a-zA-Z]((-|')?([a-zA-Z]{1,}))*$") @NotEmpty String nom,
+			@Length(min = 1, max = 100) @Pattern(regexp = "^[a-zA-Z]((-|')?([a-zA-Z]{1,}))*$") @NotEmpty String prenom,
+			@Past LocalDate dateDeNaissance, Reservation reservation) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -68,7 +84,10 @@ public class Passager {
 		this.reservation = reservation;
 	}
 
-	public Passager(String nom, String prenom, LocalDate dateDeNaissance) {
+	public Passager(
+			@Length(min = 1, max = 100) @Pattern(regexp = "^[a-zA-Z]((-|')?([a-zA-Z]{1,}))*$") @NotEmpty String nom,
+			@Length(min = 1, max = 100) @Pattern(regexp = "^[a-zA-Z]((-|')?([a-zA-Z]{1,}))*$") @NotEmpty String prenom,
+			@Past LocalDate dateDeNaissance) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateDeNaissance = dateDeNaissance;
@@ -120,6 +139,12 @@ public class Passager {
 
 	public void setVersion(int version) {
 		this.version = version;
+	}
+
+	@Override
+	public String toString() {
+		return "Passager [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", dateDeNaissance=" + dateDeNaissance
+				+ ", reservation=" + reservation + ", version=" + version + "]";
 	}
 
 	@Override

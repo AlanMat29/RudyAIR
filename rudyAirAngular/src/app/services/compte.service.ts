@@ -1,3 +1,4 @@
+import { Client } from './../model/compte/client';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -39,7 +40,6 @@ export class CompteService {
   }
 
   public update(compte: Compte): Observable<Compte> {
-    console.log(this.compteToJson(compte));
     return this.httpClient.put<Compte>(
       `${CompteService.URL}/${compte.id}`,
       this.compteToJson(compte)
@@ -48,5 +48,9 @@ export class CompteService {
 
   public deleteById(id: number): Observable<void> {
     return this.httpClient.delete<void>(`${CompteService.URL}/${id}`);
+  }
+
+  public getAllClient(): Observable<Client[]> {
+    return this.httpClient.get<Client[]>(CompteService.URL + '/client');
   }
 }

@@ -35,7 +35,6 @@ export class AvionService {
   }
 
   public update(avion: Avion): Observable<Avion> {
-    console.log(this.avionToJson(avion));
     return this.httpClient.put<Avion>(
       `${AvionService.URL}/${avion.id}`,
       this.avionToJson(avion)

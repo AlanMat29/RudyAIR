@@ -58,7 +58,7 @@ public class ReservationRestController {
 	@PutMapping("/{id}")
 	@JsonView(Views.Reservation.class)
 	public Reservation update(@PathVariable Long id, @Valid @RequestBody Reservation reservation, BindingResult br) {
-		if (!reservationService.exist(id) || reservation.getId() == null || id != reservation.getId()
+		if (!reservationService.exist(id) || reservation.getId() == null || (Long) id != (Long) reservation.getId()
 				|| br.hasErrors()) {
 			throw new ReservationException();
 		}
@@ -70,6 +70,12 @@ public class ReservationRestController {
 	public void deleteById(@PathVariable Long id) {
 		reservationService.deleteById(id);
 
+	}
+
+	@GetMapping("/sortedByIdDesc")
+	@JsonView(Views.Reservation.class)
+	public List<Reservation> getAllSortedByIdDesc() {
+		return reservationService.getAllSortedByIdDesc();
 	}
 
 }
