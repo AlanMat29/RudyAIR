@@ -336,11 +336,7 @@ span.mdp {
   height: 60px;
 }
 .form-modal-footer {
-  width: 100%;
   padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
   color: white;
 }
 
@@ -399,8 +395,6 @@ main {
   display: none;
 }
 
-img.trip {
-}
 /* Slideshow container */
 .slideshow-container {
   width: 10px;

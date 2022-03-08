@@ -30,6 +30,8 @@ import { APP_BASE_HREF } from '@angular/common';
 import { InformationsClientComponent } from './component/client/informations-client/informations-client.component';
 import { routes } from './routes';
 import { FooterAdminComponent } from './component/admin/footer-admin/footer-admin.component';
+import { ReservationBilletComponent } from './component/trouverVol/reservation-billet/reservation-billet.component';
+import { HistoriqueComponent } from './component/client/historique/historique.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { FooterAdminComponent } from './component/admin/footer-admin/footer-admi
     ReservationEditComponent,
     ReservationListComponent,
     FooterAdminComponent,
+    ReservationBilletComponent,
+    HistoriqueComponent,
   ],
   imports: [
     BrowserModule,

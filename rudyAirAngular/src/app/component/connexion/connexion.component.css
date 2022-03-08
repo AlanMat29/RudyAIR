@@ -1,0 +1,15 @@
+main {
+  display: flex;
+  align-items: center;
+  background-image: url("/assets/img/wall/cloud-up.jpg");
+  background-size: cover;
+}
+
+.page-heading {
+  margin-top: 15%;
+}
+
+form {
+  display: block;
+  margin-top: 0em;
+}
