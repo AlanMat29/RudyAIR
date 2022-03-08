@@ -1,9 +1,12 @@
+import { Client } from './model/compte/client';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { ReservationComponent } from './component/admin/reservation/reservation.component';
+
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { ConnexionComponent } from './component/connexion/connexion.component';
@@ -16,12 +19,20 @@ import { InformarionBilletComponent } from './component/trouverVol/informarion-b
 import { PayerBilletComponent } from './component/trouverVol/payer-billet/payer-billet.component';
 import { ReservationBilletComponent } from './component/trouverVol/reservation-billet/reservation-billet.component';
 import { EnregistrerReservationComponent } from './component/trouverVol/enregistrer-reservation/enregistrer-reservation.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  HttpClientModule,
+  HTTP_INTERCEPTORS,
+  HttpHeaders,
+} from '@angular/common/http';
 import { routes } from 'src/routes';
 import { AuthInterceptor } from './interceptor/auth-interceptor';
 import { ReservationEditComponent } from './component/admin/reservation-edit/reservation-edit.component';
 import { ReservationListComponent } from './component/admin/reservation-list/reservation-list.component';
 import { MainAdminComponent } from './component/admin/main-admin/main-admin.component';
+
+import { ReservationClientComponent } from './component/client/reservation-client/reservation-client.component';
+import { APP_BASE_HREF } from '@angular/common';
+import { InformationsClientComponent } from './component/client/informations-client/informations-client.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +49,8 @@ import { MainAdminComponent } from './component/admin/main-admin/main-admin.comp
     PayerBilletComponent,
     ReservationBilletComponent,
     EnregistrerReservationComponent,
+    ReservationClientComponent,
+    InformationsClientComponent,
     ReservationEditComponent,
     ReservationListComponent,
     MainAdminComponent,
@@ -51,7 +64,9 @@ import { MainAdminComponent } from './component/admin/main-admin/main-admin.comp
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: APP_BASE_HREF, useValue: '/' },
   ],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}
