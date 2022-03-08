@@ -4,13 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { ReservationComponent } from './component/admin/reservation/reservation.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { ConnexionComponent } from './component/connexion/connexion.component';
 import { DeconnexionComponent } from './component/deconnexion/deconnexion.component';
 import { HomeComponent } from './component/home/home.component';
-import { HeaderAdminComponent } from './component/admin/header-admin/header-admin.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { InscriptionComponent } from './component/inscription/inscription.component';
 import { ListeRechercheVolComponent } from './component/trouverVol/liste-recherche-vol/liste-recherche-vol.component';
@@ -22,17 +20,17 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { routes } from 'src/routes';
 import { AuthInterceptor } from './interceptor/auth-interceptor';
 import { ReservationEditComponent } from './component/admin/reservation-edit/reservation-edit.component';
+import { ReservationListComponent } from './component/admin/reservation-list/reservation-list.component';
+import { MainAdminComponent } from './component/admin/main-admin/main-admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReservationComponent,
     HeaderComponent,
     FooterComponent,
     ConnexionComponent,
     DeconnexionComponent,
     HomeComponent,
-    HeaderAdminComponent,
     PageNotFoundComponent,
     InscriptionComponent,
     ListeRechercheVolComponent,
@@ -41,6 +39,8 @@ import { ReservationEditComponent } from './component/admin/reservation-edit/res
     ReservationBilletComponent,
     EnregistrerReservationComponent,
     ReservationEditComponent,
+    ReservationListComponent,
+    MainAdminComponent,
   ],
   imports: [
     BrowserModule,

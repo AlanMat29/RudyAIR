@@ -17,9 +17,6 @@ import javax.persistence.Table;
 import javax.persistence.Version;
 import javax.validation.constraints.DecimalMin;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import com.fasterxml.jackson.annotation.JsonView;
 
 import rudyAir.model.Views;
@@ -48,7 +45,7 @@ public class Reservation {
 			Views.CompteClientWithReservation.class })
 	private String siege;
 
-	@OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "resa_passager_id", foreignKey = @ForeignKey(name = "resa_passager_id_fk"), nullable = false)
 	@JsonView({ Views.Reservation.class, Views.SiegeWithReservationAndAvion.class,
 			Views.CompteClientWithReservation.class })
@@ -58,8 +55,7 @@ public class Reservation {
 	@JsonView({ Views.Reservation.class, Views.CompteClientWithReservation.class })
 	private Vol vol;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@OnDelete(action = OnDeleteAction.CASCADE)
+	@ManyToOne
 	@JoinColumn(name = "resa_client_id", foreignKey = @ForeignKey(name = "resa_client_id_fk"), nullable = false)
 	@JsonView(Views.Reservation.class)
 	private Client client;
@@ -176,6 +172,13 @@ public class Reservation {
 
 	public void setVersion(int version) {
 		this.version = version;
+	}
+
+	@Override
+	public String toString() {
+		return "Reservation [id=" + id + ", statut=" + statut + ", animaux=" + animaux + ", bagage=" + bagage
+				+ ", siege=" + siege + ", passager=" + passager + ", vol=" + vol + ", client=" + client + ", version="
+				+ version + "]";
 	}
 
 	@Override

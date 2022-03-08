@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Reservation } from '../model/compte/reservation';
@@ -19,7 +19,7 @@ export class ReservationService {
       bagage: reservation.bagage,
       siege: reservation.siege,
     };
-    if (reservation.passager) {
+    if (reservation.passager?.id) {
       Object.assign(reservationJson, {
         passager: { id: reservation.passager.id },
       });
@@ -37,21 +37,31 @@ export class ReservationService {
     return this.httpClient.get<Reservation[]>(ReservationService.URL);
   }
 
+  public getAllSortedById(): Observable<Reservation[]> {
+    return this.httpClient.get<Reservation[]>(
+      ReservationService.URL + '/sortedByIdDesc'
+    );
+  }
+
   public getById(id: number): Observable<Reservation> {
     return this.httpClient.get<Reservation>(ReservationService.URL + '/' + id);
   }
 
   public create(reservation: Reservation): Observable<Reservation> {
+    let httpHeader = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.httpClient.post<Reservation>(
       ReservationService.URL,
-      this.reservationToJson(reservation)
+      this.reservationToJson(reservation),
+      { headers: httpHeader }
     );
   }
 
   public update(reservation: Reservation): Observable<Reservation> {
+    let httpHeader = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.httpClient.put<Reservation>(
       ReservationService.URL + '/' + reservation.id,
-      this.reservationToJson
+      this.reservationToJson(reservation),
+      { headers: httpHeader }
     );
   }
 

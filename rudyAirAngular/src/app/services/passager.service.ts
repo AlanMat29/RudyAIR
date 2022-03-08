@@ -36,16 +36,20 @@ export class PassagerService {
   }
 
   public create(passager: Passager): Observable<Passager> {
+    let httpHeader = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.httpClient.post<Passager>(
       PassagerService.URL,
-      this.passagerToJson(passager)
+      this.passagerToJson(passager),
+      { headers: httpHeader }
     );
   }
 
   public update(passager: Passager): Observable<Passager> {
+    let httpHeader = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.httpClient.put<Passager>(
       PassagerService.URL + '/' + passager.id,
-      this.passagerToJson
+      this.passagerToJson(passager),
+      { headers: httpHeader }
     );
   }
 
