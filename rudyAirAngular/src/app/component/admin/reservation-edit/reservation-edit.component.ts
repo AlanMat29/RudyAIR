@@ -68,11 +68,9 @@ export class ReservationEditComponent implements OnInit {
   }
 
   saveReservation() {
-    console.log('heyyyy', this.reservation);
     if (this.reservation.id) {
       //creation requete put
       //Update passager before Reservation
-
       this.passagerService
         .update(this.reservation.passager!)
         .subscribe((newPassager) => {

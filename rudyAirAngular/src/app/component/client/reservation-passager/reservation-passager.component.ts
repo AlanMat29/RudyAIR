@@ -5,11 +5,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-reservation-client',
-  templateUrl: './reservation-client.component.html',
-  styleUrls: ['./reservation-client.component.css'],
+  selector: 'app-reservation-passager',
+  templateUrl: './reservation-passager.component.html',
+  styleUrls: ['./reservation-passager.component.css'],
 })
-export class ReservationClientComponent implements OnInit {
+export class ReservationPassagerComponent implements OnInit {
   clientForm!: FormGroup;
 
   constructor() {}

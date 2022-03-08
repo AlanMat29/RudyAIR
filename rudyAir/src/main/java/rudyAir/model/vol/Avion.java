@@ -27,11 +27,10 @@ public class Avion {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAvion")
 	@JsonView(Views.Common.class)
 	private Long id;
-	@Column(length = 10, nullable = false)
+	@Column(length = 15, nullable = false)
 	@JsonView(Views.Common.class)
 	private String ref;
 	@Enumerated(EnumType.STRING)
-	@Column(length = 10)
 	@JsonView(Views.Common.class)
 	private StatutAvion statutAvion;
 	@OneToOne(mappedBy = "avion")

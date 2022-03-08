@@ -70,4 +70,9 @@ public class AvionRestController {
 		avionService.deleteById(id);
 	}
 
+	@GetMapping("/sortedRefAsc")
+	@JsonView(Views.Reservation.class)
+	public List<Avion> getAllByOrderByRefAsc() {
+		return avionService.getAllByOrderByRefAsc();
+	}
 }

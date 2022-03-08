@@ -7,6 +7,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
@@ -25,9 +27,15 @@ import { AuthInterceptor } from './interceptor/auth-interceptor';
 import { PubliciteComponent } from './component/publicite/publicite.component';
 import { CarrouselComponent } from './component/catalogue/carrousel/carrousel.component';
 import { ReservationListComponent } from './component/admin/reservation-list/reservation-list.component';
+import { MainAdminComponent } from './component/admin/main-admin/main-admin.component';
+
 import { ReservationClientComponent } from './component/client/reservation-client/reservation-client.component';
 import { APP_BASE_HREF } from '@angular/common';
 import { InformationsClientComponent } from './component/client/informations-client/informations-client.component';
+import { ReservationPassagerComponent } from './component/client/reservation-passager/reservation-passager.component';
+import { PaiementBilletComponent } from './component/client/paiement-billet/paiement-billet.component';
+import { AvionListComponent } from './component/admin/avion-list/avion-list.component';
+import { AvionEditComponent } from './component/admin/avion-edit/avion-edit.component';
 import { routes } from './routes';
 import { FooterAdminComponent } from './component/admin/footer-admin/footer-admin.component';
 import { ReservationBilletComponent } from './component/trouverVol/reservation-billet/reservation-billet.component';
@@ -51,12 +59,21 @@ import { HistoriqueComponent } from './component/client/historique/historique.co
     CarrouselComponent,
     MainAdminComponent,
     ReservationClientComponent,
+    InformarionBilletComponent,
+    PayerBilletComponent,
+    ReservationBilletComponent,
+    EnregistrerReservationComponent,
     InformationsClientComponent,
     ReservationEditComponent,
     ReservationListComponent,
     FooterAdminComponent,
     ReservationBilletComponent,
     HistoriqueComponent,
+    MainAdminComponent,
+    AvionListComponent,
+    AvionEditComponent,
+    ReservationPassagerComponent,
+    PaiementBilletComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +81,8 @@ import { HistoriqueComponent } from './component/client/historique/historique.co
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatTooltipModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
