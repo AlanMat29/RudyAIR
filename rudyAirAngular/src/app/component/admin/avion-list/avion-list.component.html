@@ -1,0 +1,55 @@
+<div class="d-flex justify-content-center">
+  <div class="div-table-format">
+    <div>
+      <h2>Tableau des avions</h2>
+    </div>
+    <table class="table table-striped table-bordered">
+      <thead class="thead-sticky bg-light">
+        <tr></tr>
+        <tr>
+          <th scope="col" class="text-center align-middle">#</th>
+          <th scope="col" class="text-center align-middle">Ref</th>
+          <th scope="col" class="text-center align-middle">Statut</th>
+          <th
+            scope="col"
+            colspan="2"
+            rowspan="2"
+            class="text-center align-middle"
+          >
+            Options
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let a of avions; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ a.ref }}</td>
+          <td>{{ a.statutAvion }}</td>
+
+          <td>
+            <a
+              [routerLink]="['/admin/avion/edit/', a.id]"
+              routerLinkActive="active"
+              class="btn btn-warning"
+              >Modifier</a
+            >
+          </td>
+          <td>
+            <button (click)="deleteAvionById(a.id!)" class="btn btn-danger">
+              Supprimer
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <a
+        routerLink="/admin/avion/edit"
+        routerLinkActive="active"
+        class="btn btn-primary"
+        style="color: white"
+        >Ajouter un avion</a
+      >
+    </div>
+  </div>
+</div>

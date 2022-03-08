@@ -50,4 +50,8 @@ export class VolService {
   public deleteById(id: number): Observable<void> {
     return this.httpClient.delete<void>(`${VolService.URL}/${id}`);
   }
+
+  public getAllByAvionId(id: number): Observable<Vol[]> {
+    return this.httpClient.get<Vol[]>(VolService.URL + '/avion/' + { id });
+  }
 }

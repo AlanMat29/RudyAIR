@@ -44,4 +44,8 @@ export class AvionService {
   public deleteById(id: number): Observable<void> {
     return this.httpClient.delete<void>(`${AvionService.URL}/${id}`);
   }
+
+  public getAllByOrderByRefAsc(): Observable<Avion[]> {
+    return this.httpClient.get<Avion[]>(AvionService.URL + '/sortedRefAsc');
+  }
 }

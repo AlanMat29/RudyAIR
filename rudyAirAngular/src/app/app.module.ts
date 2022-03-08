@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { AppComponent } from './app.component';
-import { ReservationComponent } from './component/admin/reservation/reservation.component';
-
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { ConnexionComponent } from './component/connexion/connexion.component';
@@ -33,6 +33,8 @@ import { MainAdminComponent } from './component/admin/main-admin/main-admin.comp
 import { ReservationClientComponent } from './component/client/reservation-client/reservation-client.component';
 import { APP_BASE_HREF } from '@angular/common';
 import { InformationsClientComponent } from './component/client/informations-client/informations-client.component';
+import { AvionListComponent } from './component/admin/avion-list/avion-list.component';
+import { AvionEditComponent } from './component/admin/avion-edit/avion-edit.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { InformationsClientComponent } from './component/client/informations-cli
     ReservationEditComponent,
     ReservationListComponent,
     MainAdminComponent,
+    AvionListComponent,
+    AvionEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +65,8 @@ import { InformationsClientComponent } from './component/client/informations-cli
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatTooltipModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

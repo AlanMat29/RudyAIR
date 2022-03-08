@@ -123,4 +123,11 @@ public class VolRestController {
 		return volService.getVolByintervalPrixOrderByPrixCroissant(minPrix, maxPrix);
 	}
 	
+	@GetMapping("/avion/{id}")
+	@JsonView(Views.VolWithAeroport.class)
+	public List<Vol> getVolByAvionId(@PathVariable Long avionId) {
+		return volService.getVolByAvionId(avionId);
+	}
+	
+	
 }
