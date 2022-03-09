@@ -1,0 +1,26 @@
+main {
+  display: flex;
+  align-items: center;
+  background-image: url("/assets/img/wall/cloud-up.jpg");
+  background-size: cover;
+}
+
+.page-heading {
+  margin-top: 15%;
+}
+
+section {
+  margin-bottom: 5%;
+}
+
+.logo-img-search {
+  height: 45px;
+}
+
+.vol-timelin {
+  height: 100%;
+  padding: 0;
+}
+table {
+  border: none;
+}
