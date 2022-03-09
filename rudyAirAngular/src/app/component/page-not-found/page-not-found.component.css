@@ -1,0 +1,8 @@
+body {
+  background-image: url("/assets/img/logo/logo_blue3D.png");
+  background-size: 80%;
+  width: 80%;
+  background-position: top;
+  background-repeat: no-repeat;
+  color: var(--color-gold);
+}

@@ -1,0 +1,22 @@
+img.trip {
+  height: 550px;
+}
+
+.carousel-caption {
+  background-color: rgb(0 0 0 / 5%);
+}
+
+li.active {
+  background-color: white;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  height: 50px;
+  width: 50px;
+}
+
+.carousel-control-next:hover,
+.carousel-control-prev:hover {
+  color: var(--color-blue);
+}

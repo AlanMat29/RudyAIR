@@ -1,8 +1,5 @@
-import { Client } from './../../../model/compte/client';
-import { ClientService } from './../../../services/client.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-reservation-passager',
