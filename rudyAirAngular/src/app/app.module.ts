@@ -38,6 +38,8 @@ import { FooterAdminComponent } from './component/admin/footer-admin/footer-admi
 import { ReservationBilletComponent } from './component/client/reservation-billet/reservation-billet.component';
 import { HistoriqueComponent } from './component/client/historique/historique.component';
 import { EnregistrerReservationComponent } from './component/client/enregistrer-reservation/enregistrer-reservation.component';
+import { CompteListComponent } from './component/admin/compte-list/compte-list.component';
+import { CompteEditComponent } from './component/admin/compte-edit/compte-edit.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,10 @@ import { EnregistrerReservationComponent } from './component/client/enregistrer-
     FooterAdminComponent,
     AvionListComponent,
     AvionEditComponent,
+    ReservationPassagerComponent,
+    PaiementBilletComponent,
+    CompteListComponent,
+    CompteEditComponent,
   ],
   imports: [
     BrowserModule,

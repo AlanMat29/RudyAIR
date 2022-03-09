@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="div-table-format">
+    <div>
+      <h2>Tableau des comptes clients</h2>
+    </div>
+    <table class="table table-striped table-bordered">
+      <thead class="thead-sticky bg-light">
+        <tr>
+          <th scope="col" colspan="6" class="text-center align-middle"></th>
+          <th scope="col" colspan="5" class="text-center align-middle">
+            Adresse
+          </th>
+          <th
+            scope="col"
+            colspan="2"
+            rowspan="2"
+            class="text-center align-middle"
+          >
+            Options
+          </th>
+        </tr>
+        <tr>
+          <th scope="col" class="text-center align-middle">#</th>
+          <th scope="col" class="text-center align-middle">Abonnement</th>
+          <th scope="col" class="text-center align-middle">Email</th>
+          <th scope="col" class="text-center align-middle">Nom</th>
+          <th scope="col" class="text-center align-middle">Prénom</th>
+          <th scope="col" class="text-center align-middle">
+            Date de naissance
+          </th>
+          <th scope="col" class="text-center align-middle">Pays</th>
+          <th scope="col" class="text-center align-middle">Ville</th>
+          <th scope="col" class="text-center align-middle">Code postal</th>
+          <th scope="col" class="text-center align-middle">Rue</th>
+          <th scope="col" class="text-center align-middle">Numero</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of comptesClient; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ convertClientAboToString(c.abonnement) }}</td>
+          <td>{{ c.email }}</td>
+          <td>{{ c.nom }}</td>
+          <td>{{ c.prenom }}</td>
+          <td>{{ c.dateNaissance }}</td>
+          <td>{{ c.adresse?.pays }}</td>
+          <td>{{ c.adresse?.ville }}</td>
+          <td>{{ c.adresse?.cp }}</td>
+          <td>{{ c.adresse?.voie }}</td>
+          <td>{{ c.adresse?.numero }}</td>
+
+          <td>
+            <a
+              [routerLink]="['/admin/compteClient/edit/', c.id]"
+              routerLinkActive="active"
+              class="btn btn-warning"
+              >Modifier</a
+            >
+          </td>
+          <td>
+            <button (click)="deleteCompteById(c.id!)" class="btn btn-danger">
+              Supprimer
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <a
+        routerLink="/admin/compteClient/edit"
+        routerLinkActive="active"
+        class="btn btn-primary"
+        style="color: white"
+        >Ajouter un compte</a
+      >
+    </div>
+  </div>
+</div>

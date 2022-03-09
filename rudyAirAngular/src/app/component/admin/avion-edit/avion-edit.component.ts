@@ -44,4 +44,14 @@ export class AvionEditComponent implements OnInit {
   goToAvionList() {
     this.router.navigate(['/admin/avion']);
   }
+
+  convertAvionStatutToString(enumStr: any) {
+    console.log(enumStr);
+    if (<string>enumStr == 'en Vol') {
+      return 'En vol';
+    } else if (<string>enumStr == 'au Sol') {
+      return 'Au sol';
+    }
+    return 'En maintenance';
+  }
 }
