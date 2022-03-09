@@ -19,9 +19,9 @@
         [(ngModel)]="aeroport.ville!.id"
         class="form-control"
       >
-        <!-- <option [ngValue]="undefined" hidden>
+        <option [ngValue]="undefined" hidden>
           -- sélectionner une ville --
-        </option> -->
+        </option>
         <option [value]="v.id" *ngFor="let v of villes">
           {{ v.pays }} &nbsp;/&nbsp;{{ v.nom }}
         </option>

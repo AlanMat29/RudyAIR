@@ -34,11 +34,11 @@ public class Vol {
 	@Column(name = "vol_id")
 	@JsonView({ Views.Common.class})
 	private Long id;
-	@Column(name = "vol_date_depart")
-	@JsonView({Views.VolWithAeroport.class, Views.ReservationPassagerWithVol.class })
+	@Column(name = "vol_date_depart") 
+	@JsonView({Views.VolWithAeroport.class, Views.ReservationPassagerWithVol.class, Views.VolWithVolGenAndAvion.class })
 	private LocalDate dateDepart;
 	@Column(name = "vol_date_arrivee")
-	@JsonView({Views.VolWithAeroport.class, Views.ReservationPassagerWithVol.class })
+	@JsonView({Views.VolWithAeroport.class, Views.ReservationPassagerWithVol.class, Views.VolWithVolGenAndAvion.class })
 	private LocalDate dateArrivee;
 	@Enumerated(EnumType.STRING)
 	@Column(name = "vol_statut")

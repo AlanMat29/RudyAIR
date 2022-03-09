@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 
 import rudyAir.model.compte.Abonnement;
-import rudyAir.model.compte.Admin;
 import rudyAir.model.compte.Adresse;
 import rudyAir.model.compte.Client;
 import rudyAir.model.compte.Passager;
@@ -650,7 +649,7 @@ public class BDDTest {
 		resa2.setStatut(true);
 		resa2.setAnimaux(0);
 		resa2.setBagage(1);
-		resa2.setSiege("C5");
+		resa2.setSiege("B1");
 		reservationService.save(resa2);
 */
 	}

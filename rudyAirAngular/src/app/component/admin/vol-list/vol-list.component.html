@@ -1,0 +1,80 @@
+<div class="d-flex justify-content-center">
+  <div class="div-table-format">
+    <div>
+      <h2>Tableau des vols</h2>
+    </div>
+    <table class="table table-striped table-bordered">
+      <thead class="thead-sticky bg-light">
+        <tr>
+          <th scope="col" class="text-center align-middle">#</th>
+          <th scope="col" class="text-center align-middle">Référence vol</th>
+          <th scope="col" class="text-center align-middle">
+            Référence vol générique
+          </th>
+          <th scope="col" class="text-center align-middle">Référence avion</th>
+          <th scope="col" class="text-center align-middle">Date départ</th>
+          <th scope="col" class="text-center align-middle">Date arrivée</th>
+          <th scope="col" class="text-center align-middle">Statut du vol</th>
+          <th
+            scope="col"
+            colspan="2"
+            rowspan="2"
+            class="text-center align-middle"
+          >
+            Options
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let a of vols; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ a.numeroVol }}</td>
+          <td>{{ a.volGenerique!.numVolGen }}</td>
+          <td>{{ a.avion!.ref }}</td>
+
+          <td>{{ a.dateDepart }}</td>
+          <td>{{ a.dateArrivee }}</td>
+          <td>{{ convertVolStatutToString(a.statutVol) }}</td>
+
+          <td>
+            <a
+              [routerLink]="['/admin/vol/edit/', a.id]"
+              routerLinkActive="active"
+              class="btn btn-warning"
+              >Modifier</a
+            >
+          </td>
+          <td>
+            <div *ngIf="canBeDelete(a.id!)">
+              <button (click)="deleteVolById(a.id!)" class="btn btn-danger">
+                Supprimer
+              </button>
+            </div>
+            <div
+              *ngIf="!canBeDelete(a.id!)"
+              class="random-item tooltips tooltips-right"
+              data-tooltip="Veuillez supprimer les avions et reservations en lien avec ce vol"
+            >
+              <button
+                [disabled]="!canBeDelete(a.id!)"
+                (click)="deleteVolById(a.id!)"
+                class="btn btn-danger"
+              >
+                Supprimer
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <a
+        routerLink="/admin/vol/edit"
+        routerLinkActive="active"
+        class="btn btn-primary"
+        style="color: white"
+        >Ajouter un vol</a
+      >
+    </div>
+  </div>
+</div>

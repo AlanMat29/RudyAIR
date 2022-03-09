@@ -1,0 +1,84 @@
+<div>
+  <div class="form-group">
+    <label>Id vol:</label>
+    <input
+      [(ngModel)]="vol.id"
+      class="form-control"
+      readonly
+      placeholder="generation automatique"
+    />
+  </div>
+  <div class="form-group">
+    <label>Référence vol:</label>
+    <input [(ngModel)]="vol.numeroVol" class="form-control" />
+
+    <label>Vol générique:</label>
+    <div class="form-select">
+      <select
+        name="volGenerique"
+        [(ngModel)]="vol.volGenerique!.id"
+        class="form-control"
+      >
+        <option [ngValue]="undefined" hidden>
+          -- sélectionner un vol générique --
+        </option>
+        <option [value]="vg.id" *ngFor="let vg of volGeneriques">
+          {{ vg.numVolGen }}
+        </option>
+      </select>
+    </div>
+
+    <label>Avion:</label>
+    <div class="form-select">
+      <select
+        name="volGenerique"
+        [(ngModel)]="vol.avion!.id"
+        class="form-control"
+      >
+        <option [ngValue]="undefined" hidden>
+          -- sélectionner un avion --
+        </option>
+        <option [value]="a.id" *ngFor="let a of avions">
+          {{ a.ref }}
+        </option>
+      </select>
+    </div>
+
+    <label>Date de départ:</label>
+    <input
+      type="date"
+      [(ngModel)]="vol.dateDepart"
+      class="form-control"
+      min="{{ currentDate | date: 'yyyy-MM-dd' }}"
+    />
+
+    <label>Date de arrivée:</label>
+    <input
+      type="date"
+      [(ngModel)]="vol.dateArrivee"
+      class="form-control"
+      min="{{ currentDate | date: 'yyyy-MM-dd' }}"
+    />
+
+    <label>Statut:</label>
+    <select [(ngModel)]="vol.statutVol" class="form-control">
+      <option *ngFor="let s of statutVol | keyvalue" [value]="s.key">
+        {{ s.value }}
+      </option>
+    </select>
+
+    <div style="display: flex; margin-top: 1%">
+      <div>
+        <button (click)="saveVol()" class="btn btn-success">enregistrer</button>
+      </div>
+      <div style="margin-left: 1%">
+        <a
+          routerLink="/admin/vol"
+          routerLinkActive="active"
+          class="btn btn-warning"
+          >annuler</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
