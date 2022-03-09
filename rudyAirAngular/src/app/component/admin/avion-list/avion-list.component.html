@@ -34,9 +34,24 @@
             >
           </td>
           <td>
-            <button (click)="deleteAvionById(a.id!)" class="btn btn-danger">
-              Supprimer
-            </button>
+            <div *ngIf="canBeDelete(a.id!)">
+              <button (click)="deleteAvionById(a.id!)" class="btn btn-danger">
+                Supprimer
+              </button>
+            </div>
+            <div
+              *ngIf="!canBeDelete(a.id!)"
+              class="random-item tooltips tooltips-right"
+              data-tooltip="Veuillez supprimer les vols en lien avec cette avion"
+            >
+              <button
+                [disabled]="!canBeDelete(a.id!)"
+                (click)="deleteAvionById(a.id!)"
+                class="btn btn-danger"
+              >
+                Supprimer
+              </button>
+            </div>
           </td>
         </tr>
       </tbody>
