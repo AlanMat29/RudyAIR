@@ -27,6 +27,8 @@ import { CompteEditComponent } from './component/admin/compte-edit/compte-edit.c
 import { CompteListComponent } from './component/admin/compte-list/compte-list.component';
 import { VilleListComponent } from './component/admin/ville-list/ville-list.component';
 import { VilleEditComponent } from './component/admin/ville-edit/ville-edit.component';
+import { VolGeneriqueListComponent } from './component/admin/vol-generique-list/vol-generique-list.component';
+import { VolGeneriqueEditComponent } from './component/admin/vol-generique-edit/vol-generique-edit.component';
 
 export const routes: Routes = [
   { path: 'accueil', component: HomeComponent },
@@ -74,6 +76,10 @@ export const routes: Routes = [
   { path: 'admin/ville', component: VilleListComponent },
   { path: 'admin/ville/edit', component: VilleEditComponent },
   { path: 'admin/ville/edit/:id', component: VilleEditComponent },
+  //  VolGenerique
+  { path: 'admin/volGenerique', component: VolGeneriqueListComponent },
+  { path: 'admin/volGenerique/edit', component: VolGeneriqueEditComponent },
+  { path: 'admin/volGenerique/edit/:id', component: VolGeneriqueEditComponent },
 
   { path: '', redirectTo: 'accueil', pathMatch: 'full' },
 ];

@@ -74,12 +74,6 @@ public class Ville {
 		return pays;
 	}
 
-	@Override
-	public String toString() {
-		return "Ville [id=" + id + ", pays=" + pays + ", nom=" + nom + ", cp=" + cp + ", aeroports=" + aeroports
-				+ ", version=" + version + "]";
-	}
-
 	public void setPays(String pays) {
 		this.pays = pays;
 	}
@@ -122,6 +116,11 @@ public class Ville {
 
 	public void setVersion(int version) {
 		this.version = version;
+	}
+
+	@Override
+	public String toString() {
+		return "Ville [id=" + id + ", pays=" + pays + ", nom=" + nom + ", cp=" + cp + "]";
 	}
 
 	@Override

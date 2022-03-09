@@ -13,6 +13,7 @@ import { CompteService } from 'src/app/services/compte.service';
 export class CompteEditComponent implements OnInit {
   client: Client = new Client();
   abonnementClient = Abonnement;
+  currentDate: Date = new Date();
 
   constructor(
     private activatedRoute: ActivatedRoute,

@@ -49,7 +49,7 @@ public class Vol {
 	private String numeroVol;
 	@OneToOne
 	@JoinColumn(name = "vol_volGen_id", foreignKey = @ForeignKey(name = "vol_volGen_id_fk"))
-	@JsonView(Views.VolWithAeroport.class)
+	@JsonView({Views.VolWithAeroport.class, Views.VolWithVolGenAndAvion.class })
 	private VolGenerique volGenerique;
 	@OneToOne
 	@JoinColumn(name = "vol_avion_id", foreignKey = @ForeignKey(name = "vol_avion_id_fk"))
