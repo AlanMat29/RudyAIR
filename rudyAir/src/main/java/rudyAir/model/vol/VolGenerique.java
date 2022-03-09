@@ -148,6 +148,13 @@ public class VolGenerique {
 	}
 
 	@Override
+	public String toString() {
+		return "VolGenerique [id=" + id + ", prix=" + prix + ", numVolGen=" + numVolGen + ", horaire=" + horaire
+				+ ", aeroportDepart=" + aeroportDepart + ", aeroportArrivee=" + aeroportArrivee + ", vol=" + vol
+				+ ", version=" + version + "]";
+	}
+
+	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}

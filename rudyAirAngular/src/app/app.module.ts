@@ -44,6 +44,8 @@ import { AeroportListComponent } from './component/admin/aeroport-list/aeroport-
 import { AeroportEditComponent } from './component/admin/aeroport-edit/aeroport-edit.component';
 import { VilleListComponent } from './component/admin/ville-list/ville-list.component';
 import { VilleEditComponent } from './component/admin/ville-edit/ville-edit.component';
+import { VolGeneriqueListComponent } from './component/admin/vol-generique-list/vol-generique-list.component';
+import { VolGeneriqueEditComponent } from './component/admin/vol-generique-edit/vol-generique-edit.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +86,8 @@ import { VilleEditComponent } from './component/admin/ville-edit/ville-edit.comp
     AeroportEditComponent,
     VilleListComponent,
     VilleEditComponent,
+    VolGeneriqueListComponent,
+    VolGeneriqueEditComponent,
   ],
   imports: [
     BrowserModule,
