@@ -27,4 +27,13 @@ export class AvionListComponent implements OnInit {
       this.listAllAvion();
     });
   }
+
+  convertAvionStatutToString(enumStr: any) {
+    if (<string>enumStr == 'enVol') {
+      return 'En vol';
+    } else if (<string>enumStr == 'auSol') {
+      return 'Au sol';
+    }
+    return 'En maintenance';
+  }
 }
