@@ -1,7 +1,7 @@
+import { PaiementBilletComponent } from './component/client/paiement-billet/paiement-billet.component';
+import { ReservationPassagerComponent } from './component/client/reservation-passager/reservation-passager.component';
 import { HistoriqueComponent } from './component/client/historique/historique.component';
-import { ReservationClientComponent } from './component/client/reservation-client/reservation-client.component';
 import { InformationsClientComponent } from './component/client/informations-client/informations-client.component';
-import { PayerBilletComponent } from './component/client/payer-billet/payer-billet.component';
 import { EnregistrerReservationComponent } from './component/client/enregistrer-reservation/enregistrer-reservation.component';
 import { CarrouselComponent } from './component/catalogue/carrousel/carrousel.component';
 import { FooterComponent } from './component/footer/footer.component';
@@ -18,7 +18,7 @@ import { RechercheVolComponent } from './component/trouverVol/recherche-vol/rech
 import { ListeRechercheVolComponent } from './component/trouverVol/liste-recherche-vol/liste-recherche-vol.component';
 import { ReservationListComponent } from './component/admin/reservation-list/reservation-list.component';
 import { ReservationEditComponent } from './component/admin/reservation-edit/reservation-edit.component';
-import { ReservationBilletComponent } from './component/trouverVol/reservation-billet/reservation-billet.component';
+import { ReservationBilletComponent } from './component/client/reservation-billet/reservation-billet.component';
 
 export const routes: Routes = [
   { path: 'accueil', component: HomeComponent },
@@ -28,21 +28,24 @@ export const routes: Routes = [
   { path: 'inscription', component: InscriptionComponent },
   { path: 'connexion', component: ConnexionComponent },
   { path: 'deconnexion', component: DeconnexionComponent },
-  { path: 'top-destination', component: TopDestinationComponent },
   { path: 'publicite', component: PubliciteComponent },
+  { path: 'top-destination', component: TopDestinationComponent },
   { path: 'offres', component: OffresComponent },
+  { path: 'carrousel', component: CarrouselComponent },
+  //partie trouver vol
   { path: 'recherche-vol', component: RechercheVolComponent },
   { path: 'liste-recherche-vol', component: ListeRechercheVolComponent },
-  { path: 'carrousel', component: CarrouselComponent },
   { path: 'reservation/billet', component: ReservationBilletComponent },
-  { path: 'reservation/passager', component: ReservationClientComponent },
-  { path: 'reservation/payement', component: PayerBilletComponent },
+  { path: 'reservation/passager', component: ReservationPassagerComponent },
+  { path: 'reservation/paiement', component: PaiementBilletComponent },
   {
     path: 'reservation/enregister',
     component: EnregistrerReservationComponent,
   },
-  { path: 'client/information', component: InformationsClientComponent },
+  //partie client
   { path: 'client/historique', component: HistoriqueComponent },
+  { path: 'client/information', component: InformationsClientComponent },
+  //partie admin
   { path: 'admin/reservation', component: ReservationListComponent },
   { path: 'admin/reservation/edit', component: ReservationEditComponent },
   { path: 'admin/reservation/edit/:id', component: ReservationEditComponent },
