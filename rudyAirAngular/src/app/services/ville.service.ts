@@ -37,6 +37,7 @@ export class VilleService {
   }
 
   public update(ville: Ville): Observable<Ville> {
+    console.log('villeToJson', this.villeToJson(ville));
     return this.httpClient.put<Ville>(
       `${VilleService.URL}/${ville.id}`,
       this.villeToJson(ville)

@@ -52,7 +52,7 @@ export class AvionListComponent implements OnInit {
 
   canBeDelete(id: number) {
     for (let a in this.vols) {
-      if (this.vols[a].avion!!.id == id) {
+      if (this.vols[a].avion!.id == id) {
         return false;
       }
     }

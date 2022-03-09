@@ -25,6 +25,8 @@ import { AeroportListComponent } from './component/admin/aeroport-list/aeroport-
 import { AeroportEditComponent } from './component/admin/aeroport-edit/aeroport-edit.component';
 import { CompteEditComponent } from './component/admin/compte-edit/compte-edit.component';
 import { CompteListComponent } from './component/admin/compte-list/compte-list.component';
+import { VilleListComponent } from './component/admin/ville-list/ville-list.component';
+import { VilleEditComponent } from './component/admin/ville-edit/ville-edit.component';
 
 export const routes: Routes = [
   { path: 'accueil', component: HomeComponent },
@@ -68,6 +70,10 @@ export const routes: Routes = [
   { path: 'admin/aeroport', component: AeroportListComponent },
   { path: 'admin/aeroport/edit', component: AeroportEditComponent },
   { path: 'admin/aeroport/edit/:id', component: AeroportEditComponent },
+  //  Ville
+  { path: 'admin/ville', component: VilleListComponent },
+  { path: 'admin/ville/edit', component: VilleEditComponent },
+  { path: 'admin/ville/edit/:id', component: VilleEditComponent },
 
   { path: '', redirectTo: 'accueil', pathMatch: 'full' },
 ];

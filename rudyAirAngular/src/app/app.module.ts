@@ -42,6 +42,8 @@ import { CompteListComponent } from './component/admin/compte-list/compte-list.c
 import { CompteEditComponent } from './component/admin/compte-edit/compte-edit.component';
 import { AeroportListComponent } from './component/admin/aeroport-list/aeroport-list.component';
 import { AeroportEditComponent } from './component/admin/aeroport-edit/aeroport-edit.component';
+import { VilleListComponent } from './component/admin/ville-list/ville-list.component';
+import { VilleEditComponent } from './component/admin/ville-edit/ville-edit.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +82,8 @@ import { AeroportEditComponent } from './component/admin/aeroport-edit/aeroport-
     CompteEditComponent,
     AeroportListComponent,
     AeroportEditComponent,
+    VilleListComponent,
+    VilleEditComponent,
   ],
   imports: [
     BrowserModule,
