@@ -2,12 +2,15 @@ package rudyAir;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Arrays;
+import java.util.HashSet;
 
 import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Commit;
 
 import rudyAir.model.compte.Abonnement;
@@ -15,6 +18,7 @@ import rudyAir.model.compte.Adresse;
 import rudyAir.model.compte.Client;
 import rudyAir.model.compte.Passager;
 import rudyAir.model.compte.Reservation;
+import rudyAir.model.compte.Role;
 import rudyAir.model.vol.Aeroport;
 import rudyAir.model.vol.Avion;
 import rudyAir.model.vol.Horaire;
@@ -49,6 +53,9 @@ public class BDDTest {
 	IAeroportRepository aeroRepo;
 
 	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+	@Autowired
 	private VolService volService;
 
 	@Autowired
@@ -65,11 +72,13 @@ public class BDDTest {
 
 	@Autowired
 	private ReservationService reservationService;
+	
 
 	@Test
 	@Transactional
 	@Commit
 	public void testInsertAndUpdate() {
+		
 
 		// Users
 		int nbLoop = 5; // Max 9
@@ -113,17 +122,35 @@ public class BDDTest {
 
 		}
 
-
+		Client user = new Client();
+		user.setNom("mobile");
+		user.setPrenom("tata");
+		user.setDateNaissance(LocalDate.parse("2001-01-01"));
+		user.setEmail("user@rudyair.fr");
+		user.setPassword(passwordEncoder.encode("user1"));
+		user.setAdresse(new Adresse("" + 25, "rue Blaise Pascal", "75000", "Paris", "France"));
+		user.setAbonnement(Abonnement.sansAbonnement);
+		user.setRoles(new HashSet<Role>(Arrays.asList(Role.ROLE_CLIENT)));
+		compteRepo.save(user);
+	
+		Admin admin = new Admin();
+		admin.setNom("rola");
+		admin.setPrenom("moto");
+		admin.setDateNaissance(LocalDate.parse("2001-01-01"));
+		admin.setEmail("moto.rola@rudyair.fr");
+		admin.setPassword(passwordEncoder.encode("rola"));
+		user.setRoles(new HashSet<Role>(Arrays.asList(Role.ROLE_ADMIN)));
+		compteRepo.save(admin);
 		
+		Admin admin2 = new Admin();
+		admin2.setNom("sung");
+		admin2.setPrenom("sam");
+		admin2.setDateNaissance(LocalDate.parse("2002-02-02"));
+		admin2.setEmail("sam.sung@rudyair.fr");
+		admin2.setPassword(passwordEncoder.encode("sung"));
+		admin2.setRoles(new HashSet<Role>(Arrays.asList(Role.ROLE_ADMIN)));
+		compteRepo.save(admin2);
 		
-		
-		
-		/*		
-		
-		Avion avion = new Avion();
-		avion.setRef("A220-300");
-		avion.setStatutAvion(StatutAvion.auSol);
-		avionService.save(avion);
 
 		Avion avion1 = new Avion();
 		avion1.setRef("A300 B2/B4");

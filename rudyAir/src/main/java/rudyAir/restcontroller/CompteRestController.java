@@ -92,16 +92,6 @@ public class CompteRestController {
 		compteService.deleteById(id);
 	}
 
-	// Additional Web Service
-	// admin
-
-	@GetMapping("/admin")
-	@JsonView(Views.CompteClient.class)
-	public List<Admin> getAllAdmin() {
-		return adminService.getAllAdmin();
-	}
-
-	// Client
 	@GetMapping("/client")
 	@JsonView(Views.CompteClient.class)
 	public List<Client> getAllClient() {
@@ -120,22 +110,16 @@ public class CompteRestController {
 		return clientService.getAllClientReservationsByClientId(id);
 	}
 
-	@PostMapping("/createClient")
-	@JsonView(Views.CompteClient.class)
-	@ResponseStatus(code = HttpStatus.CREATED)
-	public Client createClient(@Valid @RequestBody Client client, BindingResult br) {
-		if (br.hasErrors()) {
-			throw new ClientException();
-		}
-		return clientService.save(client);
+	@GetMapping("/admin")
+	@JsonView(Views.CompteAdmin.class)
+	public List<Admin> getAllAdmin() {
+		return adminService.getAllAdmin();
 	}
 	
-	@PutMapping("/updateClient/{id}")
-	@JsonView(Views.CompteClient.class)
-	public Client update(@PathVariable Long id, @Valid @RequestBody Client client, BindingResult br) {
-		if (br.hasErrors()) {
-			throw new CompteException();
-		}
-		return clientService.save(client);
+	@GetMapping("/admin/{id}")
+	@JsonView(Views.CompteAdmin.class)
+	public Admin getAdmintById(@PathVariable Long id) {
+		return adminService.getById(id);
 	}
+
 }

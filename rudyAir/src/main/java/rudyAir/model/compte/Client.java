@@ -3,12 +3,16 @@ package rudyAir.model.compte;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -27,7 +31,8 @@ public class Client extends Compte {
 	private Abonnement abonnement;
 	@OneToMany(mappedBy = "client")
 	private List<Reservation> reservations = new ArrayList<Reservation>();
-
+	
+	
 	public Client() {
 	}
 

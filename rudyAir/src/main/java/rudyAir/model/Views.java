@@ -76,6 +76,10 @@ public class Views {
 	public static class CompteClient extends Common {
 
 	}
+	
+	public static class CompteAdmin extends Common {
+
+	}
 
 	public static class CompteClientWithReservation extends CompteClient {
 
