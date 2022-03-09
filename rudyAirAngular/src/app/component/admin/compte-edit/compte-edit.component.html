@@ -1,4 +1,4 @@
-<div>
+<div class="marges-form">
   <div class="form-group">
     <label>Id compte:</label>
     <input
@@ -11,10 +11,16 @@
   <div class="form-group">
     <label>Email</label>
     <input type="email" [(ngModel)]="client.email" class="form-control" />
-    <label>Nom</label>
-    <input [(ngModel)]="client.nom" class="form-control" />
-    <label>Prénom</label>
-    <input [(ngModel)]="client.prenom" class="form-control" />
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Nom</label>
+        <input [(ngModel)]="client.nom" class="form-control" />
+      </div>
+      <div class="form-group col-md-6">
+        <label>Prénom</label>
+        <input [(ngModel)]="client.prenom" class="form-control" />
+      </div>
+    </div>
     <label>Date de naissance</label>
     <input
       type="date"
@@ -22,8 +28,8 @@
       class="form-control"
       max="{{ currentDate | date: 'yyyy-MM-dd' }}"
     />
-
-    <div>Adresse</div>
+    <br /><br />
+    <p>Adresse</p>
     <label>Pays</label>
     <div class="form-select">
       <select [(ngModel)]="client.adresse!.pays" name="pays">
@@ -285,16 +291,28 @@
         <option value="Zimbabwe">Zimbabwe</option>
       </select>
     </div>
+    <br />
 
-    <label>Ville</label>
-    <input [(ngModel)]="client.adresse!.ville" class="form-control" />
-    <label>Code postal</label>
-    <input [(ngModel)]="client.adresse!.cp" class="form-control" />
-    <label>Rue</label>
-    <input [(ngModel)]="client.adresse!.voie" class="form-control" />
-    <label>Numero</label>
-    <input [(ngModel)]="client.adresse!.numero" class="form-control" />
-
+    <div class="form-row">
+      <div class="form-group col-md-8">
+        <label>Ville</label>
+        <input [(ngModel)]="client.adresse!.ville" class="form-control" />
+      </div>
+      <div class="form-group col-md-4">
+        <label>Code postal</label>
+        <input [(ngModel)]="client.adresse!.cp" class="form-control" />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <label>Numero</label>
+        <input [(ngModel)]="client.adresse!.numero" class="form-control" />
+      </div>
+      <div class="form-group col-md-10">
+        <label>Rue</label>
+        <input [(ngModel)]="client.adresse!.voie" class="form-control" />
+      </div>
+    </div>
     <label>Abonnement</label>
     <select [(ngModel)]="client.abonnement" class="form-control">
       <option *ngFor="let s of abonnementClient | keyvalue" [value]="s.key">
