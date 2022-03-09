@@ -1,5 +1,5 @@
 export enum StatutVol {
-  onTime,
-  canceled,
-  delayed,
+  onTime = 'On time',
+  canceled = 'Canceled',
+  delayed = 'Delayed',
 }
