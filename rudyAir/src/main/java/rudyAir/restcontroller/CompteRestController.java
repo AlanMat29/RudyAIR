@@ -91,8 +91,6 @@ public class CompteRestController {
 		compteService.deleteById(id);
 	}
 
-	// Additional Web Service
-	// admin
 	@GetMapping("/client")
 	@JsonView(Views.CompteClient.class)
 	public List<Client> getAllClient() {
@@ -112,9 +110,15 @@ public class CompteRestController {
 	}
 
 	@GetMapping("/admin")
-	@JsonView(Views.CompteClient.class)
+	@JsonView(Views.CompteAdmin.class)
 	public List<Admin> getAllAdmin() {
 		return adminService.getAllAdmin();
+	}
+	
+	@GetMapping("/admin/{id}")
+	@JsonView(Views.CompteAdmin.class)
+	public Admin getAdmintById(@PathVariable Long id) {
+		return adminService.getById(id);
 	}
 
 }

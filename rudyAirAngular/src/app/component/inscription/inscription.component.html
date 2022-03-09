@@ -10,6 +10,8 @@
       method="post"
       id="account-creation_form"
       class="std box"
+      (ngSubmit)="save()"
+      [formGroup]="form"
     >
       <div class="account_creation">
         <h3 class="page-subheading">Vos informations personnelles</h3>
@@ -45,7 +47,6 @@
             data-validate="isName"
             id="customer_firstname"
             name="customer_firstname"
-            value=""
             placeholder="Prénom*"
           />
         </div>
@@ -59,36 +60,85 @@
             data-validate="isName"
             id="customer_lastname"
             name="customer_lastname"
-            value=""
             placeholder="Nom*"
           />
         </div>
         <div class="required form-group">
           <label for="email" class="hidden-xs">E-mail <sup>*</sup> </label>
           <input
-            type="emal"
+            type="email"
             class="is_required validate form-control"
             data-validate="isEmail"
             id="email"
             name="email"
+            formControlName="login"
             placeholder="Adresse e-mail"
-            value=""
           />
+          <div
+            class="alert alert-danger"
+            *ngIf="
+              form.controls['login'].dirty && form.controls['login'].invalid
+            "
+          >
+            <span *ngIf="form.controls['login'].hasError('required')"
+              >login obligatoire</span
+            >
+            <span *ngIf="form.controls['login'].hasError('minlength')"
+              >le login doit faire 3 careteres minimum</span
+            >
+            <span *ngIf="form.controls['login'].hasError('maxlength')"
+              >le login ne doit pas faire plus de 255 caracteres</span
+            >
+            <span *ngIf="form.controls['login'].hasError('loginAlreadyUsed')"
+              >le login est deja utilisé
+            </span>
+          </div>
         </div>
-        <div class="required password form-group">
-          <label for="passwd" class="hidden-xs"
-            >Mot de passe <sup>*</sup>
-          </label>
-          <input
-            type="password"
-            class="is_required validate form-control"
-            data-validate="isPasswd"
-            name="passwd"
-            id="passwd"
-            placeholder="Mot de passe*"
-          />
-          <span class="form_info">(5 caractères min.)</span>
-        </div>
+        <ng-container formGroupName="passwordGrp">
+          <div class="required password form-group">
+            <label for="passwd" class="hidden-xs"
+              >Mot de passe <sup>*</sup>
+            </label>
+            <input
+              type="password"
+              class="is_required validate form-control"
+              data-validate="isPasswd"
+              formControlName="password"
+              id="passwd"
+              placeholder="Mot de passe*"
+            />
+            <span class="form_info">(5 caractères min.)</span>
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                form.get('passwordGrp')?.get('password')?.dirty &&
+                form.get('passwordGrp')?.get('password')?.invalid
+              "
+            >
+              <span>{{ errorPassword }}</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>confirmation <sup>*</sup> </label>
+            <input
+              type="password"
+              class="form-control"
+              formControlName="confirm"
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                form.controls['passwordGrp'].dirty &&
+                form.controls['passwordGrp'].invalid
+              "
+            >
+              <span
+                >le mot de passe et la confirmation ne sont pas identiques</span
+              >
+            </div>
+          </div>
+        </ng-container>
+
         <div class="form-group">
           <label class="hidden-xs">Date de naissance </label>
           <input
@@ -96,8 +146,6 @@
             class="form-control"
             name="date-de-naissance"
             required
-            placeholder="Saisir la date de depart"
-            value=""
           />
         </div>
       </div>

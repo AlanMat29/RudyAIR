@@ -1,12 +1,23 @@
 package rudyAir.model.compte;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +31,9 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -30,7 +44,7 @@ import rudyAir.model.Views;
 @SequenceGenerator(name = "seqCompte", sequenceName = "seq_compte", initialValue = 100, allocationSize = 1)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "compte", discriminatorType = DiscriminatorType.STRING, length = 15)
-public class Compte {
+public class Compte implements UserDetails{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCompte")
@@ -56,7 +70,13 @@ public class Compte {
 	@Length(min = 5, max = 100)
 	@JsonView(Views.Common.class)
 	private String email;
+	@NotEmpty
+	@Column(name = "password", length = 150, nullable = false)
 	private String password;
+	@Enumerated(EnumType.STRING)
+	@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+	@CollectionTable(name = "users_roles")
+	private Set<Role> roles;
 
 	@Version
 	private int version;
@@ -118,11 +138,16 @@ public class Compte {
 	public String getEmail() {
 		return email;
 	}
-
+	
+	public String getUsername() {
+		return email;
+	}
+	
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+	@Override
 	public String getPassword() {
 		return password;
 	}
@@ -137,6 +162,14 @@ public class Compte {
 
 	public void setVersion(int version) {
 		this.version = version;
+	}
+	
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 
 	@Override
@@ -155,5 +188,33 @@ public class Compte {
 		Compte other = (Compte) obj;
 		return Objects.equals(id, other.id);
 	}
+	
+	public Collection<? extends GrantedAuthority> getAuthorities(){
+		return getRoles().stream().map(r -> new SimpleGrantedAuthority(r.toString())).collect(Collectors.toList());
+		
+	}
 
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
+	
+		
+	
+	
 }

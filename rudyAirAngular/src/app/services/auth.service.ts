@@ -8,9 +8,9 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  public checkUsername(username: string): Observable<boolean> {
+  public checkEmail(email: string): Observable<boolean> {
     return this.http.get<boolean>(
-      'http://localhost:8080/rudyair/api/auth/search/' + username
+      'http://localhost:8080/rudyair/api/auth/search/' + email
     );
   }
 
