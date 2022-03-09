@@ -658,7 +658,7 @@ public class BDDTest {
 		resa2.setStatut(true);
 		resa2.setAnimaux(0);
 		resa2.setBagage(1);
-		resa2.setSiege("B1");
+		resa2.setSiege("C5");
 		reservationService.save(resa2);
 		
 }
