@@ -40,6 +40,8 @@ import { HistoriqueComponent } from './component/client/historique/historique.co
 import { EnregistrerReservationComponent } from './component/client/enregistrer-reservation/enregistrer-reservation.component';
 import { CompteListComponent } from './component/admin/compte-list/compte-list.component';
 import { CompteEditComponent } from './component/admin/compte-edit/compte-edit.component';
+import { AeroportListComponent } from './component/admin/aeroport-list/aeroport-list.component';
+import { AeroportEditComponent } from './component/admin/aeroport-edit/aeroport-edit.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +78,8 @@ import { CompteEditComponent } from './component/admin/compte-edit/compte-edit.c
     PaiementBilletComponent,
     CompteListComponent,
     CompteEditComponent,
+    AeroportListComponent,
+    AeroportEditComponent,
   ],
   imports: [
     BrowserModule,
