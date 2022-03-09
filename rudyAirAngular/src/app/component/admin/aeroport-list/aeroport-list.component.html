@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center">
+  <div class="div-table-format">
+    <div>
+      <h2>Tableau des aéroports</h2>
+    </div>
+    <table class="table table-striped table-bordered">
+      <thead class="thead-sticky bg-light">
+        <tr>
+          <th scope="col" class="text-center align-middle">#</th>
+          <th scope="col" class="text-center align-middle">Aéroport</th>
+          <th scope="col" class="text-center align-middle">Pays</th>
+          <th scope="col" class="text-center align-middle">Ville</th>
+          <th scope="col" class="text-center align-middle">Code postal</th>
+          <th
+            scope="col"
+            colspan="2"
+            rowspan="2"
+            class="text-center align-middle"
+          >
+            Options
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let a of aeroports; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ a.nom }}</td>
+          <td>{{ a.ville?.pays }}</td>
+          <td>{{ a.ville?.nom }}</td>
+          <td>{{ a.ville?.cp }}</td>
+
+          <td>
+            <a
+              [routerLink]="['/admin/aeroport/edit/', a.id]"
+              routerLinkActive="active"
+              class="btn btn-warning"
+              >Modifier</a
+            >
+          </td>
+          <td>
+            <div *ngIf="canBeDelete(a.id!)">
+              <button
+                (click)="deleteAeroportById(a.id!)"
+                class="btn btn-danger"
+              >
+                Supprimer
+              </button>
+            </div>
+            <div
+              *ngIf="!canBeDelete(a.id!)"
+              class="random-item tooltips tooltips-right"
+              data-tooltip="Veuillez supprimer les vols génériques en lien avec cet aéroport"
+            >
+              <button
+                [disabled]="!canBeDelete(a.id!)"
+                (click)="deleteAeroportById(a.id!)"
+                class="btn btn-danger"
+              >
+                Supprimer
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <a
+        routerLink="/admin/aeroport/edit"
+        routerLinkActive="active"
+        class="btn btn-primary"
+        style="color: white"
+        >Ajouter un aéroport</a
+      >
+    </div>
+  </div>
+</div>

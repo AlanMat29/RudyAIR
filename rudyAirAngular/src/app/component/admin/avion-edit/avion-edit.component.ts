@@ -46,7 +46,6 @@ export class AvionEditComponent implements OnInit {
   }
 
   convertAvionStatutToString(enumStr: any) {
-    console.log(enumStr);
     if (<string>enumStr == 'en Vol') {
       return 'En vol';
     } else if (<string>enumStr == 'au Sol') {

@@ -72,50 +72,54 @@ public class BDDTest {
 	@Commit
 	public void testInsertAndUpdate() {
 
-//		// Users
-//		int nbLoop = 5; // Max 9
-//		for (int i = 1; i <= nbLoop; i++) {
-//
-//			Client client = new Client("NomClient" + i, "PrenomClient" + i,
-//					LocalDate.parse("200" + i + "-0" + i + "-0" + i), "client" + i + "@rudyair.fr", "client" + i,
-//					new Adresse("" + i, "street" + i, "CP" + i, "Ville" + i, "Pays" + i), Abonnement.abonnementPremium);
-//			compteRepo.save(client);
-//
-//			Ville villeArrivee = new Ville("Pays" + i, "Ville" + i, "CP" + i);
-//			Ville villeDepart = new Ville("Pays" + (nbLoop + i), "Ville" + (nbLoop + i), "CP" + (nbLoop + i));
-//			villeService.save(villeArrivee);
-//			villeService.save(villeDepart);
-//
-//			Aeroport aeroportArrivee = new Aeroport("Aeroport" + i, villeArrivee);
-//			Aeroport aeroportDepart = new Aeroport("Aeroport" + (nbLoop + i), villeDepart);
-//			aeroportService.save(aeroportArrivee);
-//			aeroportService.save(aeroportDepart);
-//
-//			Horaire horaire = new Horaire(LocalTime.parse("10:" + (10 + i)), LocalTime.parse("15:" + (20 + i)));
-//
-//			VolGenerique volGenerique = new VolGenerique(20 + i, "NumVolGen" + i, horaire, aeroportArrivee,
-//					aeroportDepart);
-//			volGeneriqueService.save(volGenerique);
-//
-//			Avion avion = new Avion("RD000" + i, StatutAvion.enVol);
-//			avionService.save(avion);
-//
-//			Vol vol = new Vol(LocalDate.parse("2022-02-" + ("0" + i)), LocalDate.parse("2022-02-" + ("0" + (i + 1))),
-//					StatutVol.onTime, "NumVol" + i, volGenerique, avion);
-//			volService.save(vol);
-//
-//			Passager passager = new Passager("NomPassager" + Character.toUpperCase((char) (i + 'a')),
-//					"PrenomPassager" + Character.toUpperCase((char) (i + 'a')),
-//					LocalDate.parse("1999-02-" + ("0" + (i + 1))));
-//			passagerService.save(passager);
-//
-//			Reservation resa = new Reservation(vol, passager, client, true, 0, 2, "A" + i);
-//			reservationService.save(resa);
-//
-//		}
+		// Users
+		int nbLoop = 5; // Max 9
+		for (int i = 1; i <= nbLoop; i++) {
+
+			Client client = new Client("NomClient" + i, "PrenomClient" + i,
+					LocalDate.parse("200" + i + "-0" + i + "-0" + i), "client" + i + "@rudyair.fr", "client" + i,
+					new Adresse("" + i, "street" + i, "CP" + i, "Ville" + i, "Pays" + i), Abonnement.abonnementPremium);
+			compteRepo.save(client);
+
+			Ville villeArrivee = new Ville("Pays" + i, "Ville" + i, "CP" + i);
+			Ville villeDepart = new Ville("Pays" + (nbLoop + i), "Ville" + (nbLoop + i), "CP" + (nbLoop + i));
+			villeService.save(villeArrivee);
+			villeService.save(villeDepart);
+
+			Aeroport aeroportArrivee = new Aeroport("Aeroport" + i, villeArrivee);
+			Aeroport aeroportDepart = new Aeroport("Aeroport" + (nbLoop + i), villeDepart);
+			aeroportService.save(aeroportArrivee);
+			aeroportService.save(aeroportDepart);
+
+			Horaire horaire = new Horaire(LocalTime.parse("10:" + (10 + i)), LocalTime.parse("15:" + (20 + i)));
+
+			VolGenerique volGenerique = new VolGenerique(20 + i, "NumVolGen" + i, horaire, aeroportArrivee,
+					aeroportDepart);
+			volGeneriqueService.save(volGenerique);
+
+			Avion avion = new Avion("RD000" + i, StatutAvion.enVol);
+			avionService.save(avion);
+
+			Vol vol = new Vol(LocalDate.parse("2022-02-" + ("0" + i)), LocalDate.parse("2022-02-" + ("0" + (i + 1))),
+					StatutVol.onTime, "NumVol" + i, volGenerique, avion);
+			volService.save(vol);
+
+			Passager passager = new Passager("NomPassager" + Character.toUpperCase((char) (i + 'a')),
+					"PrenomPassager" + Character.toUpperCase((char) (i + 'a')),
+					LocalDate.parse("1999-02-" + ("0" + (i + 1))));
+			passagerService.save(passager);
+
+			Reservation resa = new Reservation(vol, passager, client, true, 0, 2, "A" + i);
+			reservationService.save(resa);
+
+		}
+
 
 		
-
+		
+		
+		
+		/*		
 		
 		Avion avion = new Avion();
 		avion.setRef("A220-300");
@@ -146,17 +150,17 @@ public class BDDTest {
 		avion5.setRef("787-9");
 		avion5.setStatutAvion(StatutAvion.auSol);
 		avionService.save(avion5);
-		
+
 		Avion avion6 = new Avion();
 		avion6.setRef("A350-900");
 		avion6.setStatutAvion(StatutAvion.enMaintenance);
 		avionService.save(avion6);
-		
+
 		Avion avion7 = new Avion();
 		avion7.setRef("A380");
 		avion7.setStatutAvion(StatutAvion.enVol);
 		avionService.save(avion7);
-		
+
 //		Passager passager = new Passager();
 //		passager.setNom("Doe");
 //		passager.setPrenom("John");
@@ -175,7 +179,8 @@ public class BDDTest {
 //		
 //		
 		///////////////////////////////////////////////////////////////////////////////////////
-		//Admin
+		// Admin
+
 		Admin admin1 = new Admin();
 		admin1.setNom("Clamy");
 		admin1.setPrenom("Rudyard");
@@ -183,7 +188,7 @@ public class BDDTest {
 		admin1.setEmail("admin1@rudyair.fr");
 		admin1.setPassword("admin1");
 		compteRepo.save(admin1);
-		
+
 		Admin admin2 = new Admin();
 		admin2.setNom("admin");
 		admin2.setPrenom("admin");
@@ -192,8 +197,8 @@ public class BDDTest {
 		admin2.setPassword("admin2");
 		compteRepo.save(admin2);
 
-		//Client
-		
+		// Client
+
 		Client user1 = new Client();
 		user1.setNom("Jean");
 		user1.setPrenom("Noel");
@@ -203,7 +208,7 @@ public class BDDTest {
 		user1.setAdresse(new Adresse("" + 25, "rue Blaise Pascal", "75000", "Paris", "France"));
 		user1.setAbonnement(Abonnement.sansAbonnement);
 		compteRepo.save(user1);
-		
+
 		Client user2 = new Client();
 		user2.setNom("Thomas");
 		user2.setPrenom("Patrick");
@@ -213,7 +218,7 @@ public class BDDTest {
 		user2.setAdresse(new Adresse("" + 45, "Avenue d'Armor", "35360", "Le Lou-du-Lac", "France"));
 		user2.setAbonnement(Abonnement.sansAbonnement);
 		compteRepo.save(user2);
-		
+
 		Client user3 = new Client();
 		user3.setNom("Bastien");
 		user3.setPrenom("Robin");
@@ -223,10 +228,7 @@ public class BDDTest {
 		user3.setAdresse(new Adresse("" + 28, "Rue du Gai Verger", "07330", "Barnas", "France"));
 		user3.setAbonnement(Abonnement.sansAbonnement);
 		compteRepo.save(user3);
-		
-		
-	
-				
+
 		// ville + Aeroport
 
 		Ville ville1 = new Ville();
@@ -239,12 +241,12 @@ public class BDDTest {
 		aeroport1.setNom("OrlyParis");
 		aeroport1.setVille(ville1);
 		aeroportService.save(aeroport1);
-		
+
 		Aeroport aeroport2 = new Aeroport();
 		aeroport2.setNom("RoissyParis");
 		aeroport2.setVille(ville1);
 		aeroportService.save(aeroport2);
-			
+
 		Ville ville3 = new Ville();
 		ville3.setPays("Turquie");
 		ville3.setNom("Ankara");
@@ -255,7 +257,7 @@ public class BDDTest {
 		aeroport3.setNom("Istanbul");
 		aeroport3.setVille(ville3);
 		aeroportService.save(aeroport3);
-		
+
 		Ville ville4 = new Ville();
 		ville4.setPays("United Kingdom");
 		ville4.setNom("Londre");
@@ -267,7 +269,6 @@ public class BDDTest {
 		aeroport4.setVille(ville4);
 		aeroportService.save(aeroport4);
 
-		
 		Ville ville5 = new Ville();
 		ville5.setPays("Espagne");
 		ville5.setNom("Barcelone");
@@ -279,7 +280,6 @@ public class BDDTest {
 		aeroport5.setVille(ville5);
 		aeroportService.save(aeroport5);
 
-	
 		Ville ville6 = new Ville();
 		ville6.setPays("Afrique du sud");
 		ville6.setNom("OR Tambo");
@@ -290,8 +290,7 @@ public class BDDTest {
 		aeroport6.setNom("Johannesbourg");
 		aeroport6.setVille(ville6);
 		aeroportService.save(aeroport6);
-		
-			
+
 		Ville ville7 = new Ville();
 		ville7.setPays("États-Unis");
 		ville7.setNom("Miami");
@@ -302,8 +301,7 @@ public class BDDTest {
 		aeroport7.setNom("Miami");
 		aeroport7.setVille(ville7);
 		aeroportService.save(aeroport7);
-		
-		
+
 		Ville ville8 = new Ville();
 		ville8.setPays("Pays-Bas");
 		ville8.setNom("Amsterdam");
@@ -314,7 +312,6 @@ public class BDDTest {
 		aeroport8.setNom("Schiphol");
 		aeroport8.setVille(ville8);
 		aeroportService.save(aeroport8);
-		
 
 		Ville ville9 = new Ville();
 		ville9.setPays("Égypte");
@@ -326,7 +323,6 @@ public class BDDTest {
 		aeroport9.setNom("Le Caire");
 		aeroport9.setVille(ville9);
 		aeroportService.save(aeroport9);
-	
 
 		Ville ville10 = new Ville();
 		ville10.setPays("Espagne");
@@ -338,8 +334,7 @@ public class BDDTest {
 		aeroport10.setNom("Las Palmas de Gran Canaria");
 		aeroport10.setVille(ville10);
 		aeroportService.save(aeroport10);
-	
-		
+
 		Ville ville11 = new Ville();
 		ville11.setPays("Éthiopie");
 		ville11.setNom("Addis-Abeba");
@@ -350,7 +345,7 @@ public class BDDTest {
 		aeroport11.setNom("Bole");
 		aeroport11.setVille(ville11);
 		aeroportService.save(aeroport11);
-		
+
 		Ville ville12 = new Ville();
 		ville12.setPays("Maroc");
 		ville12.setNom("Casablanca");
@@ -361,7 +356,7 @@ public class BDDTest {
 		aeroport12.setNom("Casablanca");
 		aeroport12.setVille(ville12);
 		aeroportService.save(aeroport12);
-		
+
 		Ville ville13 = new Ville();
 		ville13.setPays("Algérie");
 		ville13.setNom("Alger");
@@ -372,7 +367,7 @@ public class BDDTest {
 		aeroport13.setNom("Alger");
 		aeroport13.setVille(ville13);
 		aeroportService.save(aeroport13);
-		
+
 		Ville ville14 = new Ville();
 		ville14.setPays("Kenya");
 		ville14.setNom("Lagos");
@@ -383,7 +378,7 @@ public class BDDTest {
 		aeroport14.setNom("Lagos");
 		aeroport14.setVille(ville14);
 		aeroportService.save(aeroport14);
-		
+
 		Ville ville15 = new Ville();
 		ville15.setPays("Tunisie");
 		ville15.setNom("Tunis");
@@ -394,7 +389,7 @@ public class BDDTest {
 		aeroport15.setNom("Tunis");
 		aeroport15.setVille(ville15);
 		aeroportService.save(aeroport15);
-		
+
 		Ville ville16 = new Ville();
 		ville16.setPays("Afrique du Sud");
 		ville16.setNom("Durban");
@@ -405,7 +400,7 @@ public class BDDTest {
 		aeroport16.setNom("Durban");
 		aeroport16.setVille(ville16);
 		aeroportService.save(aeroport16);
-		
+
 		Ville ville17 = new Ville();
 		ville17.setPays("Maroc");
 		ville17.setNom("Marrakech");
@@ -416,7 +411,7 @@ public class BDDTest {
 		aeroport17.setNom("Marrakech");
 		aeroport17.setVille(ville17);
 		aeroportService.save(aeroport17);
-		
+
 		Ville ville18 = new Ville();
 		ville18.setPays("Nigeria");
 		ville18.setNom("Abuja");
@@ -427,7 +422,7 @@ public class BDDTest {
 		aeroport18.setNom("Abuja");
 		aeroport18.setVille(ville18);
 		aeroportService.save(aeroport18);
-		
+
 		Ville ville19 = new Ville();
 		ville19.setPays("Nouvelle-Calédonie");
 		ville19.setNom("Nouméa-La Tontouta");
@@ -438,7 +433,7 @@ public class BDDTest {
 		aeroport19.setNom("Nouméa-La Tontouta");
 		aeroport19.setVille(ville19);
 		aeroportService.save(aeroport19);
-		
+
 		Ville ville20 = new Ville();
 		ville20.setPays("Nouvelle-Zélande");
 		ville20.setNom("Auckland");
@@ -449,11 +444,11 @@ public class BDDTest {
 		aeroport20.setNom("Auckland");
 		aeroport20.setVille(ville20);
 		aeroportService.save(aeroport20);
-		
-		//Vile + aeroport
-		
-		//Vol +Volgen
-		
+
+		// Vile + aeroport
+
+		// Vol +Volgen
+
 		VolGenerique volGenerique1 = new VolGenerique();
 		volGenerique1.setPrix(161);
 		volGenerique1.setNumVolGen("RUD-G100-10A10");
@@ -471,7 +466,6 @@ public class BDDTest {
 		vol1.setAvion(avion3);
 		volService.save(vol1);
 
-		
 		VolGenerique volGenerique2 = new VolGenerique();
 		volGenerique2.setPrix(60);
 		volGenerique2.setNumVolGen("RUD-9F5W-X7Q7");
@@ -488,7 +482,7 @@ public class BDDTest {
 		vol2.setVolGenerique(volGenerique2);
 		vol2.setAvion(avion4);
 		volService.save(vol2);
-		
+
 		VolGenerique volGenerique3 = new VolGenerique();
 		volGenerique3.setPrix(83);
 		volGenerique3.setNumVolGen("RUD-5Q0Y-41JM");
@@ -505,7 +499,7 @@ public class BDDTest {
 		vol3.setVolGenerique(volGenerique3);
 		vol3.setAvion(avion7);
 		volService.save(vol3);
-		
+
 		VolGenerique volGenerique4 = new VolGenerique();
 		volGenerique4.setPrix(105);
 		volGenerique4.setNumVolGen("RUD-X5V1-54QI");
@@ -522,7 +516,7 @@ public class BDDTest {
 		vol4.setVolGenerique(volGenerique4);
 		vol4.setAvion(avion6);
 		volService.save(vol4);
-		
+
 		VolGenerique volGenerique5 = new VolGenerique();
 		volGenerique5.setPrix(492);
 		volGenerique5.setNumVolGen("RUD-47XV-7BS6");
@@ -539,7 +533,7 @@ public class BDDTest {
 		vol5.setVolGenerique(volGenerique5);
 		vol5.setAvion(avion6);
 		volService.save(vol5);
-		
+
 		VolGenerique volGenerique6 = new VolGenerique();
 		volGenerique6.setPrix(525);
 		volGenerique6.setNumVolGen("RUD-0GB7-4AF6");
@@ -556,7 +550,7 @@ public class BDDTest {
 		vol6.setVolGenerique(volGenerique6);
 		vol6.setAvion(avion5);
 		volService.save(vol6);
-		
+
 		VolGenerique volGenerique7 = new VolGenerique();
 		volGenerique7.setPrix(603);
 		volGenerique7.setNumVolGen("RUD-JY04-4PW9");
@@ -573,7 +567,7 @@ public class BDDTest {
 		vol7.setVolGenerique(volGenerique7);
 		vol7.setAvion(avion3);
 		volService.save(vol7);
-		
+
 		VolGenerique volGenerique8 = new VolGenerique();
 		volGenerique8.setPrix(889);
 		volGenerique8.setNumVolGen("RUD-23NX-48NO");
@@ -590,8 +584,7 @@ public class BDDTest {
 		vol8.setVolGenerique(volGenerique8);
 		vol8.setAvion(avion4);
 		volService.save(vol8);
-		
-		
+
 		VolGenerique volGenerique9 = new VolGenerique();
 		volGenerique9.setPrix(234);
 		volGenerique9.setNumVolGen("RUD-2OK6-4S7C");
@@ -608,8 +601,7 @@ public class BDDTest {
 		vol9.setVolGenerique(volGenerique9);
 		vol9.setAvion(avion2);
 		volService.save(vol9);
-		
-		
+
 		VolGenerique volGenerique10 = new VolGenerique();
 		volGenerique10.setPrix(251);
 		volGenerique10.setNumVolGen("RUD-9KY1-LF54");
@@ -626,9 +618,9 @@ public class BDDTest {
 		vol10.setVolGenerique(volGenerique10);
 		vol10.setAvion(avion6);
 		volService.save(vol10);
-		
-		//Reservation + Passager
-		
+
+		// Reservation + Passager
+
 		Passager passager1 = new Passager();
 		passager1.setNom("Jean");
 		passager1.setPrenom("Noel");
@@ -644,7 +636,7 @@ public class BDDTest {
 		resa1.setBagage(3);
 		resa1.setSiege("B1");
 		reservationService.save(resa1);
-		
+
 		Passager passager2 = new Passager();
 		passager2.setNom("Aubert");
 		passager2.setPrenom("Fernand");
@@ -660,7 +652,7 @@ public class BDDTest {
 		resa2.setBagage(1);
 		resa2.setSiege("C5");
 		reservationService.save(resa2);
-		
-}
+*/
+	}
 
 }

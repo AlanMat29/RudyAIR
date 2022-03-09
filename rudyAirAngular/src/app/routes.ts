@@ -19,6 +19,12 @@ import { ListeRechercheVolComponent } from './component/trouverVol/liste-recherc
 import { ReservationListComponent } from './component/admin/reservation-list/reservation-list.component';
 import { ReservationEditComponent } from './component/admin/reservation-edit/reservation-edit.component';
 import { ReservationBilletComponent } from './component/client/reservation-billet/reservation-billet.component';
+import { AvionListComponent } from './component/admin/avion-list/avion-list.component';
+import { AvionEditComponent } from './component/admin/avion-edit/avion-edit.component';
+import { AeroportListComponent } from './component/admin/aeroport-list/aeroport-list.component';
+import { AeroportEditComponent } from './component/admin/aeroport-edit/aeroport-edit.component';
+import { CompteEditComponent } from './component/admin/compte-edit/compte-edit.component';
+import { CompteListComponent } from './component/admin/compte-list/compte-list.component';
 
 export const routes: Routes = [
   { path: 'accueil', component: HomeComponent },
@@ -46,8 +52,22 @@ export const routes: Routes = [
   { path: 'client/historique', component: HistoriqueComponent },
   { path: 'client/information', component: InformationsClientComponent },
   //partie admin
+  //  Reservation
   { path: 'admin/reservation', component: ReservationListComponent },
   { path: 'admin/reservation/edit', component: ReservationEditComponent },
   { path: 'admin/reservation/edit/:id', component: ReservationEditComponent },
+  //  Avion
+  { path: 'admin/avion', component: AvionListComponent },
+  { path: 'admin/avion/edit', component: AvionEditComponent },
+  { path: 'admin/avion/edit/:id', component: AvionEditComponent },
+  //  Compte
+  { path: 'admin/compteClient', component: CompteListComponent },
+  { path: 'admin/compteClient/edit', component: CompteEditComponent },
+  { path: 'admin/compteClient/edit/:id', component: CompteEditComponent },
+  //  Aeroport
+  { path: 'admin/aeroport', component: AeroportListComponent },
+  { path: 'admin/aeroport/edit', component: AeroportEditComponent },
+  { path: 'admin/aeroport/edit/:id', component: AeroportEditComponent },
+
   { path: '', redirectTo: 'accueil', pathMatch: 'full' },
 ];

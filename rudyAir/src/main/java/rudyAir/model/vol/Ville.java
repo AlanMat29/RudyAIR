@@ -3,6 +3,7 @@ package rudyAir.model.vol;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,7 +39,7 @@ public class Ville {
 	@JsonView(Views.Common.class)
 	@Column(unique = true)
 	private String cp;
-	@OneToMany(mappedBy = "ville")
+	@OneToMany(mappedBy = "ville", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonView(Views.VilleWithAeroports.class)
 	private List<Aeroport> aeroports;
 
@@ -71,6 +72,12 @@ public class Ville {
 
 	public String getPays() {
 		return pays;
+	}
+
+	@Override
+	public String toString() {
+		return "Ville [id=" + id + ", pays=" + pays + ", nom=" + nom + ", cp=" + cp + ", aeroports=" + aeroports
+				+ ", version=" + version + "]";
 	}
 
 	public void setPays(String pays) {

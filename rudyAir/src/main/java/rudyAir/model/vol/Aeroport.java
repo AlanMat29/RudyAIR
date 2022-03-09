@@ -89,6 +89,13 @@ public class Aeroport {
 		return ville;
 	}
 
+	@Override
+	public String toString() {
+		return "Aeroport [id=" + id + ", nom=" + nom + ", ville=" + ville + ", volsGeneriquesDeparts="
+				+ volsGeneriquesDeparts + ", volsGeneriquesArrivees=" + volsGeneriquesArrivees + ", version=" + version
+				+ "]";
+	}
+
 	public void setVille(Ville ville) {
 		this.ville = ville;
 	}
