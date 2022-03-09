@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PayerBilletComponent } from './payer-billet.component';
+import { FooterAdminComponent } from './footer-admin.component';
 
-describe('PayerBilletComponent', () => {
-  let component: PayerBilletComponent;
-  let fixture: ComponentFixture<PayerBilletComponent>;
+describe('FooterAdminComponent', () => {
+  let component: FooterAdminComponent;
+  let fixture: ComponentFixture<FooterAdminComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PayerBilletComponent ]
+      declarations: [ FooterAdminComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PayerBilletComponent);
+    fixture = TestBed.createComponent(FooterAdminComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

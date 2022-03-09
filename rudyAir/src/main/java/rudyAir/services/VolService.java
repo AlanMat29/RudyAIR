@@ -114,4 +114,8 @@ public class VolService {
 		return volRepo.findVolByintervalPrixOrderByPrixCroissant(minPrix, maxPrix);
 	}
 	
+	public List<Vol> getVolByAvionId(Long avionId) {
+		return volRepo.findVolByAvionId(avionId);
+	}
+	
 }

@@ -1,1 +1,128 @@
-<p>inscription works!</p>
+<main id="main" class="padding10">
+  <section>
+    <h1
+      class="page-heading padding10 d-flex justify-content-center align-content-center"
+    >
+      Créez votre compte
+    </h1>
+    <form
+      action="/inscription"
+      method="post"
+      id="account-creation_form"
+      class="std box"
+    >
+      <div class="account_creation">
+        <h3 class="page-subheading">Vos informations personnelles</h3>
+        <div class="clearfix form-group">
+          <label class="hidden-xs">Titre</label><br />
+          <div class="radio-inline">
+            <label for="id_gender1" class="top">
+              <input type="radio" name="id_gender" id="id_gender1" value="1" />
+              M
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label for="id_gender2" class="top">
+              <input type="radio" name="id_gender" id="id_gender2" value="2" />
+              Mme
+            </label>
+          </div>
+          <div class="radio-inline">
+            <label for="id_gender" class="top">
+              <input type="radio" name="id_gender" id="id_gender3" value="3" />
+              Autre
+            </label>
+          </div>
+        </div>
+        <div class="required form-group">
+          <label for="customer_firstname" class="hidden-xs"
+            >Prénom
+            <sup>*</sup>
+          </label>
+          <input
+            type="text"
+            class="is_required validate form-control"
+            data-validate="isName"
+            id="customer_firstname"
+            name="customer_firstname"
+            value=""
+            placeholder="Prénom*"
+          />
+        </div>
+        <div class="required form-group">
+          <label for="customer_lastname" class="hidden-xs"
+            >Nom <sup>*</sup>
+          </label>
+          <input
+            type="text"
+            class="is_required validate form-control"
+            data-validate="isName"
+            id="customer_lastname"
+            name="customer_lastname"
+            value=""
+            placeholder="Nom*"
+          />
+        </div>
+        <div class="required form-group">
+          <label for="email" class="hidden-xs">E-mail <sup>*</sup> </label>
+          <input
+            type="emal"
+            class="is_required validate form-control"
+            data-validate="isEmail"
+            id="email"
+            name="email"
+            placeholder="Adresse e-mail"
+            value=""
+          />
+        </div>
+        <div class="required password form-group">
+          <label for="passwd" class="hidden-xs"
+            >Mot de passe <sup>*</sup>
+          </label>
+          <input
+            type="password"
+            class="is_required validate form-control"
+            data-validate="isPasswd"
+            name="passwd"
+            id="passwd"
+            placeholder="Mot de passe*"
+          />
+          <span class="form_info">(5 caractères min.)</span>
+        </div>
+        <div class="form-group">
+          <label class="hidden-xs">Date de naissance </label>
+          <input
+            type="date"
+            class="form-control"
+            name="date-de-naissance"
+            required
+            placeholder="Saisir la date de depart"
+            value=""
+          />
+        </div>
+      </div>
+      <div class="checkbox">
+        <label for="newsletter">
+          <input type="checkbox" name="newsletter" id="newsletter" value="1" />
+          S'inscrire à la newsletter
+        </label>
+      </div>
+      <div class="submit clearfix">
+        <input type="hidden" name="email_create" value="1" />
+        <input type="hidden" name="is_new_customer" value="1" />
+        <input type="hidden" class="hidden" name="back" value="my-account" />
+        <button
+          type="submit"
+          name="submitAccount"
+          id="submitAccount"
+          class="btn btn-login btn-default button button-medium"
+        >
+          <span>S'inscrire&#10095; </span>
+        </button>
+        <p class="pull-right required">
+          <span><sup>*</sup>Champ requis</span>
+        </p>
+      </div>
+    </form>
+  </section>
+</main>

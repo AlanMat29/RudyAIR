@@ -52,4 +52,7 @@ public class AvionService {
 		return avionRepo.existsById(id);
 	}
 
+	public List<Avion> getAllByOrderByRefAsc() {
+		return avionRepo.findAllByOrderByRefAsc();
+	}
 }

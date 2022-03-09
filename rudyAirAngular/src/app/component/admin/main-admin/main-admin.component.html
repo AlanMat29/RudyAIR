@@ -2,11 +2,12 @@
   <header>
     <div id="header-content-left">
       <div id="logo">
-        <img
-          class="logo-img"
-          src="assets/img/icon/logo-icon.png"
-          alt="logo_image"
-        />
+        <a routerLink="/accueil" routerLinkActive="active"
+          ><img
+            class="logo-img"
+            src="assets/img/icon/logo-icon.png"
+            alt="logo_image"
+        /></a>
       </div>
     </div>
 
@@ -16,9 +17,15 @@
         <li><a class="main-menu-items" href="">AEROPORT</a></li>
         <li><a class="main-menu-items" href="">VOL&nbsp;GENERIQUE</a></li>
         <li><a class="main-menu-items" href="">VOL</a></li>
-        <li><a class="main-menu-items" href="">AVION</a></li>
-        <li><a class="main-menu-items" href="">SIEGE</a></li>
         <li><a class="main-menu-items" href="">PASSAGER</a></li>
+        <li>
+          <a
+            class="main-menu-items"
+            routerLink="/admin/avion"
+            routerLinkActive="active"
+            >AVION</a
+          >
+        </li>
         <li>
           <a
             class="main-menu-items"
@@ -33,11 +40,12 @@
     <!-- TODO: Modifier action se deconnecter -->
     <div id="login">
       <button
-        class="btn-login"
-        onclick="document.getElementById('id01').style.display='block'"
+        class="btn btn-login"
+        routerLink="/sedeconnecter"
+        routerLinkActive="active"
       >
         <b style="display: flex; justify-content: center"
-          >Se&nbsp;déconnecter</b
+          >Se&nbsp;deconnecter</b
         >
       </button>
     </div>
@@ -48,6 +56,4 @@
   </div>
 </div>
 
-<div id="footerCopyrightAdmin">
-  <span> &copy; Copyright - 2022 - RudyAIR </span>
-</div>
+<app-footer-admin></app-footer-admin>
