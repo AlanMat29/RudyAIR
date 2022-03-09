@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import rudyAir.exceptions.ClientException;
 import rudyAir.exceptions.CompteException;
 import rudyAir.model.Views;
 import rudyAir.model.compte.Admin;
@@ -93,12 +94,20 @@ public class CompteRestController {
 
 	// Additional Web Service
 	// admin
+
+	@GetMapping("/admin")
+	@JsonView(Views.CompteClient.class)
+	public List<Admin> getAllAdmin() {
+		return adminService.getAllAdmin();
+	}
+
+	// Client
 	@GetMapping("/client")
 	@JsonView(Views.CompteClient.class)
 	public List<Client> getAllClient() {
 		return clientService.getAllClient();
 	}
-	
+
 	@GetMapping("/client/{id}")
 	@JsonView(Views.CompteClient.class)
 	public Client getClientById(@PathVariable Long id) {
@@ -111,10 +120,22 @@ public class CompteRestController {
 		return clientService.getAllClientReservationsByClientId(id);
 	}
 
-	@GetMapping("/admin")
+	@PostMapping("/createClient")
 	@JsonView(Views.CompteClient.class)
-	public List<Admin> getAllAdmin() {
-		return adminService.getAllAdmin();
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public Client createClient(@Valid @RequestBody Client client, BindingResult br) {
+		if (br.hasErrors()) {
+			throw new ClientException();
+		}
+		return clientService.save(client);
 	}
-
+	
+	@PutMapping("/updateClient/{id}")
+	@JsonView(Views.CompteClient.class)
+	public Client update(@PathVariable Long id, @Valid @RequestBody Client client, BindingResult br) {
+		if (br.hasErrors()) {
+			throw new CompteException();
+		}
+		return clientService.save(client);
+	}
 }
