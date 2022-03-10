@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'rudyAirAngular';
+
+  getUserType() {
+    if (localStorage.getItem('typeCompte') == 'admin') {
+      return 'admin';
+    }
+    return 'client';
+  }
 }
