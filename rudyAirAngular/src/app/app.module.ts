@@ -9,7 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTooltipModule } from '@angular/material/tooltip';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
@@ -38,6 +38,17 @@ import { FooterAdminComponent } from './component/admin/footer-admin/footer-admi
 import { ReservationBilletComponent } from './component/client/reservation-billet/reservation-billet.component';
 import { HistoriqueComponent } from './component/client/historique/historique.component';
 import { EnregistrerReservationComponent } from './component/client/enregistrer-reservation/enregistrer-reservation.component';
+import { CompteListComponent } from './component/admin/compte-list/compte-list.component';
+import { CompteEditComponent } from './component/admin/compte-edit/compte-edit.component';
+import { AeroportListComponent } from './component/admin/aeroport-list/aeroport-list.component';
+import { AeroportEditComponent } from './component/admin/aeroport-edit/aeroport-edit.component';
+import { VilleListComponent } from './component/admin/ville-list/ville-list.component';
+import { VilleEditComponent } from './component/admin/ville-edit/ville-edit.component';
+import { VolGeneriqueListComponent } from './component/admin/vol-generique-list/vol-generique-list.component';
+import { VolGeneriqueEditComponent } from './component/admin/vol-generique-edit/vol-generique-edit.component';
+import { VolListComponent } from './component/admin/vol-list/vol-list.component';
+import { VolEditComponent } from './component/admin/vol-edit/vol-edit.component';
+import { VolDuJourComponent } from './component/vol-du-jour/vol-du-jour.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +81,19 @@ import { EnregistrerReservationComponent } from './component/client/enregistrer-
     FooterAdminComponent,
     AvionListComponent,
     AvionEditComponent,
+    ReservationPassagerComponent,
+    PaiementBilletComponent,
+    CompteListComponent,
+    CompteEditComponent,
+    AeroportListComponent,
+    AeroportEditComponent,
+    VilleListComponent,
+    VilleEditComponent,
+    VolGeneriqueListComponent,
+    VolGeneriqueEditComponent,
+    VolListComponent,
+    VolEditComponent,
+    VolDuJourComponent,
   ],
   imports: [
     BrowserModule,

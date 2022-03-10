@@ -18,11 +18,23 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class InscriptionComponent implements OnInit {
   form!: FormGroup;
+  currentDate: Date = new Date();
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
+      name: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(255),
+      ]),
+      surname: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(255),
+      ]),
+
       login: new FormControl(
         '',
         [
@@ -86,12 +98,14 @@ export class InscriptionComponent implements OnInit {
 
   save() {
     let user = {
+      prenom: this.form.get('surname')?.value,
+      nom: this.form.get('name')?.value,
       email: this.form.get('login')?.value,
       password: this.form.get('passwordGrp')?.get('password')?.value,
     };
     console.log(user);
     this.authService.inscription(user).subscribe((ok) => {
-      this.router.navigateByUrl('/acceuil');
+      this.router.navigateByUrl('/accueil');
     });
   }
 }

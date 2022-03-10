@@ -54,7 +54,6 @@ public class VolService {
 			volEnBase.setNumeroVol(vol.getNumeroVol());
 			volEnBase.setVolGenerique(vol.getVolGenerique());
 			volEnBase.setAvion(vol.getAvion());
-			volEnBase.setReservations(vol.getReservations());
 			return volRepo.save(volEnBase);
 		}
 	}

@@ -27,12 +27,20 @@ export class VolGeneriqueService {
     }
     if (volGenerique.aeroportArrivee) {
       Object.assign(volGeneriqueJson, {
-        aeroportDepart: { id: volGenerique.aeroportArrivee.id },
+        aeroportArrivee: {
+          id: volGenerique.aeroportArrivee.id,
+          nom: volGenerique.aeroportArrivee.nom,
+          ville: volGenerique.aeroportArrivee.ville,
+        },
       });
     }
     if (volGenerique.aeroportDepart) {
       Object.assign(volGeneriqueJson, {
-        aeroportDepart: { id: volGenerique.aeroportDepart.id },
+        aeroportDepart: {
+          id: volGenerique.aeroportDepart.id,
+          nom: volGenerique.aeroportDepart.nom,
+          ville: volGenerique.aeroportDepart.ville,
+        },
       });
     }
     return volGeneriqueJson;
@@ -42,8 +50,8 @@ export class VolGeneriqueService {
     return this.httpClient.get<VolGenerique[]>(VolGeneriqueService.URL);
   }
 
-  public getById(id: number): Observable<VolGenerique[]> {
-    return this.httpClient.get<VolGenerique[]>(
+  public getById(id: number): Observable<VolGenerique> {
+    return this.httpClient.get<VolGenerique>(
       `${VolGeneriqueService.URL}/${id}`
     );
   }

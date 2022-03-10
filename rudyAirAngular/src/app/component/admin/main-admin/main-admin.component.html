@@ -13,11 +13,23 @@
 
     <div class="main-menu">
       <ul class="main-menu-box">
-        <li><a class="main-menu-items" href="">VILLE</a></li>
-        <li><a class="main-menu-items" href="">AEROPORT</a></li>
-        <li><a class="main-menu-items" href="">VOL&nbsp;GENERIQUE</a></li>
-        <li><a class="main-menu-items" href="">VOL</a></li>
-        <li><a class="main-menu-items" href="">PASSAGER</a></li>
+        <li>
+          <a
+            class="main-menu-items"
+            routerLink="/admin/ville"
+            routerLinkActive="active"
+            >VILLE</a
+          >
+        </li>
+        <li>
+          <a
+            class="main-menu-items"
+            routerLink="/admin/aeroport"
+            routerLinkActive="active"
+            >AEROPORT</a
+          >
+        </li>
+
         <li>
           <a
             class="main-menu-items"
@@ -29,12 +41,35 @@
         <li>
           <a
             class="main-menu-items"
+            routerLink="/admin/volGenerique"
+            routerLinkActive="active"
+            >VOL&nbsp;GENERIQUE</a
+          >
+        </li>
+        <li>
+          <a
+            class="main-menu-items"
+            routerLink="/admin/vol"
+            routerLinkActive="active"
+            >VOL</a
+          >
+        </li>
+        <li>
+          <a
+            class="main-menu-items"
+            routerLink="/admin/compteClient"
+            routerLinkActive="active"
+            >COMPTE</a
+          >
+        </li>
+        <li>
+          <a
+            class="main-menu-items"
             routerLink="/admin/reservation"
             routerLinkActive="active"
             >RESERVATION</a
           >
         </li>
-        <li><a class="main-menu-items" href="">COMPTE</a></li>
       </ul>
     </div>
     <!-- TODO: Modifier action se deconnecter -->

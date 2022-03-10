@@ -43,6 +43,7 @@ public class VilleService {
 			Ville villeEnBase = getById(ville.getId());
 			villeEnBase.setNom(ville.getNom());
 			villeEnBase.setCp(ville.getCp());
+			villeEnBase.setPays(ville.getPays());
 			return villeRepo.save(villeEnBase);
 		}
 	}

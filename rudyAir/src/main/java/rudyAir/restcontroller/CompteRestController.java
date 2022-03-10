@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import rudyAir.exceptions.ClientException;
 import rudyAir.exceptions.CompteException;
 import rudyAir.model.Views;
 import rudyAir.model.compte.Admin;
@@ -96,7 +97,7 @@ public class CompteRestController {
 	public List<Client> getAllClient() {
 		return clientService.getAllClient();
 	}
-	
+
 	@GetMapping("/client/{id}")
 	@JsonView(Views.CompteClient.class)
 	public Client getClientById(@PathVariable Long id) {

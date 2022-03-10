@@ -19,6 +19,19 @@ import { ListeRechercheVolComponent } from './component/trouverVol/liste-recherc
 import { ReservationListComponent } from './component/admin/reservation-list/reservation-list.component';
 import { ReservationEditComponent } from './component/admin/reservation-edit/reservation-edit.component';
 import { ReservationBilletComponent } from './component/client/reservation-billet/reservation-billet.component';
+import { AvionListComponent } from './component/admin/avion-list/avion-list.component';
+import { AvionEditComponent } from './component/admin/avion-edit/avion-edit.component';
+import { AeroportListComponent } from './component/admin/aeroport-list/aeroport-list.component';
+import { AeroportEditComponent } from './component/admin/aeroport-edit/aeroport-edit.component';
+import { CompteEditComponent } from './component/admin/compte-edit/compte-edit.component';
+import { CompteListComponent } from './component/admin/compte-list/compte-list.component';
+import { VilleListComponent } from './component/admin/ville-list/ville-list.component';
+import { VilleEditComponent } from './component/admin/ville-edit/ville-edit.component';
+import { VolGeneriqueListComponent } from './component/admin/vol-generique-list/vol-generique-list.component';
+import { VolGeneriqueEditComponent } from './component/admin/vol-generique-edit/vol-generique-edit.component';
+import { VolListComponent } from './component/admin/vol-list/vol-list.component';
+import { VolEditComponent } from './component/admin/vol-edit/vol-edit.component';
+import { VolDuJourComponent } from './component/vol-du-jour/vol-du-jour.component';
 
 export const routes: Routes = [
   { path: 'accueil', component: HomeComponent },
@@ -38,6 +51,7 @@ export const routes: Routes = [
   { path: 'reservation/billet', component: ReservationBilletComponent },
   { path: 'reservation/passager', component: ReservationPassagerComponent },
   { path: 'reservation/paiement', component: PaiementBilletComponent },
+  { path: 'liste-vols', component: VolDuJourComponent },
   {
     path: 'reservation/enregister',
     component: EnregistrerReservationComponent,
@@ -46,8 +60,34 @@ export const routes: Routes = [
   { path: 'client/historique', component: HistoriqueComponent },
   { path: 'client/information', component: InformationsClientComponent },
   //partie admin
+  //  Reservation
   { path: 'admin/reservation', component: ReservationListComponent },
   { path: 'admin/reservation/edit', component: ReservationEditComponent },
   { path: 'admin/reservation/edit/:id', component: ReservationEditComponent },
+  //  Avion
+  { path: 'admin/avion', component: AvionListComponent },
+  { path: 'admin/avion/edit', component: AvionEditComponent },
+  { path: 'admin/avion/edit/:id', component: AvionEditComponent },
+  //  Compte
+  { path: 'admin/compteClient', component: CompteListComponent },
+  { path: 'admin/compteClient/edit', component: CompteEditComponent },
+  { path: 'admin/compteClient/edit/:id', component: CompteEditComponent },
+  //  Aeroport
+  { path: 'admin/aeroport', component: AeroportListComponent },
+  { path: 'admin/aeroport/edit', component: AeroportEditComponent },
+  { path: 'admin/aeroport/edit/:id', component: AeroportEditComponent },
+  //  Ville
+  { path: 'admin/ville', component: VilleListComponent },
+  { path: 'admin/ville/edit', component: VilleEditComponent },
+  { path: 'admin/ville/edit/:id', component: VilleEditComponent },
+  //  VolGenerique
+  { path: 'admin/volGenerique', component: VolGeneriqueListComponent },
+  { path: 'admin/volGenerique/edit', component: VolGeneriqueEditComponent },
+  { path: 'admin/volGenerique/edit/:id', component: VolGeneriqueEditComponent },
+  //  Vol
+  { path: 'admin/vol', component: VolListComponent },
+  { path: 'admin/vol/edit', component: VolEditComponent },
+  { path: 'admin/vol/edit/:id', component: VolEditComponent },
+
   { path: '', redirectTo: 'accueil', pathMatch: 'full' },
 ];

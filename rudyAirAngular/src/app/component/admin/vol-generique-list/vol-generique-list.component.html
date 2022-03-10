@@ -1,0 +1,99 @@
+<div class="d-flex justify-content-center">
+  <div class="div-table-format">
+    <div>
+      <h2>Tableau des vols génériques</h2>
+    </div>
+    <table class="table table-striped table-bordered">
+      <thead class="thead-sticky bg-light">
+        <tr>
+          <th scope="col" colspan="3" class="text-center align-middle"></th>
+          <th scope="col" colspan="3" class="text-center align-middle">
+            Départ
+          </th>
+          <th scope="col" colspan="3" class="text-center align-middle">
+            Arrivée
+          </th>
+          <th scope="col" colspan="2" class="text-center align-middle"></th>
+        </tr>
+        <tr>
+          <th scope="col" class="text-center align-middle">#</th>
+          <th scope="col" class="text-center align-middle">Référence</th>
+          <th scope="col" class="text-center align-middle">Prix</th>
+
+          <th scope="col" class="text-center align-middle">Pays</th>
+          <th scope="col" class="text-center align-middle">Aéroport</th>
+          <th scope="col" class="text-center align-middle">Heure</th>
+
+          <th scope="col" class="text-center align-middle">Pays</th>
+          <th scope="col" class="text-center align-middle">Aéroport</th>
+          <th scope="col" class="text-center align-middle">Heure</th>
+
+          <th
+            scope="col"
+            colspan="2"
+            rowspan="2"
+            class="text-center align-middle"
+          >
+            Options
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let a of volGeneriques; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ a.numVolGen }}</td>
+          <td>{{ a.prix }}</td>
+
+          <td>{{ a.aeroportDepart!.ville!.pays }}</td>
+          <td>{{ a.aeroportDepart!.nom }}</td>
+          <td>{{ a.horaire!.heureDepart }}</td>
+
+          <td>{{ a.aeroportArrivee!.ville!.pays }}</td>
+          <td>{{ a.aeroportArrivee!.nom }}</td>
+          <td>{{ a.horaire!.heureArrivee }}</td>
+
+          <td>
+            <a
+              [routerLink]="['/admin/volGenerique/edit/', a.id]"
+              routerLinkActive="active"
+              class="btn btn-warning"
+              >Modifier</a
+            >
+          </td>
+          <td>
+            <div *ngIf="canBeDelete(a.id!)">
+              <button
+                (click)="deleteVolGeneriqueById(a.id!)"
+                class="btn btn-danger"
+              >
+                Supprimer
+              </button>
+            </div>
+            <div
+              *ngIf="!canBeDelete(a.id!)"
+              class="random-item tooltips tooltips-right"
+              data-tooltip="Veuillez supprimer les vols en lien avec ce vol générique"
+            >
+              <button
+                [disabled]="!canBeDelete(a.id!)"
+                (click)="deleteVolGeneriqueById(a.id!)"
+                class="btn btn-danger"
+              >
+                Supprimer
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <a
+        routerLink="/admin/volGenerique/edit"
+        routerLinkActive="active"
+        class="btn btn-primary"
+        style="color: white"
+        >Ajouter un vol générique</a
+      >
+    </div>
+  </div>
+</div>

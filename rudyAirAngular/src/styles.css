@@ -46,6 +46,88 @@ a.item {
   min-height: 42px;
   height: 42px;
 }
+
+.tooltips {
+  position: relative;
+}
+
+.tooltips:hover::before {
+  content: "";
+
+  position: absolute;
+}
+.tooltips.tooltips-top:hover::before {
+  bottom: calc(100% + 0.6rem - 5px);
+  left: calc(50% - 10px);
+
+  border-top: 5px solid var(--tooltip-bg);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  visibility: visible;
+  opacity: 1;
+}
+.tooltips.tooltips-right:hover::before {
+  top: 5px;
+  left: calc(100% + 0.6rem - 5px);
+
+  border-right: 5px solid var(--tooltip-bg);
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  visibility: visible;
+  opacity: 1;
+}
+.tooltips.tooltips-bottom:hover::before {
+  top: calc(100% + 0.6rem - 5px);
+  left: calc(50% - 10px);
+
+  border-bottom: 5px solid var(--tooltip-bg);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  visibility: visible;
+  opacity: 1;
+}
+.tooltips.tooltips-left:hover::before {
+  top: 5px;
+  right: calc(100% + 0.6rem - 5px);
+
+  border-left: 5px solid var(--tooltip-bg);
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltips:hover::after {
+  content: attr(data-tooltip);
+
+  position: absolute;
+
+  width: calc(150% - 1rem);
+  z-index: 900;
+
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+
+  background-color: #555;
+  color: rgb(255, 255, 255);
+  font-size: 0.75rem;
+}
+.tooltips.tooltips-top:hover::after {
+  bottom: calc(100% + 0.6rem);
+  left: -25%;
+}
+.tooltips.tooltips-right:hover::after {
+  top: 0;
+  left: calc(100% + 0.6rem);
+}
+.tooltips.tooltips-bottom:hover::after {
+  top: calc(100% + 0.6rem);
+  left: -25%;
+}
+.tooltips.tooltips-left:hover::after {
+  top: 0;
+  right: calc(100% + 0.6rem);
+}
 /*--------------------------------------------------------------
 # HEADER
 --------------------------------------------------------------*/
@@ -724,7 +806,7 @@ main {
   width: 310px;
 }
 
-img.publicite {
+img.publicites {
   height: 100%;
   width: 100%;
   max-width: 450px;
