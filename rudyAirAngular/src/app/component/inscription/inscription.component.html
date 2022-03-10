@@ -47,8 +47,24 @@
             data-validate="isName"
             id="customer_firstname"
             name="customer_firstname"
+            formControlName="name"
             placeholder="Prénom*"
           />
+          <div
+          class="alert alert-danger"
+          *ngIf="
+            form.controls['name'].dirty && form.controls['name'].invalid
+          "
+        >
+        <span *ngIf="form.controls['name'].hasError('required')"
+          >login obligatoire</span
+        >
+        <span *ngIf="form.controls['name'].hasError('minlength')"
+          >le login doit faire 1 careteres minimum</span
+        >
+        <span *ngIf="form.controls['name'].hasError('maxlength')"
+          >le login ne doit pas faire plus de 55 caracteres</span
+        >
         </div>
         <div class="required form-group">
           <label for="customer_lastname" class="hidden-xs"
@@ -60,8 +76,24 @@
             data-validate="isName"
             id="customer_lastname"
             name="customer_lastname"
+            formControlName="name"
             placeholder="Nom*"
           />
+          <div
+            class="alert alert-danger"
+            *ngIf="
+              form.controls['surname'].dirty && form.controls['surname'].invalid
+            "
+          >
+          <span *ngIf="form.controls['surname'].hasError('required')"
+            >login obligatoire</span
+          >
+          <span *ngIf="form.controls['surname'].hasError('minlength')"
+            >le login doit faire 1 careteres minimum</span
+          >
+          <span *ngIf="form.controls['surname'].hasError('maxlength')"
+            >le login ne doit pas faire plus de 55 caracteres</span
+          >
         </div>
         <div class="required form-group">
           <label for="email" class="hidden-xs">E-mail <sup>*</sup> </label>
