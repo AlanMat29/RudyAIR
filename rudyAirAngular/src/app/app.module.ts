@@ -1,15 +1,15 @@
+import { routes } from './routes';
 import { CarrouselComponent } from './component/catalogue/carrousel/carrousel.component';
 import { TopDestinationComponent } from './component/catalogue/top-destination/top-destination.component';
 import { ReservationEditComponent } from './component/admin/reservation-edit/reservation-edit.component';
 import { MainAdminComponent } from './component/admin/main-admin/main-admin.component';
 import { OffresComponent } from './component/catalogue/offres/offres.component';
-import { RechercheVolComponent } from './component/trouverVol/recherche-vol/recherche-vol.component';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+//import { MatTooltipModule } from '@angular/material/tooltip';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
@@ -19,11 +19,7 @@ import { HomeComponent } from './component/home/home.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { InscriptionComponent } from './component/inscription/inscription.component';
 import { ListeRechercheVolComponent } from './component/trouverVol/liste-recherche-vol/liste-recherche-vol.component';
-import {
-  HttpClientModule,
-  HTTP_INTERCEPTORS,
-  HttpHeaders,
-} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptor/auth-interceptor';
 import { PubliciteComponent } from './component/publicite/publicite.component';
 import { ReservationListComponent } from './component/admin/reservation-list/reservation-list.component';
@@ -33,7 +29,7 @@ import { ReservationPassagerComponent } from './component/client/reservation-pas
 import { PaiementBilletComponent } from './component/client/paiement-billet/paiement-billet.component';
 import { AvionListComponent } from './component/admin/avion-list/avion-list.component';
 import { AvionEditComponent } from './component/admin/avion-edit/avion-edit.component';
-import { routes } from './routes';
+import { RechercheVolComponent } from './component/trouverVol/recherche-vol/recherche-vol.component';
 import { FooterAdminComponent } from './component/admin/footer-admin/footer-admin.component';
 import { ReservationBilletComponent } from './component/client/reservation-billet/reservation-billet.component';
 import { HistoriqueComponent } from './component/client/historique/historique.component';
@@ -94,6 +90,7 @@ import { VolDuJourComponent } from './component/vol-du-jour/vol-du-jour.componen
     VolListComponent,
     VolEditComponent,
     VolDuJourComponent,
+    RechercheVolComponent,
   ],
   imports: [
     BrowserModule,

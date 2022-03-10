@@ -316,7 +316,7 @@ public class BDDTest {
 		villeService.save(ville7);
 
 		Aeroport aeroport7 = new Aeroport();
-		aeroport7.setNom("Miami");
+		aeroport7.setNom("MIA");
 		aeroport7.setVille(ville7);
 		aeroportService.save(aeroport7);
 

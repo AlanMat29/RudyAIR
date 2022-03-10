@@ -54,4 +54,52 @@ export class VolService {
   public getAllByAvionId(id: number): Observable<Vol[]> {
     return this.httpClient.get<Vol[]>(VolService.URL + '/avion/' + { id });
   }
+
+  // public format(date: Date) {
+  //   date = new Date(date);
+
+  //   var day = ('0' + date.getDate()).slice(-2);
+  //   var month = ('0' + (date.getMonth() + 1)).slice(-2);
+  //   var year = date.getFullYear();
+
+  //   return year + '-' + month + '-' + day;
+  // }
+
+  // recherches
+  public getVolByRecherche(
+    villeDepart: string,
+    villeArrivee: string,
+    dateDepart: string
+  ): Observable<Vol[]> {
+    return this.httpClient.get<Vol[]>(
+      VolService.URL +
+        `/recherche-vol/${villeDepart}/${villeArrivee}/${dateDepart}`
+    );
+  }
+
+  public getVolByAeroportDepart(nomAeroportDepart: string): Observable<Vol[]> {
+    return this.httpClient.get<Vol[]>(
+      VolService.URL + '/' + { nomAeroportDepart } + '/aeroportdepart'
+    );
+  }
+
+  public getVolByAeroportArrivee(
+    nomAeroportArrivee: string
+  ): Observable<Vol[]> {
+    return this.httpClient.get<Vol[]>(
+      VolService.URL + '/' + { nomAeroportArrivee } + '/aeroportarrivee'
+    );
+  }
+
+  public getVolByDateDepart(dateDepart: Date): Observable<Vol[]> {
+    return this.httpClient.get<Vol[]>(
+      VolService.URL + '/' + { dateDepart } + '/datedepart'
+    );
+  }
+
+  public getVolByDateArrivee(dateArrivee: Date): Observable<Vol[]> {
+    return this.httpClient.get<Vol[]>(
+      VolService.URL + '/' + { dateArrivee } + '/dateArrivee'
+    );
+  }
 }

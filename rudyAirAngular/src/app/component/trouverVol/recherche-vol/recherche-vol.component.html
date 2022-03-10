@@ -1,10 +1,10 @@
-<section style="margin-bottom: 4px">
-  <div id="booking" class="section">
-    <div class="section-center">
-      <div class="mycontainer">
-        <div class="myrow">
-          <div class="booking-form">
-            <form>
+<section>
+  <form [formGroup]="rechercheForm" (ngSubmit)="rechercher()">
+    <div id="booking" class="section">
+      <div class="section-center">
+        <div class="mycontainer">
+          <div class="myrow">
+            <div class="booking-form">
               <div class="form-group">
                 <h3
                   class="d-flex justify-content-center form-control"
@@ -18,7 +18,12 @@
                 </h3>
                 <div class="form-checkbox">
                   <label for="aller-simple">
-                    <input type="radio" id="aller-simple" name="flight-type" />
+                    <input
+                      type="radio"
+                      id="aller-simple"
+                      name="flight-type"
+                      checked
+                    />
                     <span></span>Aller-simple
                   </label>
                   <label for="aller-retour">
@@ -32,9 +37,11 @@
                   <div class="form-group">
                     <span class="form-label">Départ de *</span>
                     <input
+                      [(ngModel)]="villeDepart"
+                      formControlName="departCtrl"
                       class="form-control"
                       type="text"
-                      placeholder="Ville ou Aéroport"
+                      placeholder="Ville"
                     />
                   </div>
                 </div>
@@ -42,9 +49,11 @@
                   <div class="form-group">
                     <span class="form-label">Arrivée à *</span>
                     <input
+                      [(ngModel)]="villeArrivee"
+                      formControlName="arriveeCtrl"
                       class="form-control"
                       type="text"
-                      placeholder="Ville ou Aéroport"
+                      placeholder="Ville"
                     />
                   </div>
                 </div>
@@ -53,22 +62,28 @@
                 <div class="col-md-3">
                   <div class="form-group">
                     <span class="form-label">Date d'aller</span>
-                    <input class="form-control" type="date" required />
+                    <input
+                      [(ngModel)]="dateDepart"
+                      [ngModelOptions]="{ standalone: true }"
+                      class="form-control"
+                      type="date"
+                      required
+                    />
                   </div>
                 </div>
-                <div class="col-md-3">
+                <!-- <div class="col-md-3">
                   <div class="form-group">
                     <span class="form-label">Date de retour</span>
                     <input class="form-control" type="date" required />
                   </div>
-                </div>
+                </div> -->
                 <div class="col-md-2">
                   <div class="form-group">
-                    <span class="form-label">Passagers</span>
+                    <span class="form-label">Animaux</span>
                     <select class="form-control">
+                      <option>0</option>
                       <option>1</option>
                       <option>2</option>
-                      <option>3</option>
                     </select>
                     <span class="select-arrow"></span>
                   </div>
@@ -98,14 +113,22 @@
                 </div>
                 <div class="col-md-3">
                   <div class="form-btn">
-                    <button class="submit-btn">Chercher</button>
+                    <button
+                      (click)="saveRechercheParms()"
+                      routerLink="/liste-recherche-vol"
+                      routerLinkActive="active"
+                      type="submit"
+                      class="submit-btn"
+                    >
+                      Chercher
+                    </button>
                   </div>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
 </section>

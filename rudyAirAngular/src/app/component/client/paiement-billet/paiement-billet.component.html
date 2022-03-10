@@ -132,7 +132,6 @@
             <div class="form-row">
               <div class="form-group col-md-5">
                 <select
-                  formControlName="expirationCtrl"
                   class="form-control"
                   id="date1"
                   name="enter date1"
@@ -277,5 +276,57 @@
         type="submit"
       />
     </div>
+    <div
+      id="Paypal"
+      class="container tab-pane fade"
+      style="border-radius: 10px"
+    >
+      <form class="form-inline">
+        <h5>
+          <strong>Prochaines étapes</strong>
+        </h5>
+        <ul style="list-style-type: disc">
+          <li>Vous serez redirigé(e) vers PayPal.</li>
+          <li>Assurez-vous d'effectuer toutes les étapes avec PayPal.</li>
+          <li>Vous recevrez une confirmation après le paiement.</li>
+        </ul>
+      </form>
+    </div>
+    <div id="Miles" class="container tab-pane fade">
+      <form class="form-inline">
+        <input
+          type="text"
+          class="form-control mb-2 mr-sm-2"
+          id="Miles"
+          placeholder="Enter Miles"
+          name="Miles"
+        />
+        <label for="Miles" class="mb-2 mr-sm-2"
+          >Entrez votre code RudyMiles</label
+        >
+      </form>
+    </div>
+    <br />
+    <div class="form-check mb-2 mr-sm-2" name="phrase confirmation">
+      <label class="form-check-label"
+        ><input type="checkbox" class="form-check-input" name="remember" />J'ai
+        lu, compris et accepté les conditions de transport de RudyAir ainsi que
+        les conditions relatives aux marchandises dangereuses.</label
+      >
+    </div>
+    <input
+      value="Annuler"
+      routerLink="/reservation/passager"
+      routerLinkActive="active"
+      type="reset"
+      style="border-color: aliceblue; background-color: #6890bc"
+      class="btn"
+    />
+    <input
+      value="Payer maintenant"
+      style="border-color: #6890bc; background-color: aliceblue"
+      class="btn"
+      type="submit"
+    />
   </section>
 </main>

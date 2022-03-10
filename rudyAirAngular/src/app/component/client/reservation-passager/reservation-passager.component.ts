@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReservationPassagerComponent implements OnInit {
   clientForm!: FormGroup;
+  currentDate: Date = new Date();
 
   constructor() {}
 
@@ -41,12 +42,7 @@ export class ReservationPassagerComponent implements OnInit {
         Validators.maxLength(20),
         Validators.pattern('^[a-zA-Z-]*[0-9]+$'),
       ]),
-      villeCtrl: new FormControl('', [
-        Validators.required,
-        Validators.pattern(
-          '^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&]{8,}$'
-        ),
-      ]),
+      villeCtrl: new FormControl('', Validators.required),
     });
   }
 
