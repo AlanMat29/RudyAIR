@@ -38,7 +38,7 @@
         </div>
         <div class="required form-group">
           <label for="customer_firstname" class="hidden-xs"
-            >Prénom
+            >Nom
             <sup>*</sup>
           </label>
           <input
@@ -48,27 +48,26 @@
             id="customer_firstname"
             name="customer_firstname"
             formControlName="name"
-            placeholder="Prénom*"
+            placeholder="Nom*"
           />
           <div
-          class="alert alert-danger"
-          *ngIf="
-            form.controls['name'].dirty && form.controls['name'].invalid
-          "
-        >
-        <span *ngIf="form.controls['name'].hasError('required')"
-          >login obligatoire</span
-        >
-        <span *ngIf="form.controls['name'].hasError('minlength')"
-          >le login doit faire 1 careteres minimum</span
-        >
-        <span *ngIf="form.controls['name'].hasError('maxlength')"
-          >le login ne doit pas faire plus de 55 caracteres</span
-        >
+            class="alert alert-danger"
+            *ngIf="form.controls['name'].dirty && form.controls['name'].invalid"
+          >
+            <span *ngIf="form.controls['name'].hasError('required')"
+              >login obligatoire</span
+            >
+            <span *ngIf="form.controls['name'].hasError('minlength')"
+              >le login doit faire 1 careteres minimum</span
+            >
+            <span *ngIf="form.controls['name'].hasError('maxlength')"
+              >le login ne doit pas faire plus de 55 caracteres</span
+            >
+          </div>
         </div>
         <div class="required form-group">
           <label for="customer_lastname" class="hidden-xs"
-            >Nom <sup>*</sup>
+            >Prénom <sup>*</sup>
           </label>
           <input
             type="text"
@@ -76,8 +75,8 @@
             data-validate="isName"
             id="customer_lastname"
             name="customer_lastname"
-            formControlName="name"
-            placeholder="Nom*"
+            formControlName="surname"
+            placeholder="Prénom*"
           />
           <div
             class="alert alert-danger"
@@ -85,123 +84,130 @@
               form.controls['surname'].dirty && form.controls['surname'].invalid
             "
           >
-          <span *ngIf="form.controls['surname'].hasError('required')"
-            >login obligatoire</span
-          >
-          <span *ngIf="form.controls['surname'].hasError('minlength')"
-            >le login doit faire 1 careteres minimum</span
-          >
-          <span *ngIf="form.controls['surname'].hasError('maxlength')"
-            >le login ne doit pas faire plus de 55 caracteres</span
-          >
-        </div>
-        <div class="required form-group">
-          <label for="email" class="hidden-xs">E-mail <sup>*</sup> </label>
-          <input
-            type="email"
-            class="is_required validate form-control"
-            data-validate="isEmail"
-            id="email"
-            name="email"
-            formControlName="login"
-            placeholder="Adresse e-mail"
-          />
-          <div
-            class="alert alert-danger"
-            *ngIf="
-              form.controls['login'].dirty && form.controls['login'].invalid
-            "
-          >
-            <span *ngIf="form.controls['login'].hasError('required')"
+            <span *ngIf="form.controls['surname'].hasError('required')"
               >login obligatoire</span
             >
-            <span *ngIf="form.controls['login'].hasError('minlength')"
-              >le login doit faire 3 careteres minimum</span
+            <span *ngIf="form.controls['surname'].hasError('minlength')"
+              >le login doit faire 1 careteres minimum</span
             >
-            <span *ngIf="form.controls['login'].hasError('maxlength')"
-              >le login ne doit pas faire plus de 255 caracteres</span
+            <span *ngIf="form.controls['surname'].hasError('maxlength')"
+              >le login ne doit pas faire plus de 55 caracteres</span
             >
-            <span *ngIf="form.controls['login'].hasError('loginAlreadyUsed')"
-              >le login est deja utilisé
-            </span>
           </div>
-        </div>
-        <ng-container formGroupName="passwordGrp">
-          <div class="required password form-group">
-            <label for="passwd" class="hidden-xs"
-              >Mot de passe <sup>*</sup>
-            </label>
+          <div class="required form-group">
+            <label for="email" class="hidden-xs">E-mail <sup>*</sup> </label>
             <input
-              type="password"
+              type="email"
               class="is_required validate form-control"
-              data-validate="isPasswd"
-              formControlName="password"
-              id="passwd"
-              placeholder="Mot de passe*"
-            />
-            <span class="form_info">(5 caractères min.)</span>
-            <div
-              class="alert alert-danger"
-              *ngIf="
-                form.get('passwordGrp')?.get('password')?.dirty &&
-                form.get('passwordGrp')?.get('password')?.invalid
-              "
-            >
-              <span>{{ errorPassword }}</span>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>confirmation <sup>*</sup> </label>
-            <input
-              type="password"
-              class="form-control"
-              formControlName="confirm"
+              data-validate="isEmail"
+              id="email"
+              name="email"
+              formControlName="login"
+              placeholder="Adresse e-mail"
             />
             <div
               class="alert alert-danger"
               *ngIf="
-                form.controls['passwordGrp'].dirty &&
-                form.controls['passwordGrp'].invalid
+                form.controls['login'].dirty && form.controls['login'].invalid
               "
             >
-              <span
-                >le mot de passe et la confirmation ne sont pas identiques</span
+              <span *ngIf="form.controls['login'].hasError('required')"
+                >login obligatoire</span
               >
+              <span *ngIf="form.controls['login'].hasError('minlength')"
+                >le login doit faire 3 careteres minimum</span
+              >
+              <span *ngIf="form.controls['login'].hasError('maxlength')"
+                >le login ne doit pas faire plus de 255 caracteres</span
+              >
+              <span *ngIf="form.controls['login'].hasError('loginAlreadyUsed')"
+                >le login est deja utilisé
+              </span>
             </div>
           </div>
-        </ng-container>
+          <ng-container formGroupName="passwordGrp">
+            <div class="required password form-group">
+              <label for="passwd" class="hidden-xs"
+                >Mot de passe <sup>*</sup>
+              </label>
+              <input
+                type="password"
+                class="is_required validate form-control"
+                data-validate="isPasswd"
+                formControlName="password"
+                id="passwd"
+                placeholder="Mot de passe*"
+              />
+              <span class="form_info">(5 caractères min.)</span>
+              <div
+                class="alert alert-danger"
+                *ngIf="
+                  form.get('passwordGrp')?.get('password')?.dirty &&
+                  form.get('passwordGrp')?.get('password')?.invalid
+                "
+              >
+                <span>{{ errorPassword }}</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>confirmation <sup>*</sup> </label>
+              <input
+                type="password"
+                class="form-control"
+                formControlName="confirm"
+              />
+              <div
+                class="alert alert-danger"
+                *ngIf="
+                  form.controls['passwordGrp'].dirty &&
+                  form.controls['passwordGrp'].invalid
+                "
+              >
+                <span
+                  >le mot de passe et la confirmation ne sont pas
+                  identiques</span
+                >
+              </div>
+            </div>
+          </ng-container>
 
-        <div class="form-group">
-          <label class="hidden-xs">Date de naissance </label>
-          <input
-            type="date"
-            class="form-control"
-            name="date-de-naissance"
-            required
-          />
+          <div class="form-group">
+            <label class="hidden-xs">Date de naissance </label>
+            <input
+              type="date"
+              class="form-control"
+              name="date-de-naissance"
+              required
+            />
+          </div>
         </div>
-      </div>
-      <div class="checkbox">
-        <label for="newsletter">
-          <input type="checkbox" name="newsletter" id="newsletter" value="1" />
-          S'inscrire à la newsletter
-        </label>
-      </div>
-      <div class="submit clearfix">
-        <input type="hidden" name="email_create" value="1" />
-        <input type="hidden" name="is_new_customer" value="1" />
-        <input type="hidden" class="hidden" name="back" value="my-account" />
-        <button
-          type="submit"
-          name="submitAccount"
-          id="submitAccount"
-          class="btn btn-login btn-default button button-medium"
-        >
-          <span>S'inscrire&#10095; </span>
-        </button>
-        <p class="pull-right required">
-          <span><sup>*</sup>Champ requis</span>
-        </p>
+        <div class="checkbox">
+          <label for="newsletter">
+            <input
+              type="checkbox"
+              name="newsletter"
+              id="newsletter"
+              value="1"
+            />
+            S'inscrire à la newsletter
+          </label>
+        </div>
+        <div class="submit clearfix">
+          <input type="hidden" name="email_create" value="1" />
+          <input type="hidden" name="is_new_customer" value="1" />
+          <input type="hidden" class="hidden" name="back" value="my-account" />
+          <button
+            type="submit"
+            name="submitAccount"
+            id="submitAccount"
+            class="btn btn-login btn-default button button-medium"
+          >
+            <span>S'inscrire&#10095; </span>
+          </button>
+          <p class="pull-right required">
+            <span><sup>*</sup>Champ requis</span>
+          </p>
+        </div>
       </div>
     </form>
   </section>

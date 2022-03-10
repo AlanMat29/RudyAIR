@@ -18,29 +18,22 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class InscriptionComponent implements OnInit {
   form!: FormGroup;
+  currentDate: Date = new Date();
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      name: new FormControl(
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(255),
-        ],
-        this.checkName()
-      ),
-      surname: new FormControl(
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(255),
-        ],
-        this.checkSurname()
-      ),
+      name: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(255),
+      ]),
+      surname: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(255),
+      ]),
 
       login: new FormControl(
         '',
@@ -78,28 +71,6 @@ export class InscriptionComponent implements OnInit {
       : { checkNotEquals: true };
   }
 
-  checkName(): AsyncValidatorFn {
-    return (control: AbstractControl): Observable<ValidationErrors | null> => {
-      return this.authService.checkName(control.value).pipe(
-        debounceTime(1000),
-        map((res: boolean) => {
-          return res ? { loginAlreadyUsed: true } : null;
-        })
-      );
-    };
-  }
-
-  checkSurname(): AsyncValidatorFn {
-    return (control: AbstractControl): Observable<ValidationErrors | null> => {
-      return this.authService.checkSurname(control.value).pipe(
-        debounceTime(1000),
-        map((res: boolean) => {
-          return res ? { loginAlreadyUsed: true } : null;
-        })
-      );
-    };
-  }
-
   checkLogin(): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
       return this.authService.checkEmail(control.value).pipe(
@@ -127,14 +98,14 @@ export class InscriptionComponent implements OnInit {
 
   save() {
     let user = {
-      surname: this.form.get('surname')?.value,
-      name: this.form.get('name')?.value,
+      prenom: this.form.get('surname')?.value,
+      nom: this.form.get('name')?.value,
       email: this.form.get('login')?.value,
       password: this.form.get('passwordGrp')?.get('password')?.value,
     };
     console.log(user);
     this.authService.inscription(user).subscribe((ok) => {
-      this.router.navigateByUrl('/acceuil');
+      this.router.navigateByUrl('/accueil');
     });
   }
 }

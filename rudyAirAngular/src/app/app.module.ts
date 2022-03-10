@@ -48,6 +48,7 @@ import { VolGeneriqueListComponent } from './component/admin/vol-generique-list/
 import { VolGeneriqueEditComponent } from './component/admin/vol-generique-edit/vol-generique-edit.component';
 import { VolListComponent } from './component/admin/vol-list/vol-list.component';
 import { VolEditComponent } from './component/admin/vol-edit/vol-edit.component';
+import { VolDuJourComponent } from './component/vol-du-jour/vol-du-jour.component';
 
 @NgModule({
   declarations: [
@@ -92,6 +93,7 @@ import { VolEditComponent } from './component/admin/vol-edit/vol-edit.component'
     VolGeneriqueEditComponent,
     VolListComponent,
     VolEditComponent,
+    VolDuJourComponent,
   ],
   imports: [
     BrowserModule,

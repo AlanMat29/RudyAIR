@@ -55,7 +55,7 @@ public class AuthRestController {
 	@PreAuthorize("isAnonymous()")
 	@JsonView(Views.Common.class)
 	@PostMapping("/inscription")
-	@ResponseStatus(code = HttpStatus.CREATED)
+	@ResponseStatus(code = HttpStatus.CREATED, value = HttpStatus.CREATED)
 	public Client inscription(@Valid @RequestBody Client compte, BindingResult br) {
 		if (br.hasErrors()) {
 			throw new ClientException();

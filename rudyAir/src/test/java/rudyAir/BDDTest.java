@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Commit;
 
 import rudyAir.model.compte.Abonnement;
+import rudyAir.model.compte.Admin;
 import rudyAir.model.compte.Adresse;
 import rudyAir.model.compte.Client;
 import rudyAir.model.compte.Passager;
@@ -151,7 +152,7 @@ public class BDDTest {
 		admin2.setRoles(new HashSet<Role>(Arrays.asList(Role.ROLE_ADMIN)));
 		compteRepo.save(admin2);
 		
-
+/*
 		Avion avion1 = new Avion();
 		avion1.setRef("A300 B2/B4");
 		avion1.setStatutAvion(StatutAvion.auSol);
@@ -215,13 +216,13 @@ public class BDDTest {
 		admin1.setPassword("admin1");
 		compteRepo.save(admin1);
 
-		Admin admin2 = new Admin();
-		admin2.setNom("admin");
-		admin2.setPrenom("admin");
-		admin2.setDateNaissance(LocalDate.parse("1995-03-12"));
-		admin2.setEmail("admin2@rudyair.fr");
-		admin2.setPassword("admin2");
-		compteRepo.save(admin2);
+//		Admin admin2 = new Admin();
+//		admin2.setNom("admin");
+//		admin2.setPrenom("admin");
+//		admin2.setDateNaissance(LocalDate.parse("1995-03-12"));
+//		admin2.setEmail("admin2@rudyair.fr");
+//		admin2.setPassword("admin2");
+//		compteRepo.save(admin2);
 
 		// Client
 

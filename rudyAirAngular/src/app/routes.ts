@@ -31,6 +31,7 @@ import { VolGeneriqueListComponent } from './component/admin/vol-generique-list/
 import { VolGeneriqueEditComponent } from './component/admin/vol-generique-edit/vol-generique-edit.component';
 import { VolListComponent } from './component/admin/vol-list/vol-list.component';
 import { VolEditComponent } from './component/admin/vol-edit/vol-edit.component';
+import { VolDuJourComponent } from './component/vol-du-jour/vol-du-jour.component';
 
 export const routes: Routes = [
   { path: 'accueil', component: HomeComponent },
@@ -50,6 +51,7 @@ export const routes: Routes = [
   { path: 'reservation/billet', component: ReservationBilletComponent },
   { path: 'reservation/passager', component: ReservationPassagerComponent },
   { path: 'reservation/paiement', component: PaiementBilletComponent },
+  { path: 'liste-vols', component: VolDuJourComponent },
   {
     path: 'reservation/enregister',
     component: EnregistrerReservationComponent,
