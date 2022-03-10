@@ -47,9 +47,10 @@ public class AuthRestController {
 
 	@GetMapping("")
 	public void auth(@AuthenticationPrincipal UserDetails compte) {
-		System.out.println(((Compte) compte).getNom());
+			System.out.println(((Compte) compte).getNom());
 	}
 
+		
 	@PreAuthorize("isAnonymous()")
 	@JsonView(Views.Common.class)
 	@PostMapping("/inscription")

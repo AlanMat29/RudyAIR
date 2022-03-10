@@ -1,9 +1,11 @@
-<app-main-admin *ngIf="getUserType() == 'admin'"></app-main-admin>
-
-<app-header *ngIf="getUserType() != 'admin'"></app-header>
-<router-outlet></router-outlet>
-<!-- ==================== info client ============================= -->
-
-<!-- ==================== Test inscription ============================= -->
-
-<!-- ==================== footer ============================= -->
+<div>
+  <app-header *ngIf="getUserType() != 'admin'"></app-header>
+  <app-main-admin *ngIf="getUserType() == 'admin'"></app-main-admin>
+</div>
+<div>
+  <router-outlet></router-outlet>
+</div>
+<div>
+  <app-footer *ngIf="getUserType() != 'admin'"></app-footer>
+  <app-footer-admin *ngIf="getUserType() == 'admin'"></app-footer-admin>
+</div>

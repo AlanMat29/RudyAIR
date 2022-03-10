@@ -1,120 +1,139 @@
-<header>
-  <div id="header-content-left">
-    <div id="logo">
-      <a routerLink="/accueil" routerLinkActive="active"
-        ><img
-          class="logo-img"
-          src="assets/img/icon/logo-icon.png"
-          alt="logo_image"
-      /></a>
+<div id="contente-without-footer">
+  <header>
+    <div id="header-content-left">
+      <div id="logo">
+        <a routerLink="/accueil" routerLinkActive="active"
+          ><img
+            class="logo-img"
+            src="assets/img/icon/logo-icon.png"
+            alt="logo_image"
+        /></a>
+      </div>
+      <div class="menu-burger">
+        <input id="menu__toggle" type="checkbox" />
+        <label class="menu__btn" for="menu__toggle">
+          <span></span>
+        </label>
+        <ul id="idBurger" class="menu__box">
+          <li>
+            <a
+              class="menu__item"
+              routerLink="/accueil"
+              routerLinkActive="active"
+              >Accueil</a
+            >
+          </li>
+          <li>
+            <a
+              class="menu__item"
+              routerLink="/top-destination"
+              routerLinkActive="active"
+              >Réservations</a
+            >
+          </li>
+          <li>
+            <a
+              class="menu__item"
+              routerLink="/liste-vols"
+              routerLinkActive="active"
+              >Vols</a
+            >
+          </li>
+          <li>
+            <a
+              class="menu__item"
+              routerLink="/a-propos"
+              routerLinkActive="active"
+              >A propos de nous</a
+            >
+          </li>
+          <hr />
+          <li>
+            <a class="menu__item" href="">Twitter</a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="menu-burger">
-      <input id="menu__toggle" type="checkbox" />
-      <label class="menu__btn" for="menu__toggle">
-        <span></span>
-      </label>
-      <ul id="idBurger" class="menu__box">
+
+    <div class="main-menu">
+      <ul class="main-menu-box">
         <li>
-          <a class="menu__item" routerLink="/accueil" routerLinkActive="active"
-            >Accueil</a
+          <a
+            class="main-menu-items"
+            routerLink="/accueil"
+            routerLinkActive="active"
+            >ACCUEIL</a
           >
         </li>
         <li>
           <a
-            class="menu__item"
+            *ngIf="isConnected()"
+            class="main-menu-items"
+            routerLink="/resevation-client"
+            routerLinkActive="active"
+            >RESERVATION</a
+          >
+        </li>
+        <li>
+          <a
+            *ngIf="!isConnected()"
+            class="main-menu-items"
+            routerLink="/connexion"
+            routerLinkActive="active"
+            >RESERVATION</a
+          >
+        </li>
+        <li>
+          <a
+            class="main-menu-items"
             routerLink="/top-destination"
             routerLinkActive="active"
-            >Réservations</a
+            >TOP&nbsp;DESTINATIONS</a
           >
         </li>
         <li>
           <a
-            class="menu__item"
+            class="main-menu-items"
             routerLink="/liste-vols"
             routerLinkActive="active"
-            >Vols</a
+            >VOLS</a
           >
         </li>
         <li>
-          <a class="menu__item" routerLink="/a-propos" routerLinkActive="active"
-            >A propos de nous</a
+          <a
+            *ngIf="isConnected()"
+            class="main-menu-items"
+            routerLink="/client/information"
+            routerLinkActive="active"
+            >INFORMATION</a
           >
-        </li>
-        <hr />
-        <li>
-          <a class="menu__item" href="">Twitter</a>
         </li>
       </ul>
     </div>
-  </div>
 
-  <div class="main-menu">
-    <ul class="main-menu-box">
-      <li>
-        <a
-          class="main-menu-items"
-          routerLink="/accueil"
-          routerLinkActive="active"
-          >ACCUEIL</a
-        >
-      </li>
-      <li>
-        <a
-          class="main-menu-items"
-          routerLink="/resevation-client"
-          routerLinkActive="active"
-          >RESERVATION</a
-        >
-      </li>
-      <li>
-        <a
-          class="main-menu-items"
-          routerLink="/top-destination"
-          routerLinkActive="active"
-          >TOP&nbsp;DESTINATIONS</a
-        >
-      </li>
-      <li>
-        <a
-          class="main-menu-items"
-          routerLink="/liste-vols"
-          routerLinkActive="active"
-          >VOLS</a
-        >
-      </li>
-      <li>
-        <a
-          class="main-menu-items"
-          routerLink="/contact"
-          routerLinkActive="active"
-          >CONTACT</a
-        >
-      </li>
-    </ul>
-  </div>
+    <div id="login">
+      <!-- Button to open the modal login form -->
 
-  <div id="gear">
-    <a routerLink="/info-client" routerLinkActive="active" class="gear"> </a>
-  </div>
-  <div id="login">
-    <!-- Button to open the modal login form -->
-    <button
-      *ngIf="!authenticated"
-      class="btn btn-login"
-      routerLink="/connexion"
-      routerLinkActive="active"
-    >
-      <b style="display: flex; justify-content: center">Se&nbsp;connecter</b>
-    </button>
-    <!-- se déconnecter -->
-    <button
-      (click)="logout()"
-      *ngIf="authenticated"
-      class="btn btn-login"
-      routerLink="/deconnexion"
-      routerLinkActive="active"
-    >
-      <b style="display: flex; justify-content: center">Se&nbsp;deconnecter</b>
-    </button>
-  </div>
-</header>
+      <button
+        *ngIf="!isConnected()"
+        class="btn btn-login"
+        routerLink="/connexion"
+        routerLinkActive="active"
+      >
+        <b style="display: flex; justify-content: center">Se&nbsp;connecter</b>
+      </button>
+      <!-- se déconnecter -->
+      <button
+        (click)="logout()"
+        *ngIf="isConnected()"
+        class="btn btn-login"
+        routerLink="/deconnexion"
+        routerLinkActive="active"
+      >
+        <b style="display: flex; justify-content: center"
+          >Se&nbsp;deconnecter</b
+        >
+      </button>
+    </div>
+  </header>
+</div>

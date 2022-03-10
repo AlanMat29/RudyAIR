@@ -23,4 +23,22 @@ export class HeaderComponent implements OnInit {
   get login() {
     return localStorage.getItem('connexion');
   }
+
+  getUserType() {
+    if (localStorage.getItem('typeCompte') == 'admin') {
+      return 'admin';
+    } else if (localStorage.getItem('typeCompte') == 'client') {
+      return 'client';
+    }
+    return 'none';
+  }
+
+  isConnected() {
+    if (this.getUserType() == 'none') {
+      console.log('non connecter');
+      return false;
+    }
+    console.log('connecter');
+    return true;
+  }
 }

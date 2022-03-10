@@ -1,0 +1,7 @@
+#contente-without-footer {
+  height: 100%;
+}
+
+header {
+  position: static !important;
+}
