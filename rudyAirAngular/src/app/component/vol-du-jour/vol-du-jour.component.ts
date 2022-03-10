@@ -43,13 +43,11 @@ export class VolDuJourComponent implements OnInit {
       this.filtVols = result.filter(
         (c) => this.formatBis(c.dateDepart!) == this.formatBis(this.currentDate)
       );
-      console.log(this.filtVols);
     });
   }
 
   format(date: Date) {
     date = new Date(date);
-
     var day = ('0' + date.getDate()).slice(-2);
     var month = ('0' + (date.getMonth() + 1)).slice(-2);
     var year = date.getFullYear();
