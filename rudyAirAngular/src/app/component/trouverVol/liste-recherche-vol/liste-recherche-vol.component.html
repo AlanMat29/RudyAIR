@@ -5,10 +5,10 @@
         <h3>
           Vol pour le
           <span id="planVol">
-            <span class="bg-grey">(Date)</span>:
-            <span class="bg-grey">(Toulouse)</span> vers
+            <span class="bg-grey">{{ dateDepart | date: "dd/MM/yyyy" }}</span
+            >: <span class="bg-grey">{{ villeDepart }}</span> vers
             <span class="bg-grey"
-              ><i class="bi bi-arrow-right"></i>&nbsp;(Paris)
+              ><i class="bi bi-arrow-right"></i>&nbsp;{{ villeArrivee }}
             </span>
           </span>
         </h3>
@@ -39,7 +39,8 @@
               <tr>
                 <th scope="col" class="text-center align-middle"></th>
                 <th scope="col" colspan="2" class="text-center align-middle">
-                  <span>(h départ)</span> - <span>(h arrive)</span>
+                  <span>{{ heureDepart }}</span> -
+                  <span>{{ heureArrivee }}</span>
                 </th>
                 <th scope="col" class="text-center align-middle">N° vol</th>
                 <th scope="col" class="text-center align-middle">Duree</th>
@@ -64,7 +65,7 @@
                   />
                 </td>
                 <td scope="col" rowspan="2" class="text-center align-middle">
-                  durée
+                  {{ prixVol | currency: "EUR" }}
                 </td>
                 <td scope="col" class="text-center align-middle">
                   <button
@@ -83,10 +84,10 @@
                 <td scope="col" class="text-center align-middle">numéro vol</td>
                 <td scope="col" class="text-center align-middle">
                   <a
-                    routerLink="/reservation/billet"
+                    routerLink="/reservation/passager"
                     routerLinkActive="active"
-                    class="btn btn-primary d-flex w-100"
-                    style="color: white"
+                    class="btn d-flex w-100"
+                    style="border-color: #6890bc; background-color: aliceblue"
                     >Valider</a
                   >
                 </td>
@@ -99,7 +100,8 @@
         <button
           routerLink="/accueil"
           routerLinkActive="active"
-          class="btn btn-secondary"
+          class="btn"
+          style="border-color: aliceblue; background-color: #6890bc"
         >
           annuler
         </button>

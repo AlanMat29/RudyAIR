@@ -43,4 +43,16 @@ public interface IVolRepository extends JpaRepository<Vol, Long> {
 	// Avion
 	@Query("select v from Vol v where v.avion.id=:id")
 	List<Vol> findVolByAvionId(@Param("id") Long id);
+	
+	
+	// Info recherche --> Aeroport Depart+Arrivee & date départ+arrivée
+	@Query("select v from Vol v left join fetch v.volGenerique vg left join vg.aeroportDepart ad left join vg.aeroportArrivee aa where ad.ville.nom=:villeDepart and aa.ville.nom=:villeArrivee and v.dateDepart >= :dateDepart and v.dateArrivee<=:dateArrivee")
+	//@Query("select v from Vol v ")
+	List<Vol> findVolByRechercheWrong(@Param("villeDepart") String nomDepart, @Param("villeArrivee") String nomArrivee, @Param("dateDepart") LocalDate dateDepart, @Param("dateArrivee") LocalDate dateArrivee);
+	
+	
+	@Query("select v from Vol v left join fetch v.volGenerique vg where vg.aeroportDepart.ville.nom=:villeDepart and vg.aeroportArrivee.ville.nom=:villeArrivee and v.dateDepart >= :dateDepart")
+	//@Query("select v from Vol v ")
+	List<Vol> findVolByRecherche(@Param("villeDepart") String villeDepart, @Param("villeArrivee") String nomArrivee, @Param("dateDepart") LocalDate dateDepart);
+	
 }

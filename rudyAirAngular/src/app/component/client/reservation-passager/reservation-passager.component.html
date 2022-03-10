@@ -93,7 +93,12 @@
 
       <div class="form-group col-md-4">
         <label>Date de naissance : </label>
-        <input min="1930-01-01" formControlName="dateCtrl" type="date" />
+        <input
+          min="1930-01-01"
+          max="{{ currentDate | date: 'yyyy-MM-dd' }}"
+          formControlName="dateCtrl"
+          type="date"
+        />
         <span
           style="color: red"
           *ngIf="
@@ -435,7 +440,23 @@
     <br />
     <div class="d-flex justify-content-end">
       <div>
-        <input value="Suivant" type="submit" [disabled]="clientForm.invalid" />
+        <input
+          value="Annuler"
+          routerLink="/recherche-vol"
+          routerLinkActive="active"
+          type="reset"
+          style="border-color: aliceblue; background-color: #6890bc"
+          class="btn"
+        />
+        <input
+          routerLink="/reservation/paiement"
+          routerLinkActive="active"
+          value="Suivant"
+          style="border-color: #6890bc; background-color: aliceblue"
+          class="btn"
+          type="submit"
+          [disabled]="clientForm.invalid"
+        />
       </div>
     </div>
   </form>

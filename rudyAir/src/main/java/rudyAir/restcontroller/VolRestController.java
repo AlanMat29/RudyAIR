@@ -129,5 +129,11 @@ public class VolRestController {
 		return volService.getVolByAvionId(avionId);
 	}
 	
+	@GetMapping("/recherche-vol/{villeDepart}/{villeArrivee}/{dateDepart}")
+	@JsonView(Views.VolWithAeroport.class)
+	public List<Vol> getVolByRecherche(@PathVariable String villeDepart, @PathVariable String villeArrivee, @PathVariable String dateDepart) {
+	LocalDate dd = LocalDate.parse(dateDepart);
+		return volService.getVolByRecherche(villeDepart, villeArrivee, dd);
+	}
 	
 }

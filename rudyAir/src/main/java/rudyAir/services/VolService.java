@@ -117,4 +117,8 @@ public class VolService {
 		return volRepo.findVolByAvionId(avionId);
 	}
 	
+	public List<Vol> getVolByRecherche(String villeDepart, String villeArrivee, LocalDate dateDepart){
+		return volRepo.findVolByRecherche(villeDepart, villeArrivee, dateDepart);
+	}
+	
 }
