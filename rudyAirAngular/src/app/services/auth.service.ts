@@ -31,6 +31,7 @@ export class AuthService {
   }
 
   public isAuthenticated(): string | null {
+    console.log('HEY', localStorage.getItem('token'));
     return localStorage.getItem('token');
   }
 }

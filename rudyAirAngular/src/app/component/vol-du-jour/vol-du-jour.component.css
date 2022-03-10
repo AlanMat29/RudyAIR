@@ -1,3 +1,18 @@
 .page-heading {
   margin-top: 15%;
 }
+main {
+  display: flex;
+  align-items: center;
+  background-image: url("/assets/img/wall/fond-palmier.jpeg");
+  background-size: cover;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+  background-color: rgb(240, 240, 240); /* Choose your own color here */
+}
+.table-striped > tbody > tr:nth-child(even) > td,
+.table-striped > tbody > tr:nth-child(even) > th {
+  background-color: rgb(255, 255, 255); /* Choose your own color here */
+}

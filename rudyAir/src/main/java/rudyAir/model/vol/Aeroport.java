@@ -38,7 +38,7 @@ public class Aeroport {
 	private String nom;
 	@ManyToOne
 	@JoinColumn(name = "ville_id", foreignKey = @ForeignKey(name = "aeroport_ville_id_fk"))
-	@JsonView({Views.AeroportWithVille.class, Views.VolWithAeroport.class, Views.VolGeneneriqueWithHoraire.class})
+	@JsonView({Views.AeroportWithVille.class, Views.VolWithAeroport.class, Views.VolGeneneriqueWithHoraire.class, Views.Vol.class})
 	private Ville ville;
 	@OneToMany(mappedBy = "aeroportDepart")
 	@JsonView(Views.AeroportWithVolsGeneneriquesDeparts.class)

@@ -75,6 +75,7 @@
     <!-- TODO: Modifier action se deconnecter -->
     <div id="login">
       <button
+        (click)="logout()"
         class="btn btn-login"
         routerLink="/sedeconnecter"
         routerLinkActive="active"
@@ -85,10 +86,4 @@
       </button>
     </div>
   </header>
-
-  <div class="router-div_position">
-    <router-outlet></router-outlet>
-  </div>
 </div>
-
-<app-footer-admin></app-footer-admin>
