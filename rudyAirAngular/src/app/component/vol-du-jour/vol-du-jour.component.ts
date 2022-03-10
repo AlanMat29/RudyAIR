@@ -1,6 +1,8 @@
+import { VolGenerique } from 'src/app/model/vol/volGenerique';
 import { Component, OnInit } from '@angular/core';
 import { Vol } from 'src/app/model/vol/vol';
 import { VolService } from 'src/app/services/vol.service';
+import { VolGeneriqueService } from 'src/app/services/volGenerique.service';
 
 @Component({
   selector: 'app-vol-du-jour',
@@ -9,11 +11,24 @@ import { VolService } from 'src/app/services/vol.service';
 })
 export class VolDuJourComponent implements OnInit {
   vols: Vol[] = [];
+  volGeneriques: VolGenerique[] = [];
+  currentDate: Date = new Date();
+  filtVols: Vol[] = [];
 
-  constructor(private volService: VolService) {}
+  constructor(
+    private volGeneriqueService: VolGeneriqueService,
+    private volService: VolService
+  ) {}
 
   ngOnInit(): void {
-    this.listAllVol();
+    this.listAllVolGenerique();
+    this.filterVolDuJour();
+  }
+
+  listAllVolGenerique() {
+    this.volGeneriqueService.getAll().subscribe((result) => {
+      this.volGeneriques = result;
+    });
   }
 
   listAllVol() {
@@ -22,27 +37,33 @@ export class VolDuJourComponent implements OnInit {
     });
   }
 
-  deleteVolById(id: number) {
-    this.volService.deleteById(id).subscribe((ok) => {
-      this.listAllVol();
+  filterVolDuJour() {
+    this.volService.getAll().subscribe((result) => {
+      this.vols = result;
+      this.filtVols = result.filter(
+        (c) => this.formatBis(c.dateDepart!) == this.formatBis(this.currentDate)
+      );
+      console.log(this.filtVols);
     });
   }
 
-  canBeDelete(id: number) {
-    for (let v in this.vols) {
-      if (this.vols[v].volGenerique!.id == id) {
-        return false;
-      }
-    }
-    return true;
+  format(date: Date) {
+    date = new Date(date);
+
+    var day = ('0' + date.getDate()).slice(-2);
+    var month = ('0' + (date.getMonth() + 1)).slice(-2);
+    var year = date.getFullYear();
+
+    return day + '/' + month + '/' + year;
   }
 
-  convertVolStatutToString(enumStr: any) {
-    if (<string>enumStr == 'onTime') {
-      return 'On time';
-    } else if (<string>enumStr == 'delayed') {
-      return 'Delay';
-    }
-    return 'Canceled';
+  formatBis(date: Date) {
+    date = new Date(date);
+
+    var day = ('0' + date.getDate()).slice(-2);
+    var month = ('0' + (date.getMonth() + 1)).slice(-2);
+    var year = date.getFullYear();
+
+    return year + '-' + month + '-' + day;
   }
 }

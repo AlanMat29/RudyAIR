@@ -41,15 +41,15 @@ public class VolGenerique {
 	@Embedded
 	@AttributeOverrides({ @AttributeOverride(name = "heureDepart", column = @Column(name = "volGen_heuredepart")),
 			@AttributeOverride(name = "heureArrivee", column = @Column(name = "volGen_heurearrivee")) })
-	@JsonView(Views.VolGeneneriqueWithHoraire.class)
+	@JsonView({Views.VolGeneneriqueWithHoraire.class, Views.Vol.class})
 	private Horaire horaire;
 	@ManyToOne
 	@JoinColumn(name = "volGen_aeroportDepart_id", foreignKey = @ForeignKey(name = "volGen_aeroportDepart_id_fk"), nullable = false)
-	@JsonView({ Views.VolGeneneriquetWithAeroport.class, Views.VolWithAeroport.class })
+	@JsonView({ Views.VolGeneneriquetWithAeroport.class, Views.VolWithAeroport.class,  Views.Vol.class })
 	private Aeroport aeroportDepart;
 	@ManyToOne
 	@JoinColumn(name = "volGen_aeroportArrivee_id", foreignKey = @ForeignKey(name = "volGen_aeroportArrivee_id_fk"), nullable = false)
-	@JsonView({ Views.VolGeneneriquetWithAeroport.class, Views.VolWithAeroport.class })
+	@JsonView({ Views.VolGeneneriquetWithAeroport.class, Views.VolWithAeroport.class,  Views.Vol.class })
 	private Aeroport aeroportArrivee;
 	@OneToOne(mappedBy = "volGenerique")
 	private Vol vol;

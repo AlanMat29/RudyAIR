@@ -73,75 +73,120 @@ public class BDDTest {
 
 	@Autowired
 	private ReservationService reservationService;
-	
 
 	@Test
 	@Transactional
 	@Commit
 	public void testInsertAndUpdate() {
-		
 
 		// Users
-		int nbLoop = 5; // Max 9
-		for (int i = 1; i <= nbLoop; i++) {
+//		int nbLoop = 5; // Max 9
+//		for (int i = 1; i <= nbLoop; i++) {
+//
+//			Client client = new Client("NomClient" + i, "PrenomClient" + i,
+//					LocalDate.parse("200" + i + "-0" + i + "-0" + i), "client" + i + "@rudyair.fr", "client" + i,
+//					new Adresse("" + i, "street" + i, "CP" + i, "Ville" + i, "Pays" + i), Abonnement.abonnementPremium);
+//			compteRepo.save(client);
+//
+//			Ville villeArrivee = new Ville("Pays" + i, "Ville" + i, "CP" + i);
+//			Ville villeDepart = new Ville("Pays" + (nbLoop + i), "Ville" + (nbLoop + i), "CP" + (nbLoop + i));
+//			villeService.save(villeArrivee);
+//			villeService.save(villeDepart);
+//
+//			Aeroport aeroportArrivee = new Aeroport("Aeroport" + i, villeArrivee);
+//			Aeroport aeroportDepart = new Aeroport("Aeroport" + (nbLoop + i), villeDepart);
+//			aeroportService.save(aeroportArrivee);
+//			aeroportService.save(aeroportDepart);
+//
+//			Horaire horaire = new Horaire(LocalTime.parse("10:" + (10 + i)), LocalTime.parse("15:" + (20 + i)));
+//
+//			VolGenerique volGenerique = new VolGenerique(20 + i, "NumVolGen" + i, horaire, aeroportArrivee,
+//					aeroportDepart);
+//			volGeneriqueService.save(volGenerique);
+//
+//			Avion avion = new Avion("RD000" + i, StatutAvion.enVol);
+//			avionService.save(avion);
+//
+//			Vol vol = new Vol(LocalDate.parse("2022-02-" + ("0" + i)), LocalDate.parse("2022-02-" + ("0" + (i + 1))),
+//					StatutVol.onTime, "NumVol" + i, volGenerique, avion);
+//			volService.save(vol);
+//
+//			Passager passager = new Passager("NomPassager" + Character.toUpperCase((char) (i + 'a')),
+//					"PrenomPassager" + Character.toUpperCase((char) (i + 'a')),
+//					LocalDate.parse("1999-02-" + ("0" + (i + 1))));
+//			passagerService.save(passager);
+//
+//			Reservation resa = new Reservation(vol, passager, client, true, 0, 2, "A" + i);
+//			reservationService.save(resa);
+//
+//		}
 
-			Client client = new Client("NomClient" + i, "PrenomClient" + i,
-					LocalDate.parse("200" + i + "-0" + i + "-0" + i), "client" + i + "@rudyair.fr", "client" + i,
-					new Adresse("" + i, "street" + i, "CP" + i, "Ville" + i, "Pays" + i), Abonnement.abonnementPremium);
-			compteRepo.save(client);
 
-			Ville villeArrivee = new Ville("Pays" + i, "Ville" + i, "CP" + i);
-			Ville villeDepart = new Ville("Pays" + (nbLoop + i), "Ville" + (nbLoop + i), "CP" + (nbLoop + i));
-			villeService.save(villeArrivee);
-			villeService.save(villeDepart);
-
-			Aeroport aeroportArrivee = new Aeroport("Aeroport" + i, villeArrivee);
-			Aeroport aeroportDepart = new Aeroport("Aeroport" + (nbLoop + i), villeDepart);
-			aeroportService.save(aeroportArrivee);
-			aeroportService.save(aeroportDepart);
-
-			Horaire horaire = new Horaire(LocalTime.parse("10:" + (10 + i)), LocalTime.parse("15:" + (20 + i)));
-
-			VolGenerique volGenerique = new VolGenerique(20 + i, "NumVolGen" + i, horaire, aeroportArrivee,
-					aeroportDepart);
-			volGeneriqueService.save(volGenerique);
-
-			Avion avion = new Avion("RD000" + i, StatutAvion.enVol);
-			avionService.save(avion);
-
-			Vol vol = new Vol(LocalDate.parse("2022-02-" + ("0" + i)), LocalDate.parse("2022-02-" + ("0" + (i + 1))),
-					StatutVol.onTime, "NumVol" + i, volGenerique, avion);
-			volService.save(vol);
-
-			Passager passager = new Passager("NomPassager" + Character.toUpperCase((char) (i + 'a')),
-					"PrenomPassager" + Character.toUpperCase((char) (i + 'a')),
-					LocalDate.parse("1999-02-" + ("0" + (i + 1))));
-			passagerService.save(passager);
-
-			Reservation resa = new Reservation(vol, passager, client, true, 0, 2, "A" + i);
-			reservationService.save(resa);
-
-		}
-
+		// Client
+		
 		Client user = new Client();
 		user.setNom("mobile");
 		user.setPrenom("tata");
 		user.setDateNaissance(LocalDate.parse("2001-01-01"));
 		user.setEmail("user@rudyair.fr");
-		user.setPassword(passwordEncoder.encode("user1"));
+		user.setPassword(passwordEncoder.encode("client"));
 		user.setAdresse(new Adresse("" + 25, "rue Blaise Pascal", "75000", "Paris", "France"));
 		user.setAbonnement(Abonnement.sansAbonnement);
 		user.setRoles(new HashSet<Role>(Arrays.asList(Role.ROLE_CLIENT)));
 		compteRepo.save(user);
-	
+		
+		Client user1 = new Client();
+		user1.setNom("Jean");
+		user1.setPrenom("Noel");
+		user1.setDateNaissance(LocalDate.parse("1979-08-12"));
+		user1.setEmail("jean.noel84@gmail.com");
+		user1.setPassword(passwordEncoder.encode("user"));
+		user1.setAdresse(new Adresse("" + 25, "rue Blaise Pascal", "75000", "Paris", "France"));
+		user1.setAbonnement(Abonnement.sansAbonnement);
+		user1.setRoles(new HashSet<Role>(Arrays.asList(Role.ROLE_CLIENT)));
+		compteRepo.save(user1);
+
+		Client user2 = new Client();
+		user2.setNom("Thomas");
+		user2.setPrenom("Patrick");
+		user2.setDateNaissance(LocalDate.parse("1981-01-09"));
+		user2.setEmail("patrick.thomas41@gmail.com");
+		user2.setPassword(passwordEncoder.encode("client"));
+		user2.setAdresse(new Adresse("" + 45, "Avenue d'Armor", "35360", "Le Lou-du-Lac", "France"));
+		user2.setAbonnement(Abonnement.sansAbonnement);
+		user2.setRoles(new HashSet<Role>(Arrays.asList(Role.ROLE_CLIENT)));
+		compteRepo.save(user2);
+
+		Client user3 = new Client();
+		user3.setNom("Bastien");
+		user3.setPrenom("Robin");
+		user3.setDateNaissance(LocalDate.parse("1993-12-25"));
+		user3.setEmail("lefebvre39@hotmail.fr");
+		user3.setPassword(passwordEncoder.encode("client"));
+		user3.setAdresse(new Adresse("" + 28, "Rue du Gai Verger", "07330", "Barnas", "France"));
+		user3.setAbonnement(Abonnement.sansAbonnement);
+		user3.setRoles(new HashSet<Role>(Arrays.asList(Role.ROLE_CLIENT)));
+		compteRepo.save(user3);	
+		
+
+		// admin 
 		Admin admin = new Admin();
 		admin.setNom("rola");
 		admin.setPrenom("moto");
 		admin.setDateNaissance(LocalDate.parse("2001-01-01"));
 		admin.setEmail("moto.rola@rudyair.fr");
 		admin.setPassword(passwordEncoder.encode("rola"));
-		user.setRoles(new HashSet<Role>(Arrays.asList(Role.ROLE_ADMIN)));
+		admin.setRoles(new HashSet<Role>(Arrays.asList(Role.ROLE_ADMIN)));
 		compteRepo.save(admin);
+		
+		Admin admin1 = new Admin();
+		admin1.setNom("Clamy");
+		admin1.setPrenom("Rudyard");
+		admin1.setDateNaissance(LocalDate.parse("1994-02-02"));
+		admin1.setEmail("admin1@rudyair.fr");
+		admin1.setPassword(passwordEncoder.encode("admin"));
+		admin1.setRoles(new HashSet<Role>(Arrays.asList(Role.ROLE_ADMIN)));
+		compteRepo.save(admin1);
 		
 		Admin admin2 = new Admin();
 		admin2.setNom("sung");
@@ -151,8 +196,7 @@ public class BDDTest {
 		admin2.setPassword(passwordEncoder.encode("sung"));
 		admin2.setRoles(new HashSet<Role>(Arrays.asList(Role.ROLE_ADMIN)));
 		compteRepo.save(admin2);
-		
-/*
+
 		Avion avion1 = new Avion();
 		avion1.setRef("A300 B2/B4");
 		avion1.setStatutAvion(StatutAvion.auSol);
@@ -170,7 +214,7 @@ public class BDDTest {
 
 		Avion avion4 = new Avion();
 		avion4.setRef("737-500");
-		avion4.setStatutAvion(StatutAvion.auSol);
+		avion4.setStatutAvion(StatutAvion.enVol);
 		avionService.save(avion4);
 
 		Avion avion5 = new Avion();
@@ -185,76 +229,23 @@ public class BDDTest {
 
 		Avion avion7 = new Avion();
 		avion7.setRef("A380");
-		avion7.setStatutAvion(StatutAvion.enVol);
+		avion7.setStatutAvion(StatutAvion.auSol);
 		avionService.save(avion7);
 
-//		Passager passager = new Passager();
-//		passager.setNom("Doe");
-//		passager.setPrenom("John");
-//		passager.setDateDeNaissance(LocalDate.parse("2001-01-10"));
-//		passagerService.save(passager);
-//
-//		Reservation resa = new Reservation();
-//		resa.setVol(vol);
-//		resa.setPassager(passager);
-//		resa.setClient(user);
-//		resa.setStatut(true);
-//		resa.setAnimaux(1);
-//		resa.setBagage(3);
-//		resa.setSiege("B1");
-//		reservationService.save(resa);
+		Passager passager = new Passager();
+		passager.setNom("Doe");
+		passager.setPrenom("John");
+		passager.setDateDeNaissance(LocalDate.parse("2001-01-10"));
+		passagerService.save(passager);
+
 //		
 //		
 		///////////////////////////////////////////////////////////////////////////////////////
 		// Admin
 
-		Admin admin1 = new Admin();
-		admin1.setNom("Clamy");
-		admin1.setPrenom("Rudyard");
-		admin1.setDateNaissance(LocalDate.parse("1994-02-02"));
-		admin1.setEmail("admin1@rudyair.fr");
-		admin1.setPassword("admin1");
-		compteRepo.save(admin1);
+		
 
-//		Admin admin2 = new Admin();
-//		admin2.setNom("admin");
-//		admin2.setPrenom("admin");
-//		admin2.setDateNaissance(LocalDate.parse("1995-03-12"));
-//		admin2.setEmail("admin2@rudyair.fr");
-//		admin2.setPassword("admin2");
-//		compteRepo.save(admin2);
-
-		// Client
-
-		Client user1 = new Client();
-		user1.setNom("Jean");
-		user1.setPrenom("Noel");
-		user1.setDateNaissance(LocalDate.parse("1979-08-12"));
-		user1.setEmail("jean.noel84@gmail.com");
-		user1.setPassword("Jean25");
-		user1.setAdresse(new Adresse("" + 25, "rue Blaise Pascal", "75000", "Paris", "France"));
-		user1.setAbonnement(Abonnement.sansAbonnement);
-		compteRepo.save(user1);
-
-		Client user2 = new Client();
-		user2.setNom("Thomas");
-		user2.setPrenom("Patrick");
-		user2.setDateNaissance(LocalDate.parse("1981-01-09"));
-		user2.setEmail("patrick.thomas41@gmail.com");
-		user2.setPassword("Patrick32");
-		user2.setAdresse(new Adresse("" + 45, "Avenue d'Armor", "35360", "Le Lou-du-Lac", "France"));
-		user2.setAbonnement(Abonnement.sansAbonnement);
-		compteRepo.save(user2);
-
-		Client user3 = new Client();
-		user3.setNom("Bastien");
-		user3.setPrenom("Robin");
-		user3.setDateNaissance(LocalDate.parse("1993-12-25"));
-		user3.setEmail("mariechristine.lefebvre39@hotmail.fr");
-		user3.setPassword("Robin12");
-		user3.setAdresse(new Adresse("" + 28, "Rue du Gai Verger", "07330", "Barnas", "France"));
-		user3.setAbonnement(Abonnement.sansAbonnement);
-		compteRepo.save(user3);
+		
 
 		// ville + Aeroport
 
@@ -472,8 +463,6 @@ public class BDDTest {
 		aeroport20.setVille(ville20);
 		aeroportService.save(aeroport20);
 
-		// Vile + aeroport
-
 		// Vol +Volgen
 
 		VolGenerique volGenerique1 = new VolGenerique();
@@ -485,12 +474,12 @@ public class BDDTest {
 		volGeneriqueService.save(volGenerique1);
 
 		Vol vol1 = new Vol();
-		vol1.setDateDepart(LocalDate.parse("2022-05-28"));
-		vol1.setDateArrivee(LocalDate.parse("2022-05-28"));
+		vol1.setDateDepart(LocalDate.parse("2022-03-11"));
+		vol1.setDateArrivee(LocalDate.parse("2022-03-11"));
 		vol1.setStatutVol(StatutVol.onTime);
 		vol1.setNumeroVol("RUD-74NR-41YX");
 		vol1.setVolGenerique(volGenerique1);
-		vol1.setAvion(avion3);
+		vol1.setAvion(avion1);
 		volService.save(vol1);
 
 		VolGenerique volGenerique2 = new VolGenerique();
@@ -502,12 +491,12 @@ public class BDDTest {
 		volGeneriqueService.save(volGenerique2);
 
 		Vol vol2 = new Vol();
-		vol2.setDateDepart(LocalDate.parse("2022-03-22"));
-		vol2.setDateArrivee(LocalDate.parse("2022-03-22"));
+		vol2.setDateDepart(LocalDate.parse("2022-03-11"));
+		vol2.setDateArrivee(LocalDate.parse("2022-03-11"));
 		vol2.setStatutVol(StatutVol.onTime);
 		vol2.setNumeroVol("RUD-2BR9-J25N");
 		vol2.setVolGenerique(volGenerique2);
-		vol2.setAvion(avion4);
+		vol2.setAvion(avion2);
 		volService.save(vol2);
 
 		VolGenerique volGenerique3 = new VolGenerique();
@@ -524,7 +513,7 @@ public class BDDTest {
 		vol3.setStatutVol(StatutVol.onTime);
 		vol3.setNumeroVol("RUD-41JM-J60F");
 		vol3.setVolGenerique(volGenerique3);
-		vol3.setAvion(avion7);
+		vol3.setAvion(avion3);
 		volService.save(vol3);
 
 		VolGenerique volGenerique4 = new VolGenerique();
@@ -541,7 +530,7 @@ public class BDDTest {
 		vol4.setStatutVol(StatutVol.onTime);
 		vol4.setNumeroVol("RUD-D87Q-5ZM4");
 		vol4.setVolGenerique(volGenerique4);
-		vol4.setAvion(avion6);
+		vol4.setAvion(avion4);
 		volService.save(vol4);
 
 		VolGenerique volGenerique5 = new VolGenerique();
@@ -558,7 +547,7 @@ public class BDDTest {
 		vol5.setStatutVol(StatutVol.delayed);
 		vol5.setNumeroVol("RUD-5ZM4-MS69");
 		vol5.setVolGenerique(volGenerique5);
-		vol5.setAvion(avion6);
+		vol5.setAvion(avion5);
 		volService.save(vol5);
 
 		VolGenerique volGenerique6 = new VolGenerique();
@@ -575,7 +564,7 @@ public class BDDTest {
 		vol6.setStatutVol(StatutVol.onTime);
 		vol6.setNumeroVol("RUD-41PN-6J6G");
 		vol6.setVolGenerique(volGenerique6);
-		vol6.setAvion(avion5);
+		vol6.setAvion(avion6);
 		volService.save(vol6);
 
 		VolGenerique volGenerique7 = new VolGenerique();
@@ -592,59 +581,59 @@ public class BDDTest {
 		vol7.setStatutVol(StatutVol.onTime);
 		vol7.setNumeroVol("RUD-T3A2-N98W");
 		vol7.setVolGenerique(volGenerique7);
-		vol7.setAvion(avion3);
+		vol7.setAvion(avion7);
 		volService.save(vol7);
 
-		VolGenerique volGenerique8 = new VolGenerique();
-		volGenerique8.setPrix(889);
-		volGenerique8.setNumVolGen("RUD-23NX-48NO");
-		volGenerique8.setHoraire(new Horaire((LocalTime.parse("12:35")), (LocalTime.parse("18:30"))));
-		volGenerique8.setAeroportDepart(aeroport16);
-		volGenerique8.setAeroportArrivee(aeroport14);
-		volGeneriqueService.save(volGenerique8);
-
-		Vol vol8 = new Vol();
-		vol8.setDateDepart(LocalDate.parse("2022-07-20"));
-		vol8.setDateArrivee(LocalDate.parse("2022-07-20"));
-		vol8.setStatutVol(StatutVol.onTime);
-		vol8.setNumeroVol("RUD-24IR-X3F7");
-		vol8.setVolGenerique(volGenerique8);
-		vol8.setAvion(avion4);
-		volService.save(vol8);
-
-		VolGenerique volGenerique9 = new VolGenerique();
-		volGenerique9.setPrix(234);
-		volGenerique9.setNumVolGen("RUD-2OK6-4S7C");
-		volGenerique9.setHoraire(new Horaire((LocalTime.parse("14:35")), (LocalTime.parse("15:45"))));
-		volGenerique9.setAeroportDepart(aeroport13);
-		volGenerique9.setAeroportArrivee(aeroport15);
-		volGeneriqueService.save(volGenerique9);
-
-		Vol vol9 = new Vol();
-		vol9.setDateDepart(LocalDate.parse("2022-04-09"));
-		vol9.setDateArrivee(LocalDate.parse("2022-04-09"));
-		vol9.setStatutVol(StatutVol.onTime);
-		vol9.setNumeroVol("RUD-HH78-U8L1");
-		vol9.setVolGenerique(volGenerique9);
-		vol9.setAvion(avion2);
-		volService.save(vol9);
-
-		VolGenerique volGenerique10 = new VolGenerique();
-		volGenerique10.setPrix(251);
-		volGenerique10.setNumVolGen("RUD-9KY1-LF54");
-		volGenerique10.setHoraire(new Horaire((LocalTime.parse("11:15")), (LocalTime.parse("15:50"))));
-		volGenerique10.setAeroportDepart(aeroport4);
-		volGenerique10.setAeroportArrivee(aeroport2);
-		volGeneriqueService.save(volGenerique10);
-
-		Vol vol10 = new Vol();
-		vol10.setDateDepart(LocalDate.parse("2022-09-17"));
-		vol10.setDateArrivee(LocalDate.parse("2022-09-17"));
-		vol10.setStatutVol(StatutVol.canceled);
-		vol10.setNumeroVol("RUD-A39Q-2A6T");
-		vol10.setVolGenerique(volGenerique10);
-		vol10.setAvion(avion6);
-		volService.save(vol10);
+//		VolGenerique volGenerique8 = new VolGenerique();
+//		volGenerique8.setPrix(889);
+//		volGenerique8.setNumVolGen("RUD-23NX-48NO");
+//		volGenerique8.setHoraire(new Horaire((LocalTime.parse("12:35")), (LocalTime.parse("18:30"))));
+//		volGenerique8.setAeroportDepart(aeroport16);
+//		volGenerique8.setAeroportArrivee(aeroport14);
+//		volGeneriqueService.save(volGenerique8);
+//
+//		Vol vol8 = new Vol();
+//		vol8.setDateDepart(LocalDate.parse("2022-07-20"));
+//		vol8.setDateArrivee(LocalDate.parse("2022-07-20"));
+//		vol8.setStatutVol(StatutVol.onTime);
+//		vol8.setNumeroVol("RUD-24IR-X3F7");
+//		vol8.setVolGenerique(volGenerique8);
+//		vol8.setAvion(avion4);
+//		volService.save(vol8);
+//
+//		VolGenerique volGenerique9 = new VolGenerique();
+//		volGenerique9.setPrix(234);
+//		volGenerique9.setNumVolGen("RUD-2OK6-4S7C");
+//		volGenerique9.setHoraire(new Horaire((LocalTime.parse("14:35")), (LocalTime.parse("15:45"))));
+//		volGenerique9.setAeroportDepart(aeroport13);
+//		volGenerique9.setAeroportArrivee(aeroport15);
+//		volGeneriqueService.save(volGenerique9);
+//
+//		Vol vol9 = new Vol();
+//		vol9.setDateDepart(LocalDate.parse("2022-04-09"));
+//		vol9.setDateArrivee(LocalDate.parse("2022-04-09"));
+//		vol9.setStatutVol(StatutVol.onTime);
+//		vol9.setNumeroVol("RUD-HH78-U8L1");
+//		vol9.setVolGenerique(volGenerique9);
+//		vol9.setAvion(avion2);
+//		volService.save(vol9);
+//
+//		VolGenerique volGenerique10 = new VolGenerique();
+//		volGenerique10.setPrix(251);
+//		volGenerique10.setNumVolGen("RUD-9KY1-LF54");
+//		volGenerique10.setHoraire(new Horaire((LocalTime.parse("11:15")), (LocalTime.parse("15:50"))));
+//		volGenerique10.setAeroportDepart(aeroport4);
+//		volGenerique10.setAeroportArrivee(aeroport2);
+//		volGeneriqueService.save(volGenerique10);
+//
+//		Vol vol10 = new Vol();
+//		vol10.setDateDepart(LocalDate.parse("2022-09-17"));
+//		vol10.setDateArrivee(LocalDate.parse("2022-09-17"));
+//		vol10.setStatutVol(StatutVol.canceled);
+//		vol10.setNumeroVol("RUD-A39Q-2A6T");
+//		vol10.setVolGenerique(volGenerique10);
+//		vol10.setAvion(avion6);
+//		volService.save(vol10);
 
 		// Reservation + Passager
 
@@ -661,7 +650,7 @@ public class BDDTest {
 		resa1.setStatut(true);
 		resa1.setAnimaux(1);
 		resa1.setBagage(3);
-		resa1.setSiege("B1");
+		resa1.setSiege("B01");
 		reservationService.save(resa1);
 
 		Passager passager2 = new Passager();
@@ -676,10 +665,26 @@ public class BDDTest {
 		resa2.setClient(user2);
 		resa2.setStatut(true);
 		resa2.setAnimaux(0);
-		resa2.setBagage(1);
-		resa2.setSiege("B1");
+		resa2.setBagage(2);
+		resa2.setSiege("C02");
 		reservationService.save(resa2);
-*/
+
+		Passager passager3 = new Passager();
+		passager3.setNom("Marcel");
+		passager3.setPrenom("Proust");
+		passager3.setDateDeNaissance(LocalDate.parse("2000-08-16"));
+		passagerService.save(passager3);
+
+		Reservation resa3 = new Reservation();
+		resa3.setVol(vol3);
+		resa3.setPassager(passager3);
+		resa3.setClient(user3);
+		resa3.setStatut(true);
+		resa3.setAnimaux(1);
+		resa3.setBagage(1);
+		resa3.setSiege("D03");
+		reservationService.save(resa3);
+
 	}
 
 }

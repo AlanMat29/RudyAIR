@@ -64,6 +64,10 @@ public class Views {
 	}
 
 	// Vol
+	
+	public static class Vol extends Common {
+
+	}
 	public static class VolWithVolGenAndAvion extends Common {
 
 	}
