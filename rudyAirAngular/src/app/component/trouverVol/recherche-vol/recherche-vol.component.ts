@@ -11,13 +11,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RechercheVolComponent implements OnInit {
   rechercheForm!: FormGroup;
-
   vols: Vol[] = [];
-  // vols: Vol[] = [];
 
-  villeDepart: any;
-  villeArrivee: any;
-  dateDepart: any;
+  villeDepart: string = '';
+  villeArrivee: string = '';
+  dateDepart: Date = new Date();
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -43,14 +41,14 @@ export class RechercheVolComponent implements OnInit {
 
     // this.villeDepart = JSON.parse(localStorage.getItem('villeDepart'));
 
-    this.activatedRoute.params.subscribe((recherches) => {
-      console.log('fuck' + recherches);
-      this.volService.getVolByRecherche(
-        this.villeDepart,
-        this.villeArrivee,
-        this.dateDepart
-      );
-    });
+    // this.activatedRoute.params.subscribe((recherche) => {
+    //   console.log('fuck' + recherche);
+    //   this.volService.getVolByRecherche(
+    //     this.villeDepart,
+    //     this.villeArrivee,
+    //     this.dateDepart
+    //   );
+    // });
   }
 
   rechercher() {
@@ -74,5 +72,25 @@ export class RechercheVolComponent implements OnInit {
   }
   goList() {
     this.router.navigate(['/liste-recherche-vol']);
+  }
+
+  formatDate(date: Date) {
+    date = new Date(date);
+
+    var day = ('0' + date.getDate()).slice(-2);
+    var month = ('0' + (date.getMonth() + 1)).slice(-2);
+    var year = date.getFullYear();
+
+    return year + '-' + month + '-' + day;
+  }
+
+  saveRechercheParms() {
+    localStorage.setItem('villeDepartRecherche', this.villeDepart);
+    localStorage.setItem('villeArriveRecherche', this.villeArrivee);
+    localStorage.setItem('dateRecherche', this.formatDate(this.dateDepart));
+    // console.log(this.villeDepart, this.villeArrivee, this.dateDepart);
+    // console.log(localStorage.getItem('villeDepartRecherche'));
+    // console.log(localStorage.getItem('villeArriveRecherche'));
+    // console.log(localStorage.getItem('dateRecherche'));
   }
 }

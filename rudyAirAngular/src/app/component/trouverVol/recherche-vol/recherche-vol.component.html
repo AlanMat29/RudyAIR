@@ -37,6 +37,7 @@
                   <div class="form-group">
                     <span class="form-label">Départ de *</span>
                     <input
+                      [(ngModel)]="villeDepart"
                       formControlName="departCtrl"
                       class="form-control"
                       type="text"
@@ -48,6 +49,7 @@
                   <div class="form-group">
                     <span class="form-label">Arrivée à *</span>
                     <input
+                      [(ngModel)]="villeArrivee"
                       formControlName="arriveeCtrl"
                       class="form-control"
                       type="text"
@@ -69,12 +71,12 @@
                     />
                   </div>
                 </div>
-                <div class="col-md-3">
+                <!-- <div class="col-md-3">
                   <div class="form-group">
                     <span class="form-label">Date de retour</span>
                     <input class="form-control" type="date" required />
                   </div>
-                </div>
+                </div> -->
                 <div class="col-md-2">
                   <div class="form-group">
                     <span class="form-label">Animaux</span>
@@ -112,6 +114,7 @@
                 <div class="col-md-3">
                   <div class="form-btn">
                     <button
+                      (click)="saveRechercheParms()"
                       routerLink="/liste-recherche-vol"
                       routerLinkActive="active"
                       type="submit"

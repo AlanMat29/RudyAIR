@@ -1,111 +1,69 @@
 <main>
-  <section>
-    <div class="resultat-date page-heading">
-      <div class="res-title mt-2 mb-2">
-        <h3>
-          Vol pour le
-          <span id="planVol">
-            <span class="bg-grey">{{ dateDepart | date: "dd/MM/yyyy" }}</span
-            >: <span class="bg-grey">{{ villeDepart }}</span> vers
-            <span class="bg-grey"
-              ><i class="bi bi-arrow-right"></i>&nbsp;{{ villeArrivee }}
-            </span>
-          </span>
-        </h3>
+  <div style="margin-bottom: 35%"></div>
+  <div class="d-flex justify-content-center">
+    <div class="div-table-format">
+      <div>
+        <h2>Tableau des vols</h2>
       </div>
-    </div>
+      <table class="table table-striped table-bordered">
+        <thead class="thead-sticky bg-light">
+          <tr>
+            <th scope="col" colspan="2" class="text-center align-middle"></th>
+            <th scope="col" colspan="4" class="text-center align-middle">
+              Départ
+            </th>
+            <th scope="col" colspan="4" class="text-center align-middle">
+              Arrivée
+            </th>
+            <th scope="col" class="text-center align-middle"></th>
+          </tr>
+          <tr>
+            <th scope="col" class="text-center align-middle">#</th>
+            <th scope="col" class="text-center align-middle">Prix</th>
+            <th scope="col" class="text-center align-middle">Pays</th>
+            <th scope="col" class="text-center align-middle">Aéroport</th>
+            <th scope="col" class="text-center align-middle">Date</th>
+            <th scope="col" class="text-center align-middle">Heure</th>
 
-    <div class="modifier">
-      <button
-        type="button"
-        name="button"
-        routerLink="/recherche-vol"
-        routerLinkActive="active"
-        class="btn btn-warning"
-      >
-        Modifier la recherche
-      </button>
-    </div>
-    <br />
+            <th scope="col" class="text-center align-middle">Pays</th>
+            <th scope="col" class="text-center align-middle">Aéroport</th>
+            <th scope="col" class="text-center align-middle">Date</th>
+            <th scope="col" class="text-center align-middle">Heure</th>
+            <th
+              scope="col"
+              colspan="2"
+              rowspan="2"
+              class="text-center align-middle"
+            >
+              Réserver
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let a of recherches; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ a.volGenerique!.prix }}</td>
+            <td>{{ a.volGenerique!.aeroportDepart!.ville!.pays }}</td>
+            <td>{{ a.volGenerique!.aeroportDepart!.nom }}</td>
+            <td>{{ a.dateDepart }}</td>
+            <td>{{ a.volGenerique!.horaire!.heureDepart }}</td>
 
-    <div class="resultat-horaire">
-      <div class="d-flex justify-content-center">
-        <div class="div-table-format">
-          <div>
-            <h4>Détails du vols</h4>
-          </div>
-          <table class="table table-striped table-bordered">
-            <thead class="thead-sticky bg-light">
-              <tr>
-                <th scope="col" class="text-center align-middle"></th>
-                <th scope="col" colspan="2" class="text-center align-middle">
-                  <span>{{ heureDepart }}</span> -
-                  <span>{{ heureArrivee }}</span>
-                </th>
-                <th scope="col" class="text-center align-middle">N° vol</th>
-                <th scope="col" class="text-center align-middle">Duree</th>
-                <th scope="col" class="text-center align-middle"></th>
-              </tr>
-              <tr>
-                <th scope="col" rowspan="2" class="text-center align-middle">
-                  <img
-                    class="vol-timeline"
-                    src="assets/img/vol-node.png"
-                    alt="logo_image"
-                  />
-                </th>
-                <th scope="col" colspan="2" class="text-center align-middle">
-                  Aeroport de départ
-                </th>
-                <td scope="col" class="text-center align-middle">
-                  <img
-                    class="logo-img-search"
-                    src="assets/img/icon/logo-icon.png"
-                    alt="logo_image"
-                  />
-                </td>
-                <td scope="col" rowspan="2" class="text-center align-middle">
-                  {{ prixVol | currency: "EUR" }}
-                </td>
-                <td scope="col" class="text-center align-middle">
-                  <button
-                    routerLink="/admin/reservation/edit"
-                    routerLinkActive="active"
-                    class="btn d-flex w-100"
-                  >
-                    Prix vol
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="col" colspan="2" class="text-center align-middle">
-                  Aeroport d'arrivee
-                </th>
-                <td scope="col" class="text-center align-middle">numéro vol</td>
-                <td scope="col" class="text-center align-middle">
-                  <a
-                    routerLink="/reservation/passager"
-                    routerLinkActive="active"
-                    class="btn d-flex w-100"
-                    style="border-color: #6890bc; background-color: aliceblue"
-                    >Valider</a
-                  >
-                </td>
-              </tr>
-            </thead>
-          </table>
-        </div>
-      </div>
-      <div class="verife">
-        <button
-          routerLink="/accueil"
-          routerLinkActive="active"
-          class="btn"
-          style="border-color: aliceblue; background-color: #6890bc"
-        >
-          annuler
-        </button>
-      </div>
+            <td>{{ a.volGenerique!.aeroportArrivee!.ville!.pays }}</td>
+            <td>{{ a.volGenerique!.aeroportArrivee!.nom }}</td>
+            <td>{{ a.dateArrivee }}</td>
+            <td>{{ a.volGenerique!.horaire!.heureArrivee }}</td>
+
+            <td>
+              <a
+                [routerLink]="['/reservation/passager']"
+                routerLinkActive="active"
+                class="btn btn-warning"
+                >Reserver</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  </section>
+  </div>
 </main>

@@ -5,10 +5,6 @@ main {
   background-size: cover;
 }
 
-.page-heading {
-  margin-top: 15%;
-}
-
 section {
   margin-bottom: 5%;
 }
@@ -23,4 +19,17 @@ section {
 }
 table {
   border: none;
+}
+
+.page-heading {
+  margin-top: 15%;
+}
+
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+  background-color: rgb(240, 240, 240); /* Choose your own color here */
+}
+.table-striped > tbody > tr:nth-child(even) > td,
+.table-striped > tbody > tr:nth-child(even) > th {
+  background-color: rgb(255, 255, 255); /* Choose your own color here */
 }

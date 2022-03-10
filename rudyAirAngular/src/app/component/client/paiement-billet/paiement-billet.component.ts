@@ -25,7 +25,7 @@ export class PaiementBilletComponent implements OnInit {
         Validators.minLength(2),
         Validators.pattern('^[A-Za-z]+((\\s)?([A-Za-z])+)*$'),
       ]),
-      expirationCrtl: new FormControl('', Validators.required),
+      // expirationCrtl: new FormControl('', Validators.required),
       cvvCtrl: new FormControl('', [
         Validators.required,
         Validators.minLength(3),

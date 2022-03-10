@@ -69,15 +69,8 @@ export class VolService {
   public getVolByRecherche(
     villeDepart: string,
     villeArrivee: string,
-    dateDepart: Date
+    dateDepart: string
   ): Observable<Vol[]> {
-    // let dd =
-    //   dateDepart.getFullYear +
-    //   '-' +
-    //   dateDepart.getMonth +
-    //   '-' +
-    //   dateDepart.getDay;
-    // let dd1 = this.format(dateDepart);
     return this.httpClient.get<Vol[]>(
       VolService.URL +
         `/recherche-vol/${villeDepart}/${villeArrivee}/${dateDepart}`

@@ -11,11 +11,11 @@ import { EventEmitter } from '@angular/core';
   styleUrls: ['./liste-recherche-vol.component.css'],
 })
 export class ListeRechercheVolComponent implements OnInit {
-  villeDepart: string = '';
-  villeArrivee: string = '';
+  villeDepart = localStorage.getItem('villeDepart');
+  villeArrivee = localStorage.getItem('villeArrivee');
+  dateDepart = localStorage.getItem('dateDepart');
   heureDepart: any;
   heureArrivee: any;
-  dateDepart: Date = new Date();
   prixVol: any;
 
   recherches: Vol[] = [];
@@ -29,9 +29,14 @@ export class ListeRechercheVolComponent implements OnInit {
 
   ngOnInit(): void {
     this.volService
-      .getVolByRecherche(this.villeDepart, this.villeArrivee, this.dateDepart)
+      .getVolByRecherche(
+        localStorage.getItem('villeDepartRecherche')!,
+        localStorage.getItem('villeArriveRecherche')!,
+        localStorage.getItem('dateRecherche')!
+      )
       .subscribe((results) => {
         this.recherches = results;
+        console.log('mes result', results);
       });
   }
 
