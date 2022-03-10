@@ -33,7 +33,6 @@ import rudyAir.model.compte.Role;
 import rudyAir.repositories.IClientRepository;
 import rudyAir.repositories.ICompteRepository;
 
-
 @RestController
 @RequestMapping("/api/auth")
 @CrossOrigin(origins = "*")
@@ -46,7 +45,6 @@ public class AuthRestController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-
 	@GetMapping("")
 	public void auth(@AuthenticationPrincipal UserDetails compte) {
 		System.out.println(((Compte) compte).getNom());
@@ -57,6 +55,12 @@ public class AuthRestController {
 	@PostMapping("/inscription")
 	@ResponseStatus(code = HttpStatus.CREATED, value = HttpStatus.CREATED)
 	public Client inscription(@Valid @RequestBody Client compte, BindingResult br) {
+		System.out.println(compte.getEmail());
+		System.out.println(compte.getNom());
+		System.out.println(compte.getPassword());
+		System.out.println(compte.getPrenom() );
+		System.out.println(compte.getUsername());
+
 		if (br.hasErrors()) {
 			throw new ClientException();
 		}
@@ -71,11 +75,10 @@ public class AuthRestController {
 		compte.setRoles(new HashSet<Role>(Arrays.asList(Role.ROLE_CLIENT)));
 		return clientRepo.save(compte);
 	}
-	
+
 	@GetMapping("/search/{email}")
 	public boolean emailDejaUtilise(@PathVariable String email) {
 		return compteRepo.findByEmail(email).isPresent();
 	}
-	
-	
+
 }
