@@ -103,7 +103,6 @@ export class InscriptionComponent implements OnInit {
       email: this.form.get('login')?.value,
       password: this.form.get('passwordGrp')?.get('password')?.value,
     };
-    console.log(user);
     this.authService.inscription(user).subscribe((ok) => {
       this.router.navigateByUrl('/accueil');
     });

@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     localStorage.clear();
-    this.router.navigateByUrl('/acceuil');
+    this.router.navigateByUrl('/accueil');
   }
 
   get authenticated() {

@@ -1,6 +1,6 @@
-<!-- <app-main-admin></app-main-admin> -->
+<app-main-admin *ngIf="getUserType() == 'admin'"></app-main-admin>
 
-<app-header></app-header>
+<app-header *ngIf="getUserType() == 'client'"></app-header>
 <!-- ==================== info client ============================= -->
 
 <!-- ==================== Test inscription ============================= -->
