@@ -99,6 +99,7 @@
   <div id="login">
     <!-- Button to open the modal login form -->
     <button
+      *ngIf="!authenticated"
       class="btn btn-login"
       routerLink="/connexion"
       routerLinkActive="active"
@@ -107,6 +108,8 @@
     </button>
     <!-- se déconnecter -->
     <button
+      (click)="logout()"
+      *ngIf="authenticated"
       class="btn btn-login"
       routerLink="/deconnexion"
       routerLinkActive="active"
