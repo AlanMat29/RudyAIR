@@ -35,10 +35,8 @@ export class HeaderComponent implements OnInit {
 
   isConnected() {
     if (this.getUserType() == 'none') {
-      console.log('non connecter');
       return false;
     }
-    console.log('connecter');
     return true;
   }
 }

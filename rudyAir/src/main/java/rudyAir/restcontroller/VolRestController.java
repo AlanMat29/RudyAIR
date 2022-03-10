@@ -35,7 +35,7 @@ public class VolRestController {
 	private VolService volService;
 
 	@GetMapping("")
-	@JsonView(Views.VolWithVolGenAndAvion.class)
+	@JsonView(Views.Vol.class)
 	public List<Vol> getAll() {
 		return volService.getAll();
 	}
