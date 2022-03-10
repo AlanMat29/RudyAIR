@@ -30,244 +30,252 @@
       </ul>
     </div>
     <!--  ===================== DEBUT FORUMULAIRE =====================   -->
-    <div class="container">
-      <br />
-      <h2 style="text-align: center">Comment voulez-vous payer ?</h2>
-      <br /><br />
-      <!--  nav tab -->
-      <div class="d-flex justify-content-center align-items-center">
-        <ul class="nav nav-tabs" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#Carte"
-              ><img
-                alt="Carte"
-                class="icon"
-                src="/assets/img/Payement/card.svg"
-              />Carte</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#Paypal"
-              ><img
-                alt="PayPal"
-                class="icon"
-                src="/assets/img/Payement/paypal.svg"
-            /></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#Miles"
-              ><img
-                alt="Miles"
-                class="icon"
-                src="/assets/img/Payement/Miles.svg"
-            /></a>
-          </li>
-        </ul>
+    <div class="container" style="width: 60%">
+      <div class="container">
+        <br />
+        <h2 style="text-align: center">Comment voulez-vous payer ?</h2>
+        <br /><br />
+        <!--  nav tab -->
+        <div class="d-flex justify-content-center align-items-center">
+          <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#Carte"
+                ><img
+                  alt="Carte"
+                  class="icon"
+                  src="/assets/img/Payement/card.svg"
+                />Carte</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#Paypal"
+                ><img
+                  alt="PayPal"
+                  class="icon"
+                  src="/assets/img/Payement/paypal.svg"
+              /></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#Miles"
+                ><img
+                  alt="Miles"
+                  class="icon"
+                  src="/assets/img/Payement/Miles.svg"
+              /></a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <!-- tab panes -->
-    <br />
-    <div class="d-flex justify-content-center align-items-center">
-      <form [formGroup]="paiementForm" (ngSubmit)="payer()">
-        <div class="form-group col-md-12">
-          <label>Numéro de carte</label>
-          <input
-            formControlName="numeroCtrl"
-            type="text"
-            id="cc-num"
-            autocomplete="cc-number"
-            class="form-control"
-            placeholder="Enter card number"
-            required
-          />
-          <span
-            style="color: red"
-            *ngIf="
-              paiementForm.controls['numeroCtrl'].dirty &&
-              paiementForm.controls['numeroCtrl'].invalid
-            "
-            >Veuillez taper votre numéro de carte à 16 chiffres</span
-          >
-        </div>
-        <div class="form-group col-md-12">
-          <label>Type de carte</label>
-          <select
-            class="form-control mb-2 mr-sm-2"
-            id="typeCard"
-            name="choixTypeCard"
-            formControlName="carteCtrl"
-            required
-          >
-            <option selected="" disabled=""></option>
-            <option>Visa</option>
-            <option>American Express</option>
-            <option>MasterCard</option>
-            <option>CB</option>
-          </select>
-        </div>
-        <div class="form-group col-md-12">
-          <label>Titulaire de la carte</label>
-          <input
-            formControlName="titulaireCtrl"
-            class="form-control"
-            type="text"
-            id="cardOwner"
-            placeholder="Enter name"
-            name="name"
-            required
-          />
-          <span
-            style="color: red"
-            *ngIf="
-              paiementForm.controls['titulaireCtrl'].dirty &&
-              paiementForm.controls['titulaireCtrl'].invalid
-            "
-            >Incorrect</span
-          >
-        </div>
-        <div id="marge">
-          <label>Date d'expiration (mm/aaaa)</label>
-          <div class="form-row">
-            <div class="form-group col-md-5">
-              <select
-                formControlName="expirationCtrl"
-                class="form-control"
-                id="date1"
-                name="enter date1"
-                required
-              >
-                <option value=""></option>
-                <option value="01">01</option>
-                <option value="02">02</option>
-                <option value="03">03</option>
-                <option value="04">04</option>
-                <option value="05">05</option>
-                <option value="06">06</option>
-                <option value="07">07</option>
-                <option value="08">08</option>
-                <option value="09">09</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-              </select>
+      <!-- tab panes -->
+      <br />
+
+      <div class="d-flex justify-content-center align-items-center">
+        <form [formGroup]="paiementForm" (ngSubmit)="payer()">
+          <div class="form-group col-md-12">
+            <label>Numéro de carte</label>
+            <input
+              formControlName="numeroCtrl"
+              type="text"
+              id="cc-num"
+              autocomplete="cc-number"
+              class="form-control"
+              placeholder="Enter card number"
+              required
+            />
+            <span
+              style="color: red"
+              *ngIf="
+                paiementForm.controls['numeroCtrl'].dirty &&
+                paiementForm.controls['numeroCtrl'].invalid
+              "
+              >Veuillez taper votre numéro de carte à 16 chiffres</span
+            >
+          </div>
+          <div class="form-group col-md-12">
+            <label>Type de carte</label>
+            <select
+              class="form-control mb-2 mr-sm-2"
+              id="typeCard"
+              name="choixTypeCard"
+              formControlName="carteCtrl"
+              required
+            >
+              <option selected="" disabled=""></option>
+              <option>Visa</option>
+              <option>American Express</option>
+              <option>MasterCard</option>
+              <option>CB</option>
+            </select>
+          </div>
+          <div class="form-group col-md-12">
+            <label>Titulaire de la carte</label>
+            <input
+              formControlName="titulaireCtrl"
+              class="form-control"
+              type="text"
+              id="cardOwner"
+              placeholder="Enter name"
+              name="name"
+              required
+            />
+            <span
+              style="color: red"
+              *ngIf="
+                paiementForm.controls['titulaireCtrl'].dirty &&
+                paiementForm.controls['titulaireCtrl'].invalid
+              "
+              >Incorrect</span
+            >
+          </div>
+          <div id="marge">
+            <label>Date d'expiration (mm/aaaa)</label>
+            <div class="form-row">
+              <div class="form-group col-md-5">
+                <select
+                  formControlName="expirationCtrl"
+                  class="form-control"
+                  id="date1"
+                  name="enter date1"
+                  required
+                >
+                  <option value=""></option>
+                  <option value="01">01</option>
+                  <option value="02">02</option>
+                  <option value="03">03</option>
+                  <option value="04">04</option>
+                  <option value="05">05</option>
+                  <option value="06">06</option>
+                  <option value="07">07</option>
+                  <option value="08">08</option>
+                  <option value="09">09</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <select
+                  class="form-control"
+                  id="date2"
+                  name="enter date2"
+                  required
+                >
+                  <option value=""></option>
+                  <option value="2022">2022</option>
+                  <option value="2023">2023</option>
+                  <option value="2024">2024</option>
+                  <option value="2025">2025</option>
+                  <option value="2027">2027</option>
+                  <option value="2028">2028</option>
+                  <option value="2029">2029</option>
+                  <option value="2030">2030</option>
+                  <option value="2031">2031</option>
+                  <option value="2032">2032</option>
+                  <option value="2033">2033</option>
+                  <option value="2034">2034</option>
+                  <option value="2035">2035</option>
+                  <option value="2036">2036</option>
+                  <option value="2037">2037</option>
+                  <option value="2038">2038</option>
+                  <option value="2039">2039</option>
+                  <option value="2040">2040</option>
+                  <option value="2041">2041</option>
+                  <option value="2042">2042</option>
+                  <option value="2043">2043</option>
+                  <option value="2044">2044</option>
+                  <option value="2045">2045</option>
+                  <option value="2046">2046</option>
+                  <option value="2047">2047</option>
+                  <option value="2048">2048</option>
+                  <option value="2049">2049</option>
+                </select>
+              </div>
             </div>
-            <div class="form-group col-md-6">
-              <select
-                class="form-control"
-                id="date2"
-                name="enter date2"
-                required
-              >
-                <option value=""></option>
-                <option value="2022">2022</option>
-                <option value="2023">2023</option>
-                <option value="2024">2024</option>
-                <option value="2025">2025</option>
-                <option value="2027">2027</option>
-                <option value="2028">2028</option>
-                <option value="2029">2029</option>
-                <option value="2030">2030</option>
-                <option value="2031">2031</option>
-                <option value="2032">2032</option>
-                <option value="2033">2033</option>
-                <option value="2034">2034</option>
-                <option value="2035">2035</option>
-                <option value="2036">2036</option>
-                <option value="2037">2037</option>
-                <option value="2038">2038</option>
-                <option value="2039">2039</option>
-                <option value="2040">2040</option>
-                <option value="2041">2041</option>
-                <option value="2042">2042</option>
-                <option value="2043">2043</option>
-                <option value="2044">2044</option>
-                <option value="2045">2045</option>
-                <option value="2046">2046</option>
-                <option value="2047">2047</option>
-                <option value="2048">2048</option>
-                <option value="2049">2049</option>
-              </select>
-            </div>
+            <span
+              style="color: red"
+              *ngIf="
+                paiementForm.controls['carteCtrl'].dirty &&
+                paiementForm.controls['carteCtrl'].invalid
+              "
+              >Date invalide</span
+            >
+          </div>
+          <div class="form-group col-md-12">
+            <label>CVV</label>
+            <input
+              formControlName="cvvCtrl"
+              type="text"
+              id="cc-num"
+              autocomplete="cc-number"
+              class="form-control"
+              required
+            />
           </div>
           <span
             style="color: red"
             *ngIf="
-              paiementForm.controls['carteCtrl'].dirty &&
-              paiementForm.controls['carteCtrl'].invalid
+              paiementForm.controls['cvvCtrl'].dirty &&
+              paiementForm.controls['cvvCtrl'].invalid
             "
-            >Date invalide</span
+            >Veuillez entrer le code à 3 chiffres au dos de votre carte</span
           >
-        </div>
-        <div class="form-group col-md-12">
-          <label>CVV</label>
-          <input
-            formControlName="cvvCtrl"
-            type="text"
-            id="cc-num"
-            autocomplete="cc-number"
-            class="form-control"
-            required
-          />
-        </div>
-        <span
-          style="color: red"
-          *ngIf="
-            paiementForm.controls['cvvCtrl'].dirty &&
-            paiementForm.controls['cvvCtrl'].invalid
-          "
-          >Veuillez entrer le code à 3 chiffres au dos de votre carte</span
-        >
-      </form>
-    </div>
-    <div
-      id="Paypal"
-      class="container tab-pane fade"
-      style="border-radius: 10px"
-    >
-      <form class="form-inline">
-        <h5>
-          <strong>Prochaines étapes</strong>
-        </h5>
-        <ul style="list-style-type: disc">
-          <li>Vous serez redirigé(e) vers PayPal.</li>
-          <li>Assurez-vous d'effectuer toutes les étapes avec PayPal.</li>
-          <li>Vous recevrez une confirmation après le paiement.</li>
-        </ul>
-      </form>
-    </div>
-    <div id="Miles" class="container tab-pane fade">
-      <form class="form-inline">
-        <input
-          type="text"
-          class="form-control mb-2 mr-sm-2"
-          id="Miles"
-          placeholder="Enter Miles"
-          name="Miles"
-        />
-        <label for="Miles" class="mb-2 mr-sm-2"
-          >Entrez votre code RudyMiles</label
-        >
-      </form>
-    </div>
-    <br />
-    <div class="form-check mb-2 mr-sm-2" name="phrase confirmation">
-      <label class="form-check-label"
-        ><input type="checkbox" class="form-check-input" name="remember" />J'ai
-        lu, compris et accepté les conditions de transport de RudyAir ainsi que
-        les conditions relatives aux marchandises dangereuses.</label
+        </form>
+      </div>
+
+      <div
+        id="Paypal"
+        class="container tab-pane fade"
+        style="border-radius: 10px"
       >
+        <form class="form-inline">
+          <h5>
+            <strong>Prochaines étapes</strong>
+          </h5>
+          <ul style="list-style-type: disc">
+            <li>Vous serez redirigé(e) vers PayPal.</li>
+            <li>Assurez-vous d'effectuer toutes les étapes avec PayPal.</li>
+            <li>Vous recevrez une confirmation après le paiement.</li>
+          </ul>
+        </form>
+      </div>
+
+      <div id="Miles" class="container tab-pane fade">
+        <form class="form-inline">
+          <input
+            type="text"
+            class="form-control mb-2 mr-sm-2"
+            id="Miles"
+            placeholder="Enter Miles"
+            name="Miles"
+          />
+          <label for="Miles" class="mb-2 mr-sm-2"
+            >Entrez votre code RudyMiles</label
+          >
+        </form>
+      </div>
+      <div class="form-check mb-2 mr-sm-2" name="phrase confirmation">
+        <label class="form-check-label"
+          ><input
+            type="checkbox"
+            class="form-check-input"
+            name="remember"
+          />J'ai lu, compris et accepté les conditions de transport de RudyAir
+          ainsi que les conditions relatives aux marchandises
+          dangereuses.</label
+        >
+      </div>
+      <input
+        value="Annuler"
+        type="reset"
+        style="border-color: aliceblue; background-color: #6890bc"
+        class="btn"
+      />
+      <input
+        value="Payer maintenant"
+        style="border-color: #6890bc; background-color: aliceblue"
+        class="btn"
+        type="submit"
+      />
     </div>
-    <input
-      value="Annuler"
-      type="reset"
-      style="border-color: aliceblue; background-color: #6890bc"
-      class="btn"
-    />
-    <input
-      value="Payer maintenant"
-      style="border-color: #6890bc; background-color: aliceblue"
-      class="btn"
-      type="submit"
-    />
   </section>
 </main>

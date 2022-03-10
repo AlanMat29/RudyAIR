@@ -3,6 +3,8 @@ main {
   align-items: center;
   background-image: url("/assets/img/wall/cloud-up.jpg");
   background-size: cover;
+  margin-bottom: 1%;
+  height: 75%;
 }
 #timeline {
   margin: 30px;
