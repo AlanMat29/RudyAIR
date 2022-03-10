@@ -41,7 +41,7 @@ export class VolDuJourComponent implements OnInit {
     this.volService.getAll().subscribe((result) => {
       this.vols = result;
       this.filtVols = result.filter(
-        (c) => this.formatBis(c.dateDepart!) == '2022-02-02'
+        (c) => this.formatBis(c.dateDepart!) == this.formatBis(this.currentDate)
       );
       console.log(this.filtVols);
     });
