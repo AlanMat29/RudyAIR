@@ -13,6 +13,8 @@ export class RechercheVolComponent implements OnInit {
   rechercheForm!: FormGroup;
   vols: Vol[] = [];
 
+  resaAnimaux = 0;
+  resaBagages = 1;
   villeDepart: string = '';
   villeArrivee: string = '';
   dateDepart: Date = new Date();
@@ -67,8 +69,6 @@ export class RechercheVolComponent implements OnInit {
     //   this.volService.getVolByDateDepart(this.dateDepart).subscribe(recherches) => {
     //     this.goList();
     //   }
-
-    console.log(this.rechercheForm);
   }
   goList() {
     this.router.navigate(['/liste-recherche-vol']);

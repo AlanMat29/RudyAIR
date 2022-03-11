@@ -19,7 +19,7 @@
           </tr>
           <tr>
             <th scope="col" class="text-center align-middle">#</th>
-            <th scope="col" class="text-center align-middle">Prix</th>
+            <th scope="col" class="text-center align-middle">Prix €</th>
             <th scope="col" class="text-center align-middle">Pays</th>
             <th scope="col" class="text-center align-middle">Aéroport</th>
             <th scope="col" class="text-center align-middle">Date</th>
@@ -55,7 +55,16 @@
 
             <td>
               <a
+                *ngIf="isConnected()"
                 [routerLink]="['/reservation/passager']"
+                routerLinkActive="active"
+                class="btn btn-warning"
+                >Reserver</a
+              >
+
+              <a
+                *ngIf="!isConnected()"
+                [routerLink]="['/connexion']"
                 routerLinkActive="active"
                 class="btn btn-warning"
                 >Reserver</a

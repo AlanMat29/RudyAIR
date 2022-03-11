@@ -19,7 +19,6 @@ export class VolListComponent implements OnInit {
   listAllVol() {
     this.volService.getAll().subscribe((result) => {
       this.vols = result;
-      console.log(result);
     });
   }
 

@@ -36,15 +36,22 @@ export class ListeRechercheVolComponent implements OnInit {
       )
       .subscribe((results) => {
         this.recherches = results;
-        console.log('mes result', results);
       });
   }
 
-  // pagePrecedente() {
-  //   this.retour.emit({
-  //     vd: this.villeDepart,
-  //     va: this.villeArrivee,
-  //     dd: this.dateDepart,
-  //   });
-  // }
+  getUserType() {
+    if (localStorage.getItem('typeCompte') == 'admin') {
+      return 'admin';
+    } else if (localStorage.getItem('typeCompte') == 'client') {
+      return 'client';
+    }
+    return 'none';
+  }
+
+  isConnected() {
+    if (this.getUserType() == 'none') {
+      return false;
+    }
+    return true;
+  }
 }

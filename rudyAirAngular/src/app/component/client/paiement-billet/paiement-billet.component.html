@@ -270,6 +270,8 @@
         class="btn"
       />
       <input
+        routerLink="/client/historique"
+        routerLinkActive="active"
         value="Payer maintenant"
         style="border-color: #6890bc; background-color: aliceblue"
         class="btn"
@@ -307,26 +309,5 @@
       </form>
     </div>
     <br />
-    <div class="form-check mb-2 mr-sm-2" name="phrase confirmation">
-      <label class="form-check-label"
-        ><input type="checkbox" class="form-check-input" name="remember" />J'ai
-        lu, compris et accepté les conditions de transport de RudyAir ainsi que
-        les conditions relatives aux marchandises dangereuses.</label
-      >
-    </div>
-    <input
-      value="Annuler"
-      routerLink="/reservation/passager"
-      routerLinkActive="active"
-      type="reset"
-      style="border-color: aliceblue; background-color: #6890bc"
-      class="btn"
-    />
-    <input
-      value="Payer maintenant"
-      style="border-color: #6890bc; background-color: aliceblue"
-      class="btn"
-      type="submit"
-    />
   </section>
 </main>
